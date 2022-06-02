@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/backgound_shape_rectangule.xml" value="0.227" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/background_icons_home.xml" value="0.227" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/rectangle_1.xml" value="0.2585" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_main.xml" value="0.176" />
       </map>
     </option>
   </component>
