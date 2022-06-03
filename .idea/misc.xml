@@ -3,24 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2465" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/ic_money_verde.xml" value="0.2865" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/line.xml" value="0.2465" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cadastro.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cobrar_pix.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_comprovante_fatura.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_fatura_cartao.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_home.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_main.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_pagar_fatura.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_pagar_fatura_confirmar_valor.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_confirmar_dados.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_pagar.xml" value="0.29907407407407405" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_pagar2.xml" value="0.23783783783783785" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_pagar_com_pix.xml" value="0.29907407407407405" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_pix_copia_cola.xml" value="0.176" />
-        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_transferir_conta.xml" value="0.23783783783783785" />
+        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_seguro_cartao.xml" value="0.264" />
+        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_sub_splash2.xml" value="0.128125" />
+        <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
