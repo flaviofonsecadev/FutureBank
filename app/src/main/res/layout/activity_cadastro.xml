@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="40dp"
+    tools:context=".CadastroActivity">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_t3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_abrir_conta"
+        style="@style/Text_View_Login_e_Cadastro"
+        android:text="@string/txt_abrir_uma_conta"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <EditText
+        android:id="@+id/edt_nome"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="14dp"
+        android:hint="@string/txt_nome_completo"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/tv_abrir_conta"
+        app:layout_constraintStart_toStartOf="@+id/tv_abrir_conta"
+        app:layout_constraintTop_toBottomOf="@+id/tv_abrir_conta" />
+
+    <EditText
+        android:id="@+id/edt_cpf"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="14dp"
+        android:hint="@string/txt_cpf"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nome"
+        app:layout_constraintStart_toStartOf="@+id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nome" />
+
+    <EditText
+        android:id="@+id/edt_data_nasc"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="14dp"
+        android:hint="@string/txt_data_de_nascimento"
+        android:inputType="date"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_cpf"
+        app:layout_constraintStart_toStartOf="@+id/edt_cpf"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cpf" />
+
+    <EditText
+        android:id="@+id/edt_endereco"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="14dp"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:hint="@string/txt_endereco"
+        android:inputType="text"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_data_nasc"
+        app:layout_constraintStart_toStartOf="@+id/edt_data_nasc"
+        app:layout_constraintTop_toBottomOf="@+id/edt_data_nasc" />
+
+    <EditText
+        android:id="@+id/edt_cep"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="180dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_cep"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edt_endereco"
+        app:layout_constraintTop_toBottomOf="@+id/edt_endereco" />
+
+    <EditText
+        android:id="@+id/edt_numero"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="120dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_numero"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_endereco"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/edt_endereco" />
+
+    <EditText
+        android:id="@+id/edt_logradouro"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="109dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_logradouro"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cep" />
+
+    <EditText
+        android:id="@+id/edt_bairro"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="187dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_bairro"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/edt_numero" />
+
+    <EditText
+        android:id="@+id/edt_cidade"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="129dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_cidade"
+        android:inputType="text"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_logradouro" />
+
+    <EditText
+        android:id="@+id/edt_estado"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="73dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_estado"
+        android:inputType="text"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toStartOf="@+id/edt_pais"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edt_cidade"
+        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+
+    <EditText
+        android:id="@+id/edt_pais"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="99dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_pais"
+        android:inputType="text"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_pais"
+        app:layout_constraintStart_toStartOf="@+id/edt_cidade"
+        app:layout_constraintTop_toBottomOf="@+id/edt_estado" />
+
+    <EditText
+        android:id="@+id/edt_senha"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="12dp"
+        android:hint="@string/txt_senha"
+        android:inputType="numberPassword"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_email"
+        app:layout_constraintStart_toStartOf="@+id/edt_email"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+    <Button
+        android:id="@+id/btn_criar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/custom_buttom"
+        android:text="@string/txt_criar"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/edt_senha"
+        app:layout_constraintStart_toStartOf="@+id/edt_senha"
+        app:layout_constraintTop_toBottomOf="@+id/edt_senha" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

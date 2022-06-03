@@ -14,7 +14,46 @@
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".pagarfatura.FaturaCartao"
+            android:exported="false" />
+        <activity
+            android:name=".TelaTransferirConta"
+            android:exported="false" />
+        <activity
+            android:name=".CobrarPix"
+            android:exported="false" />
+        <activity
+            android:name=".pagarfatura.ComprovanteFatura"
+            android:exported="false" />
+        <activity
+            android:name=".pagarfatura.PagarFaturaConfirmarValor"
+            android:exported="false" />
+        <activity
+            android:name=".pagarfatura.PagarFatura"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaConfirmarDados"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPixCopiaCola"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPagarComPix"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPagar"
+            android:exported="true"/>
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
