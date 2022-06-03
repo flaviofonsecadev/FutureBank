@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="rosa">#F2295F</color>
     <color name="gray">#DFD8D8</color>
+    <color name="rosa2">#F2527D</color>
+    <color name="rosa3">#F2527F</color>
 </resources>
