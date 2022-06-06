@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SeguroCartaoActivity">
+    tools:context=".SeguroVida">
 
     <ImageView
         android:id="@+id/header"
@@ -32,9 +32,9 @@
         android:layout_height="50dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_mensagem_um"
-        app:layout_constraintEnd_toStartOf="@+id/tv_nao_preocupe"
+        app:layout_constraintEnd_toStartOf="@+id/tv_mensagem_um"
         app:layout_constraintTop_toTopOf="@+id/tv_nao_preocupe"
-        app:srcCompat="@drawable/ic_seguro_cartao_branco" />
+        app:srcCompat="@drawable/ic_seguro_vida_branco" />
 
     <TextView
         android:id="@+id/tv_nao_preocupe"
@@ -43,7 +43,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="-16dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Não se preocupe"
+        android:text="Para Você"
         android:textColor="@color/white"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Proteja seu cartão com o\nmelhor seguro."
+        android:text="Proteja você e sua Família \ncom o melhor seguro."
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textAlignment="textEnd"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:fontFamily="@font/robotolight"
-        android:text="Com ele você fica mais protegido em caso de \nperda, roubo, furto, saque ou compra sob ameaça \naté o limite contratado."
+        android:text="Garantia de proteção em caso de imprevistos."
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -82,7 +82,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Cartão Bem Protegido"
+        android:text="Seguro de Vida"
         android:textColor="@color/rosa"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         android:id="@+id/tv_para_voce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/robotolight"
         android:text="Planos mais Indicado Para Você"
         android:textColor="@color/black"
@@ -112,28 +112,71 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_para_voce" />
 
     <TextView
-        android:id="@+id/tv_plano_standard"
+        android:id="@+id/tv_plano_individual"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Plano Standard"
+        android:text="Plano Individual"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
     <TextView
-        android:id="@+id/tv_valor_standard"
+        android:id="@+id/tv_valor_cobertura1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor da Cobertura"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_plano_individual" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_individual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="R$ 80.000,00"
+        android:textColor="@color/rosa"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_cobertura1"
+        app:layout_constraintStart_toEndOf="@+id/tv_valor_cobertura1"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_cobertura1" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_seguro1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor do Seguro"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura1" />
+
+    <TextView
+        android:id="@+id/tv_valor_cobertura_individual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotoregular"
-        android:text="R$ 2,90/mês"
+        android:text="R$ 37,90 / mês"
         android:textColor="@color/rosa"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_plano_standard"
-        app:layout_constraintTop_toBottomOf="@+id/tv_plano_standard" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_mensal_seguro1"
+        app:layout_constraintStart_toStartOf="@+id/tv_valor_mensal_individual"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_mensal_seguro1" />
+
 
     <ImageView
         android:id="@+id/iv_arrow1"
@@ -141,43 +184,85 @@
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic__arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_plano_standard"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_mensal_seguro1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_plano_standard" />
+        app:layout_constraintTop_toTopOf="@+id/tv_plano_individual" />
 
     <View
         android:id="@+id/line_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_valor_standard" />
+        app:layout_constraintTop_toBottomOf="@id/tv_valor_cobertura_individual" />
 
     <TextView
-        android:id="@+id/tv_plano_plus"
+        android:id="@+id/tv_plano_para_dois"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Plano Plus"
+        android:text="Plano Para  2 Pessoas"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_2" />
 
     <TextView
-        android:id="@+id/tv_valor_plus"
+        android:id="@+id/tv_valor_cobertura2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor da Cobertura"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_plano_para_dois" />
+
+    <TextView
+        android:id="@+id/tv_valor_para_dois"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="R$ 100.000,00"
+        android:textColor="@color/rosa"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_cobertura2"
+        app:layout_constraintStart_toEndOf="@+id/tv_valor_cobertura2"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_cobertura2" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_seguro2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor do Seguro"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura2" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_para_dois"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotoregular"
-        android:text="R$ 4,90/mês"
+        android:text="R$ 43,90 / mês"
         android:textColor="@color/rosa"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_plano_plus"
-        app:layout_constraintTop_toBottomOf="@+id/tv_plano_plus" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_mensal_seguro2"
+        app:layout_constraintStart_toStartOf="@+id/tv_valor_para_dois"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura2" />
 
     <ImageView
         android:id="@+id/iv_arrow2"
@@ -185,43 +270,85 @@
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic__arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_plano_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_plano_para_dois"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_plano_plus" />
+        app:layout_constraintTop_toTopOf="@+id/tv_plano_para_dois" />
 
     <View
         android:id="@+id/line_3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_valor_plus" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_mensal_seguro2" />
 
     <TextView
-        android:id="@+id/tv_plano_premium"
+        android:id="@+id/tv_plano_familia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Plano Premium"
+        android:text="Plano Para a Família"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_3" />
 
     <TextView
-        android:id="@+id/tv_valor_premium"
+        android:id="@+id/tv_valor_cobertura3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor da Cobertura"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_plano_familia" />
+
+    <TextView
+        android:id="@+id/tv_valor_para_familia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="R$ 150.000,00"
+        android:textColor="@color/rosa"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_cobertura3"
+        app:layout_constraintStart_toEndOf="@+id/tv_valor_cobertura3"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_cobertura3" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_seguro3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor do Seguro"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura3" />
+
+    <TextView
+        android:id="@+id/tv_valor_mensal_para_familia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotoregular"
-        android:text="R$ 7,30/mês"
+        android:text="R$ 59,90 / mês"
         android:textColor="@color/rosa"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_plano_premium"
-        app:layout_constraintTop_toBottomOf="@+id/tv_plano_premium" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_mensal_seguro3"
+        app:layout_constraintStart_toStartOf="@+id/tv_valor_para_familia"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura3" />
 
     <ImageView
         android:id="@+id/iv_arrow3"
@@ -229,22 +356,24 @@
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic__arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_plano_premium"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_plano_familia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_plano_premium" />
+        app:layout_constraintTop_toTopOf="@+id/tv_plano_familia" />
 
     <Button
         android:id="@+id/btn_comprovante_pix"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/custom_buttom"
-        android:text="Continuar"
+        android:fontFamily="@font/robotomedium"
+        android:text="Contratar"
         android:textAllCaps="false"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_mensal_seguro3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

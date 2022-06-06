@@ -14,16 +14,52 @@
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
         <activity
+            android:name=".SeguroVida"
+            android:exported="false" />
+        <activity
+            android:name=".SeguroCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContaPoupanca"
+            android:exported="false" />
+        <activity
+            android:name=".ContaCorrenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TiposContasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartaoComum"
+            android:exported="false" />
+        <activity
+            android:name=".CobrarPix"
+            android:exported="false" />
+        <activity
+            android:name=".PixTransferirActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AreaPixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Security"
+            android:exported="false" />
+        <activity
+            android:name=".AlterarDadosConta"
+            android:exported="false" />
+        <activity
+            android:name=".DadosConta"
+            android:exported="false" />
+        <activity
+            android:name=".ConfiguracoesApp"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".pagarfatura.FaturaCartao"
             android:exported="false" />
         <activity
             android:name=".TelaTransferirConta"
-            android:exported="false" />
-        <activity
-            android:name=".CobrarPix"
             android:exported="false" />
         <activity
             android:name=".pagarfatura.ComprovanteFatura"
@@ -45,13 +81,16 @@
             android:exported="false" />
         <activity
             android:name=".pagarcompix.TelaPagar"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".CadastroActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
+        <activity
+            android:name=".TelaConfiguracoesActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">

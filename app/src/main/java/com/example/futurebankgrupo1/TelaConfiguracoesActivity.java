@@ -5,17 +5,20 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.futurebankgrupo1.databinding.ActivityCartaoComumBinding;
+import com.example.futurebankgrupo1.databinding.ActivityTelaConfiguracoesBinding;
 
-public class CartaoComum extends AppCompatActivity {
+public class TelaConfiguracoesActivity extends AppCompatActivity {
 
-    private ActivityCartaoComumBinding binding;
+    private ActivityTelaConfiguracoesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCartaoComumBinding.inflate(getLayoutInflater());
+        binding = ActivityTelaConfiguracoesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+
     }
+
 }
