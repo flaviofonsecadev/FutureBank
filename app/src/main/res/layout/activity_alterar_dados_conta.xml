@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DadosConta">
+    tools:context=".AlterarDadosConta">
 
     <ImageView
         android:id="@+id/header"
@@ -33,89 +33,36 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/icon_config_user_branco"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_perfil_usuario"
-        app:layout_constraintEnd_toStartOf="@+id/tv_perfil_usuario"
-        app:layout_constraintTop_toTopOf="@+id/tv_perfil_usuario" />
+        android:src="@drawable/ic_person_acount_branco"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_alterar_dados_conta"
+        app:layout_constraintEnd_toStartOf="@+id/tv_alterar_dados_conta"
+        app:layout_constraintTop_toTopOf="@+id/tv_alterar_dados_conta" />
 
     <TextView
-        android:id="@+id/tv_perfil_usuario"
+        android:id="@+id/tv_alterar_dados_conta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Perfil do usuário"
+        android:text="Alterar dados da Conta"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/ic_back"
         app:layout_constraintEnd_toEndOf="@+id/header"
         app:layout_constraintTop_toTopOf="@+id/ic_back" />
 
-    <TextView
-        android:id="@+id/tv_gerenciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/robotomedium"
-        android:text="Gerenciar"
-        android:textAllCaps="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
-
-    <ImageView
-        android:id="@+id/iv_config_conta"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_person_acount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_gerenciar" />
 
     <TextView
         android:id="@+id/tv_alterar_dados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/robotoregular"
-        android:text="Alterar dados da Conta"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_config_conta"
-        app:layout_constraintStart_toEndOf="@+id/iv_config_conta"
-        app:layout_constraintTop_toTopOf="@id/iv_config_conta" />
-
-
-    <ImageView
-        android:id="@+id/iv_arrow_forward"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/ic__arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_config_conta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_config_conta" />
-
-    <View
-        android:id="@+id/line_1"
-        android:layout_width="match_parent"
-        android:layout_marginTop="32dp"
-        android:layout_height="1dp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/tv_alterar_dados"/>
-
-    <TextView
-        android:id="@+id/tv_dados_usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Dados do Usuário"
+        android:text="Alterar Dados"
         android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line_1" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
         android:id="@+id/tv_nome_usuario"
@@ -128,7 +75,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dados_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_alterar_dados" />
 
     <TextView
         android:id="@+id/tv_cpf_usuario"
@@ -150,7 +97,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="Data de Nascimento"
+        android:text="Data de Nasc."
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,53 +116,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_data_nascimento" />
 
-    <TextView
-        android:id="@+id/tv_get_nome_usuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_nome_usuario"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Adalberto Ferreira"
-        android:textColor="@color/black"
+        android:hint="Adalberto Ferreira"
         android:textSize="16sp"
+        android:gravity="start"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         app:layout_constraintBottom_toBottomOf="@+id/tv_nome_usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_nome_usuario" />
 
-    <TextView
-        android:id="@+id/tv_get_cpf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_cpf"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="987.654.321-00"
-        android:textColor="@color/black"
+        android:hint="987.654.321-00"
+        android:gravity="start"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cpf_usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_cpf_usuario" />
 
-    <TextView
-        android:id="@+id/tv_get_data_nascimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_data_nascimento"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="27/06/1981"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="27/06/1981"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_data_nascimento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_data_nascimento" />
 
-    <TextView
-        android:id="@+id/tv_get_conta1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <EditText
+        android:id="@+id/edt_set_email"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="adalbertoferreira@gmail.com"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="adalbertoferreira@gmail.com"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -298,70 +254,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_bairro" />
 
-    <TextView
-        android:id="@+id/tv_get_logradouro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_logradouro"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Rua Fernão de Magalhães"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Rua Fernão de Magalhães"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_logradouro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_logradouro" />
 
-    <TextView
-        android:id="@+id/tv_get_numero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_numero_casa"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="249"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="249"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_numero_casa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_numero_casa" />
 
-    <TextView
-        android:id="@+id/tv_get_complemento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_complemento"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Bloco 2, Apto 205"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Bloco 2, Apto 205"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_complemento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_complemento" />
 
-    <TextView
-        android:id="@+id/tv_get_bairro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_bairro"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Futurama"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Futurama"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_bairro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_bairro" />
 
-    <TextView
-        android:id="@+id/tv_get_cidade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_cidade"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Bom Jesus"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Bom Jesus"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cidade"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_cidade" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_bairro" />
 
     <TextView
         android:id="@+id/tv_estado"
@@ -376,14 +342,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cidade" />
 
-    <TextView
-        android:id="@+id/tv_get_estado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_estado"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Rio Grande do Norte"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Rio Grande do Norte"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_estado"
         app:layout_constraintEnd_toEndOf="parent"
@@ -402,14 +370,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_estado" />
 
-    <TextView
-        android:id="@+id/tv_get_pais"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_pais"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="Brasil"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="Brasil"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_pais"
         app:layout_constraintEnd_toEndOf="parent"
@@ -428,19 +398,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pais" />
 
-    <TextView
-        android:id="@+id/tv_get_cep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/edt_set_cep"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
-        android:text="59270-000"
-        android:textColor="@color/black"
+        android:gravity="start"
+        android:hint="59270-000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cep"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pais" />
+        app:layout_constraintTop_toTopOf="@+id/tv_cep" />
 
 
+    <Button
+        android:id="@+id/btn_salvar_alteracoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Salvar Alterações"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

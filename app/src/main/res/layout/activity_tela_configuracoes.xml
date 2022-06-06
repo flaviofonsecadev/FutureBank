@@ -76,7 +76,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/icon_config_app"
+        android:src="@drawable/ic_smartphone_preto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"/>
 
@@ -128,12 +128,12 @@
 
 
     <TextView
-        android:id="@+id/tv_pagar_fatura_cartao"
+        android:id="@+id/tv_perfil_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Configurações do usuário"
+        android:text="Perfil do Usuário"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/ic_config_user"
@@ -157,7 +157,7 @@
         android:layout_marginTop="24dp"
         android:layout_height="1dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pagar_fatura_cartao"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_perfil_usuario"/>
 
     <!-- config card -->
 
@@ -215,7 +215,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/icon_config_security"
+        android:src="@drawable/ic_security_preto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_3" />
 
