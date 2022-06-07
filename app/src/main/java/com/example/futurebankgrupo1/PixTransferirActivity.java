@@ -6,8 +6,9 @@ import android.renderscript.ScriptGroup;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.example.futurebankgrupo1.databinding.ActivityPixBinding;
+
 import com.example.futurebankgrupo1.databinding.ActivityPixTransferirBinding;
 
 import java.util.Scanner;
@@ -15,6 +16,9 @@ import java.util.Scanner;
 public class PixTransferirActivity extends AppCompatActivity {
 
     private ActivityPixTransferirBinding binding;
+
+    private MyViewModel viewModel;
+
 
 
 
@@ -33,6 +37,7 @@ public class PixTransferirActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),PixTransferirActivity.class);
             startActivity(intent);
         });
-
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        binding.tvSaldoDisponivelPix.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
     }
 }

@@ -47,15 +47,14 @@
         android:id="@+id/tv_descricao"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginRight="80dp"
         android:fontFamily="@font/robotoregular"
         android:text="@string/txt_descricao"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="80dp"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_transferir" />
+        tools:layout_editor_absoluteY="135dp" />
 
     <TextView
         android:id="@+id/tv_saldo"
@@ -63,7 +62,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="6dp"
         android:fontFamily="@font/robotoregular"
-        android:text="@string/txt_saldo"
+        android:text="Saldo disponivel em conta "
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/tv_descricao"
@@ -125,5 +124,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pagar" />
+
+    <TextView
+        android:id="@+id/tv_saldo_disponivel_pix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="5.000,00"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saldo"
+        app:layout_constraintStart_toEndOf="@+id/tv_saldo"
+        app:layout_constraintTop_toTopOf="@+id/tv_saldo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
