@@ -23,7 +23,6 @@ public class PixTransferirActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pix_transferir);
-
         binding = ActivityPixTransferirBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
