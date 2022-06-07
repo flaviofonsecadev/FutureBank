@@ -28,29 +28,30 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <EditText
-        android:id="@+id/edt_cpf"
+        android:id="@+id/edt_email_login"
         style="@style/Edit_Text_Login"
         android:layout_marginTop="40dp"
         android:drawableEnd="@drawable/user"
-        android:hint="@string/texto_cpf"
-        android:inputType="number"
+        android:hint="@string/txt_email"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/tv_acesso"
         app:layout_constraintStart_toStartOf="@+id/tv_acesso"
         app:layout_constraintTop_toBottomOf="@+id/tv_acesso" />
 
     <EditText
-        android:id="@+id/edt_senha"
+        android:id="@+id/edt_senha_login"
         style="@style/Edit_Text_Login"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:drawableEnd="@drawable/eyes"
         android:hint="@string/texto_senha"
         android:inputType="numberPassword"
         android:maxLength="6"
         android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/edt_cpf"
-        app:layout_constraintStart_toStartOf="@+id/edt_cpf"
-        app:layout_constraintTop_toBottomOf="@+id/edt_cpf" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_email_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edt_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email_login" />
 
     <ImageView
         android:id="@+id/iv_biometria"
@@ -58,9 +59,9 @@
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/fingerprint"
-        app:layout_constraintEnd_toEndOf="@+id/edt_senha"
-        app:layout_constraintStart_toStartOf="@+id/edt_senha"
-        app:layout_constraintTop_toBottomOf="@+id/edt_senha" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_senha_login"
+        app:layout_constraintStart_toStartOf="@+id/edt_senha_login"
+        app:layout_constraintTop_toBottomOf="@+id/edt_senha_login" />
 
     <Button
         android:id="@+id/btn_acessar"
@@ -101,6 +102,50 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/msg_sem_conta"
         app:layout_constraintTop_toBottomOf="@+id/btn_acessar" />
+
+<TextView
+        android:id="@+id/msg_esqueceu_senha"
+        style="@style/Text_View_Login_e_Cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Esqueceu a senha?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tv_esqueceu_senha"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_sem_conta" />
+
+    <TextView
+        android:id="@+id/tv_esqueceu_senha"
+        style="@style/Text_View_Login_e_Cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="32dp"
+        android:text="clique aqui"
+        android:textColor="@color/rosa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/msg_esqueceu_senha"
+        app:layout_constraintTop_toBottomOf="@+id/msg_sem_conta" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

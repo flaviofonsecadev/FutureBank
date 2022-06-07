@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:src="@drawable/logo_t3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_abrir_conta" />
 
     <EditText
+        android:id="@+id/edt_telefone"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="14dp"
+        android:hint="Telefone"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nome"
+        app:layout_constraintStart_toStartOf="@+id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nome" />
+
+
+    <EditText
         android:id="@+id/edt_cpf"
         style="@style/Edit_Text_Cadastro"
         android:layout_marginTop="14dp"
@@ -46,14 +58,14 @@
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_nome"
         app:layout_constraintStart_toStartOf="@+id/edt_nome"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_telefone" />
 
     <EditText
-        android:id="@+id/edt_data_nasc"
+        android:id="@+id/edt_idade"
         style="@style/Edit_Text_Cadastro"
         android:layout_marginTop="14dp"
-        android:hint="@string/txt_data_de_nascimento"
-        android:inputType="date"
+        android:hint="Idade"
+        android:inputType="number"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_cpf"
         app:layout_constraintStart_toStartOf="@+id/edt_cpf"
@@ -67,9 +79,9 @@
         android:hint="@string/txt_endereco"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/edt_data_nasc"
-        app:layout_constraintStart_toStartOf="@+id/edt_data_nasc"
-        app:layout_constraintTop_toBottomOf="@+id/edt_data_nasc" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_idade"
+        app:layout_constraintStart_toStartOf="@+id/edt_idade"
+        app:layout_constraintTop_toBottomOf="@+id/edt_idade" />
 
     <EditText
         android:id="@+id/edt_cep"
@@ -101,7 +113,7 @@
         android:layout_width="109dp"
         android:layout_marginTop="12dp"
         android:hint="@string/txt_logradouro"
-        android:inputType="number"
+        android:inputType="text"
         android:textColorHint="@color/rosa"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +125,7 @@
         android:layout_width="187dp"
         android:layout_marginTop="12dp"
         android:hint="@string/txt_bairro"
-        android:inputType="number"
+        android:inputType="text"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -189,6 +201,20 @@
         app:layout_constraintEnd_toEndOf="@+id/edt_senha"
         app:layout_constraintStart_toStartOf="@+id/edt_senha"
         app:layout_constraintTop_toBottomOf="@+id/edt_senha" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_cadastro"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
