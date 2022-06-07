@@ -2,15 +2,23 @@ package com.example.futurebankgrupo1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityLoginBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +27,66 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        mAuth = FirebaseAuth.getInstance();
+
         binding.tvCriarConta.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
             startActivity(intent);
         });
 
-        binding.btnAcessar.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
+        binding.btnAcessar.setOnClickListener(view1 -> {
+            userLogin();
         });
 
-        binding.ivBiometria.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
+    }
+
+    private void userLogin() {
+        String email = binding.edtEmailLogin.getText().toString().trim();
+        String senha = binding.edtSenhaLogin.getText().toString().trim();
+
+        if(email.isEmpty()){
+            binding.edtEmailLogin.setError("Insira o seu email!");
+            binding.edtEmailLogin.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            binding.edtEmailLogin.setError("Insira seu email válido!");
+            binding.edtEmailLogin.requestFocus();
+            return;
+        }
+
+        if (senha.isEmpty()){
+            binding.edtSenhaLogin.setError("Insira seu senha!");
+            binding.edtSenhaLogin.requestFocus();
+            return;
+        }
+
+        if (senha.length() < 6 ){
+            binding.edtSenhaLogin.setError("A senha deve ter no mínimo 6 caracteres!");
+            binding.edtSenhaLogin.requestFocus();
+            return;
+        }
+
+        binding.progressBarLogin.setVisibility(View.VISIBLE);
+
+        mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()){
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    binding.edtEmailLogin.setText("");
+                    binding.edtSenhaLogin.setText("");
+                    binding.progressBarLogin.setVisibility(View.GONE);
+
+                }else {
+                    Toast.makeText(LoginActivity.this, "Falha no login. Revise suas credenciais", Toast.LENGTH_SHORT).show();
+
+                }
+            }
         });
+
     }
 }
