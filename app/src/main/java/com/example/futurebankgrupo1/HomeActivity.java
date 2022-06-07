@@ -106,6 +106,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
         binding.tvCartoesHome.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
             startActivity(intent);
