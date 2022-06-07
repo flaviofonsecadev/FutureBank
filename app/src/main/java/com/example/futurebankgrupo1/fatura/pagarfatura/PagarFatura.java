@@ -1,20 +1,21 @@
-package com.example.futurebankgrupo1.pagarfatura;
+package com.example.futurebankgrupo1.fatura.pagarfatura;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.HomeActivity;
+import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaBinding;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
-
-import java.util.zip.Inflater;
 
 public class PagarFatura extends AppCompatActivity {
 
     private ActivityPagarFaturaBinding binding;
+    private MyViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,8 @@ public class PagarFatura extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPagar.class);
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
 
@@ -32,5 +33,9 @@ public class PagarFatura extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PagarFaturaConfirmarValor.class);
             startActivity(intent);
         });
+
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
     }
 }

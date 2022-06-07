@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
-        android:id="@+id/tv_valor_atual"
+        android:id="@+id/tv_saldo_disponivel_cc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -85,7 +85,7 @@
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_conta_poupanca_rosa"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_valor_atual" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_disponivel_cc" />
 
     <TextView
         android:id="@+id/tv_valor_guardado"

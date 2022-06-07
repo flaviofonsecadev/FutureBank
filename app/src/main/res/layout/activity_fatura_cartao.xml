@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pagarfatura.FaturaCartao">
+    tools:context=".fatura.FaturaCartao">
 
     <ImageView
         android:id="@+id/header"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ic_back"
+        android:id="@+id/ic_clear"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_clear" />
 
     <TextView
         android:id="@+id/tv_fatura_atual"
@@ -48,11 +48,24 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/robotoregular"
-        android:text="R$495,52"
+        android:text="R$******"
         android:textColor="@color/rosa2"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_fatura_atual" />
+
+    <TextView
+        android:id="@+id/tv_pagar_fatura_atual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Pagar Fatura"
+        android:textColor="@color/rosa"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_atual"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_fatura_atual" />
 
     <TextView
         android:id="@+id/tv_limite"
@@ -226,5 +239,15 @@
         android:layout_marginTop="20dp"
         android:background="@color/gray"
         app:layout_constraintTop_toBottomOf="@+id/tv_data_recebido2" />
+
+    <ImageView
+        android:id="@+id/btn_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_atual"
+        app:layout_constraintStart_toEndOf="@+id/tv_valor_atual"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_atual"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

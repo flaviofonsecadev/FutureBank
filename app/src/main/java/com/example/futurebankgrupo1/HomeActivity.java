@@ -5,15 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
+import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
-import com.example.futurebankgrupo1.pagarfatura.FaturaCartao;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
+    private MyViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +219,11 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
             startActivity(intent);
         });
+
+        //Mostrar saldo conta corrente
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        binding.tvSaldoDisponivel.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
 
     }
 }

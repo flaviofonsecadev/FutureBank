@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pagarfatura.PagarFatura">
+    tools:context=".fatura.pagarfatura.PagarFatura">
 
     <ImageView
         android:id="@+id/header"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/header" />
 
     <ImageView
-        android:id="@+id/ic_back"
+        android:id="@+id/ic_clear"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_clear" />
 
     <TextView
         android:id="@+id/tv_valor_fatura"
