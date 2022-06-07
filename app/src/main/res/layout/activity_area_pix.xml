@@ -226,13 +226,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_chave_pix" />
 
     <ImageView
-        android:id="@+id/iv_arrowV"
+        android:id="@+id/iv_back"
         android:layout_width="35dp"
         android:layout_height="32dp"
         android:layout_marginEnd="350dp"
-        android:rotationX="-4"
-        android:rotationY="186"
-        android:src="@drawable/ic_arrow_forward"
+        android:src="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/header"
