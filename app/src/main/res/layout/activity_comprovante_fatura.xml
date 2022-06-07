@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pagarfatura.ComprovanteFatura">
+    tools:context=".fatura.pagarfatura.ComprovanteFatura">
 
     <ImageView
         android:id="@+id/header"
@@ -141,7 +141,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_cnpj" />
 
     <TextView
-        android:id="@+id/tv_get_valor_recebido"
+        android:id="@+id/tv_get_valor_pago"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

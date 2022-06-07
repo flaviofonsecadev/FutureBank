@@ -1,18 +1,20 @@
-package com.example.futurebankgrupo1.pagarfatura;
+package com.example.futurebankgrupo1.fatura.pagarfatura;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.HomeActivity;
-import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.databinding.ActivityComprovanteFaturaBinding;
 
 public class ComprovanteFatura extends AppCompatActivity {
 
     private ActivityComprovanteFaturaBinding binding;
+    private MyViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +27,9 @@ public class ComprovanteFatura extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
+
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
     }
 }

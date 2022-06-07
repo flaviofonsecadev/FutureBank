@@ -56,19 +56,19 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".pagarfatura.FaturaCartao"
+            android:name=".fatura.FaturaCartao"
             android:exported="false" />
         <activity
             android:name=".TelaTransferirConta"
             android:exported="false" />
         <activity
-            android:name=".pagarfatura.ComprovanteFatura"
+            android:name=".fatura.pagarfatura.ComprovanteFatura"
             android:exported="false" />
         <activity
-            android:name=".pagarfatura.PagarFaturaConfirmarValor"
+            android:name=".fatura.pagarfatura.PagarFaturaConfirmarValor"
             android:exported="false" />
         <activity
-            android:name=".pagarfatura.PagarFatura"
+            android:name=".fatura.pagarfatura.PagarFatura"
             android:exported="false" />
         <activity
             android:name=".pagarcompix.TelaConfirmarDados"

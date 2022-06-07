@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPagarBinding;
-import com.example.futurebankgrupo1.pagarfatura.PagarFatura;
+import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFatura;
 
 public class TelaPagar extends AppCompatActivity {
 
@@ -28,6 +28,11 @@ public class TelaPagar extends AppCompatActivity {
 
         binding.ivArrowForward2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PagarFatura.class);
+            startActivity(intent);
+        });
+
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
     }
