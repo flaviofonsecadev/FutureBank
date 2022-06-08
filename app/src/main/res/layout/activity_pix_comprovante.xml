@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PixTransferenciaActivity">
+    tools:context=".PixComprovanteActivity">
 
     <ImageView
         android:id="@+id/header"
@@ -142,6 +142,18 @@
         app:layout_constraintStart_toStartOf="@+id/tv_cc_recebedor"
         app:layout_constraintTop_toBottomOf="@+id/tv_cc_recebedor" />
 
+    <TextView
+        android:id="@+id/tv_valor_transferencia"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Valor da Transferência"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_tipo_de_chave_pix_recebedor"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_de_chave_pix_recebedor" />
+
     <!-- Text Views lado direito recebedor -->
 
     <TextView
@@ -156,6 +168,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_2" />
+
 
     <TextView
         android:id="@+id/tv_num_cpf_recebedor"
@@ -217,15 +230,27 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_num_cc_recebedor"
         app:layout_constraintTop_toBottomOf="@+id/tv_num_cc_recebedor" />
 
+    <TextView
+        android:id="@+id/tv_get_valor_transferido"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="100,00"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_transferencia"
+        app:layout_constraintEnd_toEndOf="@+id/tv_num_cc_recebedor"
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_transferencia" />
+
     <View
         android:id="@+id/line_3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_de_chave_pix_recebedor" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_transferencia" />
 
     <!-- Text Views lado esquerdo pagador -->
 
