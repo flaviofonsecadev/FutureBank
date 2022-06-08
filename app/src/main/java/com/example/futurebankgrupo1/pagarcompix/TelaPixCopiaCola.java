@@ -22,7 +22,7 @@ public class TelaPixCopiaCola extends AppCompatActivity {
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPagarComPix.class);
+            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
             startActivity(intent);
         });
 
