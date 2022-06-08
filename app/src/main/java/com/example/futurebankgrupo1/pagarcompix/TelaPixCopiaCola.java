@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.futurebankgrupo1.AreaPixActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPixCopiaColaBinding;
 
@@ -21,7 +22,7 @@ public class TelaPixCopiaCola extends AppCompatActivity {
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPagarComPix.class);
+            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
             startActivity(intent);
         });
 
