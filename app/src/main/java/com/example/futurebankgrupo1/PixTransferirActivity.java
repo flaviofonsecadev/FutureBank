@@ -20,9 +20,6 @@ public class PixTransferirActivity extends AppCompatActivity {
     private MyViewModel viewModel;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +30,7 @@ public class PixTransferirActivity extends AppCompatActivity {
 
         //botão voltar
         binding.icClear.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(),PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
