@@ -221,6 +221,22 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //recarga celular
+        binding.tvRecargaHome.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RecargaCelularActivity.class);
+            startActivity(intent);
+        });
+
+        binding.constraintRecarga.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RecargaCelularActivity.class);
+            startActivity(intent);
+        });
+
+        binding.ivRecarga.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RecargaCelularActivity.class);
+            startActivity(intent);
+        });
+
         //Mostrar saldo conta corrente
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 

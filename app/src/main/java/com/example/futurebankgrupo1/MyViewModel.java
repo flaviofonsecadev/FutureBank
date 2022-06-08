@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
 
-
     private MutableLiveData<Integer> saldoContaCorrente = new MutableLiveData<>();
 
     private MutableLiveData<Integer> saldoContaPoupanca = new MutableLiveData<>();
@@ -40,7 +39,7 @@ public class MyViewModel extends ViewModel {
         return saldoCC;
     }
 
-    public float exibirSaldoContaPoupança() {
+    public float exibirSaldoContaPoupanca() {
         float saldoCP = saldoContaPoupanca.getValue();
         return saldoCP;
     }
