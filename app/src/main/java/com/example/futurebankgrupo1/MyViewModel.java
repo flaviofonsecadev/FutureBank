@@ -16,6 +16,7 @@ public class MyViewModel extends ViewModel {
     //public LiveData<Float> limiteD = limiteDisponivel;
 
 
+
     public MyViewModel() {
         limiteDisponivel.setValue(1000);
         valorFaturaAtual.setValue(0);

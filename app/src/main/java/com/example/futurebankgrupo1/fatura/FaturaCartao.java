@@ -64,6 +64,7 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +114,9 @@ public class FaturaCartao extends AppCompatActivity {
 
         compra = new Compra("Compra em Farmácia Nissei", "03/05/2022", "R$39,90", R.drawable.ic_farmacia);
         this.listaCompras.add(compra);
+
+
+
 
 
     }
