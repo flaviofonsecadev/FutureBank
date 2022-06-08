@@ -19,10 +19,6 @@ public class PixTransferirActivity extends AppCompatActivity {
 
     private MyViewModel viewModel;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
