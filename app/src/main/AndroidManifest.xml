@@ -35,7 +35,7 @@
             android:name=".TiposContasActivity"
             android:exported="false" />
         <activity
-            android:name=".CartaoComum"
+            android:name=".CartaoComumActivity"
             android:exported="false" />
         <activity
             android:name=".CobrarPix"
@@ -96,6 +96,9 @@
             android:exported="true" />
         <activity
             android:name=".TelaConfiguracoesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarCartaoActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

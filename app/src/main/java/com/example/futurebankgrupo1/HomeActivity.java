@@ -102,18 +102,18 @@ public class HomeActivity extends AppCompatActivity {
 
         //botões cartões
         binding.ivCartoesHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
 
         binding.tvCartoesHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
         binding.constraintCartoes.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
