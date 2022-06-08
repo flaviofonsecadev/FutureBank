@@ -41,6 +41,7 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +53,9 @@ public class FaturaCartao extends AppCompatActivity {
 
         binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
         binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
+
+
+
 
     }
 }
