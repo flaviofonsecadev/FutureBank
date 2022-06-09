@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -25,9 +26,11 @@ public class RecargaCelularActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.button.setOnClickListener(v -> {
-            new String(String.valueOf(viewModel.comprarCartaoCredito()));
-        });
+
+
+//        binding.button.setOnClickListener(v -> {
+//            new String(String.valueOf(viewModel.comprarCartaoCredito()));
+//        });
 
         //binding.button.setOnClickListener(String.valueOf(viewModel.comprarCartaoCredito()));
 
