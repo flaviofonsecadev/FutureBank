@@ -31,6 +31,9 @@ public class HomeActivity extends AppCompatActivity {
     String padrao = "#.###,##";
     DecimalFormat df = new DecimalFormat(padrao);
 
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
