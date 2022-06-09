@@ -21,7 +21,7 @@ public class CartaoComumActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 

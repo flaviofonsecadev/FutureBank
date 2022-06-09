@@ -11,10 +11,16 @@ import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
+    String padrao = "#.###,##";
+    DecimalFormat df = new DecimalFormat(padrao);
 
 
     @Override
@@ -240,7 +246,7 @@ public class HomeActivity extends AppCompatActivity {
         //Mostrar saldo conta corrente
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvSaldoDisponivel.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
+        binding.tvSaldoDisponivel.setText(df.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
         binding.tvGetValorLimiteDisponivel.setText(String.valueOf(viewModel.exibirLimite()));
 

@@ -42,7 +42,6 @@ public class ConfiguracoesApp extends AppCompatActivity {
         });
 
 
-
         binding.icConfigSair.setOnClickListener(view1 -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);

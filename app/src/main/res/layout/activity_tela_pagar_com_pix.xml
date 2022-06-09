@@ -66,7 +66,7 @@
 
 
     <TextView
-        android:id="@+id/tv_ler_qr"
+        android:id="@+id/tv_solicitar_chave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -84,7 +84,8 @@
         android:src="@drawable/ic__arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/tv_pagar_com_chave_pix"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_pagar_com_chave_pix" />
+        app:layout_constraintTop_toTopOf="@+id/tv_pagar_com_chave_pix"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/line_1"
@@ -92,7 +93,7 @@
         android:layout_marginTop="24dp"
         android:layout_height="1dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ler_qr"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_solicitar_chave"/>
 
     <ImageView
         android:id="@+id/iv_copy"
