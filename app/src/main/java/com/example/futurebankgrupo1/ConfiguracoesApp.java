@@ -19,6 +19,29 @@ public class ConfiguracoesApp extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        //botão voltar
+        binding.icBack.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
+            startActivity(intent);
+        });
+
+        //botão Contas
+        binding.ivArrowForward.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TiposContasActivity.class);
+            startActivity(intent);
+        });
+
+        binding.tvContas.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TiposContasActivity.class);
+            startActivity(intent);
+        });
+
+        binding.ivConfigConta.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TiposContasActivity.class);
+            startActivity(intent);
+        });
+
+
 
         binding.icConfigSair.setOnClickListener(view1 -> {
             FirebaseAuth.getInstance().signOut();

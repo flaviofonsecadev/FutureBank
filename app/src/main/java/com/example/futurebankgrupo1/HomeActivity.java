@@ -241,6 +241,8 @@ public class HomeActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.tvSaldoDisponivel.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
+        binding.tvGetValorFaturaAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetValorLimiteDisponivel.setText(String.valueOf(viewModel.exibirLimite()));
 
     }
 }

@@ -64,6 +64,9 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+        binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
+
 
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +81,7 @@ public class FaturaCartao extends AppCompatActivity {
             new String(String.valueOf(viewModel.comprarCartaoCredito()));
         });
 
-        binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));*/
+        */
 
     }
 
