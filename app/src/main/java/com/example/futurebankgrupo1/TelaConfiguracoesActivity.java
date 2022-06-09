@@ -53,6 +53,24 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
         });
 
 
+        //botão configurações cartão
+        binding.icConfigCard.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
+            startActivity(intent);
+        });
+
+        binding.tvConfigCard.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
+            startActivity(intent);
+        });
+
+        binding.ivArrowForward3.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
+            startActivity(intent);
+        });
+
+
+        //botão configurações app
         binding.icConfigApp.setOnClickListener(view12 -> {
             Intent intent = new Intent(getApplicationContext(), ConfiguracoesApp.class);
             startActivity(intent);
@@ -68,8 +86,14 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.tvPerfilUsuario.setOnClickListener(view123 -> {
-            Intent intent = new Intent(getApplicationContext(), DadosConta.class);
+        //botão segurança
+        binding.icConfigSecurity.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Security.class);
+            startActivity(intent);
+        });
+
+        binding.tvConfigSecurity.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Security.class);
             startActivity(intent);
         });
         //arrow perfil usuario
@@ -85,6 +109,13 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
         });
 
 
+        binding.ivArrowForward4.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Security.class);
+            startActivity(intent);
+        });
+
+
+        //botão sair
         binding.icConfigSair.setOnClickListener(view1 -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);

@@ -40,7 +40,7 @@
             app:layout_constraintTop_toTopOf="@+id/header" />
 
         <ImageView
-            android:id="@+id/ic_back"
+            android:id="@+id/ic_clear"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="20dp"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/header"
-            app:srcCompat="@drawable/ic_arrow_back" />
+            app:srcCompat="@drawable/ic_clear" />
 
         <TextView
             android:id="@+id/tv_cartao_comum"
@@ -59,13 +59,13 @@
             android:fontFamily="@font/robotobold"
             android:text="Cartão comum"
             android:textColor="@color/gray1"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header" />
 
         <ImageView
             android:id="@+id/iv_cartao_comum"
-            android:layout_width="160dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/comum"
@@ -75,12 +75,13 @@
         <Button
             android:id="@+id/btn_acessar_cartao_comum"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/custom_buttom"
             android:text="Acessar"
             android:textAllCaps="false"
-            android:textSize="8sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_cartao_comum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_cartao_comum" />
@@ -105,13 +106,13 @@
             android:fontFamily="@font/robotobold"
             android:text="Cartão supreme"
             android:textColor="@color/gray1"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
         <ImageView
             android:id="@+id/iv_cartao_supreme"
-            android:layout_width="160dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/supreme"
@@ -121,12 +122,13 @@
         <Button
             android:id="@+id/btn_contratar_cartao_supreme"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/custom_buttom"
             android:text="Contratar"
             android:textAllCaps="false"
-            android:textSize="8sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_cartao_supreme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_cartao_supreme" />
@@ -150,13 +152,13 @@
             android:fontFamily="@font/robotobold"
             android:text="Cartão premium"
             android:textColor="@color/gray1"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_2" />
 
         <ImageView
             android:id="@+id/iv_cartao_premium"
-            android:layout_width="160dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/cardb"
@@ -166,12 +168,13 @@
         <Button
             android:id="@+id/btn_contratar_cartao_premium"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/custom_buttom"
             android:text="Contratar"
             android:textAllCaps="false"
-            android:textSize="8sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_cartao_premium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_cartao_premium" />
@@ -195,13 +198,13 @@
             android:fontFamily="@font/robotobold"
             android:text="Adicionar outro cartão"
             android:textColor="@color/gray1"
-            android:textSize="14sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line_3" />
 
         <ImageView
             android:id="@+id/iv_cartao_rosa"
-            android:layout_width="160dp"
+            android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/card_rosa_cartoes"
@@ -221,15 +224,26 @@
         <Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/custom_buttom"
             android:text="Adicionar"
             android:textAllCaps="false"
-            android:textSize="8sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_cartao_rosa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_cartao_rosa" />
+
+        <View
+            android:id="@+id/line_4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_cartao_rosa" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

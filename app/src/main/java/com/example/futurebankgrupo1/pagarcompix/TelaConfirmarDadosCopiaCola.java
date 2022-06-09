@@ -6,22 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.futurebankgrupo1.R;
-import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosBinding;
+import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosCopiaColaBinding;
 
-public class TelaConfirmarDados extends AppCompatActivity {
+public class TelaConfirmarDadosCopiaCola extends AppCompatActivity {
 
-    private ActivityTelaConfirmarDadosBinding binding;
+    private ActivityTelaConfirmarDadosCopiaColaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTelaConfirmarDadosBinding.inflate(getLayoutInflater());
+        binding = ActivityTelaConfirmarDadosCopiaColaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            startActivity(intent);
+        });
+
+        binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PixComprovanteCopiaCola.class);
             startActivity(intent);
         });
 

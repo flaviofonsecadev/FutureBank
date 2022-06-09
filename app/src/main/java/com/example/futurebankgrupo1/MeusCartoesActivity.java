@@ -21,7 +21,7 @@ public class MeusCartoesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.icBack.setOnClickListener(v -> {
+        binding.icClear.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
