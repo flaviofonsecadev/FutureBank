@@ -35,6 +35,11 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.tvEsqueceuSenha.setOnClickListener(view12 -> {
+            Intent intent = new Intent(getApplicationContext(), ResetarSenha.class);
+            startActivity(intent);
+        });
+
         binding.btnAcessar.setOnClickListener(view1 -> {
             userLogin();
         });
@@ -95,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else {
                     Toast.makeText(LoginActivity.this, "Falha no login. Revise suas credenciais", Toast.LENGTH_SHORT).show();
+                    binding.progressBarLogin.setVisibility(View.GONE);
 
                 }
             }
