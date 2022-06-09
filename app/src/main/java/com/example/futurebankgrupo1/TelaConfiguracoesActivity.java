@@ -20,6 +20,29 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        //botão fechar
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        });
+
+        //botão perfil usuário
+        binding.ivArrowForward2.setOnClickListener(v -> {
+            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
+            startActivity(intent);
+        });
+
+        binding.tvPerfilUsuario.setOnClickListener(v -> {
+            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
+            startActivity(intent);
+        });
+
+        binding.icConfigUser.setOnClickListener(v -> {
+            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
+            startActivity(intent);
+        });
+
+
         binding.icConfigApp.setOnClickListener(view12 -> {
             Intent intent = new Intent(getApplicationContext(), ConfiguracoesApp.class);
             startActivity(intent);

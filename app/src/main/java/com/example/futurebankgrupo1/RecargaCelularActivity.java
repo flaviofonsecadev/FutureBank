@@ -25,12 +25,11 @@ public class RecargaCelularActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.button.setOnClickListener(v -> {
+        /*binding.button.setOnClickListener(v -> {
             new String(String.valueOf(viewModel.comprarCartaoCredito()));
-        });
+        });*/
 
         //binding.button.setOnClickListener(String.valueOf(viewModel.comprarCartaoCredito()));
-
 
     }
 }

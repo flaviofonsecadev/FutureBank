@@ -3,6 +3,7 @@ package com.example.futurebankgrupo1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -30,6 +31,12 @@ public class DadosConta extends AppCompatActivity {
         binding = ActivityDadosContaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        //botão voltar
+        binding.icBack.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
+            startActivity(intent);
+        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
