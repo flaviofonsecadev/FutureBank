@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         binding.tvCriarConta.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SubSplashActivity2.class);
             startActivity(intent);
         });
 

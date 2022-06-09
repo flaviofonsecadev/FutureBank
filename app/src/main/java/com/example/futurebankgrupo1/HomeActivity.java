@@ -137,18 +137,18 @@ public class HomeActivity extends AppCompatActivity {
 
         //botões cartões
         binding.ivCartoesHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
 
         binding.tvCartoesHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
         binding.constraintCartoes.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), CartaoComum.class);
+            Intent intent = new Intent(getApplicationContext(), MeusCartoesActivity.class);
             startActivity(intent);
         });
 
@@ -276,6 +276,8 @@ public class HomeActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.tvSaldoDisponivel.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
+        binding.tvGetValorFaturaAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetValorLimiteDisponivel.setText(String.valueOf(viewModel.exibirLimite()));
 
     }
 }

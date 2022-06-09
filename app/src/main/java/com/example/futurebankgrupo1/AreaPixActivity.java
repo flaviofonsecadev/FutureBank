@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityAreaPixBinding;
 import com.example.futurebankgrupo1.databinding.ActivityAreaPixBinding;
+import com.example.futurebankgrupo1.databinding.ActivityTelaPixCopiaColaBinding;
+import com.example.futurebankgrupo1.pagarcompix.TelaPixCopiaCola;
 
 public class AreaPixActivity extends AppCompatActivity {
 
@@ -28,10 +30,22 @@ public class AreaPixActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //botão voltar/pix copia e cola
+        binding.ivBack.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
+            startActivity(intent);
+        });
+
 
         //transferir
         binding.ivTransferir.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            startActivity(intent);
+        });
+
+        //copia e cola
+        binding.ivCopiaCola.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
             startActivity(intent);
         });
 

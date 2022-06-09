@@ -7,10 +7,10 @@ public class MyViewModel extends ViewModel {
 
     private MutableLiveData<Integer> saldoContaCorrente = new MutableLiveData<>();
 
+    //public LiveData<Float> valorFA = valorFaturaAtual;
     private MutableLiveData<Integer> saldoContaPoupanca = new MutableLiveData<>();
 
     private MutableLiveData<Integer> valorFaturaAtual = new MutableLiveData<>();
-    //public LiveData<Float> valorFA = valorFaturaAtual;
 
     private MutableLiveData<Integer> limiteDisponivel = new MutableLiveData<>();
     //public LiveData<Float> limiteD = limiteDisponivel;
