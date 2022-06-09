@@ -3,15 +3,26 @@ package com.example.futurebankgrupo1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfiguracoesBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TelaConfiguracoesActivity extends AppCompatActivity {
 
     private ActivityTelaConfiguracoesBinding binding;
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,26 +31,25 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        //botão fechar
-        binding.icClear.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
-        });
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
 
-        //botão perfil usuário
-        binding.ivArrowForward2.setOnClickListener(v -> {
-            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
-            startActivity(intent);
-        });
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
 
-        binding.tvPerfilUsuario.setOnClickListener(v -> {
-            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
-            startActivity(intent);
-        });
+                if (userProfile != null){
+                    String nome = userProfile.nome;
 
-        binding.icConfigUser.setOnClickListener(v -> {
-            Intent intent =  new Intent(getApplicationContext(), DadosConta.class);
-            startActivity(intent);
+                    binding.tvNome.setText(nome);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(TelaConfiguracoesActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+            }
         });
 
 
@@ -86,6 +96,18 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Security.class);
             startActivity(intent);
         });
+        //arrow perfil usuario
+        binding.ivArrowForward2.setOnClickListener(view123 -> {
+            Intent intent = new Intent(getApplicationContext(), DadosConta.class);
+            startActivity(intent);
+        });
+
+        //arrow segurança
+        binding.ivArrowForward4.setOnClickListener(view123 -> {
+            Intent intent = new Intent(getApplicationContext(), ResetarSenha.class);
+            startActivity(intent);
+        });
+
 
         binding.ivArrowForward4.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Security.class);

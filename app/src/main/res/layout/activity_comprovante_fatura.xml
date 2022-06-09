@@ -188,30 +188,16 @@
         app:layout_constraintTop_toBottomOf="@+id/line_2" />
 
     <TextView
-        android:id="@+id/tv_cpf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/robotolight"
-        android:text="CPF"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pagador" />
-
-    <TextView
         android:id="@+id/tv_instituicao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Instituição"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cpf" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_pagador" />
 
     <TextView
         android:id="@+id/tv_agencia"
@@ -245,25 +231,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="ADALBERTO FERREIRA"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_pagador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_pagador" />
-
-    <TextView
-        android:id="@+id/tv_get_cpf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/robotoregular"
-        android:text="***.654.321-**"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cpf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_cpf" />
 
     <TextView
         android:id="@+id/tv_get_instituicao"
@@ -304,18 +277,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_conta_corrente" />
 
-    <Button
-        android:id="@+id/btn_confirmar_transferencia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginHorizontal="20dp"
-        android:fontFamily="@font/robotomedium"
-        android:text="Compartilhar Comprovante"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:background="@drawable/custom_buttom"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_confirmar_transferencia"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:layout_marginHorizontal="20dp"-->
+<!--        android:fontFamily="@font/robotomedium"-->
+<!--        android:text="Compartilhar Comprovante"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textSize="18sp"-->
+<!--        android:background="@drawable/custom_buttom"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 
 
