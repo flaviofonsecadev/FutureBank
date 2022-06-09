@@ -30,9 +30,20 @@ public class AreaPixActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //botão voltar/pix copia e cola
-        binding.ivBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
+
+        //receber
+        binding.ivCobrar.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), CobrarPix.class);
+            startActivity(intent);
+        });
+
+        binding.tvCobrar.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), CobrarPix.class);
+            startActivity(intent);
+        });
+
+        binding.constraintLayout3.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), CobrarPix.class);
             startActivity(intent);
         });
 
@@ -43,11 +54,35 @@ public class AreaPixActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.constraintLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            startActivity(intent);
+        });
+
+        binding.tvTransferirPix.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            startActivity(intent);
+        });
+
+
         //copia e cola
         binding.ivCopiaCola.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
             startActivity(intent);
         });
+
+        binding.constraintLayout2.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            startActivity(intent);
+        });
+
+        binding.tvCopiaCola.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            startActivity(intent);
+        });
+
+
+
 
 
 
