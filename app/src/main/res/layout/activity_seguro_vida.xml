@@ -178,13 +178,12 @@
         app:layout_constraintTop_toTopOf="@+id/tv_valor_mensal_seguro1" />
 
 
-    <ImageView
-        android:id="@+id/iv_arrow1"
+    <CheckBox
+        android:id="@+id/cb_individual"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/ic__arrow_forward"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_mensal_seguro1"
+        app:layout_constraintBottom_toTopOf="@+id/tv_valor_cobertura1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_plano_individual" />
 
@@ -264,12 +263,11 @@
         app:layout_constraintStart_toStartOf="@+id/tv_valor_para_dois"
         app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura2" />
 
-    <ImageView
-        android:id="@+id/iv_arrow2"
+    <CheckBox
+        android:id="@+id/cb_pessoas"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/ic__arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/tv_plano_para_dois"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_plano_para_dois" />
@@ -350,18 +348,17 @@
         app:layout_constraintStart_toStartOf="@+id/tv_valor_para_familia"
         app:layout_constraintTop_toBottomOf="@+id/tv_valor_cobertura3" />
 
-    <ImageView
-        android:id="@+id/iv_arrow3"
+    <CheckBox
+        android:id="@+id/cb_familia"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/ic__arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/tv_plano_familia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_plano_familia" />
 
     <Button
-        android:id="@+id/btn_comprovante_pix"
+        android:id="@+id/btn_contratar_seguro_vida"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"

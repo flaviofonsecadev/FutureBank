@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/cabecalho"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="390dp"
         android:background="@color/rosa"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/logo_t1_branco"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -247,7 +247,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/cartaoBlack"
+        android:id="@+id/cartao_premium"
         android:layout_width="370dp"
         android:layout_height="183dp"
         android:layout_marginTop="8dp"
@@ -256,4 +256,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:srcCompat="@drawable/cardb" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cabecalho"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartao_premium"
+        app:srcCompat="@drawable/ic_more_horiz" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

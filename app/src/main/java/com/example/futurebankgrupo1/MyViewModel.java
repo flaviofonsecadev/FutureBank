@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
 
-    private MutableLiveData<Integer> saldoContaCorrente = new MutableLiveData<>();
+    private MutableLiveData<Double> saldoContaCorrente = new MutableLiveData<>();
 
+    //public LiveData<Float> valorFA = valorFaturaAtual;
     private MutableLiveData<Integer> saldoContaPoupanca = new MutableLiveData<>();
 
     private MutableLiveData<Integer> valorFaturaAtual = new MutableLiveData<>();
-    //public LiveData<Float> valorFA = valorFaturaAtual;
 
     private MutableLiveData<Integer> limiteDisponivel = new MutableLiveData<>();
     //public LiveData<Float> limiteD = limiteDisponivel;
@@ -20,7 +20,7 @@ public class MyViewModel extends ViewModel {
     public MyViewModel() {
         limiteDisponivel.setValue(1000);
         valorFaturaAtual.setValue(0);
-        saldoContaCorrente.setValue(5000);
+        saldoContaCorrente.setValue(5000d);
         saldoContaPoupanca.setValue(2500);
     }
 
@@ -34,8 +34,8 @@ public class MyViewModel extends ViewModel {
         return limite;
     }
 
-    public float exibirSaldoContaCorrente() {
-        float saldoCC = saldoContaCorrente.getValue();
+    public double exibirSaldoContaCorrente() {
+        double saldoCC = saldoContaCorrente.getValue();
         return saldoCC;
     }
 

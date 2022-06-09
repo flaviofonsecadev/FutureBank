@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.databinding.ActivityCobrarPixBinding;
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDados;
+import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDadosCopiaCola;
 
 public class CobrarPix extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class CobrarPix extends AppCompatActivity {
         setContentView(view);
 
         binding.btnProximaTela.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDados.class);
+            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosCobrarPix.class);
             startActivity(intent);
         });
 

@@ -25,7 +25,7 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista, parent, false);
+        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista_corrente, parent, false);
 
         return new MyViewHolder(itemLista);
     }

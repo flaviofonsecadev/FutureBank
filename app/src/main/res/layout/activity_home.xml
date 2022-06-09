@@ -58,7 +58,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Olá, Adalberto Ferreira"
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -331,9 +331,7 @@
         android:background="#DFD8D8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraint_cartoes"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/constraint_cartoes"        />
 
     <TextView
         android:id="@+id/tv_cartao_credito"
