@@ -17,6 +17,9 @@
             android:name=".ResetarSenha"
             android:exported="false" />
         <activity
+            android:name=".MeusCartoesActivity"
+            android:exported="false" />
+        <activity
             android:name=".pagarcompix.PixComprovanteActivity"
             android:exported="false" />
         <activity

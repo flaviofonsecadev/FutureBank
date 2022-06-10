@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_configuracoes_app.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_conta_corrente.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_conta_poupanca.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_dados_conta.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_meus_cartoes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_recarga_celular.xml" value="0.264" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_configuracoes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ffonseca/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tipos_contas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/ic__money_vermelho.xml" value="0.224" />
         <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2465" />
         <entry key="..\:/Users/rsilverio/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/drawable/ic_money_verde.xml" value="0.2865" />

@@ -54,8 +54,11 @@ public class    ContaPoupanca extends AppCompatActivity {
 
                 if (userProfile != null){
                     float saldo = userProfile.getSaldo();
+                    float saldoPoupanca = userProfile.getSaldoPoupanca();
 
                     binding.tvGetValorContaCorrente.setText(String.valueOf("R$" + saldo));
+                    binding.tvValorGuardado.setText(String.valueOf("R$" + saldoPoupanca));
+
                 }
             }
             @Override
