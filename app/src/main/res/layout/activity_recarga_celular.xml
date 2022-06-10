@@ -17,6 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <Spinner-->
+<!--        android:layout_width=""-->
+<!--        android:layout_height=""-->
+
+
+    <TextView
+        android:id="@+id/tv_get_saldo"
+        android:layout_width="43dp"
+        android:layout_height="15dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/ckb_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
     <ImageView
         android:id="@+id/ic_clear"
         android:layout_width="35dp"
@@ -27,6 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
         app:srcCompat="@drawable/ic_clear" />
+
 
     <CheckBox
         android:id="@+id/ckb_20"
@@ -52,14 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_get_saldo"
-        android:layout_width="43dp"
-        android:layout_height="15dp"
-        android:text="5000,00"
-        app:layout_constraintBottom_toTopOf="@+id/ckb_20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.databinding.ActivityCobrarPixBinding;
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDadosCopiaCola;
+//import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDadosCopiaCola;
 
 public class CobrarPix extends AppCompatActivity {
 
