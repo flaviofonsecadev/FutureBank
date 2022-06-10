@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityCobrarQrCodeBinding;
 
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDados;
-
 
 
 

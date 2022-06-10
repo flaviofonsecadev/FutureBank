@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
@@ -21,15 +22,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
-    String padrao = "#.###,##";
-    DecimalFormat df = new DecimalFormat(padrao);
+    //String padrao = "0.00";
+    DecimalFormat df = new DecimalFormat("0.00");
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -279,12 +278,23 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //Mostrar saldo conta corrente
+        //final MyViewModel vm = new ViewModelProvider(this).get(MyViewModel.class);
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //view.setLifecycleOwner(this);*/
 
         binding.tvSaldoDisponivel.setText(df.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
         binding.tvGetValorLimiteDisponivel.setText(String.valueOf(viewModel.exibirLimite()));
 
+        /*vm.saldoCC.observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                Toast.makeText(HomeActivity.this, vm.saldoCC.getValue().toString(), Toast.LENGTH_LONG).show();
+                binding.tvSaldoDisponivel.setText(df.format((viewModel.exibirSaldoContaCorrente())));
+                //binding.tvSaldoDisponivel.setText(String.valueOf(vm.saldoCC.getValue()));
+
+            }
+        });*/
     }
 }
 

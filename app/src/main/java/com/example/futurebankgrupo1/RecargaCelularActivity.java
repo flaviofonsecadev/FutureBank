@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 
 import com.example.futurebankgrupo1.databinding.ActivityRecargaCelularBinding;
+
+import java.text.DecimalFormat;
 
 public class RecargaCelularActivity extends AppCompatActivity {
 
@@ -24,13 +25,20 @@ public class RecargaCelularActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         /*binding.button.setOnClickListener(v -> {
             new String(String.valueOf(viewModel.comprarCartaoCredito()));
+            binding.tvGetSaldo.setText(df.format((viewModel.exibirSaldoContaCorrente())));
+
         });*/
 
-        //binding.button.setOnClickListener(String.valueOf(viewModel.comprarCartaoCredito()));
+
 
     }
 }
