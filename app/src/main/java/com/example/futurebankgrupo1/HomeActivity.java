@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
-    String padrao = "#.###,##";
+    String padrao = "####,##";
     DecimalFormat df = new DecimalFormat(padrao);
 
     private FirebaseUser user;
