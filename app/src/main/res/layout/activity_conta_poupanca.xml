@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ic_back"
+        android:id="@+id/ic_clear_cp"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_clear" />
 
     <ImageView
         android:id="@+id/ic_conta_poupanca"
@@ -47,9 +47,9 @@
         android:text="Sua Conta Poupança"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_clear_cp"
         app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/ic_back" />
+        app:layout_constraintTop_toTopOf="@+id/ic_clear_cp" />
 
     <TextView
         android:id="@+id/tv_valor_guardado_topo"

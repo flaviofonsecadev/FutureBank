@@ -25,7 +25,7 @@ public class AreaPixActivity extends AppCompatActivity {
         setContentView(view);
 
         //botão voltar
-        binding.ivBack.setOnClickListener(v -> {
+        binding.ivClearAreaPix.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });

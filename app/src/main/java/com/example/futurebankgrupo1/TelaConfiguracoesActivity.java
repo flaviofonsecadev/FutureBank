@@ -41,7 +41,7 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.nome;
+                    String nome = userProfile.getNome();
 
                     binding.tvNome.setText(nome);
                 }

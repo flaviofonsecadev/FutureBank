@@ -28,8 +28,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
-    String padrao = "####,##";
-    DecimalFormat df = new DecimalFormat(padrao);
+    //String padrao = "####,##";
+    DecimalFormat df = new DecimalFormat("0,00");
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -54,9 +54,11 @@ public class HomeActivity extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.nome;
+                    String nome = userProfile.getNome();
+                    float saldo = userProfile.getSaldo();
 
                     binding.tvOlaCliente.setText("Olá, " + nome);
+                    binding.tvSaldoDisponivel.setText(String.valueOf(saldo));
                 }
             }
             @Override

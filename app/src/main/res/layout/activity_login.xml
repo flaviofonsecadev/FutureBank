@@ -32,7 +32,7 @@
         style="@style/Edit_Text_Login"
         android:layout_marginTop="40dp"
         android:drawableEnd="@drawable/user"
-        android:hint="@string/txt_email"
+        android:hint="@string/txt_email_login"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/tv_acesso"
@@ -44,7 +44,7 @@
         style="@style/Edit_Text_Login"
         android:layout_marginTop="20dp"
         android:drawableEnd="@drawable/eyes"
-        android:hint="@string/texto_senha"
+        android:hint="@string/txt_senha_login"
         android:inputType="numberPassword"
         android:maxLength="6"
         android:textColorHint="@color/rosa"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Esqueceu a senha?"
+        android:text="@string/txt_esqueceu_a_senha"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/tv_esqueceu_senha"
         app:layout_constraintHorizontal_bias="0.5"
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="32dp"
-        android:text="Clique aqui"
+        android:text="@string/txt_clique_aqui"
         android:textColor="@color/rosa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -144,8 +144,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="@color/rosa"
         />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

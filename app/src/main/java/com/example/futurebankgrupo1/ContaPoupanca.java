@@ -16,7 +16,7 @@ import com.example.futurebankgrupo1.recycler.RecyclerPoupanca;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContaPoupanca extends AppCompatActivity {
+public class    ContaPoupanca extends AppCompatActivity {
 
     private ActivityContaPoupancaBinding binding;
     private MyViewModel viewModel;
@@ -46,8 +46,8 @@ public class ContaPoupanca extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(AdapterPoupanca);
 
-        binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TiposContasActivity.class);
+        binding.icClearCp.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
 
@@ -55,8 +55,6 @@ public class ContaPoupanca extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
             startActivity(intent);
         });
-
-
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -98,6 +96,4 @@ public class ContaPoupanca extends AppCompatActivity {
         listaRecyclerPoupancas.add(recyclerPoupanca);
 
     }
-
-
 }

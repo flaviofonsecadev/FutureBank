@@ -48,18 +48,18 @@ public class DadosConta extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.nome;
-                    String cpf = userProfile.cpf;
-                    String idade = userProfile.idade;
-                    String email = userProfile.email;
-                    String telefone = userProfile.telefone;
-                    String logradouro = userProfile.logradouro;
-                    String numero = userProfile.numero;
-                    String bairro = userProfile.bairro;
-                    String cidade = userProfile.cidade;
-                    String estado = userProfile.estado;
-                    String pais = userProfile.pais;
-                    String cep = userProfile.cep;
+                    String nome = userProfile.getNome();
+                    String cpf = userProfile.getCpf();
+                    String idade = userProfile.getIdade();
+                    String email = userProfile.getEmail();
+                    String telefone = userProfile.getTelefone();
+                    String logradouro = userProfile.getLogradouro();
+                    String numero = userProfile.getNumero();
+                    String bairro = userProfile.getBairro();
+                    String cidade = userProfile.getCidade();
+                    String estado = userProfile.getEstado();
+                    String pais = userProfile.getPais();
+                    String cep = userProfile.getCep();
 
 
                     binding.tvGetNomeUsuario.setText(nome);

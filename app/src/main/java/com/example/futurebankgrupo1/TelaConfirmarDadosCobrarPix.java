@@ -7,9 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosCobrarPixBinding;
-import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosCopiaColaBinding;
-import com.example.futurebankgrupo1.pagarcompix.PixComprovanteCopiaCola;
-import com.example.futurebankgrupo1.pagarcompix.TelaPixCopiaCola;
 
 public class TelaConfirmarDadosCobrarPix extends AppCompatActivity {
 

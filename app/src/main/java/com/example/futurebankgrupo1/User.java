@@ -1,7 +1,8 @@
 package com.example.futurebankgrupo1;
 
 public class User {
-    public String nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
+    private String nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
+    private float saldo = 100.0f;
 
     public User(){
 
@@ -21,5 +22,109 @@ public class User {
         this.cidade = cidade;
         this.estado = estado;
         this.pais = pais;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public float getSaldo() {
+        return saldo;
     }
 }

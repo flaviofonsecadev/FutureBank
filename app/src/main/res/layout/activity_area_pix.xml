@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/robotomedium"
-        android:text="Área Pix"
+        android:text="@string/tv_area_pix"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pix_area"
@@ -93,7 +93,7 @@
             android:id="@+id/tv_transferir_pix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transferir"
+            android:text="@string/txt_transferir_pix"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -130,7 +130,7 @@
             android:id="@+id/tv_copia_cola"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Copia e Cola"
+            android:text="@string/txt_copia_cola_pix"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -231,15 +231,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_chave_pix" />
 
     <ImageView
-        android:id="@+id/iv_back"
+        android:id="@+id/iv_clear_area_pix"
         android:layout_width="35dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="350dp"
-        android:src="@drawable/ic_arrow_back"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:srcCompat="@drawable/ic_clear" />
 
     <ImageView
         android:id="@+id/iv_arrow4"

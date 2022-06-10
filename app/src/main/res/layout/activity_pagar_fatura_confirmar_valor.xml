@@ -93,34 +93,34 @@
         app:layout_constraintStart_toEndOf="@+id/tv_saldo_conta"
         app:layout_constraintTop_toBottomOf="@+id/tv_get_valor_fatura" />
 
-    <TextView
-        android:id="@+id/tv_outro_valor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:textSize="14sp"
-        android:fontFamily="@font/robotolight"
-        android:textColor="@color/black"
-        android:text="Se deseja pagar outro valor, digite-o abaixo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_conta" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_outro_valor"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="48dp"-->
+<!--        android:textSize="14sp"-->
+<!--        android:fontFamily="@font/robotolight"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:text="Se deseja pagar outro valor, digite-o abaixo"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_conta" />-->
 
-    <EditText
-        android:id="@+id/edt_valor_pix"
-        style="@style/Edit_Text_Login"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/cifrao"
-        android:fontFamily="@font/robotolight"
-        android:gravity="end"
-        android:hint="0,00"
-        android:inputType="numberDecimal"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_outro_valor" />
+<!--    <EditText-->
+<!--        android:id="@+id/edt_valor_pix"-->
+<!--        style="@style/Edit_Text_Login"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:drawableStart="@drawable/cifrao"-->
+<!--        android:fontFamily="@font/robotolight"-->
+<!--        android:gravity="end"-->
+<!--        android:hint="0,00"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        android:textSize="35dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_outro_valor" />-->
 
     <View
         android:id="@+id/line_1"
@@ -128,7 +128,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="48dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/edt_valor_pix" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_conta" />
 
     <TextView
         android:id="@+id/tv_pagamento_agendado"
@@ -156,18 +156,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pagamento_agendado" />
 
-    <TextView
-        android:id="@+id/tv_reagendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/robotoregular"
-        android:text="Reagendar"
-        android:textColor="@color/rosa2"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pagamento_agendado" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_reagendar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:fontFamily="@font/robotoregular"-->
+<!--        android:text="Reagendar"-->
+<!--        android:textColor="@color/rosa2"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_pagamento_agendado" />-->
 
     <View
         android:id="@+id/line_2"

@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/robotomedium"
-        android:text="R$ 5.000,00"
+        android:text=""
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
@@ -445,8 +445,8 @@
 
         <ImageView
             android:id="@+id/iv_seguro_vida"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_seguro_vida_rosa"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -481,8 +481,8 @@
 
         <ImageView
             android:id="@+id/iv_seguro_cartao"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_seguro_cartao_rosa"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivityRecargaCelularBinding;
 
@@ -24,7 +25,31 @@ public class RecargaCelularActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        binding.button.setOnClickListener(v -> {
+            float saldo = viewModel.exibirSaldoContaCorrente();
+            if (saldo>=20){
+                viewModel.setarSaldo(saldo - 20);
+            } else {
+                Toast.makeText(this, "Tente novamente.", Toast.LENGTH_LONG).show();}
+
+
+//            new String(String.valueOf(viewModel.comprarCartaoCredito()));
+//            binding.tvGetSaldo.setText(df.format((viewModel.exibirSaldoContaCorrente())));
+
+        });
+
+
+
+
+
+
 
         /*binding.button.setOnClickListener(v -> {
             new String(String.valueOf(viewModel.comprarCartaoCredito()));
