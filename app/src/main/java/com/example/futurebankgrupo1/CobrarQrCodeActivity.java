@@ -4,17 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityCobrarQrCodeBinding;
-
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDados;
-
-
-
-
 
 
 public class CobrarQrCodeActivity extends AppCompatActivity {

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ic_back"
+        android:id="@+id/ic_clear_copia_cola"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_clear" />
 
     <ImageView
         android:id="@+id/iv_pix_rosa"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Copia e Cola"
+        android:text="@string/tv_copia_e_cola"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_pix_rosa"
@@ -58,7 +58,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginStart="24dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Insira o código de pagamento"
+        android:text="@string/tv_cod_pagamento"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/robotoregular"
-        android:hint="Cole o código aqui"
+        android:hint="@string/tv_cole_codigo"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -26,7 +26,7 @@ public class CobrarPix extends AppCompatActivity {
         });
 
         binding.icClear.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
     }

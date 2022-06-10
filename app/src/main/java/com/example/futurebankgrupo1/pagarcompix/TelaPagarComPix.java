@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.PixTransferirActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPagarBinding;
@@ -22,8 +23,8 @@ public class TelaPagarComPix extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPagar.class);
+        binding.icClearPagarComPix.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
 

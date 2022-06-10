@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.AreaPixActivity;
+import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPixCopiaColaBinding;
 
 public class TelaPixCopiaCola extends AppCompatActivity {
@@ -20,8 +21,8 @@ public class TelaPixCopiaCola extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AreaPixActivity.class);
+        binding.icClearCopiaCola.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
 
