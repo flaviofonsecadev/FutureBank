@@ -445,8 +445,8 @@
 
         <ImageView
             android:id="@+id/iv_seguro_vida"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_seguro_vida_rosa"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -481,8 +481,8 @@
 
         <ImageView
             android:id="@+id/iv_seguro_cartao"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_seguro_cartao_rosa"
             app:layout_constraintBottom_toBottomOf="parent"

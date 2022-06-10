@@ -54,8 +54,8 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TiposContasActivity.class);
+        binding.icClearCc.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
 
