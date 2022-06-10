@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.PixTransferirActivity;
-import com.example.futurebankgrupo1.R;
-import com.example.futurebankgrupo1.databinding.ActivityTelaPagarBinding;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPagarComPixBinding;
 
 public class TelaPagarComPix extends AppCompatActivity {
