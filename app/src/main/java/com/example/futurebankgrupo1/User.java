@@ -3,6 +3,11 @@ package com.example.futurebankgrupo1;
 public class User {
     private String nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
     private float saldo = 100.0f;
+    private float limiteCartao = 1000.0f;
+    private float saldoPoupanca = 200.0f;
+    private float valorFatura = 55.0f;
+
+
 
     public User(){
 
@@ -126,5 +131,29 @@ public class User {
 
     public float getSaldo() {
         return saldo;
+    }
+
+    public float getLimiteCartao() {
+        return limiteCartao;
+    }
+
+    public void setLimiteCartao(float limiteCartao) {
+        this.limiteCartao = limiteCartao;
+    }
+
+    public float getSaldoPoupanca() {
+        return saldoPoupanca;
+    }
+
+    public void setSaldoPoupanca(float saldoPoupanca) {
+        this.saldoPoupanca = saldoPoupanca;
+    }
+
+    public float getValorFatura() {
+        return valorFatura;
+    }
+
+    public void setValorFatura(float valorFatura) {
+        this.valorFatura = valorFatura;
     }
 }

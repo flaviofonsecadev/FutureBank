@@ -1,5 +1,6 @@
 package com.example.futurebankgrupo1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,10 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivityContaCorrenteBinding;
 import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.recycler.AdapterCorrente;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +33,37 @@ public class ContaCorrenteActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<RecyclerCorrente> listaCorrente = new ArrayList<>();
 
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityContaCorrenteBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    float saldo = userProfile.getSaldo();
+
+                    binding.tvSaldoDisponivelCc.setText(String.valueOf("R$" + saldo));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ContaCorrenteActivity.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //conversão recycler
         recyclerView = findViewById(R.id.recyclerView);
