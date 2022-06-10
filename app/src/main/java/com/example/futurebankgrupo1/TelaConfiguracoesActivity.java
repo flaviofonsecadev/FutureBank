@@ -114,8 +114,14 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // X icone sair
+        binding.icClear.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        });
 
-        //botão sair
+
+        //botão deslogar
         binding.icConfigSair.setOnClickListener(view1 -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), SplashActivity.class);

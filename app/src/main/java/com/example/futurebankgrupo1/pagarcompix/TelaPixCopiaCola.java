@@ -27,7 +27,7 @@ public class TelaPixCopiaCola extends AppCompatActivity {
         });
 
         binding.btnProsseguir.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosCopiaCola.class);
+            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
             startActivity(intent);
         });
     }

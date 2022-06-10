@@ -55,8 +55,11 @@ public class ContaCorrenteActivity extends AppCompatActivity {
 
                 if (userProfile != null){
                     float saldo = userProfile.getSaldo();
+                    float saldoPoupanca = userProfile.getSaldoPoupanca();
 
                     binding.tvSaldoDisponivelCc.setText(String.valueOf("R$" + saldo));
+                    binding.tvGetValorGuardadoCorrente.setText(String.valueOf("R$" + saldoPoupanca));
+
                 }
             }
             @Override
@@ -93,10 +96,10 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
-        binding.tvSaldoDisponivelCc.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
-        binding.tvGetValorGuardadoCorrente.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
+//        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+//
+//        binding.tvSaldoDisponivelCc.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
+//        binding.tvGetValorGuardadoCorrente.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
 
     }
 

@@ -102,7 +102,7 @@ public class MyViewModel extends ViewModel {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    limiteCartao = userProfile.getSaldo();
+                    limiteCartao = userProfile.getLimiteCartao();
 
                 }
             }
@@ -117,14 +117,14 @@ public class MyViewModel extends ViewModel {
 
 
     float saldoPoupanca;
-    public float exibibirSaldoPoupanca() {
+    public float exibibirSaldoPoupancaFirebase() {
         getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    saldoPoupanca = userProfile.getSaldo();
+                    saldoPoupanca = userProfile.getSaldoPoupanca();
 
                 }
             }

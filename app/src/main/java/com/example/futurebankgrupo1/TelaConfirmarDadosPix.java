@@ -25,7 +25,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         });
 
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixComprovanteActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
             startActivity(intent);
         });
     }
