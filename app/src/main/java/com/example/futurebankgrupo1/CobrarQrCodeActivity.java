@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.futurebankgrupo1.databinding.ActivityCobrarQrCodeBinding;
 
 
+
+
+
+
 public class CobrarQrCodeActivity extends AppCompatActivity {
 
     private ActivityCobrarQrCodeBinding binding;
