@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
 
                     binding.tvOlaCliente.setText("Olá, " + nome);
-                    binding.tvSaldoDisponivel.setText(String.valueOf(saldo));
+                    binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
                 }
             }
             @Override

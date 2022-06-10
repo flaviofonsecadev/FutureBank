@@ -1,5 +1,6 @@
 package com.example.futurebankgrupo1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,10 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivityContaPoupancaBinding;
 import com.example.futurebankgrupo1.recycler.AdapterPoupanca;
 import com.example.futurebankgrupo1.recycler.RecyclerPoupanca;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +32,9 @@ public class    ContaPoupanca extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<RecyclerPoupanca> listaRecyclerPoupancas = new ArrayList<>();
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +42,28 @@ public class    ContaPoupanca extends AppCompatActivity {
         binding = ActivityContaPoupancaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    float saldo = userProfile.getSaldo();
+
+                    binding.tvGetValorContaCorrente.setText(String.valueOf("R$" + saldo));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ContaPoupanca.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         //conversão variavel recycler view
         recyclerView = findViewById(R.id.recyclerView);
@@ -59,7 +93,7 @@ public class    ContaPoupanca extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
-        binding.tvGetValorContaCorrente.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
+        //binding.tvGetValorContaCorrente.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
 
     }
 

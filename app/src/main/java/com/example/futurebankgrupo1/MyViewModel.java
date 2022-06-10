@@ -50,7 +50,7 @@ public class MyViewModel extends ViewModel {
 
     public MyViewModel() {
         limiteDisponivel.setValue(1000);
-        valorFaturaAtual.setValue(0);
+        valorFaturaAtual.setValue(55);
         saldoContaCorrente.setValue(5000);
         saldoContaPoupanca.setValue(2500);
     }
@@ -64,6 +64,9 @@ public class MyViewModel extends ViewModel {
         float limite = limiteDisponivel.getValue();
         return limite;
     }
+
+
+
     float saldo;
 
     public float exibirSaldoContaCorrente() {
@@ -89,6 +92,73 @@ public class MyViewModel extends ViewModel {
         getReference().child(getUser().getUid()).child("saldo").setValue(novoSaldo);
 
     }
+
+
+    float limiteCartao;
+    public float exibirLimiteCartao() {
+        getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    limiteCartao = userProfile.getSaldo();
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("Erro", error.getMessage());
+            }
+        });
+        return limiteCartao;
+    }
+
+
+
+    float saldoPoupanca;
+    public float exibibirSaldoPoupanca() {
+        getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    saldoPoupanca = userProfile.getSaldo();
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("Erro", error.getMessage());
+            }
+        });
+        return saldoPoupanca;
+    }
+
+
+
+    float valorFatura;
+    public float exibirValorFaturaFirebase() {
+        getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    valorFatura = userProfile.getSaldo();
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("Erro", error.getMessage());
+            }
+        });
+        return valorFatura;
+    }
+
+
 
     public float exibirSaldoContaPoupanca() {
         float saldoCP = saldoContaPoupanca.getValue();
