@@ -93,6 +93,47 @@ public class    ContaPoupanca extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.ivContaCorrente.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
+        binding.tvExtratoContaCorrente.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
+        //forma mais resumida para mudar tela
+        binding.tvAplicar.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.ivArrowAplicar.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.ivAplicar1.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.tvAplicarTitle.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.tvResgatarCp.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+        binding.ivArrowResgatarCp.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+        binding.tvResgatarTitleCp.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
