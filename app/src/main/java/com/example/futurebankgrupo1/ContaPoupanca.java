@@ -93,6 +93,16 @@ public class    ContaPoupanca extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.ivContaCorrente.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
+        binding.tvExtratoContaCorrente.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
