@@ -20,12 +20,12 @@ public class SubSplashActivity2 extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        /*Security biometria = new Security();
 
-        //botão login
+        /*//botão login
         binding.btnLogin.setOnClickListener(v -> {
-            boolean habilitar = biometria.habilitarBiometria();
-            if (habilitar) {
+            Security biometria = new Security();
+            //boolean habilitar = biometria.habilitarBiometria();
+            if (biometria.habilitarBiometria()) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }else {

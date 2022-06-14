@@ -87,7 +87,22 @@
         app:layout_constraintStart_toStartOf="@+id/tv_dados_pessoais"
         app:layout_constraintTop_toBottomOf="@+id/tv_dados_pessoais" />
 
-    <EditText
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/edt_telefone"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="16dp"
+        android:hint="@string/txt_telefone"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:mask="+55 (__) _____ __ __"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nome"
+        app:layout_constraintStart_toStartOf="@+id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nome"/>
+
+    <!--<EditText
         android:id="@+id/edt_telefone"
         style="@style/Edit_Text_Cadastro"
         android:layout_marginTop="16dp"
@@ -96,10 +111,23 @@
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_nome"
         app:layout_constraintStart_toStartOf="@+id/edt_nome"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_nome" />-->
 
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/edt_cpf"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="16dp"
+        android:hint="@string/txt_cpf"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:mask="___.___.___-__"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nome"
+        app:layout_constraintStart_toStartOf="@+id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edt_telefone"/>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/edt_cpf"
         style="@style/Edit_Text_Cadastro"
         android:hint="@string/txt_cpf"
@@ -108,18 +136,32 @@
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_nome"
         app:layout_constraintStart_toStartOf="@+id/edt_nome"
-        app:layout_constraintTop_toBottomOf="@+id/edt_telefone" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_telefone" />-->
 
-    <EditText
-        android:id="@+id/edt_idade"
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/edt_nascimento"
         style="@style/Edit_Text_Cadastro"
         android:layout_marginTop="16dp"
-        android:hint="@string/txt_idade"
+        android:hint="@string/txt_nascimento"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintEnd_toEndOf="@+id/edt_nome"
+        app:layout_constraintStart_toStartOf="@+id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cpf"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
+
+    <!--<EditText
+        android:id="@+id/edt_nascimento"
+        style="@style/Edit_Text_Cadastro"
+        android:layout_marginTop="16dp"
+        android:hint="@string/txt_nascimento"
         android:inputType="number"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_cpf"
         app:layout_constraintStart_toStartOf="@+id/edt_cpf"
-        app:layout_constraintTop_toBottomOf="@+id/edt_cpf" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_cpf" />-->
 
     <TextView
         android:id="@+id/tv_dados_endereço"
@@ -128,10 +170,56 @@
         android:text="Dados de Endereço"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_idade" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_nascimento" />
 
+    <LinearLayout
+        android:id="@+id/linear_layout_cep_btn"
+        android:layout_width="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dados_endereço"
+        app:layout_constraintStart_toStartOf="@+id/tv_dados_endereço"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço">
 
-    <EditText
+        <com.santalu.maskara.widget.MaskEditText
+            android:id="@+id/edt_cep"
+            style="@style/Edit_Text_Endereco"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/txt_cep"
+            android:layout_weight="2"
+            android:inputType="number"
+            android:textColorHint="@color/rosa"
+            app:mask="_____-___"
+            app:maskCharacter="_"
+            app:maskStyle="completable" />
+
+        <!--<EditText
+            android:id="@+id/edt_cep"
+            style="@style/Edit_Text_Endereco"
+            android:layout_width="150dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/txt_cep"
+            android:inputType="number"
+            android:textColorHint="@color/rosa"
+            app:layout_constraintStart_toStartOf="@+id/tv_dados_endereço"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />-->
+
+        <Button
+            android:id="@+id/btn_buscar_cep"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="3"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_buttom"
+            android:text="Buscar"
+            android:textColor="@color/white"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <!--<EditText
         android:id="@+id/edt_cep"
         style="@style/Edit_Text_Endereco"
         android:layout_width="150dp"
@@ -140,38 +228,36 @@
         android:inputType="number"
         android:textColorHint="@color/rosa"
         app:layout_constraintStart_toStartOf="@+id/tv_dados_endereço"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />
-
-    <Button
-        android:id="@+id/btn_buscar_cep"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:text="buscar"
-        android:background="@drawable/custom_buttom"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/tv_dados_endereço"
-        app:layout_constraintStart_toEndOf="@+id/edt_cep"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />-->
 
     <EditText
         android:id="@+id/edt_logradouro"
         style="@style/Edit_Text_Endereco"
         android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/txt_logradouro"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/btn_buscar_cep"
-        app:layout_constraintStart_toStartOf="@+id/edt_cep"
-        app:layout_constraintTop_toBottomOf="@+id/edt_cep" />
+        app:layout_constraintEnd_toEndOf="@+id/linear_layout_cep_btn"
+        app:layout_constraintStart_toStartOf="@+id/linear_layout_cep_btn"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_cep_btn" />
 
+    <LinearLayout
+        android:id="@+id/linear_layout_numero_bairro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/edt_logradouro"
+        app:layout_constraintStart_toStartOf="@+id/edt_logradouro"
+        app:layout_constraintTop_toBottomOf="@+id/edt_logradouro">
 
     <EditText
         android:id="@+id/edt_numero"
         style="@style/Edit_Text_Endereco"
         android:layout_width="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
         android:hint="@string/txt_numero"
         android:inputType="number"
         android:textColorHint="@color/rosa"
@@ -181,8 +267,9 @@
     <EditText
         android:id="@+id/edt_bairro"
         style="@style/Edit_Text_Endereco"
-        android:layout_width="190dp"
+        android:layout_width="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_weight="4"
         android:hint="@string/txt_bairro"
         android:inputType="text"
         android:textColorHint="@color/rosa"
@@ -190,39 +277,58 @@
         app:layout_constraintStart_toEndOf="@+id/edt_numero"
         app:layout_constraintTop_toBottomOf="@+id/edt_logradouro" />
 
-    <EditText
-        android:id="@+id/edt_cidade"
-        style="@style/Edit_Text_Endereco"
-        android:layout_width="120dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/txt_cidade"
-        android:inputType="text"
-        android:textColorHint="@color/rosa"
-        app:layout_constraintStart_toStartOf="@+id/edt_numero"
-        app:layout_constraintTop_toBottomOf="@+id/edt_numero" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edt_estado"
-        style="@style/Edit_Text_Endereco"
-        android:layout_width="70dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/txt_estado"
-        android:inputType="text"
-        android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toStartOf="@+id/edt_pais"
-        app:layout_constraintStart_toEndOf="@+id/edt_cidade"
-        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+    <LinearLayout
+        android:id="@+id/linear_layout_cidade_estado_pais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/edt_logradouro"
+        app:layout_constraintStart_toStartOf="@+id/edt_logradouro"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_numero_bairro">
 
-    <EditText
-        android:id="@+id/edt_pais"
-        style="@style/Edit_Text_Endereco"
-        android:layout_width="99dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/txt_pais"
-        android:inputType="text"
-        android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/edt_bairro"
-        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+        <EditText
+            android:id="@+id/edt_cidade"
+            style="@style/Edit_Text_Endereco"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="3"
+            android:hint="@string/txt_cidade"
+            android:inputType="text"
+            android:textColorHint="@color/rosa"
+            app:layout_constraintStart_toStartOf="@+id/edt_numero"
+            app:layout_constraintTop_toBottomOf="@+id/edt_numero" />
+
+        <EditText
+            android:id="@+id/edt_estado"
+            style="@style/Edit_Text_Endereco"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0"
+            android:hint="@string/txt_estado"
+            android:inputType="text"
+            android:textColorHint="@color/rosa"
+            app:layout_constraintEnd_toStartOf="@+id/edt_pais"
+            app:layout_constraintStart_toEndOf="@+id/edt_cidade"
+            app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+
+        <EditText
+            android:id="@+id/edt_pais"
+            style="@style/Edit_Text_Endereco"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="2"
+            android:hint="@string/txt_pais"
+            android:inputType="text"
+            android:textColorHint="@color/rosa"
+            app:layout_constraintEnd_toEndOf="@+id/edt_bairro"
+            app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_dados_acesso"
@@ -231,7 +337,7 @@
         android:text="Dados de Acesso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_cidade" />
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_cidade_estado_pais" />
 
     <EditText
         android:id="@+id/edt_email"
@@ -240,8 +346,8 @@
         android:hint="@string/txt_email"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/edt_pais"
-        app:layout_constraintStart_toStartOf="@+id/edt_cidade"
+        app:layout_constraintEnd_toEndOf="@+id/linear_layout_cidade_estado_pais"
+        app:layout_constraintStart_toStartOf="@+id/linear_layout_cidade_estado_pais"
         app:layout_constraintTop_toBottomOf="@+id/tv_dados_acesso" />
 
     <EditText
@@ -263,6 +369,7 @@
         android:background="@drawable/custom_buttom"
         android:text="@string/txt_criar"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/edt_senha"
         app:layout_constraintStart_toStartOf="@+id/edt_senha"

@@ -51,7 +51,7 @@ public class RecargaCelularActivity extends AppCompatActivity {
                 if (userProfile != null){
                     String telefone = userProfile.getTelefone();
 
-                    binding.tvCelular.setText(telefone);
+                    //binding.tvCelular.setText(telefone);
                 }
             }
             @Override
