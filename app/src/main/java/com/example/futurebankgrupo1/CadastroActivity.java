@@ -54,27 +54,42 @@ public class CadastroActivity extends AppCompatActivity {
 
         setupHttpUser();
 
-        binding.btnBuscarCep.setOnClickListener(view1 -> {
-            cepApi.consultarCEP(binding.edtCep.getText().toString()).enqueue(new Callback<ViaCEP>() {
-                @Override
-                public void onResponse(Call<ViaCEP> call, Response<ViaCEP> response) {
-                    if(response.isSuccessful()) {
-                        ViaCEP cep = response.body();
-                        binding.edtBairro.setText(cep.getBairro());
-                        binding.edtLogradouro.setText(cep.getLogradouro());
-                        binding.edtCidade.setText(cep.getLocalidade());
-                        binding.edtEstado.setText(cep.getUf());
-
-                    } else {
-                        Toast.makeText(CadastroActivity.this, "Erro ao buscar o cep: " + binding.edtCep.getText(), Toast.LENGTH_SHORT).show();
-                    }
+        binding.edtCep.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus && !binding.edtCep.getText().toString().isEmpty()) {
+                    searchCep();
                 }
+            }
+        });
 
-                @Override
-                public void onFailure(Call<ViaCEP> call, Throwable t) {
+        binding.btnBuscarCep.setOnClickListener(view1 -> {
+            searchCep();
+        });
+    }
+
+
+
+    private void searchCep() {
+        cepApi.consultarCEP(binding.edtCep.getText().toString()).enqueue(new Callback<ViaCEP>() {
+            @Override
+            public void onResponse(Call<ViaCEP> call, Response<ViaCEP> response) {
+                if(response.isSuccessful()) {
+                    ViaCEP cep = response.body();
+                    binding.edtBairro.setText(cep.getBairro());
+                    binding.edtLogradouro.setText(cep.getLogradouro());
+                    binding.edtCidade.setText(cep.getLocalidade());
+                    binding.edtEstado.setText(cep.getUf());
+
+                } else {
                     Toast.makeText(CadastroActivity.this, "Erro ao buscar o cep: " + binding.edtCep.getText(), Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<ViaCEP> call, Throwable t) {
+                Toast.makeText(CadastroActivity.this, "Erro ao buscar o cep: " + binding.edtCep.getText(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

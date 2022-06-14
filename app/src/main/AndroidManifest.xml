@@ -15,6 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
+        <activity android:name=".RecargaComprovanteActivity"
+            android:exported="false" />
         <activity
             android:name=".ResgatarCC"
             android:exported="false" />
@@ -116,6 +118,9 @@
             android:exported="false" />
         <activity
             android:name=".AdicionarCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubSplashActivity2"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
