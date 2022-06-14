@@ -33,7 +33,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/icon_transferir_rosa"
+        android:src="@drawable/ic_aplicar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_aplicar" />
 
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="5.000,00"
+        android:text=""
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_aplicar"
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="5.000,00"
+        android:text=""
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_cc_aplicar"

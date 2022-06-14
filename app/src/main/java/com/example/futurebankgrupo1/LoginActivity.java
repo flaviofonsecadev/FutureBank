@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(LoginActivity.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
             }
         });
 

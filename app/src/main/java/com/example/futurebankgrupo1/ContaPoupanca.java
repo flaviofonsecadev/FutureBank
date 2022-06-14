@@ -28,13 +28,10 @@ import java.util.List;
 public class    ContaPoupanca extends AppCompatActivity {
 
     private ActivityContaPoupancaBinding binding;
-    private MyViewModel viewModel;
+    //private MyViewModel viewModel;
 
     private RecyclerView recyclerView;
     private List<RecyclerPoupanca> listaRecyclerPoupancas = new ArrayList<>();
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +40,9 @@ public class    ContaPoupanca extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -132,11 +129,16 @@ public class    ContaPoupanca extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
         } );
 
+        binding.ivResgatarCp.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
 
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
+
+        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        //binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
         //binding.tvGetValorContaCorrente.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
 
     }
