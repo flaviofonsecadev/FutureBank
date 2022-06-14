@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RecargaCelularActivity">
 
-
     <ImageView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -35,67 +34,132 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/robotoregular"
         android:text="Recarga"
         android:textColor="@color/black"
         android:textSize="24sp"
-
-
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        tools:layout_editor_absoluteX="24dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tv_insira_recarga"
+        android:id="@+id/tv_informe_numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Insira um valor de recarga "
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_recarga" />
-
-    <TextView
-        android:id="@+id/tv_telefone_recarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/robotolight"
-        android:text="O valor será recarregado no celular"
+        android:text="Informe o número "
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caixa_view" />
+        app:layout_constraintStart_toStartOf="@+id/tv_recarga"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recarga" />
 
-
-    <TextView
-        android:id="@+id/caixa_view"
+    <EditText
+        android:id="@+id/edt_telefone"
         style="@style/Edit_Text_Login"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotolight"
-        android:gravity=""
-        android:text="R$ 20,00"
+        android:gravity="center_vertical"
+        android:hint="(00) 00000-0000"
+        android:inputType="phone"
+        android:maxLength="11"
         android:textSize="18sp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_insira_recarga" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_informe_numero" />
+
+    <TextView
+        android:id="@+id/tv_escolha_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Selecione um valor "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/edt_telefone"
+        app:layout_constraintTop_toBottomOf="@+id/edt_telefone" />
+
+    <Spinner
+        android:id="@+id/sp_valor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_recarga"
+        android:entries="@array/valor_array"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_escolha_valor" />
+
+    <TextView
+        android:id="@+id/tv_operadora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Selecione a operadora "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/sp_valor"
+        app:layout_constraintTop_toBottomOf="@+id/sp_valor" />
+
+    <Spinner
+        android:id="@+id/sp_operadora"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_recarga"
+        android:entries="@array/operadoras_array"
+        android:fontFamily="@font/robotoregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_operadora" />
+
+    <TextView
+        android:id="@+id/tv_pagamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Selecione a forma de pagamento "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/sp_operadora"
+        app:layout_constraintTop_toBottomOf="@+id/sp_operadora" />
+
+    <Spinner
+        android:id="@+id/sp_pagamento"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_recarga"
+        android:entries="@array/pagamento_array"
+        android:fontFamily="@font/robotoregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pagamento" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_recarregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/custom_buttom"
-        android:text="Recargar"
+        android:text="Recarregar"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,16 +167,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="50dp"
         app:layout_constraintVertical_bias="0.52" />
-
-    <TextView
-        android:id="@+id/tv_celular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/tv_telefone_recarga"
-        app:layout_constraintStart_toEndOf="@+id/tv_telefone_recarga"
-        app:layout_constraintTop_toTopOf="@+id/tv_telefone_recarga" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

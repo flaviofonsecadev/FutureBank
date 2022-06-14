@@ -364,13 +364,13 @@
         android:id="@+id/tv_get_valor_fatura_atual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:text="R$ 495,52"
         android:fontFamily="@font/robotomedium"
+        android:text=""
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/iv_arrow_forward1"
+        app:layout_constraintStart_toEndOf="@+id/tv_fatura_atual"
         app:layout_constraintTop_toBottomOf="@id/tv_cartao_credito" />
 
     <ImageView

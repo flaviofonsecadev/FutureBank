@@ -102,8 +102,8 @@
     <EditText
         android:id="@+id/edt_cpf"
         style="@style/Edit_Text_Cadastro"
-        android:layout_marginTop="16dp"
         android:hint="@string/txt_cpf"
+        android:layout_marginTop="16dp"
         android:inputType="number"
         android:textColorHint="@color/rosa"
         app:layout_constraintEnd_toEndOf="@+id/edt_nome"
@@ -130,63 +130,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_idade" />
 
-    <EditText
-        android:id="@+id/edt_endereco"
-        style="@style/Edit_Text_Cadastro"
-        android:layout_marginTop="16dp"
-        android:drawableEnd="@drawable/ic_arrow_down"
-        android:hint="@string/txt_endereco"
-        android:inputType="text"
-        android:textColorHint="@color/rosa"
-        app:layout_constraintEnd_toEndOf="@+id/edt_idade"
-        app:layout_constraintStart_toStartOf="@+id/edt_idade"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />
 
     <EditText
         android:id="@+id/edt_cep"
         style="@style/Edit_Text_Endereco"
-        android:layout_width="110dp"
+        android:layout_width="150dp"
         android:layout_marginTop="16dp"
         android:hint="@string/txt_cep"
         android:inputType="number"
         android:textColorHint="@color/rosa"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/edt_endereco"
-        app:layout_constraintTop_toBottomOf="@+id/edt_endereco" />
+        app:layout_constraintStart_toStartOf="@+id/tv_dados_endereço"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />
 
-    <EditText
-        android:id="@+id/edt_numero"
-        style="@style/Edit_Text_Endereco"
-        android:layout_width="110dp"
-        android:hint="@string/txt_numero"
-        android:inputType="number"
-        android:textColorHint="@color/rosa"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_logradouro"
-        app:layout_constraintEnd_toEndOf="@+id/edt_endereco"
-        app:layout_constraintTop_toTopOf="@+id/edt_logradouro" />
+    <Button
+        android:id="@+id/btn_buscar_cep"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:text="buscar"
+        android:background="@drawable/custom_buttom"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dados_endereço"
+        app:layout_constraintStart_toEndOf="@+id/edt_cep"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dados_endereço" />
 
     <EditText
         android:id="@+id/edt_logradouro"
         style="@style/Edit_Text_Endereco"
-        android:layout_width="190dp"
+        android:layout_width="match_parent"
         android:layout_marginTop="16dp"
         android:hint="@string/txt_logradouro"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_buscar_cep"
+        app:layout_constraintStart_toStartOf="@+id/edt_cep"
         app:layout_constraintTop_toBottomOf="@+id/edt_cep" />
+
+
+    <EditText
+        android:id="@+id/edt_numero"
+        style="@style/Edit_Text_Endereco"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/txt_numero"
+        android:inputType="number"
+        android:textColorHint="@color/rosa"
+        app:layout_constraintStart_toStartOf="@+id/edt_logradouro"
+        app:layout_constraintTop_toBottomOf="@+id/edt_logradouro" />
 
     <EditText
         android:id="@+id/edt_bairro"
         style="@style/Edit_Text_Endereco"
         android:layout_width="190dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/txt_bairro"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_cep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edt_cep" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_logradouro"
+        app:layout_constraintStart_toEndOf="@+id/edt_numero"
+        app:layout_constraintTop_toBottomOf="@+id/edt_logradouro" />
 
     <EditText
         android:id="@+id/edt_cidade"
@@ -196,33 +198,31 @@
         android:hint="@string/txt_cidade"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_logradouro" />
+        app:layout_constraintStart_toStartOf="@+id/edt_numero"
+        app:layout_constraintTop_toBottomOf="@+id/edt_numero" />
 
     <EditText
         android:id="@+id/edt_estado"
         style="@style/Edit_Text_Endereco"
         android:layout_width="70dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/txt_estado"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_cidade"
         app:layout_constraintEnd_toStartOf="@+id/edt_pais"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edt_cidade"
-        app:layout_constraintTop_toTopOf="@+id/edt_cidade" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
 
     <EditText
         android:id="@+id/edt_pais"
         style="@style/Edit_Text_Endereco"
         android:layout_width="99dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/txt_pais"
         android:inputType="text"
         android:textColorHint="@color/rosa"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_cidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edt_cidade" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_bairro"
+        app:layout_constraintTop_toBottomOf="@+id/edt_bairro" />
 
     <TextView
         android:id="@+id/tv_dados_acesso"
@@ -260,7 +260,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-
         android:background="@drawable/custom_buttom"
         android:text="@string/txt_criar"
         android:textAllCaps="false"

@@ -45,12 +45,9 @@ public class ComprovanteFatura extends AppCompatActivity {
 
         binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
 
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
-
-
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -68,9 +65,5 @@ public class ComprovanteFatura extends AppCompatActivity {
                 Toast.makeText(ComprovanteFatura.this, "Ocorreu algum erro com o nome do pagador!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
-
 }
