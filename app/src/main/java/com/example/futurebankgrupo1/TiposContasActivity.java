@@ -66,7 +66,27 @@ public class TiposContasActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.tvContaCorrente.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
+        binding.ivPixBlack.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaCorrenteActivity.class);
+            startActivity(intent);
+        });
+
         binding.ivArrowForward2.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaPoupanca.class);
+            startActivity(intent);
+        });
+
+        binding.tvContaPoupanca.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ContaPoupanca.class);
+            startActivity(intent);
+        });
+
+        binding.ivContaPoupanca.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ContaPoupanca.class);
             startActivity(intent);
         });

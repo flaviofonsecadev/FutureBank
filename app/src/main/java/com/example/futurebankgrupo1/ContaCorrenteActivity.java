@@ -91,10 +91,22 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.tvValorGuardado.setOnClickListener(v -> {
+            Intent intent  = new Intent(getApplicationContext(), ContaPoupanca.class);
+            startActivity(intent);
+        });
+
+        binding.ivContaPoupanca.setOnClickListener(v -> {
+            Intent intent  = new Intent(getApplicationContext(), ContaPoupanca.class);
+            startActivity(intent);
+        });
+
         binding.icClearCc.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
+
+
 
 //        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 //
