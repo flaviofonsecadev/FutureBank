@@ -2,7 +2,6 @@ package com.example.futurebankgrupo1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.futurebankgrupo1.databinding.ActivityAplicarComprovanteBinding;
 import com.example.futurebankgrupo1.databinding.ActivityAplicarCpBinding;
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDadosPix;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,45 +19,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AplicarCP extends AppCompatActivity {
-    ActivityAplicarCpBinding binding;
-    MyViewModel viewModel;
+public class AplicarComprovante extends AppCompatActivity {
+    ActivityAplicarComprovanteBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAplicarCpBinding.inflate(getLayoutInflater());
+        binding = ActivityAplicarComprovanteBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.icClearAplicar.setOnClickListener(v -> {
+        binding.icClearAplicarComprovante.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.buttonAplicar.setOnClickListener(v -> {
-            float valor = Float.parseFloat(binding.edtValorAplicar.getText().toString());
-            float saldoCc = viewModel.exibirSaldoContaCorrente();
-            float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
-
-            if (saldoCc >=valor){
-                viewModel.setarSaldo(saldoCc - valor);
-                viewModel.setarSaldoPoupanca(saldoCp + valor);
-
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveValorAplicar", binding.edtValorAplicar.getText().toString());
-                editor.commit();
-                Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
-                startActivity(intent);
-
-            }else {
-                Toast.makeText(this, "Tente novamente.", Toast.LENGTH_SHORT).show();
-            }
-
-
-        });
+        String valorAplicar;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        valorAplicar = preferences.getString("chaveValorAplicar", "");
+        binding.tvValorAplicarComprovante.setText("R$" + valorAplicar);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -74,16 +53,17 @@ public class AplicarCP extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    binding.tvSaldoDisponivelCcAplicar.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelAplicar.setText(String.valueOf("R$" + saldoPoupanca));
+                    binding.tvSaldoDisponivelCcAplicarComprovante.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivelAplicarComprovante.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AplicarCP.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AplicarComprovante.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
     }
