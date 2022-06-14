@@ -86,29 +86,16 @@
         app:layout_constraintStart_toStartOf="@+id/edt_email_login"
         app:layout_constraintTop_toBottomOf="@+id/edt_email_login" />
 
-    <ImageView
-        android:id="@+id/iv_biometria"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:clickable="true"
-        android:src="@drawable/fingerprint"
-        app:layout_constraintEnd_toEndOf="@+id/edt_senha_login"
-        app:layout_constraintStart_toStartOf="@+id/edt_senha_login"
-        app:layout_constraintTop_toBottomOf="@+id/edt_senha_login"
-        android:focusable="true" />
-
     <Button
         android:id="@+id/btn_acessar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="114dp"
         android:background="@drawable/custom_buttom"
         android:text="@string/txt_acessar"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/iv_biometria"
-        app:layout_constraintStart_toStartOf="@+id/iv_biometria"
-        app:layout_constraintTop_toBottomOf="@+id/iv_biometria" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_senha_login"
+        tools:layout_editor_absoluteX="40dp" />
 
     <TextView
         android:id="@+id/msg_sem_conta"
@@ -138,7 +125,7 @@
         app:layout_constraintStart_toEndOf="@+id/msg_sem_conta"
         app:layout_constraintTop_toBottomOf="@+id/btn_acessar" />
 
-<TextView
+    <TextView
         android:id="@+id/msg_esqueceu_senha"
         style="@style/Text_View_Login_e_Cadastro"
         android:layout_width="wrap_content"

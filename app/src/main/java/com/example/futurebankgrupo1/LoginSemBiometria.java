@@ -8,75 +8,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
-
-import com.example.futurebankgrupo1.databinding.ActivityLoginBinding;
+import com.example.futurebankgrupo1.databinding.ActivityLoginSemBiometriaBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.concurrent.Executor;
+public class LoginSemBiometria extends AppCompatActivity {
 
-public class LoginActivity extends AppCompatActivity {
-
-    private ActivityLoginBinding binding;
+    private ActivityLoginSemBiometriaBinding binding;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginSemBiometriaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-
-
-
-        //Biometria
-
-        Executor executor = ContextCompat.getMainExecutor(this);
-
-        BiometricPrompt biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
-                super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(LoginActivity.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-                super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(), "Autenticação realizada com sucesso!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);*/
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-                Toast.makeText(LoginActivity.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Login")
-                .setDescription("Use sua digital para autenticar o login no App.")
-                .setNegativeButtonText("Cancelar")
-                .build();
-
-        binding.ivBiometria.setOnClickListener(v -> {
-            biometricPrompt.authenticate(promptInfo);
-        });
-
-        //Biometria
-
-
-
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -141,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else {
                         user.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this, "Vá ao seu email e clique no link de verificação!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginSemBiometria.this, "Vá ao seu email e clique no link de verificação!", Toast.LENGTH_LONG).show();
                         binding.progressBarLogin.setVisibility(View.GONE);
 
                     }
@@ -149,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 }else {
-                    Toast.makeText(LoginActivity.this, "Falha no login. Revise suas credenciais", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginSemBiometria.this, "Falha no login. Revise suas credenciais", Toast.LENGTH_SHORT).show();
                     binding.progressBarLogin.setVisibility(View.GONE);
 
                 }

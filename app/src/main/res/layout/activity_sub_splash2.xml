@@ -11,7 +11,7 @@
         android:id="@+id/logo_sub_splash"
         android:layout_width="370dp"
         android:layout_height="276dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/logo_t1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,5 +63,32 @@
         app:layout_constraintStart_toStartOf="@+id/tv_future"
         app:layout_constraintTop_toBottomOf="@+id/tv_future"
         app:layout_constraintVertical_bias="0.033" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Cadastrar"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

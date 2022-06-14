@@ -77,15 +77,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_valor_em_conta" />
 
+    <View
+        android:id="@+id/line_01"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_disponivel_cc"/>
+
+
     <ImageView
         android:id="@+id/iv_conta_poupanca"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="17dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_conta_poupanca_rosa"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_disponivel_cc" />
+        app:layout_constraintTop_toBottomOf="@+id/line_01" />
 
     <TextView
         android:id="@+id/tv_valor_guardado"
@@ -93,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/robotolight"
-        android:text="Valor guardado"
+        android:text="Conta Poupança"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/iv_conta_poupanca"
@@ -122,15 +131,148 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_conta_poupanca" />
 
+
+    <!--   resgatar-->
+
+    <View
+        android:id="@+id/line_02"
+        android:layout_width="match_parent"
+        android:layout_marginTop="17dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/tv_get_valor_guardado_corrente"/>
+
+    <ImageView
+        android:id="@+id/iv_resgatar_cc"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/ic_conta_poupanca_rosa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_02" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_resgatar_cc"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic__arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_resgatar_cc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_resgatar_cc" />
+
+    <TextView
+        android:id="@+id/tv_resgatar_title_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Resgatar"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_resgatar_cc"
+        app:layout_constraintStart_toEndOf="@+id/iv_resgatar_cc"
+        app:layout_constraintTop_toTopOf="@+id/iv_resgatar_cc" />
+
+    <TextView
+        android:id="@+id/tv_resgatar_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Transferir da poupança para corrente"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_resgatar_cc"
+        app:layout_constraintTop_toBottomOf="@+id/iv_resgatar_cc" />
+
+
+<!--       Aplicar-->
+
+    <View
+        android:id="@+id/line_03"
+        android:layout_width="match_parent"
+        android:layout_marginTop="17dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/tv_resgatar_cc"/>
+
+    <ImageView
+        android:id="@+id/iv_aplicar_cc"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/ic_conta_poupanca_rosa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_03" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_aplicar_cc"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic__arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_aplicar_cc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_aplicar_cc" />
+
+    <TextView
+        android:id="@+id/tv_aplicar_title_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Aplicar"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_aplicar_cc"
+        app:layout_constraintStart_toEndOf="@+id/iv_aplicar_cc"
+        app:layout_constraintTop_toTopOf="@+id/iv_aplicar_cc" />
+
+    <TextView
+        android:id="@+id/tv_aplicar_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Transferir da corrente para poupança"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_aplicar_cc"
+        app:layout_constraintTop_toBottomOf="@+id/iv_aplicar_cc" />
+
+    <View
+        android:id="@+id/line_04"
+        android:layout_width="match_parent"
+        android:layout_marginTop="17dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@+id/tv_aplicar_cc"/>
+
+
+    <TextView
+        android:id="@+id/tv_extrato_cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Extrato"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/line_04"
+        app:layout_constraintStart_toEndOf="@+id/iv_aplicar_cc"/>
+
+    <!--Extrato Recycler-->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_get_valor_guardado_corrente" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_extrato_cc" />
 
 
     <!--<View

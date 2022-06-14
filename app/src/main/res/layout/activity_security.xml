@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_biometria"/>
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switch_biometria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
