@@ -19,7 +19,7 @@
     <string name="txt_nome_completo">Nome completo</string>
     <string name="txt_telefone">Telefone</string>
     <string name="txt_cpf">CPF</string>
-    <string name="txt_idade">Idade</string>
+    <string name="txt_nascimento">Data de Nascimento</string>
     <string name="txt_endereco">Endereço</string>
     <string name="txt_cep">CEP</string>
     <string name="txt_numero">NÚMERO</string>
