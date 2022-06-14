@@ -106,6 +106,41 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //forma mais resumida para mudar tela
+        binding.tvAplicarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.ivArrowAplicarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.ivAplicarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.tvAplicarTitleCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), AplicarCP.class));
+        } );
+
+        binding.tvResgatarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+        binding.ivArrowResgatarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+        binding.tvResgatarTitleCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+        binding.ivResgatarCc.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
+        } );
+
+
+
 
 
 //        viewModel = new ViewModelProvider(this).get(MyViewModel.class);

@@ -58,4 +58,7 @@ dependencies {
 
     //biometria
     implementation 'androidx.biometric:biometric:1.1.0'
+
+    //mascara - https://github.com/santalu/maskara
+    implementation 'com.github.santalu:maskara:1.0.0'
 }
