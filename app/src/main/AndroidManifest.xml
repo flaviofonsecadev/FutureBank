@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.futurebankgrupo1">
+    
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo_android_quadrado"
+        android:label="FutureBANK"
+        android:roundIcon="@drawable/logo_android_redondo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FutureBankGrupo1"
+        tools:targetApi="31">
+        <activity
+            android:name=".LoginSemBiometria"
+            android:exported="false" />
+        <activity
+            android:name=".SubSplashActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ResetarSenha"
+            android:exported="false" />
+        <activity
+            android:name=".MeusCartoesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.PixComprovanteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PixComprovanteCopiaCola"
+            android:exported="false" />
+        <activity
+            android:name=".RecargaCelularActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SeguroVida"
+            android:exported="false" />
+        <activity
+            android:name=".SeguroCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContaPoupanca"
+            android:exported="false" />
+        <activity
+            android:name=".ContaCorrenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TiposContasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartaoComumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CobrarPix"
+            android:exported="false" />
+        <activity
+            android:name=".PixTransferirActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AreaPixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Security"
+            android:exported="false" />
+        <activity
+            android:name=".AlterarDadosConta"
+            android:exported="false" />
+        <activity
+            android:name=".DadosConta"
+            android:exported="false" />
+        <activity
+            android:name=".ConfiguracoesApp"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fatura.FaturaCartao"
+            android:exported="false" />
+        <activity
+            android:name=".TelaTransferirConta"
+            android:exported="false" />
+        <activity
+            android:name=".fatura.pagarfatura.ComprovanteFatura"
+            android:exported="false" />
+        <activity
+            android:name=".fatura.pagarfatura.PagarFaturaConfirmarValor"
+            android:exported="false" />
+        <activity
+            android:name=".fatura.pagarfatura.PagarFatura"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaConfirmarDadosPix"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPixCopiaCola"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPagarComPix"
+            android:exported="false" />
+        <activity
+            android:name=".pagarcompix.TelaPagar"
+            android:exported="true" />
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TelaConfiguracoesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdicionarCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

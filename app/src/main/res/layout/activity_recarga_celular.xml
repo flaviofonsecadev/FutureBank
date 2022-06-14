@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecargaCelularActivity">
+
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/rosa"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_clear"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+
+    <TextView
+        android:id="@+id/tv_recarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Recarga"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+
+
+        app:layout_constraintStart_toStartOf="@+id/tv_insira_recarga"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_insira_recarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Insira um valor de recarga "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recarga" />
+
+    <TextView
+        android:id="@+id/tv_telefone_recarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/robotolight"
+        android:text="O valor será recarregado no celular"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caixa_view" />
+
+
+    <TextView
+        android:id="@+id/caixa_view"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/robotolight"
+        android:gravity="center_vertical"
+        android:text="R$ 20,00"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_insira_recarga" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Recarregar"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <TextView
+        android:id="@+id/tv_celular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/tv_telefone_recarga"
+        app:layout_constraintStart_toEndOf="@+id/tv_telefone_recarga"
+        app:layout_constraintTop_toTopOf="@+id/tv_telefone_recarga" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
