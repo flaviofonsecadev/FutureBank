@@ -30,7 +30,7 @@ public class PagarFatura extends AppCompatActivity {
         });
 
         binding.ivArrowForward.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PagarFaturaConfirmarValor.class);
+            Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
             startActivity(intent);
         });
 

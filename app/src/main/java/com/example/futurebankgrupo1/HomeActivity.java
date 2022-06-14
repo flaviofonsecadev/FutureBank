@@ -203,7 +203,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.ivArrowForward2.setOnClickListener(v -> {
+        binding.ivArrowForward1.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), FaturaCartao.class);
             startActivity(intent);
         });
