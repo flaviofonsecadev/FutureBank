@@ -2,6 +2,7 @@ package com.example.futurebankgrupo1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.databinding.ActivityCadastroBinding;
+import com.example.futurebankgrupo1.viacep.CepApi;
+import com.example.futurebankgrupo1.viacep.ViaCEP;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,10 +21,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class CadastroActivity extends AppCompatActivity {
 
     private ActivityCadastroBinding binding;
     private FirebaseAuth mAuth;
+    private CepApi cepApi;
 
 
     @Override
@@ -42,6 +52,39 @@ public class CadastroActivity extends AppCompatActivity {
             registerUser();
         });
 
+        setupHttpUser();
+
+        binding.btnBuscarCep.setOnClickListener(view1 -> {
+            cepApi.consultarCEP(binding.edtCep.getText().toString()).enqueue(new Callback<ViaCEP>() {
+                @Override
+                public void onResponse(Call<ViaCEP> call, Response<ViaCEP> response) {
+                    if(response.isSuccessful()) {
+                        ViaCEP cep = response.body();
+                        binding.edtBairro.setText(cep.getBairro());
+                        binding.edtLogradouro.setText(cep.getLogradouro());
+                        binding.edtCidade.setText(cep.getLocalidade());
+                        binding.edtEstado.setText(cep.getUf());
+
+                    } else {
+                        Toast.makeText(CadastroActivity.this, "Erro ao buscar o cep: " + binding.edtCep.getText(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ViaCEP> call, Throwable t) {
+                    Toast.makeText(CadastroActivity.this, "Erro ao buscar o cep: " + binding.edtCep.getText(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+    }
+
+    private void setupHttpUser() {
+        Retrofit retrofitCep = new Retrofit.Builder()
+                .baseUrl("https://viacep.com.br/ws/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        cepApi = retrofitCep.create(CepApi.class);
     }
 
     private void registerUser() {

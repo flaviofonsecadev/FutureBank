@@ -68,7 +68,7 @@ public class RecargaCelularActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.button.setOnClickListener(v -> {
+        binding.btnRecarregar.setOnClickListener(v -> {
             float saldo = viewModel.exibirSaldoContaCorrente();
             if (saldo>=20){
                 viewModel.setarSaldo(saldo - 20);
