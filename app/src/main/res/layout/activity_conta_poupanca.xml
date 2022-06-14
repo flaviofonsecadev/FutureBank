@@ -149,7 +149,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="17dp"
-        android:src="@drawable/ic_conta_poupanca_rosa"
+        android:src="@drawable/ic_aplicar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_22" />
 
@@ -203,7 +203,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/ic_conta_poupanca_rosa"
+        android:src="@drawable/ic_resgatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_33" />
 
