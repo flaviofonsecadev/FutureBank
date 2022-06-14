@@ -25,6 +25,12 @@
 
 
         <activity
+            android:name=".CobrarQrCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaConfirmarDadosCobrarPix"
+            android:exported="false" />
+        <activity
             android:name=".SubSplashActivity2"
             android:exported="false" />
         <activity
