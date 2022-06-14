@@ -136,6 +136,9 @@
             android:name=".AdicionarCartaoActivity"
             android:exported="false" />
         <activity
+            android:name=".SubSplashActivity2"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
