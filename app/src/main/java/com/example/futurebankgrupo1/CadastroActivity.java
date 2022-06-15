@@ -131,7 +131,7 @@ public class CadastroActivity extends AppCompatActivity {
             return;
         }
 
-        if (telefone.length() < 11 ){
+        if (telefone.length() < 20 ){
             binding.edtTelefone.setError("Insira um telefone válido! Exemplo: 11 91111 1111");
             binding.edtTelefone.requestFocus();
             return;

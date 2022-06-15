@@ -11,15 +11,13 @@ import android.os.Bundle;
         import android.widget.DatePicker;
         import android.widget.EditText;
 
-import com.example.futurebankgrupo1.databinding.ReagendarPagamentosBinding;
+import com.example.futurebankgrupo1.databinding.ActivityReagendarPagamentosBinding;
 import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFaturaConfirmarValor;
-import com.example.futurebankgrupo1.pagarcompix.TelaConfirmarDadosPix;
 
-
-public class CalendarioPagamento extends AppCompatActivity {
+public class ReagendarPagamentosActivity extends AppCompatActivity {
 
     //binding
-    ReagendarPagamentosBinding binding;
+    ActivityReagendarPagamentosBinding binding;
 
 
     DatePicker reagendar_data;
@@ -32,7 +30,7 @@ public class CalendarioPagamento extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //binding
-        binding = ReagendarPagamentosBinding.inflate(getLayoutInflater());
+        binding = ActivityReagendarPagamentosBinding.inflate(getLayoutInflater());
 
         binding.icClear.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PagarFaturaConfirmarValor.class);

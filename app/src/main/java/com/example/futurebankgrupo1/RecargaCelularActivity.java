@@ -87,8 +87,8 @@ public class RecargaCelularActivity extends AppCompatActivity {
             if (viewModel.exibirSaldoContaCorrente() >= valorSelect){ //*****************************************************
                 viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valorSelect); //*******************************
                 Toast.makeText(this, "Recarga efetuada com sucesso!", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(this, "Saldo insuficiente para realizar essa recarga! Tente novamente.", Toast.LENGTH_LONG).show();}
 
