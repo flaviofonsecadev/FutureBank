@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -65,5 +66,16 @@ public class ComprovanteFatura extends AppCompatActivity {
                 Toast.makeText(ComprovanteFatura.this, "Ocorreu algum erro com o nome do pagador!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        int day;
+        int month;
+        int year;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        day = preferences.getInt("chaveDay",0);
+        month = preferences.getInt("chaveMonth",0);
+        year= preferences.getInt("chaveYear", 0);
+        binding.tvGetDataHora.setText(day + "/" +month+"/"+year);
+
+
     }
 }

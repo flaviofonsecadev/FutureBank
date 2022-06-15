@@ -75,6 +75,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_descricao"
         app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
 
+
     <EditText
         android:id="@+id/edt_valor_pix"
         style="@style/Edit_Text_Login"
@@ -134,10 +135,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_pagar" />
 
     <TextView
+        android:id="@+id/tv_saldo_disponivel_rs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="R$"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saldo"
+        app:layout_constraintEnd_toStartOf="@+id/tv_saldo_disponivel_pix"
+        app:layout_constraintTop_toTopOf="@+id/tv_saldo" />
+
+    <TextView
         android:id="@+id/tv_saldo_disponivel_pix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="40dp"
+        android:fontFamily="@font/robotoregular"
         android:text="5.000,00"
         android:textColor="#000000"
         android:textSize="16sp"

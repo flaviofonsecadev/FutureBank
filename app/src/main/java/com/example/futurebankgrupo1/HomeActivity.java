@@ -22,14 +22,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
-    //String padrao = "####,##";
-    DecimalFormat df = new DecimalFormat("0,00");
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -45,6 +47,9 @@ public class HomeActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+
+
+        //
 
 
 
@@ -283,9 +288,9 @@ public class HomeActivity extends AppCompatActivity {
         //Mostrar saldo conta corrente
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvSaldoDisponivel.setText(df.format((viewModel.exibirSaldoContaCorrente())));
-        binding.tvGetValorFaturaAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorLimiteDisponivel.setText(String.valueOf(viewModel.exibirLimite()));
+        binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
 
     }
 }

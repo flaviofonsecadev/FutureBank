@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".CalendarioPagamento">
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="189dp"
+        android:background="@color/rosa"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_clear"
+        android:layout_width="97dp"
+        android:layout_height="83dp"
+        android:layout_alignBottom="@+id/header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="62dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:srcCompat="@drawable/ic_clear" />
+
+    <DatePicker
+        android:id="@+id/reagendar_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="294dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="292dp"
+        android:datePickerMode="calendar"
+        android:headerBackground="@color/rosa" />
+
+    <Button
+        android:id="@+id/reagendar_button"
+        android:layout_width="450dp"
+        android:layout_height="85dp"
+        android:layout_below="@+id/reagendar_data"
+        android:layout_alignStart="@+id/reagendar_data"
+        android:layout_alignEnd="@+id/reagendar_data"
+        android:layout_marginStart="-37dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="-38dp"
+        android:text="escolha a data "
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/reagendar_text"
+        android:layout_width="276dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/reagendar_button"
+        android:layout_alignStart="@+id/reagendar_button"
+        android:layout_alignEnd="@+id/reagendar_button"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="68dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
