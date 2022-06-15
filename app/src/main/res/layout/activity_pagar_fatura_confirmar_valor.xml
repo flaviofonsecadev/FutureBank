@@ -144,6 +144,20 @@
         app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
     <TextView
+        android:id="@+id/tv_reagendar_fatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Reagendar"
+        android:textColor="@color/rosa2"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toEndOf="@+id/tv_pagamento_agendado"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pagamento_agendado" />
+
+    <TextView
         android:id="@+id/tv_agora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
