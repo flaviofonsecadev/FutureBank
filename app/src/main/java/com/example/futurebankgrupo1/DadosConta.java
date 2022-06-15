@@ -20,9 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DadosConta extends AppCompatActivity {
     ActivityDadosContaBinding binding;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
 
 
     @Override
@@ -32,15 +29,25 @@ public class DadosConta extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        //botão voltar
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
             startActivity(intent);
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        binding.tvAlterarDados.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AlterarDadosConta.class);
+            startActivity(intent);
+        });
+
+        binding.ivArrowForward.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AlterarDadosConta.class);
+            startActivity(intent);
+        });
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
