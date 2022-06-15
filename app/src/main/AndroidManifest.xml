@@ -24,33 +24,21 @@
 
 
 
-        <activity
-            android:name=".SubSplashActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".ResgatarComprovante"
             android:exported="false" />
         <activity
             android:name=".AplicarComprovante"
             android:exported="false" />
-
-
-
-
-
-
-
-
-
-        <activity
-            android:name=".SubSplashActivity2"
+        <activity android:name=".RecargaComprovanteActivity"
             android:exported="false" />
-        <activity
-            android:name=".ResgatarComprovante"
-            android:exported="false" />
-        <activity
-            android:name=".AplicarComprovante"
-            android:exported="false" />
+
+
+
+
+
+
         <activity
             android:name=".ResgatarCC"
             android:exported="false" />
