@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaConfirmarValorBinding;
-import com.example.futurebankgrupo1.databinding.ReagendarPagamentosBinding;
 
 public class PagarFaturaConfirmarValor extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         });
 
         binding.tvReagendarFatura.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosBinding.class);
+            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosActivity.class);
             startActivity(intent);
         });
 
