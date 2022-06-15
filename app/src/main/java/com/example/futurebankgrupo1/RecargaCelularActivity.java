@@ -69,6 +69,8 @@ public class RecargaCelularActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.btnRecarregar.setOnClickListener(view1 -> {
