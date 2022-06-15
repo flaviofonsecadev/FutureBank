@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FutureBank Grupo 1</string>
+    <string name="app_name">FutureBANK</string>
     <string name="pagar_com_pix">Pagar com Pix</string>
     <string name="pagar_com_chave_pix">Pagar com chave Pix</string>
 
@@ -19,7 +19,7 @@
     <string name="txt_nome_completo">Nome completo</string>
     <string name="txt_telefone">Telefone</string>
     <string name="txt_cpf">CPF</string>
-    <string name="txt_idade">Idade</string>
+    <string name="txt_nascimento">Data de Nascimento</string>
     <string name="txt_endereco">Endereço</string>
     <string name="txt_cep">CEP</string>
     <string name="txt_numero">NÚMERO</string>
@@ -93,6 +93,32 @@
     <string name="txt_transferir_pix">Transferir</string>
     <string name="txt_copia_cola_pix">Copia e Cola</string>
 
+    //spinner recarga
 
+    <string-array name="valor_array">
+        <item></item>
+        <item>10.00</item>
+        <item>15.00</item>
+        <item>20.00</item>
+        <item>25.00</item>
+        <item>35.00</item>
+        <item>40.00</item>
+        <item>50.00</item>
+        <item>60.00</item>
+    </string-array>
+
+    <string-array name="operadoras_array">
+        <item></item>
+        <item>Oi</item>
+        <item>Vivo</item>
+        <item>Tim</item>
+        <item>Claro</item>
+    </string-array>
+
+    <string-array name="pagamento_array">
+        <item></item>
+        <item>Débito</item>
+        <item>Crédito</item>
+    </string-array>
 
 </resources>

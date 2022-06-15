@@ -364,13 +364,13 @@
         android:id="@+id/tv_get_valor_fatura_atual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:text="R$ 495,52"
         android:fontFamily="@font/robotomedium"
+        android:text=""
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/iv_arrow_forward1"
+        app:layout_constraintStart_toEndOf="@+id/tv_fatura_atual"
         app:layout_constraintTop_toBottomOf="@id/tv_cartao_credito" />
 
     <ImageView
@@ -399,8 +399,8 @@
         android:id="@+id/tv_get_valor_limite_disponivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="R$ 9.504,48"
+        android:layout_marginStart="42dp"
+        android:text=""
         android:fontFamily="@font/robotomedium"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -457,7 +457,7 @@
             android:id="@+id/tv_seguro_vida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/robotomedium"
             android:text="Seguro de Vida"
@@ -494,7 +494,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:fontFamily="@font/robotomedium"
             android:text="Seguro Cartão"
             android:textColor="@color/black"
@@ -561,6 +561,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraint_recarga" />
 
+
+    <TextView
+        android:id="@+id/tv_get_valor_fatura_atual_rs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="R$"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_get_valor_fatura_atual"
+        app:layout_constraintTop_toBottomOf="@id/tv_cartao_credito" />
+
+    <TextView
+        android:id="@+id/tv_get_limite_rs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="R$"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_get_valor_limite_disponivel"
+        app:layout_constraintEnd_toStartOf="@+id/tv_get_valor_limite_disponivel"
+        app:layout_constraintTop_toTopOf="@+id/tv_get_valor_limite_disponivel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

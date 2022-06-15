@@ -1,8 +1,4 @@
-package com.example.futurebankgrupo1.fatura.pagarfatura;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+package com.example.futurebankgrupo1;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.HomeActivity;
-import com.example.futurebankgrupo1.MyViewModel;
-import com.example.futurebankgrupo1.User;
-import com.example.futurebankgrupo1.databinding.ActivityComprovanteFaturaBinding;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.futurebankgrupo1.databinding.ActivityRecargaComprovanteBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,9 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ComprovanteFatura extends AppCompatActivity {
+public class RecargaComprovanteActivity extends AppCompatActivity {
 
-    private ActivityComprovanteFaturaBinding binding;
+    private ActivityRecargaComprovanteBinding binding;
     private MyViewModel viewModel;
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -33,7 +30,7 @@ public class ComprovanteFatura extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityComprovanteFaturaBinding.inflate(getLayoutInflater());
+        binding = ActivityRecargaComprovanteBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -44,7 +41,33 @@ public class ComprovanteFatura extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
+        String telefone;
+        String operadora;
+        String valorRecarga;
+        String tipoPagamento;
+
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+
+        telefone = preferences.getString("chaveTelefone", "");
+        binding.tvGetTelRecebedor.setText(telefone);
+
+        operadora = preferences.getString("chaveOperadora", "");
+        binding.tvGetOperRecebedora.setText(operadora);
+
+        valorRecarga = preferences.getString("chaveValorRecarga", "");
+        binding.tvGetValorRecarga.setText("R$" + valorRecarga);
+
+        tipoPagamento = preferences.getString("chaveTipoPagamento", "");
+        binding.tvGetConta1.setText(tipoPagamento);
+
+
+//        //puxa dados tela p/ comprovante
+//        binding.tvGetTelRecebedor.getText().toString();
+//        binding.tvGetOperRecebedora.getText().toString();
+//        binding.tvGetValorRecarga.getText().toString();
+//        binding.tvGetConta1.getText().toString(); //tipo de pagamento
+//        binding.tvGetPagador.getText().toString();
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -63,19 +86,8 @@ public class ComprovanteFatura extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ComprovanteFatura.this, "Ocorreu algum erro com o nome do pagador!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RecargaComprovanteActivity.this, "Ocorreu algum erro com o nome do pagador!", Toast.LENGTH_SHORT).show();
             }
         });
-
-        int day;
-        int month;
-        int year;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        day = preferences.getInt("chaveDay",0);
-        month = preferences.getInt("chaveMonth",0);
-        year= preferences.getInt("chaveYear", 0);
-        binding.tvGetDataHora.setText(day + "/" +month+"/"+year);
-
-
     }
 }

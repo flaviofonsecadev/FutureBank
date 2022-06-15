@@ -2,17 +2,43 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.futurebankgrupo1">
+    
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/logo_android_quadrado"
+        android:label="FutureBANK"
+        android:roundIcon="@drawable/logo_android_redondo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
+
+
+
+
+
+
+
+
+
+        <activity
+            android:name=".SubSplashActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ResgatarComprovante"
+            android:exported="false" />
+        <activity
+            android:name=".AplicarComprovante"
+            android:exported="false" />
+        <activity
+            android:name=".ResgatarCC"
+            android:exported="false" />
+        <activity
+            android:name=".AplicarCP"
+            android:exported="false" />
         <activity
             android:name=".ResetarSenha"
             android:exported="false" />
@@ -108,6 +134,9 @@
             android:exported="false" />
         <activity
             android:name=".AdicionarCartaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubSplashActivity2"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

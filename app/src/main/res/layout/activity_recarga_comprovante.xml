@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fatura.pagarfatura.ComprovanteFatura">
+    tools:context=".RecargaComprovanteActivity">
 
     <ImageView
         android:id="@+id/header"
@@ -29,13 +29,13 @@
         app:srcCompat="@drawable/ic_clear" />
 
     <TextView
-        android:id="@+id/tv_pagamento_realizado"
+        android:id="@+id/tv_recarga_realizada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Pagamento Realizado"
+        android:text="Recarga Realizada"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pagamento_realizado" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_recarga_realizada" />
 
     <View
         android:id="@+id/line_1"
@@ -63,33 +63,33 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_get_data_hora"/>
 
     <TextView
-        android:id="@+id/tv_inst_recebedora"
+        android:id="@+id/tv_tel_recebedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/robotolight"
-        android:text="Instituição Recebedora"
+        android:text="Telefone"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
     <TextView
-        android:id="@+id/tv_cnpj"
+        android:id="@+id/tv_oper_recebora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="CNPJ"
+        android:text="Operadora de telefonia"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_inst_recebedora" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tel_recebedor" />
 
     <TextView
-        android:id="@+id/tv_valor_pago"
+        android:id="@+id/tv_valor_recarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -99,7 +99,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cnpj" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_oper_recebora" />
 
     <TextView
         android:id="@+id/tv_tipo_pagamento"
@@ -112,54 +112,54 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_valor_pago" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_recarga" />
 
     <TextView
-        android:id="@+id/tv_get_inst_recebedora"
+        android:id="@+id/tv_get_tel_recebedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="FutureBANK"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_inst_recebedora"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_tel_recebedor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_inst_recebedora" />
+        app:layout_constraintTop_toTopOf="@+id/tv_tel_recebedor" />
 
     <TextView
-        android:id="@+id/tv_get_cnpj"
+        android:id="@+id/tv_get_oper_recebedora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="12.345.678/0001-90"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cnpj"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_oper_recebora"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_cnpj" />
+        app:layout_constraintTop_toTopOf="@+id/tv_oper_recebora" />
 
     <TextView
-        android:id="@+id/tv_get_valor_pago"
+        android:id="@+id/tv_get_valor_recarga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="635,50"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_pago"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_valor_recarga"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_valor_pago" />
+        app:layout_constraintTop_toTopOf="@+id/tv_valor_recarga" />
 
     <TextView
         android:id="@+id/tv_get_conta1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Saldo em conta"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_tipo_pagamento"
@@ -219,7 +219,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="Conta Corrente"
+        android:text="Conta"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -276,20 +276,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_conta_corrente" />
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_confirmar_transferencia"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:layout_marginHorizontal="20dp"-->
-<!--        android:fontFamily="@font/robotomedium"-->
-<!--        android:text="Compartilhar Comprovante"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textSize="18sp"-->
-<!--        android:background="@drawable/custom_buttom"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

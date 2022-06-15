@@ -94,6 +94,12 @@ public class MyViewModel extends ViewModel {
     }
 
 
+    public void setarSaldoPoupanca (float novoSaldoPoupanca){
+        getReference().child(getUser().getUid()).child("saldoPoupanca").setValue(novoSaldoPoupanca);
+
+    }
+
+
     float limiteCartao;
     public float exibirLimiteCartao() {
         getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
