@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -49,9 +50,6 @@ public class HomeActivity extends AppCompatActivity {
         userID = user.getUid();
 
 
-        //
-
-
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -62,8 +60,10 @@ public class HomeActivity extends AppCompatActivity {
                     String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
+
                     binding.tvOlaCliente.setText("Olá, " + nome);
-                    binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                 }
             }
             @Override
@@ -288,7 +288,7 @@ public class HomeActivity extends AppCompatActivity {
         //Mostrar saldo conta corrente
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+        //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
         binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
 
