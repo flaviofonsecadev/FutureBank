@@ -18,12 +18,9 @@
         <activity
             android:name=".RecargaComprovanteActivity"
             android:exported="false" />
-
-
-
-
-
-
+        <activity
+            android:name=".ReagendarPagamentosActivity"
+            android:exported="false" />
         <activity
             android:name=".CobrarQrCodeActivity"
             android:exported="false" />
