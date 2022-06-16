@@ -112,8 +112,8 @@ public class MyViewModel extends ViewModel {
         return limiteCartao;
     }
 
-    public void setarLimiteCartaoFirebase (float novoSaldoPoupanca){
-        getReference().child(getUser().getUid()).child("limiteCartao").setValue(novoSaldoPoupanca);
+    public void setarLimiteCartaoFirebase (float novolimiteCartao){
+        getReference().child(getUser().getUid()).child("limiteCartao").setValue(novolimiteCartao);
     }
 
 
@@ -162,8 +162,8 @@ public class MyViewModel extends ViewModel {
         return valorFatura;
     }
 
-    public void setarValorFaturaFirebase (float novoSaldoPoupanca){
-        getReference().child(getUser().getUid()).child("valorFatura").setValue(novoSaldoPoupanca);
+    public void setarValorFaturaFirebase (float novoValorFatura){
+        getReference().child(getUser().getUid()).child("valorFatura").setValue(novoValorFatura);
     }
 
 
