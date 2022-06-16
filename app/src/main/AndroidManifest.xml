@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.futurebankgrupo1">
-    
-    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    package="com.example.futurebankgrupo1" >
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,10 @@
         android:roundIcon="@drawable/logo_android_redondo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FutureBankGrupo1"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".TelaConfirmarDadosPixCopiaCola"
+            android:exported="false" />
         <activity
             android:name=".RecargaComprovanteActivity"
             android:exported="false" />
@@ -140,7 +143,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

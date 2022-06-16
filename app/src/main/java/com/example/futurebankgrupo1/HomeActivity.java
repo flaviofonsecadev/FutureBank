@@ -288,6 +288,8 @@ public class HomeActivity extends AppCompatActivity {
         //Mostrar saldo conta corrente
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+
+
         binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
         binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
