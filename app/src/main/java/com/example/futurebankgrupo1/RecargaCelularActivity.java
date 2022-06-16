@@ -111,7 +111,6 @@ public class RecargaCelularActivity extends AppCompatActivity {
             }
         });
 
-
         binding.icClear.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
@@ -180,35 +179,13 @@ public class RecargaCelularActivity extends AppCompatActivity {
 //            editor.commit();
 //        });
 
-
-
-        /*binding.btnRecarregar.setOnClickListener(v -> {
-            float saldo = viewModel.exibirSaldoContaCorrente();
-            if (saldo >= valRecarga){ //*****************************************************
-                viewModel.setarSaldo(saldo - valRecarga); //*******************************
-                Toast.makeText(this, "Recarga efetuada com sucesso!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Saldo insuficiente para realizar essa recarga! Tente novamente.", Toast.LENGTH_LONG).show();}*/
-
-
 //            new String(String.valueOf(viewModel.comprarCartaoCredito()));
 //            binding.tvGetSaldo.setText(df.format((viewModel.exibirSaldoContaCorrente())));
-
-
-
-
-
-
-
-
 
         /*binding.button.setOnClickListener(v -> {
             new String(String.valueOf(viewModel.comprarCartaoCredito()));
         });*/
 
         //binding.button.setOnClickListener(String.valueOf(viewModel.comprarCartaoCredito()));
-
     }
 }

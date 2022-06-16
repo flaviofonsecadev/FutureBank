@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.futurebankgrupo1.PixTransferirActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
             startActivity(intent);
         });
 
