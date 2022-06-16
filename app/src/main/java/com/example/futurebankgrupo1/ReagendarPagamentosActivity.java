@@ -47,7 +47,7 @@ public class ReagendarPagamentosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int day=reagendar_data.getDayOfMonth();
-                int month=(reagendar_data.getMonth() + 1);
+                int month=(reagendar_data.getMonth());
                 int year=reagendar_data.getYear();
 
                 //reagendar_text.setText("Date :"+day+"/"+month+"/"+year);

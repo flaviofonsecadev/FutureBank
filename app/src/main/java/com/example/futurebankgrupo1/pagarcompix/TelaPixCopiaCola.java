@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.futurebankgrupo1.AreaPixActivity;
 import com.example.futurebankgrupo1.HomeActivity;
+import com.example.futurebankgrupo1.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPixCopiaColaBinding;
 
 public class TelaPixCopiaCola extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class TelaPixCopiaCola extends AppCompatActivity {
         });
 
         binding.btnProsseguir.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
+            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPixCopiaCola.class);
             startActivity(intent);
         });
     }
