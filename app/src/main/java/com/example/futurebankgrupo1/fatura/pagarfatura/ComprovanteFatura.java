@@ -22,13 +22,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class ComprovanteFatura extends AppCompatActivity {
 
     private ActivityComprovanteFaturaBinding binding;
     private MyViewModel viewModel;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,13 @@ public class ComprovanteFatura extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+//        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+//
+//        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
 
-        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -57,8 +59,11 @@ public class ComprovanteFatura extends AppCompatActivity {
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();
+                    float valorFatura = userProfile.getValorFatura();
 
                     binding.tvGetPagador.setText(nome);
+                    //binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura));
+
                 }
             }
             @Override
