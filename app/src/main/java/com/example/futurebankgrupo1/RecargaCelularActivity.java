@@ -26,11 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class RecargaCelularActivity extends AppCompatActivity {
 
     private ActivityRecargaCelularBinding binding;
-    private MyViewModel viewModel;
-
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
+    //MyViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +35,9 @@ public class RecargaCelularActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -49,9 +45,64 @@ public class RecargaCelularActivity extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    String telefone = userProfile.getTelefone();
+                    String telefoneFirebase = userProfile.getTelefone();
+                    float valorFatura = userProfile.getValorFatura();
+                    float limite = userProfile.getLimiteCartao();
+                    float saldo = userProfile.getSaldo();
 
-                    binding.edtTelefone.setText(telefone);
+                    binding.edtTelefone.setText(telefoneFirebase);
+
+
+                    binding.btnRecarregar.setOnClickListener(view1 -> {
+                         //spinner
+                        float valorSelect = Float.parseFloat(binding.spValor.getSelectedItem().toString());
+                        String pagamentoSelect = binding.spPagamento.getSelectedItem().toString();
+                        String operadoraSelect = binding.spOperadora.getSelectedItem().toString();
+                        String telefone = binding.edtTelefone.getText().toString();
+
+                        if ((pagamentoSelect.equals("Débito")) && saldo >= valorSelect) {
+                            reference.child(userID).child("saldo").setValue(saldo - valorSelect);
+                            Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
+                            startActivity(intent);
+                        }
+
+                        if ((pagamentoSelect.equals("Crédito")) && limite >= valorSelect){
+                            reference.child(userID).child("valorFatura").setValue(valorFatura + valorSelect);
+                            reference.child(userID).child("limiteCartao").setValue(limite - valorSelect);
+                            Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
+                            startActivity(intent);
+                        }
+
+
+                        if (!pagamentoSelect.isEmpty() && !operadoraSelect.isEmpty() && !telefone.isEmpty() && Patterns.PHONE.matcher(telefone).matches()) {
+
+                        } else {
+                            if (telefone.isEmpty()) {
+                                binding.edtTelefone.setError("Preencha o campo");
+                            }
+                            if (!Patterns.PHONE.matcher(telefone).matches()) {
+                                binding.edtTelefone.setError("Preencha o campo");
+                            }
+                            if (valorSelect<=0) {
+                                ((TextView) binding.spValor.getSelectedView()).setError("Selecione um dos campos");
+                            }
+                            if (pagamentoSelect.isEmpty()) {
+                                ((TextView) binding.spOperadora.getSelectedView()).setError("Selecione um dos campos");
+                            }
+                            if (operadoraSelect.isEmpty()) {
+                                ((TextView) binding.spPagamento.getSelectedView()).setError("Selecione um dos campos");
+                            };
+                        }
+                        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("chaveTelefone", binding.edtTelefone.getText().toString());
+                        editor.putString("chaveOperadora", binding.spOperadora.getSelectedItem().toString());
+                        editor.putString("chaveValorRecarga", binding.spValor.getSelectedItem().toString());
+                        editor.putString("chaveTipoPagamento", binding.spPagamento.getSelectedItem().toString());
+                        editor.commit();
+                    });
+
+
                 }
             }
             @Override
@@ -65,53 +116,68 @@ public class RecargaCelularActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.btnRecarregar.setOnClickListener(view1 -> {
+        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-            //String valorSelect1 = binding.spValor.getSelectedItem().toString();
-            float valorSelect = Float.parseFloat(binding.spValor.getSelectedItem().toString());
 
-            String pagamentoSelect = binding.spPagamento.getSelectedItem().toString();
-            String operadoraSelect = binding.spOperadora.getSelectedItem().toString();
-            String telefone = binding.edtTelefone.getText().toString();
 
-            if (viewModel.exibirSaldoContaCorrente() >= valorSelect){
-                viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valorSelect);
-                Toast.makeText(this, "Recarga efetuada com sucesso!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Saldo insuficiente para realizar essa recarga! Tente novamente.", Toast.LENGTH_LONG).show();}
-
-            if (!pagamentoSelect.isEmpty() && !operadoraSelect.isEmpty() && !telefone.isEmpty() && Patterns.PHONE.matcher(telefone).matches()) {
-                Intent intent = new Intent(this, RecargaComprovanteActivity.class);
-                startActivity(intent);
-            } else {
-                if (telefone.isEmpty()) {
-                    binding.edtTelefone.setError("Preencha o campo");
-                }
-                if (!Patterns.PHONE.matcher(telefone).matches()) {
-                    binding.edtTelefone.setError("Preencha o campo");
-                }
-               /* if (valorSelect1.isEmpty()) {
-                    ((TextView) binding.spValor.getSelectedView()).setError("Selecione um dos campos");
-                }*/
-                if (pagamentoSelect.isEmpty()) {
-                    ((TextView) binding.spOperadora.getSelectedView()).setError("Selecione um dos campos");
-                }
-                if (operadoraSelect.isEmpty()) {
-                    ((TextView) binding.spPagamento.getSelectedView()).setError("Selecione um dos campos");
-                };
-            }
-            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("chaveTelefone", binding.edtTelefone.getText().toString());
-            editor.putString("chaveOperadora", binding.spOperadora.getSelectedItem().toString());
-            editor.putString("chaveValorRecarga", binding.spValor.getSelectedItem().toString());
-            editor.putString("chaveTipoPagamento", binding.spPagamento.getSelectedItem().toString());
-            editor.commit();
-        });
+        //
+//        binding.btnRecarregar.setOnClickListener(view1 -> {
+//
+//            //String valorSelect1 = binding.spValor.getSelectedItem().toString();
+//            float valorSelect = Float.parseFloat(binding.spValor.getSelectedItem().toString());
+//
+//            String pagamentoSelect = binding.spPagamento.getSelectedItem().toString();
+//            String operadoraSelect = binding.spOperadora.getSelectedItem().toString();
+//            String telefone = binding.edtTelefone.getText().toString();
+//
+//            //float saldo = viewModel.exibirSaldoContaCorrente();
+//
+//
+//            if ((pagamentoSelect.equals("Débito")) && viewModel.exibirSaldoContaCorrente() >= valorSelect) {
+//                viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valorSelect);
+//                Toast.makeText(this, "Recarga efetuada com sucesso!", Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
+//                startActivity(intent);
+//            }
+//
+//            if ((pagamentoSelect.equals("Crédito")) && viewModel.exibirLimiteCartaoFirebase() >= valorSelect){
+//                viewModel.setarValorFaturaFirebase(viewModel.exibirValorFaturaFirebase() + valorSelect);
+//                viewModel.setarLimiteCartaoFirebase(viewModel.exibirLimiteCartaoFirebase() - valorSelect);
+//                Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
+//                startActivity(intent);
+//            }
+//
+//
+//            if (!pagamentoSelect.isEmpty() && !operadoraSelect.isEmpty() && !telefone.isEmpty() && Patterns.PHONE.matcher(telefone).matches()) {
+////                Intent intent = new Intent(this, RecargaComprovanteActivity.class);
+////                startActivity(intent);
+//            } else {
+//                if (telefone.isEmpty()) {
+//                    binding.edtTelefone.setError("Preencha o campo");
+//                }
+//                if (!Patterns.PHONE.matcher(telefone).matches()) {
+//                    binding.edtTelefone.setError("Preencha o campo");
+//                }
+//                if (valorSelect<=0) {
+//                    ((TextView) binding.spValor.getSelectedView()).setError("Selecione um dos campos");
+//                }
+//                if (pagamentoSelect.isEmpty()) {
+//                    ((TextView) binding.spOperadora.getSelectedView()).setError("Selecione um dos campos");
+//                }
+//                if (operadoraSelect.isEmpty()) {
+//                    ((TextView) binding.spPagamento.getSelectedView()).setError("Selecione um dos campos");
+//                };
+//            }
+//            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+//            SharedPreferences.Editor editor = preferences.edit();
+//            editor.putString("chaveTelefone", binding.edtTelefone.getText().toString());
+//            editor.putString("chaveOperadora", binding.spOperadora.getSelectedItem().toString());
+//            editor.putString("chaveValorRecarga", binding.spValor.getSelectedItem().toString());
+//            editor.putString("chaveTipoPagamento", binding.spPagamento.getSelectedItem().toString());
+//            editor.commit();
+//        });
 
 //            new String(String.valueOf(viewModel.comprarCartaoCredito()));
 //            binding.tvGetSaldo.setText(df.format((viewModel.exibirSaldoContaCorrente())));
