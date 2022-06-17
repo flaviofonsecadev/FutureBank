@@ -80,6 +80,11 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+        //binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvValorAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+        //binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
+        binding.tvGetLimite.setText(dinheiroBR.format(viewModel.exibirLimite()));
+
        // binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
         //binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
 
@@ -105,7 +110,6 @@ public class FaturaCartao extends AppCompatActivity {
                 Toast.makeText(FaturaCartao.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {

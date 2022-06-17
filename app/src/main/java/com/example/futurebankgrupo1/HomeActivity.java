@@ -30,9 +30,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
+    private int cont = 1;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
+
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +46,15 @@ public class HomeActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         String userID = user.getUid();
+
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -56,18 +67,60 @@ public class HomeActivity extends AppCompatActivity {
                     float valorFatura = userProfile.getValorFatura();
                     float limiteCartao = userProfile.getLimiteCartao();
 
+<<<<<<< app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
+
+                    binding.tvOlaCliente.setText("Olá, " + nome);
+                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    //binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+=======
                     binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
                     binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
                     binding.tvOlaCliente.setText("Olá, " + nome);
                     //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
                     binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+>>>>>>> app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
                 }
+                //botão ocultar valores
+                binding.iconEyeHome.setOnClickListener(v -> {
+                    float saldo = userProfile.getSaldo();
+                    if (cont == 1) {
+                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+                        binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
+                        cont = 0;
+                    } else {
+                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
+                        binding.tvSaldoDisponivel.setText("R$ ******");
+                        binding.tvGetValorFaturaAtual.setText("R$ ******");
+                        binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+                        cont = 1;
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        /*//botão ocultar valores
+        binding.iconEyeHome.setOnClickListener(v -> {
+            if (cont == 1) {
+                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
+                binding.tvSaldoDisponivel.setText("R$ ******");
+                binding.tvGetValorFaturaAtual.setText("R$ ******");
+                binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+                cont = 0;
+            } else {
+                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+                binding.tvSaldoDisponivel.setText(dinheiroBR.format(viewModel.exibirSaldoContaCorrente()));
+                binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+                binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
+                cont = 1;
+            }
+        });*/
 
 
         //botão home
@@ -205,7 +258,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.ivArrowForward1.setOnClickListener(v -> {
+        binding.ivArrowForward2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), FaturaCartao.class);
             startActivity(intent);
         });
@@ -285,9 +338,15 @@ public class HomeActivity extends AppCompatActivity {
         //Mostrar saldo conta corrente, limite e fatura cartao
       //  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
+<<<<<<< app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
+        /*binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));*/
+=======
         //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
        // binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
         //binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
+>>>>>>> app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
 
     }
 }

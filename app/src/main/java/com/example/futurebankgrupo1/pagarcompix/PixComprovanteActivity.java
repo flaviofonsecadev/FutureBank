@@ -66,5 +66,12 @@ public class PixComprovanteActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
         binding.tvGetValorTransferido.setText("R$" + valorPix);
+
+        String mensagemPix;
+        mensagemPix = preferences.getString("chaveMensagemPix", "");
+        binding.tvTipoPgto.setText(mensagemPix);
+
+
+
     }
 }
