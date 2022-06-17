@@ -3,10 +3,12 @@ package com.example.futurebankgrupo1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixCopiaColaBinding;
+import com.example.futurebankgrupo1.pagarcompix.PixComprovanteActivity;
 import com.example.futurebankgrupo1.pagarcompix.TelaPixCopiaCola;
 
 public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
@@ -32,6 +34,10 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
 
 
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("chaveMensagemPixCopiaCola", binding.edtMensagem.getText().toString());
+            editor.commit();
             Intent intent = new Intent(getApplicationContext(), PixComprovanteCopiaCola.class);
             startActivity(intent);
         });

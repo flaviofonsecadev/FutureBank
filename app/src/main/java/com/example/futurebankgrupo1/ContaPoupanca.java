@@ -22,13 +22,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class    ContaPoupanca extends AppCompatActivity {
 
     private ActivityContaPoupancaBinding binding;
     //private MyViewModel viewModel;
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     private RecyclerView recyclerView;
     private List<RecyclerPoupanca> listaRecyclerPoupancas = new ArrayList<>();
@@ -53,8 +58,10 @@ public class    ContaPoupanca extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    binding.tvGetValorContaCorrente.setText(String.valueOf("R$" + saldo));
-                    binding.tvValorGuardado.setText(String.valueOf("R$" + saldoPoupanca));
+                    //binding.tvGetValorContaCorrente.setText(String.valueOf("R$" + saldo));
+                    binding.tvGetValorContaCorrente.setText(dinheiroBR.format(saldo));
+                    //binding.tvValorGuardado.setText(String.valueOf("R$" + saldoPoupanca));
+                    binding.tvValorGuardado.setText(dinheiroBR.format(saldoPoupanca));
 
                 }
             }

@@ -46,6 +46,34 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
+
+
+        //
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    String nome = userProfile.getNome();
+                    float saldo = userProfile.getSaldo();
+
+                    binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PagarFaturaConfirmarValor.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PagarFatura.class);
             startActivity(intent);
@@ -61,11 +89,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
             startActivity(intent);
         });
 
-
-
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFaturaFirebase()));
+        //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
 
         int day;
         int month;

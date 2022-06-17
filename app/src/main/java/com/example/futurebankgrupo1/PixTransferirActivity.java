@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class PixTransferirActivity extends AppCompatActivity {
@@ -32,6 +34,9 @@ public class PixTransferirActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
 
 
@@ -63,7 +68,8 @@ public class PixTransferirActivity extends AppCompatActivity {
                     String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
-                    binding.tvSaldoDisponivelPix.setText(String.valueOf(saldo));
+                    //binding.tvSaldoDisponivelPix.setText(String.valueOf(saldo));
+                    binding.tvSaldoDisponivelPix.setText(dinheiroBR.format(saldo));
                 }
             }
             @Override
