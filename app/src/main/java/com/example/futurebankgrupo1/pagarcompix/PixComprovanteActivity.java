@@ -72,6 +72,10 @@ public class PixComprovanteActivity extends AppCompatActivity {
         valorPix = preferences.getString("chaveValorPix", "");
         binding.tvGetValorTransferido.setText("R$" + valorPix);
 
+        String mensagemPix;
+        mensagemPix = preferences.getString("chaveMensagemPix", "");
+        binding.tvTipoPgto.setText(mensagemPix);
+
 
 
     }

@@ -17,8 +17,10 @@ import com.example.futurebankgrupo1.recycler.AdapterCompra;
 import com.example.futurebankgrupo1.databinding.ActivityFaturaCartaoBinding;
 import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFatura;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FaturaCartao extends AppCompatActivity {
 
@@ -26,6 +28,9 @@ public class FaturaCartao extends AppCompatActivity {
     private List<Compra> listaCompras = new ArrayList<>();
     private ActivityFaturaCartaoBinding binding;
     private MyViewModel viewModel;
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
 
     @Override
@@ -64,8 +69,10 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
+        //binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvValorAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+        //binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
+        binding.tvGetLimite.setText(dinheiroBR.format(viewModel.exibirLimite()));
 
 
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {

@@ -17,12 +17,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TiposContasActivity extends AppCompatActivity {
 
     private ActivityTiposContasBinding binding;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +50,10 @@ public class TiposContasActivity extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    binding.tvGetSaldoContas.setText(String.valueOf("R$" + saldo));
-                    binding.tvGetValorGuardadoContas.setText(String.valueOf("R$" + saldoPoupanca));
+                    //binding.tvGetSaldoContas.setText(String.valueOf("R$" + saldo));
+                    binding.tvGetSaldoContas.setText(dinheiroBR.format(saldo));
+                    //binding.tvGetValorGuardadoContas.setText(String.valueOf("R$" + saldoPoupanca));
+                    binding.tvGetValorGuardadoContas.setText(dinheiroBR.format(saldoPoupanca));
                 }
             }
             @Override

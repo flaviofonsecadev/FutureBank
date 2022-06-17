@@ -22,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class ComprovanteFatura extends AppCompatActivity {
 
     private ActivityComprovanteFaturaBinding binding;
@@ -29,6 +32,9 @@ public class ComprovanteFatura extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
+
+    Locale localeBR = new Locale( "pt", "BR" );
+    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +50,8 @@ public class ComprovanteFatura extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
+        //binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetValorPago.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");

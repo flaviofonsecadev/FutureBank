@@ -30,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
 
+    private int cont = 1;
+
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
@@ -51,8 +53,6 @@ public class HomeActivity extends AppCompatActivity {
 
         //
 
-
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -62,15 +62,52 @@ public class HomeActivity extends AppCompatActivity {
                     String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
+
                     binding.tvOlaCliente.setText("Olá, " + nome);
-                    binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    //binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                 }
+                //botão ocultar valores
+                binding.iconEyeHome.setOnClickListener(v -> {
+                    float saldo = userProfile.getSaldo();
+                    if (cont == 1) {
+                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+                        binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
+                        cont = 0;
+                    } else {
+                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
+                        binding.tvSaldoDisponivel.setText("R$ ******");
+                        binding.tvGetValorFaturaAtual.setText("R$ ******");
+                        binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+                        cont = 1;
+                    }
+                });
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        /*//botão ocultar valores
+        binding.iconEyeHome.setOnClickListener(v -> {
+            if (cont == 1) {
+                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
+                binding.tvSaldoDisponivel.setText("R$ ******");
+                binding.tvGetValorFaturaAtual.setText("R$ ******");
+                binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+                cont = 0;
+            } else {
+                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+                binding.tvSaldoDisponivel.setText(dinheiroBR.format(viewModel.exibirSaldoContaCorrente()));
+                binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+                binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
+                cont = 1;
+            }
+        });*/
 
 
         //botão home
@@ -208,7 +245,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.ivArrowForward1.setOnClickListener(v -> {
+        binding.ivArrowForward2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), FaturaCartao.class);
             startActivity(intent);
         });
@@ -290,9 +327,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+        /*binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
-        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
+        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));*/
 
     }
 }

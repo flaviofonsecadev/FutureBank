@@ -3,6 +3,8 @@ package com.example.futurebankgrupo1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -22,7 +24,16 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        binding.icClear.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        String mensagemPixCopiaCola;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        mensagemPixCopiaCola = preferences.getString("chaveMensagemPix", "");
+        binding.tvTipoPgto.setText(mensagemPixCopiaCola);
 
     }
 }

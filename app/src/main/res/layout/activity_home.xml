@@ -22,11 +22,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/icon_notification_home"
+        android:id="@+id/icon_eye_home"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
-        android:src="@drawable/icon_notifications_home"
+        android:src="@drawable/icon_eye_disabled"
         app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="@id/header"
         app:layout_constraintTop_toTopOf="@id/header" />
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/robotomedium"
-        android:text=""
+        android:text="R$ ******"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
@@ -366,7 +366,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/robotomedium"
-        android:text=""
+        android:text="R$ ******"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_get_valor_limite_disponivel"
@@ -399,7 +399,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text=""
+        android:text="R$ ******"
         android:fontFamily="@font/robotomedium"
         android:textSize="16sp"
         android:textStyle="bold"
