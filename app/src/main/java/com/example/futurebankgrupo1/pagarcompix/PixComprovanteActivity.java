@@ -76,7 +76,5 @@ public class PixComprovanteActivity extends AppCompatActivity {
         mensagemPix = preferences.getString("chaveMensagemPix", "");
         binding.tvTipoPgto.setText(mensagemPix);
 
-
-
     }
 }

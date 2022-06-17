@@ -91,25 +91,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-        /*//botão ocultar valores
-        binding.iconEyeHome.setOnClickListener(v -> {
-            if (cont == 1) {
-                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
-                binding.tvSaldoDisponivel.setText("R$ ******");
-                binding.tvGetValorFaturaAtual.setText("R$ ******");
-                binding.tvGetValorLimiteDisponivel.setText("R$ ******");
-                cont = 0;
-            } else {
-                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
-                binding.tvSaldoDisponivel.setText(dinheiroBR.format(viewModel.exibirSaldoContaCorrente()));
-                binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
-                binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
-                cont = 1;
-            }
-        });*/
-
-
         //botão home
         binding.icMenuHome.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
