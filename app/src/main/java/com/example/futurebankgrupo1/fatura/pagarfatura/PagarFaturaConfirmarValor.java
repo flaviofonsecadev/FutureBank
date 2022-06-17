@@ -8,14 +8,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.AplicarComprovante;
-import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
-import com.example.futurebankgrupo1.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.User;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaConfirmarValorBinding;
+import com.example.futurebankgrupo1.databinding.ActivityReagendarPagamentosBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,10 +31,13 @@ import java.util.Locale;
 public class PagarFaturaConfirmarValor extends AppCompatActivity {
 
     private ActivityPagarFaturaConfirmarValorBinding binding;
-    MyViewModel viewModel;
+    private MyViewModel viewModel;
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
+    DatePicker reagendar_data;
+    Button reagendar_button;
+    EditText reagendar_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +52,20 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         });
 
         binding.tvReagendarFatura.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ActivityReagendarPagamentosBinding.class);
+            startActivity(intent);
+        });
+
+        binding.btnPagarFatura.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
             startActivity(intent);
         });
 
 
-        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+
+        binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFaturaFirebase()));
 
         int day;
         int month;
@@ -67,47 +77,36 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         binding.tvAgora.setText(day + "/" +month+"/"+year);
 
 
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         String userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
-
                 if (userProfile != null){
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
                     float limite = userProfile.getLimiteCartao();
-
                     binding.tvGetValorFatura.setText(dinheiroBR.format(valorFatura));
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
                     //binding.tvGetValorFatura.setText(String.valueOf("R$" + valorFatura));
                     //binding.tvGetSaldoConta.setText(String.valueOf("R$" + saldo));
-
                     binding.btnPagarFatura.setOnClickListener(v -> {
-
                         if (saldo >= valorFatura){
                             //viewModel.setarSaldo(saldo - valorFatura);
                             //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
-
                             //userProfile.setSaldo(saldo - valorFatura);
                             //userProfile.setLimiteCartao(valorFatura + limite);
-
                             reference.child(userID).child("valorFatura").setValue(0);
                             reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
                             reference.child(userID).child("saldo").setValue(saldo - valorFatura);
-
                             Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
                             startActivity(intent);
                         }else {
                             Toast.makeText(PagarFaturaConfirmarValor.this, "Saldo indisponível.", Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
 
 //                    binding.btnPagarFatura.setOnClickListener(v -> {
 //
@@ -129,7 +128,6 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                 Toast.makeText(PagarFaturaConfirmarValor.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 //        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 //
@@ -153,7 +151,6 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
 //            }
 //
 //        });
-
 
 
     }

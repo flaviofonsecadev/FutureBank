@@ -15,6 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31" >
+
+        <activity
+            android:name=".fatura.pagarfatura.AgendaPagarFatura"
+            android:exported="false" />
+        <activity
+            android:name=".viacep.PixAgendamento"
+            android:exported="false" />
         <activity
             android:name=".TelaConfirmarDadosPixCopiaCola"
             android:exported="false" />
