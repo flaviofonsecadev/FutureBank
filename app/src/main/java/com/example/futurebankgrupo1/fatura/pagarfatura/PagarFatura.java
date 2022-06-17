@@ -35,17 +35,12 @@ public class PagarFatura extends AppCompatActivity {
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
 
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPagarFaturaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-
 
         binding.icClear.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -88,7 +83,5 @@ public class PagarFatura extends AppCompatActivity {
         });
 
 
-        //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
     }
 }

@@ -20,15 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class AplicarCP extends AppCompatActivity {
     ActivityAplicarCpBinding binding;
     MyViewModel viewModel;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +72,8 @@ public class AplicarCP extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcAplicar.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelCcAplicar.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelAplicar.setText(String.valueOf("R$" + saldoPoupanca));
-                    binding.tvSaldoDisponivelAplicar.setText(dinheiroBR.format(saldoPoupanca));
+                    binding.tvSaldoDisponivelCcAplicar.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivelAplicar.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }

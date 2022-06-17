@@ -38,11 +38,5 @@ public class TelaConfirmarDadosCobrarPix extends AppCompatActivity {
         /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),)
         });*/
-
-        String valorCobrarPix;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        valorCobrarPix = preferences.getString("chaveValorCobrarPix", "");
-        binding.tvValor.setText("R$" + valorCobrarPix);
-
     }
 }

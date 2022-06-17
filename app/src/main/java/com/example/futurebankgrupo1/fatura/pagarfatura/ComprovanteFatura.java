@@ -32,9 +32,6 @@ public class ComprovanteFatura extends AppCompatActivity {
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +44,9 @@ public class ComprovanteFatura extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
-        //binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorPago.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+//        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+//
+//        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");

@@ -22,18 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ContaCorrenteActivity extends AppCompatActivity {
 
     private ActivityContaCorrenteBinding binding;
     private MyViewModel viewModel;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     private RecyclerView recyclerView;
     private List<RecyclerCorrente> listaCorrente = new ArrayList<>();
@@ -62,10 +57,8 @@ public class ContaCorrenteActivity extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCc.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelCc.setText(dinheiroBR.format(saldo));
-                    //binding.tvGetValorGuardadoCorrente.setText(String.valueOf("R$" + saldoPoupanca));
-                    binding.tvGetValorGuardadoCorrente.setText(dinheiroBR.format(saldoPoupanca));
+                    binding.tvSaldoDisponivelCc.setText(String.valueOf("R$" + saldo));
+                    binding.tvGetValorGuardadoCorrente.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }
