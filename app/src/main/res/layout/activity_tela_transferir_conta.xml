@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TelaTransferirConta">
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/rosa"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_clear"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:srcCompat="@drawable/ic_clear" />
+
+    <ImageView
+        android:id="@+id/iv_transferir_rosa"
+        android:layout_width="45dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/transferir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+
+    <TextView
+        android:id="@+id/tv_transferir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="240dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="Transferir"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_transferir_rosa"
+        app:layout_constraintStart_toEndOf="@id/iv_transferir_rosa"
+        app:layout_constraintTop_toTopOf="@+id/iv_transferir_rosa" />
+
+    <TextView
+        android:id="@+id/tv_descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Informe o valor e para quem \ndeseja transferir"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transferir" />
+
+    <TextView
+        android:id="@+id/tv_saldo_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20sp"
+        android:fontFamily="@font/robotolight"
+        android:text="Saldo disponível em conta"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
+
+    <TextView
+        android:id="@+id/tv_get_saldo_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="R$5.000,00"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_conta"
+        app:layout_constraintStart_toEndOf="@+id/tv_saldo_conta"
+        app:layout_constraintTop_toTopOf="@+id/tv_saldo_conta" />
+
+    <EditText
+        android:id="@+id/edt_valor_pix"
+        style="@style/Edit_Text_Login"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/cifrao"
+        android:gravity="end"
+        android:hint="0,00"
+        android:textSize="35dp"
+        android:fontFamily="@font/robotolight"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo_conta" />
+
+    <EditText
+        android:id="@+id/edt_inst_financeira"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableEnd="@drawable/ic_search_cinza"
+        android:hint="Instituição Financeira"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_valor_pix"
+        app:layout_constraintStart_toStartOf="@+id/edt_valor_pix"
+        app:layout_constraintTop_toBottomOf="@+id/edt_valor_pix" />
+
+    <EditText
+        android:id="@+id/edt_tipo_conta"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:drawableEnd="@drawable/ic_arrow_down_cinza"
+        android:hint="Tipo de Conta"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_inst_financeira"
+        app:layout_constraintStart_toStartOf="@+id/edt_inst_financeira"
+        app:layout_constraintTop_toBottomOf="@+id/edt_inst_financeira" />
+
+    <EditText
+        android:id="@+id/edt_agencia"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Agência"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_inst_financeira"
+        app:layout_constraintStart_toStartOf="@+id/edt_inst_financeira"
+        app:layout_constraintTop_toBottomOf="@+id/edt_tipo_conta" />
+
+
+    <EditText
+        android:id="@+id/edt_conta"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:hint="Conta"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_inst_financeira"
+        app:layout_constraintStart_toStartOf="@+id/edt_inst_financeira"
+        app:layout_constraintTop_toBottomOf="@+id/edt_agencia" />
+
+    <EditText
+        android:id="@+id/edt_email_login"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:hint="CPF do titular"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/edt_inst_financeira"
+        app:layout_constraintStart_toStartOf="@+id/edt_inst_financeira"
+        app:layout_constraintTop_toBottomOf="@+id/edt_conta" />
+
+
+    <TextView
+        android:id="@+id/tv_via_pix"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Transferir via Pix"
+        android:textColor="@color/rosa"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email_login" />
+
+    <Button
+        android:id="@+id/btn_tranf_conta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Transferir para esta conta"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
