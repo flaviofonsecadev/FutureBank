@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fatura.pagarfatura.AgendaPagarFatura">
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="143dp"
+        android:background="@color/rosa"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ic_clear_fatura"
+        android:layout_width="97dp"
+        android:layout_height="83dp"
+        android:layout_alignBottom="@+id/header"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="53dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:srcCompat="@drawable/ic_clear" />
+
+    <DatePicker
+        android:id="@+id/calendario_fatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_alignStart="@+id/ic_clear_fatura"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="54dp" />
+
+    <Button
+        android:id="@+id/btn_agendar_fatura"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendario_fatura"
+        android:layout_alignStart="@+id/calendario_fatura"
+        android:layout_alignEnd="@+id/calendario_fatura"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="68dp"
+        android:text="Reagendar" />
+
+    <EditText
+        android:id="@+id/reagendar_text_fatura"
+        android:layout_width="276dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/btn_agendar_fatura"
+        android:layout_alignStart="@+id/btn_agendar_fatura"
+        android:layout_alignEnd="@+id/btn_agendar_fatura"
+        android:layout_marginStart="-40dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="-46dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="155dp"
+        android:layout_height="39dp"
+        android:layout_alignBottom="@+id/header"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="47dp"
+        android:layout_toEndOf="@+id/ic_clear_fatura"
+        android:text="AGENDAMENTO"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

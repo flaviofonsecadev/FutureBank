@@ -48,27 +48,26 @@ public class MyViewModel extends ViewModel {
 
 
 
-    public MyViewModel() {
-        limiteDisponivel.setValue(1000);
-        valorFaturaAtual.setValue(55);
-        saldoContaCorrente.setValue(5000);
-        saldoContaPoupanca.setValue(2500);
-    }
+//    public MyViewModel() {
+//        limiteDisponivel.setValue(1000);
+//        valorFaturaAtual.setValue(55);
+//        saldoContaCorrente.setValue(5000);
+//        saldoContaPoupanca.setValue(2500);
+//    }
 
-    public float exibirValorFatura() {
-        float valor = valorFaturaAtual.getValue();
-        return valor;
-    }
+//    public float exibirValorFatura() {
+//        float valor = valorFaturaAtual.getValue();
+//        return valor;
+//    }
 
-    public float exibirLimite() {
-        float limite = limiteDisponivel.getValue();
-        return limite;
-    }
+//    public float exibirLimite() {
+//        float limite = limiteDisponivel.getValue();
+//        return limite;
+//    }
 
 
 
     float saldo;
-
     public float exibirSaldoContaCorrente() {
         getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -90,18 +89,11 @@ public class MyViewModel extends ViewModel {
 
     public void setarSaldo (float novoSaldo){
         getReference().child(getUser().getUid()).child("saldo").setValue(novoSaldo);
-
-    }
-
-
-    public void setarSaldoPoupanca (float novoSaldoPoupanca){
-        getReference().child(getUser().getUid()).child("saldoPoupanca").setValue(novoSaldoPoupanca);
-
     }
 
 
     float limiteCartao;
-    public float exibirLimiteCartao() {
+    public float exibirLimiteCartaoFirebase() {
         getReference().child(getUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -120,6 +112,9 @@ public class MyViewModel extends ViewModel {
         return limiteCartao;
     }
 
+    public void setarLimiteCartaoFirebase (float novolimiteCartao){
+        getReference().child(getUser().getUid()).child("limiteCartao").setValue(novolimiteCartao);
+    }
 
 
     float saldoPoupanca;
@@ -142,6 +137,9 @@ public class MyViewModel extends ViewModel {
         return saldoPoupanca;
     }
 
+    public void setarSaldoPoupanca (float novoSaldoPoupanca){
+        getReference().child(getUser().getUid()).child("saldoPoupanca").setValue(novoSaldoPoupanca);
+    }
 
 
     float valorFatura;
@@ -152,7 +150,7 @@ public class MyViewModel extends ViewModel {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    valorFatura = userProfile.getSaldo();
+                    valorFatura = userProfile.getValorFatura();
 
                 }
             }
@@ -164,12 +162,16 @@ public class MyViewModel extends ViewModel {
         return valorFatura;
     }
 
-
-
-    public float exibirSaldoContaPoupanca() {
-        float saldoCP = saldoContaPoupanca.getValue();
-        return saldoCP;
+    public void setarValorFaturaFirebase (float novoValorFatura){
+        getReference().child(getUser().getUid()).child("valorFatura").setValue(novoValorFatura);
     }
+
+
+
+//    public float exibirSaldoContaPoupanca() {
+//        float saldoCP = saldoContaPoupanca.getValue();
+//        return saldoCP;
+//    }
 
     /*public void comprarCredito() {
     int compra = 100;

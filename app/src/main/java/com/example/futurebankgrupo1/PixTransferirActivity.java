@@ -53,7 +53,6 @@ public class PixTransferirActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
-
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         user = FirebaseAuth.getInstance().getCurrentUser();

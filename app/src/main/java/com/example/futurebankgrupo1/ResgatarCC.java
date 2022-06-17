@@ -45,7 +45,7 @@ public class ResgatarCC extends AppCompatActivity {
 
         binding.buttonResgatar.setOnClickListener(v -> {
             float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
-            float saldoCc =  viewModel.exibirSaldoContaCorrente();
+            float saldoCc = viewModel.exibirSaldoContaCorrente();
             float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
 
             if (saldoCp >=valor){

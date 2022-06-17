@@ -30,14 +30,13 @@ public class TelaConfirmarDadosCobrarPix extends AppCompatActivity {
             startActivity(intent);
         });
 
+        String valorCobradoPix;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        valorCobradoPix = preferences.getString("chaveCobrarPix", "");
+        binding.tvValor.setText("R$" + valorCobradoPix);
+
         /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),)
         });*/
-
-        String valorCobrarPix;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        valorCobrarPix = preferences.getString("chaveValorCobrarPix", "");
-        binding.tvValor.setText("R$" + valorCobrarPix);
-
     }
 }

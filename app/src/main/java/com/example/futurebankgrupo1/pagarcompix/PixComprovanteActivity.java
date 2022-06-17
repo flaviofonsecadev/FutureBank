@@ -43,8 +43,6 @@ public class PixComprovanteActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,19 +62,22 @@ public class PixComprovanteActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         String valorPix;
+        int dayPix;
+        int monthPix;
+        int yearPix;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
+        dayPix = preferences.getInt("chaveDayPix",0);
+        monthPix = preferences.getInt("chaveMonthPix",0);
+        yearPix= preferences.getInt("chaveYearPix", 0);
+        binding.tvDataHora.setText(dayPix + "/" +monthPix+"/"+yearPix);
+
         binding.tvGetValorTransferido.setText("R$" + valorPix);
 
         String mensagemPix;
         mensagemPix = preferences.getString("chaveMensagemPix", "");
         binding.tvTipoPgto.setText(mensagemPix);
-
-
 
     }
 }

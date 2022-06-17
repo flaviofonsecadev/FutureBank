@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -90,25 +91,6 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-        /*//botão ocultar valores
-        binding.iconEyeHome.setOnClickListener(v -> {
-            if (cont == 1) {
-                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
-                binding.tvSaldoDisponivel.setText("R$ ******");
-                binding.tvGetValorFaturaAtual.setText("R$ ******");
-                binding.tvGetValorLimiteDisponivel.setText("R$ ******");
-                cont = 0;
-            } else {
-                binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
-                binding.tvSaldoDisponivel.setText(dinheiroBR.format(viewModel.exibirSaldoContaCorrente()));
-                binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
-                binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
-                cont = 1;
-            }
-        });*/
-
 
         //botão home
         binding.icMenuHome.setOnClickListener(v -> {
@@ -322,14 +304,12 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //Mostrar saldo conta corrente
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //Mostrar saldo conta corrente, limite e fatura cartao
+      //  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-
-
-        /*binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
-        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
-        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));*/
+        //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+       // binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        //binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
 
     }
 }

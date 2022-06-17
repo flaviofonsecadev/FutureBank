@@ -1,5 +1,6 @@
 package com.example.futurebankgrupo1.fatura;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.futurebankgrupo1.AplicarComprovante;
+import com.example.futurebankgrupo1.User;
 import com.example.futurebankgrupo1.recycler.Compra;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
@@ -16,6 +20,13 @@ import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.recycler.AdapterCompra;
 import com.example.futurebankgrupo1.databinding.ActivityFaturaCartaoBinding;
 import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFatura;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -69,10 +80,32 @@ public class FaturaCartao extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        //binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvValorAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+       // binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
         //binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
-        binding.tvGetLimite.setText(dinheiroBR.format(viewModel.exibirLimite()));
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
+
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+
+                if (userProfile != null){
+                    float valorFatura = userProfile.getValorFatura();
+                    float limiteCartao = userProfile.getLimiteCartao();
+
+                    binding.tvValorAtual.setText(dinheiroBR.format(valorFatura));
+                    binding.tvGetLimite.setText(dinheiroBR.format(limiteCartao));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(FaturaCartao.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         /*binding.btnEye.setOnClickListener(new View.OnClickListener() {
