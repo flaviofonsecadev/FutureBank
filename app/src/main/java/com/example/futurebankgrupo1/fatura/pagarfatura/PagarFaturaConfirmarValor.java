@@ -35,9 +35,9 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
-    DatePicker reagendar_data;
-    Button reagendar_button;
-    EditText reagendar_text;
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                 User userProfile = snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.getNome();
+                    //String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
@@ -92,7 +92,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
+        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
 
         int day;
         int month;
