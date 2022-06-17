@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,10 +34,6 @@ public class HomeActivity extends AppCompatActivity {
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +41,9 @@ public class HomeActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
-
-        //
-
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -61,9 +53,14 @@ public class HomeActivity extends AppCompatActivity {
                 if (userProfile != null){
                     String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
+                    float valorFatura = userProfile.getValorFatura();
+                    float limiteCartao = userProfile.getLimiteCartao();
 
+                    binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
+                    binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
                     binding.tvOlaCliente.setText("Olá, " + nome);
-                    binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                 }
             }
             @Override
@@ -71,7 +68,6 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         //botão home
         binding.icMenuHome.setOnClickListener(v -> {
@@ -285,12 +281,12 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //Mostrar saldo conta corrente
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //Mostrar saldo conta corrente, limite e fatura cartao
+      //  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
-        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
-        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
+        //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+       // binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        //binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
 
     }
 }

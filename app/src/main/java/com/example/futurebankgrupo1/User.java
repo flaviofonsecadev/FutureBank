@@ -3,9 +3,9 @@ package com.example.futurebankgrupo1;
 public class User {
     private String nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
     private float saldo = 100.0f;
-    private float limiteCartao = 1000.0f;
+    private float limiteCartao = 900.0f;
     private float saldoPoupanca = 200.0f;
-    private float valorFatura = 55.0f;
+    private float valorFatura; // = 55.0f;
 
 
 

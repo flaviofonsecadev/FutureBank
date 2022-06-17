@@ -43,8 +43,6 @@ public class PixComprovanteActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
-
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,9 +62,6 @@ public class PixComprovanteActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         String valorPix;
         int dayPix;
         int monthPix;
@@ -80,7 +75,9 @@ public class PixComprovanteActivity extends AppCompatActivity {
 
         binding.tvGetValorTransferido.setText("R$" + valorPix);
 
-
+        String mensagemPix;
+        mensagemPix = preferences.getString("chaveMensagemPix", "");
+        binding.tvTipoPgto.setText(mensagemPix);
 
     }
 }

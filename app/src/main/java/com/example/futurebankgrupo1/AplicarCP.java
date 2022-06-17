@@ -54,10 +54,8 @@ public class AplicarCP extends AppCompatActivity {
                 startActivity(intent);
 
             }else {
-                Toast.makeText(this, "Tente novamente.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AplicarCP.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
             }
-
-
         });
 
 
