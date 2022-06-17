@@ -61,7 +61,9 @@ public class HomeActivity extends AppCompatActivity {
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();
-                    float saldo = userProfile.getSaldo();
+                    /*float saldo = userProfile.getSaldo();
+                    float valorFatura = userProfile.getValorFatura();
+                    float limiteCartao = userProfile.getLimiteCartao();*/
 
 
                     binding.tvOlaCliente.setText("Olá, " + nome);
@@ -71,11 +73,13 @@ public class HomeActivity extends AppCompatActivity {
                 //botão ocultar valores
                 binding.iconEyeHome.setOnClickListener(v -> {
                     float saldo = userProfile.getSaldo();
+                    float valorFatura = userProfile.getValorFatura();
+                    float limiteCartao = userProfile.getLimiteCartao();
                     if (cont == 1) {
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
                         binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
-                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(viewModel.exibirValorFatura()));
-                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(viewModel.exibirLimite()));
+                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
+                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
                         cont = 0;
                     } else {
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
