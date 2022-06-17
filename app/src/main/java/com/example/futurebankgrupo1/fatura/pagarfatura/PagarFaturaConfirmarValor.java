@@ -65,7 +65,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
+        binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFaturaFirebase()));
 
         int day;
         int month;
