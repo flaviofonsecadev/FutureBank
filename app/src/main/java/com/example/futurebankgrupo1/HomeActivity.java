@@ -69,7 +69,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
         //botão home
         binding.icMenuHome.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
