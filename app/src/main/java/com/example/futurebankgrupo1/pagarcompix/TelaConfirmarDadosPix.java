@@ -7,9 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
-import com.example.futurebankgrupo1.databinding.ReagendarPagamentosBinding;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         });
 
         binding.tvReagendar.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosBinding.class);
+            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosActivity.class);
             startActivity(intent);
         });
 
