@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
 import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +30,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private MyViewModel viewModel;
-
     private int cont = 1;
 
     Locale localeBR = new Locale( "pt", "BR" );
@@ -51,7 +51,10 @@ public class HomeActivity extends AppCompatActivity {
         userID = user.getUid();
 
 
-        //
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
+
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -61,11 +64,21 @@ public class HomeActivity extends AppCompatActivity {
                 if (userProfile != null){
                     String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
+                    float valorFatura = userProfile.getValorFatura();
+                    float limiteCartao = userProfile.getLimiteCartao();
 
+<<<<<<< app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
 
                     binding.tvOlaCliente.setText("Olá, " + nome);
                     //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
                     //binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+=======
+                    binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
+                    binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
+                    binding.tvOlaCliente.setText("Olá, " + nome);
+                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+>>>>>>> app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
                 }
                 //botão ocultar valores
                 binding.iconEyeHome.setOnClickListener(v -> {
@@ -322,14 +335,18 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //Mostrar saldo conta corrente
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //Mostrar saldo conta corrente, limite e fatura cartao
+      //  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-
-
+<<<<<<< app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
         /*binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
         binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
         binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));*/
+=======
+        //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
+       // binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        //binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
+>>>>>>> app/src/main/java/com/example/futurebankgrupo1/HomeActivity.java
 
     }
 }

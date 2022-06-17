@@ -24,7 +24,12 @@ public class CobrarPix extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        /*binding.btnProximaTela.setOnClickListener(v -> {
+        binding.btnProximaTela.setOnClickListener(v -> {
+            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("chaveCobrarPix", binding.edtValorPix.getText().toString());
+            editor.commit();
+
             Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosCobrarPix.class);
             startActivity(intent);
         });*/
