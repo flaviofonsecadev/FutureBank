@@ -75,23 +75,6 @@
         app:layout_constraintStart_toStartOf="@+id/tv_descricao"
         app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
 
-    <!--<com.santalu.maskara.widget.MaskEditText
-        android:id="@+id/edt_valor_pix"
-        style="@style/Edit_Text_Login"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:drawableStart="@drawable/cifrao"
-        android:gravity="end"
-        app:mask="  ,  "
-        app:maskCharacter=" "
-        app:maskStyle="completable"
-        android:hint="0,00"
-        android:inputType="numberDecimal"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_saldo"/>-->
 
     <EditText
         android:id="@+id/edt_valor_pix"

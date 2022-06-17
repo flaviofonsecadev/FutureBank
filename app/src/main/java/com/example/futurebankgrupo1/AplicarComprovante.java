@@ -19,14 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class AplicarComprovante extends AppCompatActivity {
     ActivityAplicarComprovanteBinding binding;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +53,8 @@ public class AplicarComprovante extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcAplicarComprovante.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelCcAplicarComprovante.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelAplicarComprovante.setText(String.valueOf("R$" + saldoPoupanca));
-                    binding.tvSaldoDisponivelAplicarComprovante.setText(dinheiroBR.format(saldoPoupanca));
+                    binding.tvSaldoDisponivelCcAplicarComprovante.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivelAplicarComprovante.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }

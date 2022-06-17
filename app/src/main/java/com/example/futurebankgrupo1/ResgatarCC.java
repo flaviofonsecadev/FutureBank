@@ -20,15 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class ResgatarCC extends AppCompatActivity {
     ActivityResgatarCcBinding binding;
     MyViewModel viewModel;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +39,7 @@ public class ResgatarCC extends AppCompatActivity {
 
         binding.buttonResgatar.setOnClickListener(v -> {
             float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
-            float saldoCc =  viewModel.exibirSaldoContaCorrente();
+            float saldoCc = viewModel.exibirSaldoContaCorrente();
             float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
 
             if (saldoCp >=valor){
@@ -56,7 +50,6 @@ public class ResgatarCC extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("chaveValorResgatar", binding.edtValorResgatar.getText().toString());
-                //editor.putInt("chaveValorResgatar", Integer.parseInt(String.valueOf(binding.edtValorResgatar)));
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), ResgatarComprovante.class);
                 startActivity(intent);
@@ -82,10 +75,8 @@ public class ResgatarCC extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcResgatar.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelCcResgatar.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelResgatar.setText(String.valueOf("R$" + saldoPoupanca));
-                    binding.tvSaldoDisponivelResgatar.setText(dinheiroBR.format(saldoPoupanca));
+                    binding.tvSaldoDisponivelCcResgatar.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivelResgatar.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }

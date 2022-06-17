@@ -18,14 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class ResgatarComprovante extends AppCompatActivity {
     ActivityResgatarComprovanteBinding binding;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +33,9 @@ public class ResgatarComprovante extends AppCompatActivity {
         });
 
         String valorResgatar;
-        //Float valorResgatar;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorResgatar = preferences.getString("chaveValorResgatar", "");
-        //valorResgatar = preferences.getFloat("chaveValorResgatar", 0);
         binding.tvValorResgateComprovante.setText("R$" + valorResgatar);
-        //binding.tvValorResgateComprovante.setText(dinheiroBR.format(valorResgatar));
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -60,10 +51,8 @@ public class ResgatarComprovante extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcResgateComprovante.setText(String.valueOf("R$" + saldo));
-                    binding.tvSaldoDisponivelCcResgateComprovante.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelResgateComprovante.setText(String.valueOf("R$" + saldoPoupanca));
-                    binding.tvSaldoDisponivelResgateComprovante.setText(dinheiroBR.format(saldoPoupanca));
+                    binding.tvSaldoDisponivelCcResgateComprovante.setText(String.valueOf("R$" + saldo));
+                    binding.tvSaldoDisponivelResgateComprovante.setText(String.valueOf("R$" + saldoPoupanca));
 
                 }
             }

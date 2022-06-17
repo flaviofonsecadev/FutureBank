@@ -38,15 +38,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         binding.tvValor.setText("R$" + valorPix);
 
 
-
-
-
-
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences1.edit();
-            editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
-            editor.commit();
             Intent intent = new Intent(getApplicationContext(),PixComprovanteActivity.class);
             startActivity(intent);
         });
