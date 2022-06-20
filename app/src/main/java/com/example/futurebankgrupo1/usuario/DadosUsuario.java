@@ -9,8 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.configuracoes.TelaConfiguracoesActivity;
-import com.example.futurebankgrupo1.contas.AlterarDadosConta;
-import com.example.futurebankgrupo1.databinding.ActivityDadosContaBinding;
+import com.example.futurebankgrupo1.databinding.ActivityDadosUsuarioBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,13 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class DadosUsuario extends AppCompatActivity {
-    ActivityDadosContaBinding binding;
+    ActivityDadosUsuarioBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDadosContaBinding.inflate(getLayoutInflater());
+        binding = ActivityDadosUsuarioBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -36,12 +35,12 @@ public class DadosUsuario extends AppCompatActivity {
         });
 
         binding.tvAlterarDados.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AlterarDadosConta.class);
+            Intent intent = new Intent(getApplicationContext(), AlterarDadosUsuario.class);
             startActivity(intent);
         });
 
         binding.ivArrowForward.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AlterarDadosConta.class);
+            Intent intent = new Intent(getApplicationContext(), AlterarDadosUsuario.class);
             startActivity(intent);
         });
 

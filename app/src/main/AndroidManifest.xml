@@ -95,7 +95,7 @@
             android:name=".usuario.Security"
             android:exported="false" />
         <activity
-            android:name=".contas.AlterarDadosConta"
+            android:name=".usuario.AlterarDadosUsuario"
             android:exported="false" />
         <activity
             android:name=".usuario.DadosUsuario"
