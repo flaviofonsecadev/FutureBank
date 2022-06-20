@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="50dp"
-    tools:context=".SubSplashActivity2">
+    tools:context=".splash.SubSplashActivity2">
 
     <ImageView
         android:id="@+id/logo_sub_splash"

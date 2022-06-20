@@ -2,7 +2,6 @@ package com.example.futurebankgrupo1.fatura.pagarfatura;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +10,8 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
-import com.example.futurebankgrupo1.User;
+import com.example.futurebankgrupo1.usuario.User;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaBinding;
-import com.example.futurebankgrupo1.fatura.FaturaCartao;
-import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

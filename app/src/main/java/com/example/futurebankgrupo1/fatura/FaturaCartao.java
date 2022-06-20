@@ -11,8 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.AplicarComprovante;
-import com.example.futurebankgrupo1.User;
+import com.example.futurebankgrupo1.usuario.User;
 import com.example.futurebankgrupo1.recycler.Compra;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;

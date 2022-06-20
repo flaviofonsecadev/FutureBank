@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/rosa"
     android:paddingHorizontal="50dp"
-    tools:context=".SubSplashAcitivty">
+    tools:context=".splash.SubSplashAcitivty">
 
     <ImageView
         android:id="@+id/logo_sub_splash"

@@ -7,12 +7,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;
+import com.example.futurebankgrupo1.configuracoes.TelaConfiguracoesActivity;
+import com.example.futurebankgrupo1.contas.ContaCorrenteActivity;
 import com.example.futurebankgrupo1.databinding.ActivityHomeBinding;
 import com.example.futurebankgrupo1.fatura.FaturaCartao;
-import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
-import com.google.android.gms.tasks.Task;
+import com.example.futurebankgrupo1.transacoes.AreaPixActivity;
+import com.example.futurebankgrupo1.transacoes.CobrarPix;
+import com.example.futurebankgrupo1.transacoes.PixTransferirActivity;
+import com.example.futurebankgrupo1.transacoes.TelaPagar;
+import com.example.futurebankgrupo1.contas.TiposContasActivity;
+import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
+import com.example.futurebankgrupo1.seguros.SeguroCartaoActivity;
+import com.example.futurebankgrupo1.seguros.SeguroVida;
+import com.example.futurebankgrupo1.usuario.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,8 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 

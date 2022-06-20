@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="40dp"
-    tools:context=".CadastroActivity">
+    tools:context=".usuario.CadastroActivity">
 
     <TextView
         android:id="@+id/tv_future"

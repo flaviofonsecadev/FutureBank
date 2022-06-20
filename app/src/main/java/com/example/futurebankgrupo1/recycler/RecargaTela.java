@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityRecargaCelularBinding;
-import com.example.futurebankgrupo1.databinding.ActivityTelaPagarComPixBinding;
-import com.example.futurebankgrupo1.pagarcompix.TelaPagar;
 
 public class RecargaTela extends AppCompatActivity {
     private ActivityRecargaCelularBinding Binding;

@@ -20,88 +20,88 @@
             android:name=".fatura.pagarfatura.AgendaPagarFatura"
             android:exported="false" />
         <activity
-            android:name=".viacep.PixAgendamento"
+            android:name=".transacoes.PixAgendamento"
             android:exported="false" />
         <activity
-            android:name=".TelaConfirmarDadosPixCopiaCola"
+            android:name=".transacoes.TelaConfirmarDadosPixCopiaCola"
             android:exported="false" />
         <activity
-            android:name=".RecargaComprovanteActivity"
+            android:name=".recarga.RecargaComprovanteActivity"
             android:exported="false" />
         <activity
-            android:name=".ReagendarPagamentosActivity"
+            android:name=".fatura.ReagendarPagamentosActivity"
             android:exported="false" />
         <activity
-            android:name=".CobrarQrCodeActivity"
+            android:name=".transacoes.CobrarQrCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".TelaConfirmarDadosCobrarPix"
+            android:name=".transacoes.TelaConfirmarDadosCobrarPix"
             android:exported="false" />
         <activity
-            android:name=".ResgatarComprovante"
+            android:name=".contas.ResgatarComprovante"
             android:exported="false" />
         <activity
-            android:name=".AplicarComprovante"
+            android:name=".contas.AplicarComprovante"
             android:exported="false" />
         <activity
-            android:name=".ResgatarCC"
+            android:name=".contas.ResgatarCC"
             android:exported="false" />
         <activity
-            android:name=".AplicarCP"
+            android:name=".contas.AplicarCP"
             android:exported="false" />
         <activity
-            android:name=".ResetarSenha"
+            android:name=".usuario.ResetarSenha"
             android:exported="false" />
         <activity
-            android:name=".MeusCartoesActivity"
+            android:name=".cartoes.MeusCartoesActivity"
             android:exported="false" />
         <activity
-            android:name=".pagarcompix.PixComprovanteActivity"
+            android:name=".transacoes.PixComprovanteActivity"
             android:exported="false" />
         <activity
-            android:name=".PixComprovanteCopiaCola"
+            android:name=".transacoes.PixComprovanteCopiaCola"
             android:exported="false" />
         <activity
-            android:name=".RecargaCelularActivity"
+            android:name=".recarga.RecargaCelularActivity"
             android:exported="false" />
         <activity
-            android:name=".SeguroVida"
+            android:name=".seguros.SeguroVida"
             android:exported="false" />
         <activity
-            android:name=".SeguroCartaoActivity"
+            android:name=".seguros.SeguroCartaoActivity"
             android:exported="false" />
         <activity
-            android:name=".ContaPoupanca"
+            android:name=".contas.ContaPoupanca"
             android:exported="false" />
         <activity
-            android:name=".ContaCorrenteActivity"
+            android:name=".contas.ContaCorrenteActivity"
             android:exported="false" />
         <activity
-            android:name=".TiposContasActivity"
+            android:name=".contas.TiposContasActivity"
             android:exported="false" />
         <activity
-            android:name=".CartaoComumActivity"
+            android:name=".cartoes.CartaoComumActivity"
             android:exported="false" />
         <activity
-            android:name=".CobrarPix"
+            android:name=".transacoes.CobrarPix"
             android:exported="false" />
         <activity
-            android:name=".PixTransferirActivity"
+            android:name=".transacoes.PixTransferirActivity"
             android:exported="false" />
         <activity
-            android:name=".AreaPixActivity"
+            android:name=".transacoes.AreaPixActivity"
             android:exported="false" />
         <activity
-            android:name=".Security"
+            android:name=".usuario.Security"
             android:exported="false" />
         <activity
-            android:name=".AlterarDadosConta"
+            android:name=".contas.AlterarDadosConta"
             android:exported="false" />
         <activity
-            android:name=".DadosConta"
+            android:name=".usuario.DadosUsuario"
             android:exported="false" />
         <activity
-            android:name=".ConfiguracoesApp"
+            android:name=".configuracoes.ConfiguracoesApp"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -110,7 +110,7 @@
             android:name=".fatura.FaturaCartao"
             android:exported="false" />
         <activity
-            android:name=".TelaTransferirConta"
+            android:name=".transacoes.TelaTransferirConta"
             android:exported="false" />
         <activity
             android:name=".fatura.pagarfatura.ComprovanteFatura"
@@ -122,34 +122,34 @@
             android:name=".fatura.pagarfatura.PagarFatura"
             android:exported="false" />
         <activity
-            android:name=".pagarcompix.TelaConfirmarDadosPix"
+            android:name=".transacoes.TelaConfirmarDadosPix"
             android:exported="false" />
         <activity
-            android:name=".pagarcompix.TelaPixCopiaCola"
+            android:name=".transacoes.TelaPixCopiaCola"
             android:exported="false" />
         <activity
-            android:name=".pagarcompix.TelaPagarComPix"
+            android:name=".transacoes.TelaPagarComPix"
             android:exported="false" />
         <activity
-            android:name=".pagarcompix.TelaPagar"
+            android:name=".transacoes.TelaPagar"
             android:exported="true" />
         <activity
-            android:name=".CadastroActivity"
+            android:name=".usuario.CadastroActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".usuario.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".TelaConfiguracoesActivity"
+            android:name=".configuracoes.TelaConfiguracoesActivity"
             android:exported="false" />
         <activity
-            android:name=".AdicionarCartaoActivity"
+            android:name=".cartoes.AdicionarCartaoActivity"
             android:exported="false" />
         <activity
-            android:name=".SubSplashActivity2"
+            android:name=".splash.SubSplashActivity2"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".splash.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
