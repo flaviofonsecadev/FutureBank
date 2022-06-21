@@ -52,7 +52,7 @@ public class DadosUsuario extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();

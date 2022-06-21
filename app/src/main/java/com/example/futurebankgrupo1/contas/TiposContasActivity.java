@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTiposContasBinding;
-import com.example.futurebankgrupo1.usuario.User;
+import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -46,7 +46,7 @@ public class TiposContasActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
                     float saldo = userProfile.getSaldo();
