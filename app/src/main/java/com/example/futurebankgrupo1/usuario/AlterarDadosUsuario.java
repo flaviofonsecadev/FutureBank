@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.futurebankgrupo1.databinding.ActivityAlterarDadosUsuarioBinding;
 import com.example.futurebankgrupo1.usuario.DadosUsuario;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityAlterarDadosContaBinding;
@@ -19,14 +20,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AlterarDadosConta extends AppCompatActivity {
-    ActivityAlterarDadosContaBinding binding;
+public class AlterarDadosContaUsuario extends AppCompatActivity {
+    ActivityAlterarDadosUsuarioBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAlterarDadosContaBinding.inflate(getLayoutInflater());
+        binding = ActivityAlterarDadosUsuarioBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -78,7 +79,7 @@ public class AlterarDadosConta extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AlterarDadosConta.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlterarDadosContaUsuario.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
 
             }
         });
