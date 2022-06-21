@@ -112,21 +112,21 @@
         app:layout_constraintStart_toStartOf="@+id/tv_saldo_cc_aplicar"
         app:layout_constraintTop_toBottomOf="@id/tv_saldo_disponivel_cc_aplicar" />
 
-    <com.blackcat.currencyedittext.CurrencyEditText
+    <!--<com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/edt_valor_aplicar"
         style="@style/Edit_Text_Login"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:gravity="end"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:textSize="35sp"
         android:textColor="@color/rosa3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_descricao"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_descricao"/>-->
 
-    <!--<EditText
+    <EditText
         android:id="@+id/edt_valor_aplicar"
         style="@style/Edit_Text_Login"
         android:layout_marginStart="20dp"
@@ -135,11 +135,11 @@
         android:drawableStart="@drawable/cifrao"
         android:gravity="end"
         android:hint="0,00"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_descricao" />-->
+        app:layout_constraintTop_toBottomOf="@id/tv_descricao" />
 
 
     <Button
