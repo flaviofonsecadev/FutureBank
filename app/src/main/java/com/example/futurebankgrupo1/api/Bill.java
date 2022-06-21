@@ -1,4 +1,4 @@
-package api;
+package com.example.futurebankgrupo1.api;
 
 public class Bill {
 

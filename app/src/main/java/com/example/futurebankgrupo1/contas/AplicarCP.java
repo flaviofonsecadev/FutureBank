@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blackcat.currencyedittext.CurrencyEditText;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -31,6 +32,10 @@ public class AplicarCP extends AppCompatActivity {
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
+
+    /*CurrencyEditText currencyEditText = new CurrencyEditText();
+    Long valorRaw = currencyEditText.getRawValue();
+    String valorFormatado = currencyEditText.formatCurrency(Long.toString(valorRaw));*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
