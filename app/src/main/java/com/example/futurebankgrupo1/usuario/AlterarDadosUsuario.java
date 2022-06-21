@@ -1,4 +1,4 @@
-package com.example.futurebankgrupo1.contas;
+package com.example.futurebankgrupo1.usuario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.example.futurebankgrupo1.databinding.ActivityAlterarDadosUsuarioBinding;
 import com.example.futurebankgrupo1.usuario.DadosUsuario;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
-import com.example.futurebankgrupo1.databinding.ActivityAlterarDadosContaBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AlterarDadosContaUsuario extends AppCompatActivity {
+public class AlterarDadosUsuario extends AppCompatActivity {
     ActivityAlterarDadosUsuarioBinding binding;
 
 
@@ -79,7 +78,7 @@ public class AlterarDadosContaUsuario extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AlterarDadosContaUsuario.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlterarDadosUsuario.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
 
             }
         });
