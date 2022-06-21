@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.blackcat.currencyedittext.CurrencyEditText;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -33,10 +32,6 @@ public class AplicarCP extends AppCompatActivity {
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
-    /*CurrencyEditText currencyEditText = new CurrencyEditText();
-    Long valorRaw = currencyEditText.getRawValue();
-    String valorFormatado = currencyEditText.formatCurrency(Long.toString(valorRaw));*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +46,11 @@ public class AplicarCP extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         binding.buttonAplicar.setOnClickListener(v -> {
-            float valor = Float.parseFloat(binding.edtValorAplicar.getText().toString());
+            String textoMask = binding.edtValorAplicar.getText().toString();
+            String textoNovo = textoMask.replace(",", ".");
+            //Toast.makeText(this.getApplicationContext(), "oi" + textoNovo, Toast.LENGTH_LONG).show();
+            float valor = Float.parseFloat(textoNovo);
+            //System.out.println(valor);
             float saldoCc = viewModel.exibirSaldoContaCorrente();
             float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
 
@@ -65,12 +64,10 @@ public class AplicarCP extends AppCompatActivity {
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
                 startActivity(intent);
-
             }else {
                 Toast.makeText(AplicarCP.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -85,11 +82,8 @@ public class AplicarCP extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcAplicar.setText(String.valueOf("R$" + saldo));
                     binding.tvSaldoDisponivelCcAplicar.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelAplicar.setText(String.valueOf("R$" + saldoPoupanca));
                     binding.tvSaldoDisponivelAplicar.setText(dinheiroBR.format(saldoPoupanca));
-
                 }
             }
             @Override
@@ -97,7 +91,5 @@ public class AplicarCP extends AppCompatActivity {
                 Toast.makeText(AplicarCP.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 }
