@@ -112,7 +112,6 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
                     float limite = userProfile.getLimiteCartao();
-                    String valorFatura2 = String.valueOf(userProfile.getValorFatura());
                     binding.tvGetValorFatura.setText(dinheiroBR.format(valorFatura));
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
                     //binding.tvGetValorFatura.setText(String.valueOf("R$" + valorFatura));
@@ -123,14 +122,15 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                             //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
                             //userProfile.setSaldo(saldo - valorFatura);
                             //userProfile.setLimiteCartao(valorFatura + limite);
-                            SharedPreferences preferences1 = getSharedPreferences("chaveFatura", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences1.edit();
-                            editor.putString("chaveValorFatura",valorFatura2);
-                            editor.commit();
+
+                            Bundle enviarDados = new Bundle();
+                            enviarDados.putFloat("valorFatura", valorFatura);
+
                             reference.child(userID).child("valorFatura").setValue(0);
                             reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
                             reference.child(userID).child("saldo").setValue(saldo - valorFatura);
                             Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
+                            intent.putExtras(enviarDados);
                             startActivity(intent);
                         }else {
                             Toast.makeText(PagarFaturaConfirmarValor.this, "Saldo indisponível.", Toast.LENGTH_SHORT).show();

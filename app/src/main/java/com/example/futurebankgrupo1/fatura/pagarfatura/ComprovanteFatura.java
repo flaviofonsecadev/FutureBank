@@ -78,11 +78,15 @@ public class ComprovanteFatura extends AppCompatActivity {
         year= preferences.getInt("chaveYear", 0);
         binding.tvGetDataHora.setText(day + "/" +month+"/"+year);
 
-        String valorFatura2;
-        SharedPreferences preferences1 = getSharedPreferences("chaveFatura", MODE_PRIVATE);
-        valorFatura2 = preferences1.getString("chaveValorFatura", "");
-        binding.tvGetValorPago.setText(valorFatura2);
-        //binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura2));
+
+        Intent intentReceberDados = getIntent();
+        Bundle receberDados = intentReceberDados.getExtras();
+
+        if (receberDados != null) {
+            Float valorFatura = receberDados.getFloat("valorFatura");
+            binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura));
+        }
+
 
 
     }
