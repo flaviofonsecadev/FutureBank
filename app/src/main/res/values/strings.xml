@@ -92,6 +92,10 @@
     <string name="tv_area_pix">Área Pix</string>
     <string name="txt_transferir_pix">Transferir</string>
     <string name="txt_copia_cola_pix">Copia e Cola</string>
+    <string name="future">Future</string>
+    <string name="bank">BANK</string>
+    <string name="todo">TODO</string>
+    <string name="informe_o_valor_que_deseja_guardar_na_poupan_a">Informe o valor que deseja guardar na poupança</string>
 
     //spinner recarga
 
