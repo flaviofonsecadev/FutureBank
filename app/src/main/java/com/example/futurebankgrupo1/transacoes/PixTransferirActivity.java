@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.R;
-import com.example.futurebankgrupo1.usuario.User;
+import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPixTransferirBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -62,7 +62,7 @@ public class PixTransferirActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();

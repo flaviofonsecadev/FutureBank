@@ -21,7 +21,7 @@ import com.example.futurebankgrupo1.contas.TiposContasActivity;
 import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
 import com.example.futurebankgrupo1.seguros.SeguroCartaoActivity;
 import com.example.futurebankgrupo1.seguros.SeguroVida;
-import com.example.futurebankgrupo1.usuario.User;
+import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();

@@ -8,6 +8,7 @@ public class ViaCEP {
     private String localidade;
     private String uf;
 
+
     public String getCep() {
         return cep;
     }

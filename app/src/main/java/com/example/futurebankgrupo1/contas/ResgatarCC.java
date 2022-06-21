@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
-import com.example.futurebankgrupo1.usuario.User;
+import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityResgatarCcBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -78,7 +78,7 @@ public class ResgatarCC extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
                     float saldo = userProfile.getSaldo();

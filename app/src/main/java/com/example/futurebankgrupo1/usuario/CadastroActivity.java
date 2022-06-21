@@ -231,11 +231,11 @@ public class CadastroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){
-                            User user = new User(nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais);
+                            UserFirebase userFirebase = new UserFirebase(nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    .setValue(userFirebase).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
