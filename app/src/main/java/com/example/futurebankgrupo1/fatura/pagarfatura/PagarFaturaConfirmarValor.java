@@ -86,10 +86,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
+        //binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
 
         int day;
         int month;
@@ -112,6 +112,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
                     float limite = userProfile.getLimiteCartao();
+                    String valorFatura2 = String.valueOf(userProfile.getValorFatura());
                     binding.tvGetValorFatura.setText(dinheiroBR.format(valorFatura));
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
                     //binding.tvGetValorFatura.setText(String.valueOf("R$" + valorFatura));
@@ -122,6 +123,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                             //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
                             //userProfile.setSaldo(saldo - valorFatura);
                             //userProfile.setLimiteCartao(valorFatura + limite);
+                            SharedPreferences preferences1 = getSharedPreferences("chaveFatura", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences1.edit();
+                            editor.putString("chaveValorFatura",valorFatura2);
+                            editor.commit();
                             reference.child(userID).child("valorFatura").setValue(0);
                             reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
                             reference.child(userID).child("saldo").setValue(saldo - valorFatura);
