@@ -58,10 +58,8 @@ public class ComprovanteFatura extends AppCompatActivity {
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();
-                    float valorFatura = userProfile.getValorFatura();
 
                     binding.tvGetPagador.setText(nome);
-                    //binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura));
 
                 }
             }
@@ -79,6 +77,16 @@ public class ComprovanteFatura extends AppCompatActivity {
         month = preferences.getInt("chaveMonth",0);
         year= preferences.getInt("chaveYear", 0);
         binding.tvGetDataHora.setText(day + "/" +month+"/"+year);
+
+
+        Intent intentReceberDados = getIntent();
+        Bundle receberDados = intentReceberDados.getExtras();
+
+        if (receberDados != null) {
+            Float valorFatura = receberDados.getFloat("valorFatura");
+            binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura));
+        }
+
 
 
     }

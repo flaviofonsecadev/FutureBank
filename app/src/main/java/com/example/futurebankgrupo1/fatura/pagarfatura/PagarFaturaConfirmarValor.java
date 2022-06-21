@@ -86,10 +86,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
-        binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
+        //binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
 
         int day;
         int month;
@@ -122,10 +122,15 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                             //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
                             //userProfile.setSaldo(saldo - valorFatura);
                             //userProfile.setLimiteCartao(valorFatura + limite);
+
+                            Bundle enviarDados = new Bundle();
+                            enviarDados.putFloat("valorFatura", valorFatura);
+
                             reference.child(userID).child("valorFatura").setValue(0);
                             reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
                             reference.child(userID).child("saldo").setValue(saldo - valorFatura);
                             Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
+                            intent.putExtras(enviarDados);
                             startActivity(intent);
                         }else {
                             Toast.makeText(PagarFaturaConfirmarValor.this, "Saldo indisponível.", Toast.LENGTH_SHORT).show();
