@@ -45,8 +45,10 @@ public class ResgatarCC extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.buttonResgatar.setOnClickListener(v -> {
-            float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
+        binding.buttonResgatar.setOnClickListener(v -> {String textoMask = binding.edtValorResgatar.getText().toString();
+            String textoNovo = textoMask.replace(",", ".");
+            float valor = Float.parseFloat(textoNovo);
+            //float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
             float saldoCc = viewModel.exibirSaldoContaCorrente();
             float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
 

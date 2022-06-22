@@ -8,7 +8,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.futurebankgrupo1.Account;
+import com.example.futurebankgrupo1.AccountAPI;
 import com.example.futurebankgrupo1.HomeActivity;
+import com.example.futurebankgrupo1.User;
 import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfiguracoesBinding;
 import com.example.futurebankgrupo1.splash.SplashActivity;
@@ -23,6 +26,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TelaConfiguracoesActivity extends AppCompatActivity {
 
@@ -141,6 +150,41 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //Retrofit
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://run.mocky.io/v3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        AccountAPI accountAPI = retrofit.create(AccountAPI.class);
+        Call<Account> call = accountAPI.getAccount();
+
+        call.enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                if (response.code() !=200) {
+                    Toast.makeText(getApplicationContext(), "Servidor offline", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String json = "";
+                json = "Agência: " + response.body().getAgency() + " - " + response.body().getAccountType() + ": " + response.body().getNumber();
+                binding.tvAgencia.append(json);
+
+                String json2 = "";
+                json2 = "Banco: " + response.body().getBankNumber() + " - FutureBANK";
+                binding.tvBanco.append(json2);
+//                binding.tvBanco.setText(buscarDadosConta.getBankNumber());
+//                binding.tv.setText(buscarDadosConta.getAgency());
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Erro ao buscar dados da Conta", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Retrofit
 
     }
 
