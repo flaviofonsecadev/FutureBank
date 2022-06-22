@@ -90,9 +90,9 @@ public class HomeActivity extends AppCompatActivity {
                         cont = 0;
                     } else {
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
-                        binding.tvSaldoDisponivel.setText("R$ ******");
-                        binding.tvGetValorFaturaAtual.setText("R$ ******");
-                        binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+                        binding.tvSaldoDisponivel.setText("****");
+                        binding.tvGetValorFaturaAtual.setText("****");
+                        binding.tvGetValorLimiteDisponivel.setText("****");
                         cont = 1;
                     }
                 });

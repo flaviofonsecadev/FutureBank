@@ -9,9 +9,13 @@ import retrofit2.http.Path;
 
 public interface AccountAPI {
 
-    //Criar, excluir e retornar dados da conta
+    //https://run.mocky.io/v3/          d6bf6761-2fe4-4b8b-a596-689829441605
+    @GET("d6bf6761-2fe4-4b8b-a596-689829441605")
+    Call<Account> getAccount();
+
+    /*//Criar, excluir e retornar dados da conta
     @GET("/account/{accountId}")
-    Call<Account> retornarInfoConta(@Path("accountId") int id);
+    Call<Account> retornarInfoConta(@Path("accountId") int id);*/
 
     @DELETE("/account/{accountId}")
     Call<Account> excluirConta(@Path("accountId") int id);
