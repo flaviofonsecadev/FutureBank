@@ -573,7 +573,7 @@
 
     <ImageView
         android:id="@+id/iv_pontos_horizontais"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_disponivel"
@@ -583,7 +583,7 @@
 
     <ImageView
         android:id="@+id/iv_pontos_horizontais2"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_get_valor_fatura_atual"
@@ -593,7 +593,7 @@
 
     <ImageView
         android:id="@+id/iv_pontos_horizontais3"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_get_valor_limite_disponivel"
