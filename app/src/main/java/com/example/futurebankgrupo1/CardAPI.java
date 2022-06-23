@@ -1,5 +1,7 @@
 package com.example.futurebankgrupo1;
 
+import com.example.futurebankgrupo1.api.Bill;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -9,6 +11,10 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CardAPI {
+
+    //https://run.mocky.io/v3/   1a13ff25-9c6f-4c76-a6f4-fe3f36940c5c
+    @GET("1a13ff25-9c6f-4c76-a6f4-fe3f36940c5c")
+    Call<Bill> retornaFatura();
 
     //Retorna a fatura do cartão especificado
     @GET("/card/credit/bill/{cardId}")

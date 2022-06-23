@@ -78,7 +78,11 @@ public class PixTransferirActivity extends AppCompatActivity {
         });
 
         binding.button.setOnClickListener(v -> {
-            float valor = Float.parseFloat(binding.edtValorPix.getText().toString());
+            String textoMask = binding.edtValorPix.getText().toString();
+            String textoNovo = textoMask.replace(",", ".");
+            //Toast.makeText(this.getApplicationContext(), "oi" + textoNovo, Toast.LENGTH_LONG).show();
+            float valor = Float.parseFloat(textoNovo);
+            //float valor = Float.parseFloat(binding.edtValorPix.getText().toString());
 
             if (viewModel.exibirSaldoContaCorrente() >=valor){
                 viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valor);

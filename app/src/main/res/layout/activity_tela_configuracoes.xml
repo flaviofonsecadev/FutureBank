@@ -49,11 +49,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/robotolight"
-        android:text="Agência 0001 - Conta 55555555-5"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/header"
         app:layout_constraintTop_toBottomOf="@+id/ic_clear" />
+
+
 
     <TextView
         android:id="@+id/tv_banco"
@@ -61,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/robotolight"
-        android:text="Banco 1000 - FutureBANK"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_agencia"

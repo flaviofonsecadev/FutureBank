@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/robotomedium"
-        android:text="R$ ******"
+        android:text="****"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
@@ -366,7 +366,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/robotomedium"
-        android:text="R$ ******"
+        android:text=""
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_get_valor_limite_disponivel"
@@ -399,7 +399,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="R$ ******"
+        android:text="****"
         android:fontFamily="@font/robotomedium"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -570,6 +570,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraint_recarga" />
+
+    <ImageView
+        android:id="@+id/iv_pontos_horizontais"
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_disponivel"
+        app:layout_constraintEnd_toEndOf="@+id/tv_saldo_disponivel"
+        app:layout_constraintTop_toTopOf="@+id/tv_saldo_disponivel"
+        app:srcCompat="@drawable/pontos_horizontais_" />
+
+    <ImageView
+        android:id="@+id/iv_pontos_horizontais2"
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_get_valor_fatura_atual"
+        app:layout_constraintStart_toStartOf="@+id/tv_get_valor_fatura_atual"
+        app:layout_constraintTop_toTopOf="@+id/tv_get_valor_fatura_atual"
+        app:srcCompat="@drawable/pontos_horizontais_" />
+
+    <ImageView
+        android:id="@+id/iv_pontos_horizontais3"
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_get_valor_limite_disponivel"
+        app:layout_constraintStart_toStartOf="@+id/tv_get_valor_fatura_atual"
+        app:layout_constraintTop_toTopOf="@+id/tv_get_valor_limite_disponivel"
+        app:srcCompat="@drawable/pontos_horizontais_" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

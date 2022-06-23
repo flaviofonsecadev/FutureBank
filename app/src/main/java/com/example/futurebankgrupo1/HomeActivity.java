@@ -1,13 +1,17 @@
 package com.example.futurebankgrupo1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.savedstate.SavedStateRegistry;
 
+import com.example.futurebankgrupo1.api.Bill;
 import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;
 import com.example.futurebankgrupo1.configuracoes.TelaConfiguracoesActivity;
 import com.example.futurebankgrupo1.contas.ContaCorrenteActivity;
@@ -32,6 +36,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -77,22 +87,44 @@ public class HomeActivity extends AppCompatActivity {
                     //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
                     //binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                 }
+
                 //botão ocultar valores
+
                 binding.iconEyeHome.setOnClickListener(v -> {
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
                     float limiteCartao = userProfile.getLimiteCartao();
                     if (cont == 1) {
+                        //Imagem olho
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+
+                        //Pontos para ocultar
+                        binding.ivPontosHorizontais.setVisibility(view.GONE);
+                        binding.ivPontosHorizontais2.setVisibility(view.GONE);
+                        binding.ivPontosHorizontais3.setVisibility(view.GONE);
+
+                        //Valores
                         binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                         binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
                         binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
+
+                        //Contador
                         cont = 0;
                     } else {
+                        //Imagem olho
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
-                        binding.tvSaldoDisponivel.setText("R$ ******");
-                        binding.tvGetValorFaturaAtual.setText("R$ ******");
-                        binding.tvGetValorLimiteDisponivel.setText("R$ ******");
+
+                        //Tornar pontos visíveis
+                        binding.ivPontosHorizontais.setVisibility(view.VISIBLE);
+                        binding.ivPontosHorizontais2.setVisibility(view.VISIBLE);
+                        binding.ivPontosHorizontais3.setVisibility(view.VISIBLE);
+
+                        //Oculta valores
+                        binding.tvSaldoDisponivel.setText("");
+                        binding.tvGetValorFaturaAtual.setText("");
+                        binding.tvGetValorLimiteDisponivel.setText("");
+
+                        //Contador
                         cont = 1;
                     }
                 });
@@ -316,12 +348,45 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //Mostrar saldo conta corrente, limite e fatura cartao
-      //  viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         //binding.tvSaldoDisponivel.setText(dinheiroBR.format((viewModel.exibirSaldoContaCorrente())));
-       // binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
+        //binding.tvGetValorFaturaAtual.setText(dinheiroBR.format((viewModel.exibirValorFatura())));
         //binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format((viewModel.exibirLimite())));
 
+
+        //RETROFIT
+
+        /*Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://run.mocky.io/v3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        CardAPI cardAPI = retrofit.create(CardAPI.class);
+        Call<Bill> call = cardAPI.retornaFatura();
+
+        call.enqueue(new Callback<Bill>() {
+            @Override
+            public void onResponse(Call<Bill> call, Response<Bill> response) {
+                if (response.code() != 200) {
+                    Toast.makeText(getApplicationContext(), "Servidor offline", Toast.LENGTH_SHORT).show();
+                }
+                String json = "";
+                json = response.body().getDueDate();
+                binding.tvGetValorFaturaAtual.append(json);
+                *//*Bill bill = response.body();
+                binding.tvGetValorFaturaAtual.setText(bill.getId());*//*
+            }
+
+            @Override
+            public void onFailure(Call<Bill> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Erro ao carregar dados da fatura", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+        //RETROFIT
+
+        //
     }
 }
 

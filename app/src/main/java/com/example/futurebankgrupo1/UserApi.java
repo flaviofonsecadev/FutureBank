@@ -37,6 +37,14 @@ public interface UserApi {
     @PUT("/user/password")
     Call<User> atualizarSenhaUser(@Header("User") String password);
 
+    //https://run.mocky.io/v3/b4ccc373-c051-44bc-a44c-4d2cfe7ac12a
+//    @GET("b4ccc373-c051-44bc-a44c-4d2cfe7ac12a")
+//    Call<User> infoUserMocky();
+
+    @GET("ebd7eec8-da80-454a-a113-3714bf1cdb40")
+    Call<User> infoUserMocky();
+
+
 
 
 
