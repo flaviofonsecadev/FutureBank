@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //
 
+        //esconder ícone da biometria
+        //binding.ivBiometria.setVisibility(view.GONE);
 
         //Biometria
 

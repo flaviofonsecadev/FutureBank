@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.futurebankgrupo1.User;
+import com.example.futurebankgrupo1.UserApi;
 import com.example.futurebankgrupo1.configuracoes.TelaConfiguracoesActivity;
 import com.example.futurebankgrupo1.databinding.ActivityDadosUsuarioBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +19,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DadosUsuario extends AppCompatActivity {
     ActivityDadosUsuarioBinding binding;
@@ -94,6 +102,41 @@ public class DadosUsuario extends AppCompatActivity {
         });
 
 
+      /*  Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://run.mocky.io/v3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        UserApi userApi = retrofit.create(UserApi.class);
+        Call<User> call = userApi.infoUserMocky();
+
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.code() !=200){
+                    Toast.makeText(DadosUsuario.this, "Verificar a conexão", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                User user = response.body();
+                assert user != null;
+                binding.tvGetNomeUsuario.setText(user.getName());
+                binding.tvGetCpf.setText(user.getCpf());
+                binding.tvGetDataNascimento.setText(user.getBirthDate());
+                binding.tvGetConta1.setText(user.getEmail());
+                binding.tvGetTelefone.setText(user.getPhone());
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+
+       */
 
 
     }
