@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:background="@drawable/custom_buttom"
-            android:text="Login"
+            android:text="Entrar"
             android:textAllCaps="false"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"

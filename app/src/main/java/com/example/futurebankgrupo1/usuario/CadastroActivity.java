@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import retrofit2.Call;
@@ -47,6 +48,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         binding.btnCriar.setOnClickListener(view1 -> {
             registerUser();
+
         });
 
         setupHttpUser();
@@ -240,8 +242,12 @@ public class CadastroActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
 
                                             if (task.isSuccessful()){
-                                                Toast.makeText(CadastroActivity.this, "Yes!! Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(CadastroActivity.this, "Você receberá um email de verificação!", Toast.LENGTH_LONG).show();
                                                 binding.progressBarCadastro.setVisibility(View.GONE);
+                                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                if (!user.isEmailVerified()) {
+                                                    user.sendEmailVerification();
+                                                }
 
                                                 //redireciona para tela de login
                                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -260,6 +266,7 @@ public class CadastroActivity extends AppCompatActivity {
                         }
                     }
                 });
+
 
     }
 }
