@@ -4,13 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaConfirmarValorBinding;
 import com.example.futurebankgrupo1.databinding.ActivityReagendarPagamentosBinding;
@@ -23,9 +30,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class PagarFaturaConfirmarValor extends AppCompatActivity {
+
+    //data calendar
+
+    DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private ActivityPagarFaturaConfirmarValorBinding binding;
     private MyViewModel viewModel;
@@ -43,13 +56,96 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
 
-        //
+
+        //data calendar
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        binding.tvReagendarFatura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        PagarFaturaConfirmarValor.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener,year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        onDateSetListener =  new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            month = month+1;
+            String date = day+"/"+month+"/"+year;
+            binding.textData.setText(date);
+            }
+        };
+
+
+//        //calendario do dia atual
+//        final Calendar calendar1 = Calendar.getInstance();
+//        int year1 = calendar1.get(Calendar.YEAR);
+//        int month1 = calendar1.get(Calendar.MONTH);
+//        int day1 = calendar1.get(Calendar.DAY_OF_MONTH);
+//
+//        TextData = findViewById(R.id.text_data);
+//        TextData.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DatePickerDialog datePickerDialog = new DatePickerDialog(
+//                        PagarFaturaConfirmarValor.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+//                        onDateSetListener,year1, month1, day1);
+//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                datePickerDialog.show();
+//            }
+//        });
+//        onDateSetListener =  new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                month = month+1;
+//                String date = day+"/"+month+"/"+year;
+//                TextData.setText(date);
+//            }
+//        };
+
+
+//        //calendario reagendamento
+//        final Calendar calendar1 = Calendar.getInstance();
+//        int year1 = calendar1.get(Calendar.YEAR);
+//        int month1 = calendar1.get(Calendar.MONTH);
+//        int day1 = calendar1.get(Calendar.DAY_OF_MONTH);
+//
+//        TextData = findViewById(R.id.text_data);
+//        TextData.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                DatePickerDialog datePickerDialog = new DatePickerDialog(
+//                        PagarFaturaConfirmarValor.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+//                        onDateSetListener,year1, month1, day1);
+//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                datePickerDialog.show();
+//            }
+//        });
+//        onDateSetListener =  new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                month = month+1;
+//                String date = day+"/"+month+"/"+year;
+//                TextData.setText(date);
+//            }
+//        };
+
+
+
+
+
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -76,10 +172,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.tvReagendarFatura.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ActivityReagendarPagamentosBinding.class);
-            startActivity(intent);
-        });
+       // binding.tvReagendarFatura.setOnClickListener(v -> {
+           // Intent intent = new Intent(getApplicationContext(), ActivityReagendarPagamentosBinding.class);
+           // startActivity(intent);
+        //});
 
         binding.btnPagarFatura.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
@@ -91,14 +187,12 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
         //binding.tvGetValorFatura.setText(String.valueOf(viewModel.exibirValorFatura()));
         //binding.tvGetValorFatura.setText(dinheiroBR.format(viewModel.exibirValorFaturaFirebase()));
 
-        int day;
-        int month;
-        int year;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        day = preferences.getInt("chaveDay",0);
-        month = preferences.getInt("chaveMonth",0);
-        year= preferences.getInt("chaveYear", 0);
-        binding.tvAgora.setText(day + "/" +month+"/"+year);
+        //caso o novo calendario de erro, reativar este
+        //SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        //day = preferences.getInt("chaveDay",0);
+        //month = preferences.getInt("chaveMonth",0);
+        //year= preferences.getInt("chaveYear", 0);
+        //binding.tvAgora.setText(day + "/" +month+"/"+year);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
