@@ -366,7 +366,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:background="@drawable/custom_buttom"
-        android:text="@string/txt_criar"
+        android:text="Cadastrar"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
