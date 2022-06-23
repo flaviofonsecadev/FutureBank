@@ -38,8 +38,6 @@ public class PixTransferirActivity extends AppCompatActivity {
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +51,7 @@ public class PixTransferirActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -98,18 +97,21 @@ public class PixTransferirActivity extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "Tente novamente.", Toast.LENGTH_SHORT).show();
             }
+        });
 
+        //texto transferir conta
+        binding.tvPagar.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirConta.class);
+            startActivity(intent);
+        });
 
-    });
+            /*binding.button.setOnClickListener(view1 -> {
+            String valor = binding.edtValorPix.getText().toString();
+            float valor2 = Float.parseFloat(valor);
 
-        //        binding.button.setOnClickListener(view1 -> {
-//            String valor = binding.edtValorPix.getText().toString();
-//            float valor2 = Float.parseFloat(valor);
-//
-//            if (valor2 <= viewModel.exibirSaldoContaCorrente()){
-//                viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valor2);
-//            }else {
-//                Toast.makeText(this, "Saldo insuficiente.", Toast.LENGTH_LONG).show();}
-//
-
+            if (valor2 <= viewModel.exibirSaldoContaCorrente()){
+                viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valor2);
+            }else {
+               Toast.makeText(this, "Saldo insuficiente.", Toast.LENGTH_LONG).show();
+            }*/
 }}
