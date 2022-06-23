@@ -2,14 +2,25 @@ package com.example.futurebankgrupo1.transacoes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixCopiaColaBinding;
+import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFaturaConfirmarValor;
+
+import java.util.Calendar;
 
 public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
+
+    //datepicker
+
+    DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private ActivityTelaConfirmarDadosPixCopiaColaBinding binding;
 
@@ -39,6 +50,33 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PixComprovanteCopiaCola.class);
             startActivity(intent);
         });
+
+
+        //data calendar
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        TelaConfirmarDadosPixCopiaCola.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener,year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        onDateSetListener =  new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month+1;
+                String date = day+"/"+month+"/"+year;
+                binding.tvAgora.setText(date);
+            }
+        };
 
 
 
