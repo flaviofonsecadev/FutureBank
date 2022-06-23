@@ -180,7 +180,7 @@ public class TelaConfiguracoesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Account> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Erro ao buscar dados da Conta", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Erro ao carregar dados da Conta", Toast.LENGTH_SHORT).show();
             }
         });
 

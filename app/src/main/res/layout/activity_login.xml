@@ -80,6 +80,26 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_acesso"
             android:autofillHints="" />
 
+        <!--<com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_senha_login"
+            style="@style/Edit_Text_Login"
+            android:layout_marginTop="16dp"
+            android:drawableEnd="@drawable/eyes"
+            android:hint="@string/txt_senha_login"
+            android:inputType="textPassword"
+            android:maxLength="6"
+            android:textColorHint="@color/rosa"
+            app:layout_constraintEnd_toEndOf="@+id/edt_email_login"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_email_login"
+            app:layout_constraintTop_toBottomOf="@+id/edt_email_login"
+            android:autofillHints=""
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/rosa">
+
+
+        </com.google.android.material.textfield.TextInputLayout>-->
+
         <EditText
             android:id="@+id/edt_senha_login"
             style="@style/Edit_Text_Login"

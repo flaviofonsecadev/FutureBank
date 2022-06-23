@@ -13,9 +13,9 @@ public interface AccountAPI {
     @GET("d6bf6761-2fe4-4b8b-a596-689829441605")
     Call<Account> getAccount();
 
-    /*//Criar, excluir e retornar dados da conta
+    //Criar, excluir e retornar dados da conta
     @GET("/account/{accountId}")
-    Call<Account> retornarInfoConta(@Path("accountId") int id);*/
+    Call<Account> retornarInfoConta(@Path("accountId") int id);
 
     @DELETE("/account/{accountId}")
     Call<Account> excluirConta(@Path("accountId") int id);
