@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/custom_buttom"
-            android:text="@string/txt_acessar"
+            android:text="Entrar"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@+id/iv_biometria"
             app:layout_constraintStart_toStartOf="@+id/iv_biometria"
