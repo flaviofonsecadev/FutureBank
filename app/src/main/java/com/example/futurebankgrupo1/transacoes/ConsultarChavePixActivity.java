@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
@@ -54,26 +55,31 @@ public class ConsultarChavePixActivity extends AppCompatActivity {
     public void criarListaChavePix() {
 
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        boolean cbCpf = preferences.getBoolean("chaveCbCpf", true);
-        boolean cbCelular = preferences.getBoolean("chaveCbCelular", true);
-        boolean cbEmail = preferences.getBoolean("chaveCbEmail", true);
-        boolean cbChaveAleatoria = preferences.getBoolean("chaveCbChaveAleatoria", true);
+        boolean cbCpf = preferences.getBoolean("chaveCbCpf", false);
+        boolean cbCelular = preferences.getBoolean("chaveCbCelular", false);
+        boolean cbEmail = preferences.getBoolean("chaveCbEmail", false);
+        boolean cbChaveAleatoria = preferences.getBoolean("chaveCbChaveAleatoria", false);
 
         String chaveCpf = preferences.getString("chaveCpf", "");
         String chaveCelular = preferences.getString("chaveCelular", "");
         String chaveEmail = preferences.getString("chaveEmail", "");
         String chaveAleatoria = preferences.getString("chaveAleatoria", "");
 
-        RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: " + cbCpf, "Chave: " + chaveCpf);
-        listaChavePix.add(recyclerChavePix);
-
-        RecyclerChavePix recyclerChavePix1 = new RecyclerChavePix("Tipo de chave: " + cbCelular, "Chave: " + chaveCelular);
-        listaChavePix.add(recyclerChavePix1);
-
-        RecyclerChavePix recyclerChavePix2 = new RecyclerChavePix("Tipo de chave: " + cbEmail, "Chave: " + chaveEmail);
-        listaChavePix.add(recyclerChavePix2);
-
-        RecyclerChavePix recyclerChavePix3 = new RecyclerChavePix("Tipo de chave: " + cbChaveAleatoria, "Chave: " + chaveAleatoria);
-        listaChavePix.add(recyclerChavePix3);
+        if(cbCpf){
+            RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: CPF", "Chave: " + chaveCpf);
+            listaChavePix.add(recyclerChavePix);
+        }
+        if(cbCelular){
+            RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: Celular", "Chave: " + chaveCelular);
+            listaChavePix.add(recyclerChavePix);
+        }
+        if(cbEmail){
+            RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: Email", "Chave: " + chaveEmail);
+            listaChavePix.add(recyclerChavePix);
+        }
+        if(cbChaveAleatoria){
+            RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: Chave Aleatória", "Chave: " + chaveAleatoria);
+            listaChavePix.add(recyclerChavePix);
+        }
     }
 }
