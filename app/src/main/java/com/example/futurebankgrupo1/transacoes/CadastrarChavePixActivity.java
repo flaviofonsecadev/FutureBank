@@ -15,9 +15,6 @@ import java.util.UUID;
 public class CadastrarChavePixActivity extends AppCompatActivity {
 
     private ActivityCadastrarChavesPixBinding binding;
-    String chaveCpf;
-    String chaveCelular;
-    String chaveEmail;
     String chaveAleatoria;
 
     @Override
@@ -46,40 +43,29 @@ public class CadastrarChavePixActivity extends AppCompatActivity {
 
             if(binding.cbCpf.isChecked()) {
                 editor.putBoolean("chaveCbCpf", true);
-                chaveCpf = binding.edtGetCpf.getText().toString();
+                editor.putString("chaveCpf", binding.edtGetCpf.getText().toString());
             }
             if(binding.cbCelular.isChecked()) {
                 editor.putBoolean("chaveCbCelular", true);
-                chaveCelular = binding.edtGetCelular.getText().toString();
+                editor.putString("chaveCelular", binding.edtGetCelular.getText().toString());
             }
             if(binding.cbEmail.isChecked()) {
                 editor.putBoolean("chaveCbEmail", true);
-                chaveEmail = binding.edtGetEmail.getText().toString();
+                editor.putString("chaveEmail", binding.edtGetEmail.getText().toString());
             }
             if(binding.cbChaveAleatoria.isChecked()) {
                 editor.putBoolean("chaveCbChaveAleatoria", true);
-            gerarChaveAleatoria();
+                editor.putString("chaveAleatoria", gerarChaveAleatoria());
             }
-
-            editor.putString("chaveCpf", binding.edtGetCpf.getText().toString());
-            editor.putString("chaveCelular", binding.edtGetCelular.getText().toString());
-            editor.putString("chaveEmail", binding.edtGetEmail.getText().toString());
-            editor.putString("chaveChaveAleatoria", binding.cbChaveAleatoria.getText().toString());
             editor.commit();
 
             Intent intent = new Intent(getApplicationContext(), ConsultarChavePixActivity.class);
             startActivity(intent);
-
         });
     }
 
-    private void gerarChaveAleatoria() {
+    private String gerarChaveAleatoria() {
         chaveAleatoria = UUID.randomUUID().toString().replace("-", "");
-    }
-
-    /*private String gerarChaveAleatoria(){
-        final String chaveAleatoria = UUID.randomUUID().toString().replace("-", "");
         return chaveAleatoria;
-    }*/
-
+    }
 }
