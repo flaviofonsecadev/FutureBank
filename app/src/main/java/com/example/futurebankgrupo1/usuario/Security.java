@@ -48,12 +48,16 @@ public class Security extends AppCompatActivity {
                 habilitarBiometria(false);
                 Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
             startActivity(intent);
-        });*/
+        });
+
+        binding.ivArrowForward.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), ResetarSenha.class));
+        });
 
     }
 
