@@ -32,7 +32,7 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
 
         String mensagemPixCopiaCola;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        mensagemPixCopiaCola = preferences.getString("chaveMensagemPix", "");
+        mensagemPixCopiaCola = preferences.getString("chaveMensagemPixCopiaCola", "");
         binding.tvTipoPgto.setText(mensagemPixCopiaCola);
 
     }

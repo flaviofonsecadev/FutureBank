@@ -1,6 +1,9 @@
 package com.example.futurebankgrupo1.transacoes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,11 +13,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixCopiaColaBinding;
 import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFaturaConfirmarValor;
 
 import java.util.Calendar;
+import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
 
@@ -42,14 +47,14 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
         });*/
 
 
-        binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+        /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
             SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString("chaveMensagemPixCopiaCola", binding.edtMensagem.getText().toString());
             editor.commit();
             Intent intent = new Intent(getApplicationContext(), PixComprovanteCopiaCola.class);
             startActivity(intent);
-        });
+        });*/
 
 
         //data calendar
@@ -78,8 +83,44 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             }
         };
 
+        //Biometria
 
+        Executor executor = ContextCompat.getMainExecutor(this);
 
+        BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPixCopiaCola.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(TelaConfirmarDadosPixCopiaCola.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(), "Transação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), PixComprovanteCopiaCola.class));
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(TelaConfirmarDadosPixCopiaCola.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Confirmar Transação")
+                .setDescription("Use sua digital para confirmar esta transação.")
+                .setNegativeButtonText("Cancelar")
+                .build();
+
+        binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+            biometricPrompt.authenticate(promptInfo);
+            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("chaveMensagemPixCopiaCola", binding.edtMensagem.getText().toString());
+            editor.commit();
+        });
     }
 
 

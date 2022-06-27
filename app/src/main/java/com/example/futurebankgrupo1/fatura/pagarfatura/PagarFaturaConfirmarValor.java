@@ -2,6 +2,8 @@ package com.example.futurebankgrupo1.fatura.pagarfatura;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
+import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaConfirmarValorBinding;
 import com.example.futurebankgrupo1.databinding.ActivityReagendarPagamentosBinding;
@@ -33,6 +37,7 @@ import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 public class PagarFaturaConfirmarValor extends AppCompatActivity {
 
@@ -177,10 +182,10 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
            // startActivity(intent);
         //});
 
-        binding.btnPagarFatura.setOnClickListener(v -> {
+        /*binding.btnPagarFatura.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
             startActivity(intent);
-        });
+        });*/
 
         //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
@@ -210,25 +215,64 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
                     //binding.tvGetValorFatura.setText(String.valueOf("R$" + valorFatura));
                     //binding.tvGetSaldoConta.setText(String.valueOf("R$" + saldo));
-                    binding.btnPagarFatura.setOnClickListener(v -> {
-                        if (saldo >= valorFatura){
-                            //viewModel.setarSaldo(saldo - valorFatura);
-                            //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
-                            //userProfile.setSaldo(saldo - valorFatura);
-                            //userProfile.setLimiteCartao(valorFatura + limite);
 
-                            Bundle enviarDados = new Bundle();
-                            enviarDados.putFloat("valorFatura", valorFatura);
 
-                            reference.child(userID).child("valorFatura").setValue(0);
-                            reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
-                            reference.child(userID).child("saldo").setValue(saldo - valorFatura);
-                            Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
-                            intent.putExtras(enviarDados);
-                            startActivity(intent);
-                        }else {
-                            Toast.makeText(PagarFaturaConfirmarValor.this, "Saldo indisponível.", Toast.LENGTH_SHORT).show();
+                    //Biometria
+
+                    Executor executor = ContextCompat.getMainExecutor(getApplicationContext());
+
+                    BiometricPrompt biometricPrompt = new BiometricPrompt(PagarFaturaConfirmarValor.this, executor, new BiometricPrompt.AuthenticationCallback() {
+                        @Override
+                        public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                            super.onAuthenticationError(errorCode, errString);
+                            Toast.makeText(PagarFaturaConfirmarValor.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
                         }
+
+                        @Override
+                        public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                            super.onAuthenticationSucceeded(result);
+                            Toast.makeText(getApplicationContext(), "Pagamento realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                            if (saldo >= valorFatura){
+                                //viewModel.setarSaldo(saldo - valorFatura);
+                                //viewModel.setarLimiteCartaoFirebase(valorFatura + limite);
+                                //userProfile.setSaldo(saldo - valorFatura);
+                                //userProfile.setLimiteCartao(valorFatura + limite);
+
+                                Bundle enviarDados = new Bundle();
+                                enviarDados.putFloat("valorFatura", valorFatura);
+
+                                reference.child(userID).child("valorFatura").setValue(0);
+                                reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
+                                reference.child(userID).child("saldo").setValue(saldo - valorFatura);
+                                Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
+                                intent.putExtras(enviarDados);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(PagarFaturaConfirmarValor.this, "Saldo indisponível.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onAuthenticationFailed() {
+                            super.onAuthenticationFailed();
+                            Toast.makeText(PagarFaturaConfirmarValor.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                            .setTitle("Confirmar Transação")
+                            .setDescription("Use sua digital para confirmar esta transação.")
+                            .setNegativeButtonText("Cancelar")
+                            .build();
+
+                    /*binding.btnPagarFatura.setOnClickListener(v -> {
+                        biometricPrompt.authenticate(promptInfo);
+                    });*/
+
+
+                    binding.btnPagarFatura.setOnClickListener(v -> {
+                        biometricPrompt.authenticate(promptInfo);
+
                     });
 
 //                    binding.btnPagarFatura.setOnClickListener(v -> {
@@ -274,7 +318,5 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
 //            }
 //
 //        });
-
-
     }
 }
