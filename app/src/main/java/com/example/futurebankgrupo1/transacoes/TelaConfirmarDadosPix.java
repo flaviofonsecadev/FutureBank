@@ -1,6 +1,9 @@
 package com.example.futurebankgrupo1.transacoes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,11 +13,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
+import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
+import com.example.futurebankgrupo1.usuario.LoginActivity;
 
 import java.util.Calendar;
+import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
 
@@ -47,14 +54,14 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         valorPix = preferences.getString("chaveValorPix", "");
         binding.tvValor.setText("R$" + valorPix);
 
-        binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+        /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
             SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences1.edit();
             editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
             editor.commit();
-            Intent intent = new Intent(getApplicationContext(),PixComprovanteActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SenhaConfirmacaoPix.class);
             startActivity(intent);
-        });
+        });*/
 
         //data calendar
         final Calendar calendar = Calendar.getInstance();
@@ -81,6 +88,48 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
                 binding.tvAgora.setText(date);
             }
         };
+
+
+        //Biometria
+
+        Executor executor = ContextCompat.getMainExecutor(this);
+
+        BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPix.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(TelaConfirmarDadosPix.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(), "Transação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), PixComprovanteActivity.class));
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(TelaConfirmarDadosPix.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Confirmar Transação")
+                .setDescription("Use sua digital para confirmar esta transação.")
+                .setNegativeButtonText("Cancelar")
+                .build();
+
+        binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+            biometricPrompt.authenticate(promptInfo);
+            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences1.edit();
+            editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
+            editor.commit();
+        });
+
+        //Biometria
 
     }
 

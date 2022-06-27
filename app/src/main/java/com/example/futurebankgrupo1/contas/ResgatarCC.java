@@ -2,6 +2,8 @@ package com.example.futurebankgrupo1.contas;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
+import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityResgatarCcBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 public class ResgatarCC extends AppCompatActivity {
     ActivityResgatarCcBinding binding;
@@ -45,31 +50,64 @@ public class ResgatarCC extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.buttonResgatar.setOnClickListener(v -> {String textoMask = binding.edtValorResgatar.getText().toString();
-            String textoNovo = textoMask.replace(",", ".");
-            float valor = Float.parseFloat(textoNovo);
-            //float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
-            float saldoCc = viewModel.exibirSaldoContaCorrente();
-            float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
 
-            if (saldoCp >=valor){
-                viewModel.setarSaldo(saldoCc + valor);
-                viewModel.setarSaldoPoupanca(saldoCp - valor);
+        //Biometria
+        Executor executor = ContextCompat.getMainExecutor(this);
 
-
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveValorResgatar", binding.edtValorResgatar.getText().toString());
-                //editor.putInt("chaveValorResgatar", Integer.parseInt(String.valueOf(binding.edtValorResgatar)));
-                editor.commit();
-                Intent intent = new Intent(getApplicationContext(), ResgatarComprovante.class);
-                startActivity(intent);
-
-            }else {
-                Toast.makeText(ResgatarCC.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
+        BiometricPrompt biometricPrompt = new BiometricPrompt(ResgatarCC.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(ResgatarCC.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
             }
 
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
 
+
+                String textoMask = binding.edtValorResgatar.getText().toString();
+                String textoNovo = textoMask.replace(",", ".");
+                float valor = Float.parseFloat(textoNovo);
+                //float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
+                float saldoCc = viewModel.exibirSaldoContaCorrente();
+                float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
+
+                if (saldoCp >=valor){
+                    viewModel.setarSaldo(saldoCc + valor);
+                    viewModel.setarSaldoPoupanca(saldoCp - valor);
+
+
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveValorResgatar", binding.edtValorResgatar.getText().toString());
+                    //editor.putInt("chaveValorResgatar", Integer.parseInt(String.valueOf(binding.edtValorResgatar)));
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Resgate realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), ResgatarComprovante.class);
+                    startActivity(intent);
+
+                }else {
+                    Toast.makeText(ResgatarCC.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(ResgatarCC.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Confirmar Transação")
+                .setDescription("Use sua digital para confirmar esta transação.")
+                .setNegativeButtonText("Cancelar")
+                .build();
+
+
+        binding.buttonResgatar.setOnClickListener(v -> {
+            biometricPrompt.authenticate(promptInfo);
         });
 
 
