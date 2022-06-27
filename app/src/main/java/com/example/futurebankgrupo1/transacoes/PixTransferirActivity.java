@@ -52,6 +52,10 @@ public class PixTransferirActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.tvPagar.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), TelaTransferirConta.class));
+        });
+
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         user = FirebaseAuth.getInstance().getCurrentUser();

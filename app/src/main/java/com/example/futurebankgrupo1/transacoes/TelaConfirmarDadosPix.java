@@ -26,7 +26,6 @@ import java.util.concurrent.Executor;
 public class TelaConfirmarDadosPix extends AppCompatActivity {
 
     //datepicker
-
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private ActivityTelaConfirmarDadosPixBinding binding;
