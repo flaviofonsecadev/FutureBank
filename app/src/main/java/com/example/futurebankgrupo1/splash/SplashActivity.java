@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.usuario.LoginActivity;
 import com.example.futurebankgrupo1.usuario.Security;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -24,12 +26,26 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null){
+            new Handler().postDelayed(() -> {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+            },2000);
+        } else {
+            new Handler().postDelayed(() -> {
+
+                startActivity(new Intent(SplashActivity.this, SubSplashActivity2.class));
+                finish();
+            },2000);
+        }
 
 
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, SubSplashActivity2.class));
-            finish();
-        },2000);
+//        new Handler().postDelayed(() -> {
+//
+//            startActivity(new Intent(SplashActivity.this, SubSplashActivity2.class));
+//            finish();
+//        },2000);
 
         /*Security security = new Security();
 //        habilitar = security.habilitarBiometria(true);
