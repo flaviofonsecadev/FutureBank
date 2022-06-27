@@ -73,8 +73,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_biometria" />
 
+
     <TextView
-        android:id="@+id/tv_alterar_dados"
+        android:id="@+id/tv_habilitar_bio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -84,8 +85,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_biometria"
         app:layout_constraintStart_toEndOf="@+id/iv_biometria"
-        app:layout_constraintTop_toTopOf="@id/iv_biometria" />
-
+        app:layout_constraintTop_toTopOf="@id/iv_biometria"
+        app:layout_constraintVertical_bias="0.363" />
 
     <View
         android:id="@+id/line_1"
@@ -101,9 +102,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_alterar_dados"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_habilitar_bio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_alterar_dados" />
+        app:layout_constraintTop_toTopOf="@+id/tv_habilitar_bio" />
 
 
     <TextView
@@ -118,7 +119,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line_1" />
 
-    <EditText
+    <ImageView
+        android:id="@+id/iv_arrow_forward"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic__arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Alterar_senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_Alterar_senha" />
+
+    <ImageView
+        android:id="@+id/iv_lock"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_locked"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_resetar_senha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_resetar_senha" />
+
+    <TextView
+        android:id="@+id/tv_resetar_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Iremos redirecionar você para a tela \nde alteração de senha e será necessário \nrealizar novo login, após redefinição."
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/iv_lock"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Alterar_senha" />
+
+    <!--<EditText
         android:id="@+id/edt_senha_atual"
         style="@style/Edit_Text_Login"
         android:layout_marginTop="32dp"
@@ -177,7 +210,7 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

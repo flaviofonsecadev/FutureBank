@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--<<<<<<<< HEAD:app/src/main/res/layout/activity_tela_confirmar_dados_pix.xml-->
-<!--    tools:context=".pagarcompix.TelaConfirmarDadosPix">-->
-<!--========-->
-<!--    tools:context=".pagarcompix.TelaConfirmarDadosCopiaCola">-->
-<!--&gt;>>>>>>> main:app/src/main/res/layout/activity_tela_confirmar_dados_copia_cola.xml-->
+
 
     <ImageView
         android:id="@+id/header"
@@ -107,6 +103,7 @@
         android:hint="Ex.: Presente de aniversário"
         android:inputType="textPersonName"
         android:textSize="15sp"
+        android:maxLength="50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_mensagem" />
@@ -188,7 +185,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Agora"
+        android:text="Pix"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
