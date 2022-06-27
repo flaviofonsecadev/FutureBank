@@ -125,4 +125,10 @@
         <item>Crédito</item>
     </string-array>
 
+    <string-array name="tipo_conta_array">
+        <item></item>
+        <item>Conta Corrente</item>
+        <item>Conta Poupança</item>
+    </string-array>
+
 </resources>

@@ -125,15 +125,12 @@
         android:id="@+id/tv_pagar"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="200dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/robotoregular"
         android:text="Transferir para uma conta"
         android:textColor="@color/rosa"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edt_chave_pix"
         app:layout_constraintTop_toBottomOf="@+id/edt_chave_pix" />
 
     <Button
