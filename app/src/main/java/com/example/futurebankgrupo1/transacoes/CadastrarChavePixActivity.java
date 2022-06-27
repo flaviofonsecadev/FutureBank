@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityCadastrarChavesPixBinding;
@@ -61,7 +62,33 @@ public class CadastrarChavePixActivity extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), ConsultarChavePixActivity.class);
             startActivity(intent);
+
+            validarCampos();
         });
+    }
+
+    private void validarCampos() {
+        String cpf = binding.edtGetCpf.getText().toString().trim();
+        String celular = binding.edtGetCelular.getText().toString().trim();
+        String email = binding.edtGetEmail.getText().toString().trim();
+
+        if(cpf.isEmpty()){
+            binding.edtGetCpf.setError("Insira o cpf!");
+            binding.edtGetCpf.requestFocus();
+            return;
+        }
+
+        if (celular.isEmpty()){
+            binding.edtGetCelular.setError("Insira o telefone!");
+            binding.edtGetCelular.requestFocus();
+            return;
+        }
+
+        if (email.length() < 20 ){
+            binding.edtGetEmail.setError("Insira o email!");
+            binding.edtGetEmail.requestFocus();
+            return;
+        }
     }
 
     private String gerarChaveAleatoria() {

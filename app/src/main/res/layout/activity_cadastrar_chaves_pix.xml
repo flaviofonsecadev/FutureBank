@@ -110,7 +110,7 @@
         app:layout_constraintTop_toTopOf="@+id/cb_cpf"
         app:layout_constraintBottom_toBottomOf="@+id/cb_cpf"/>
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/edt_get_cpf"
         style="@style/Edit_Text_Cadastro"
         android:layout_height="50dp"
@@ -121,6 +121,9 @@
         android:hint="Digite o cpf"
         android:inputType="number"
         android:textSize="15sp"
+        app:mask="___.___.___-__"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
         app:layout_constraintStart_toStartOf="@+id/tv_cpf"
         app:layout_constraintTop_toBottomOf="@+id/tv_cpf" />
 
@@ -153,7 +156,7 @@
         app:layout_constraintTop_toTopOf="@+id/cb_celular"
         app:layout_constraintBottom_toBottomOf="@+id/cb_celular"/>
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/edt_get_celular"
         style="@style/Edit_Text_Cadastro"
         android:layout_height="50dp"
@@ -164,6 +167,9 @@
         android:hint="Digite o celular"
         android:inputType="number"
         android:textSize="15sp"
+        app:mask="+55 (__) _____ __ __"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
         app:layout_constraintStart_toStartOf="@+id/tv_celular"
         app:layout_constraintTop_toBottomOf="@+id/tv_celular" />
 
