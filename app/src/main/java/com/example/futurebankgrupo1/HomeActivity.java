@@ -25,6 +25,7 @@ import com.example.futurebankgrupo1.contas.TiposContasActivity;
 import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
 import com.example.futurebankgrupo1.seguros.SeguroCartaoActivity;
 import com.example.futurebankgrupo1.seguros.SeguroVida;
+import com.example.futurebankgrupo1.transacoes.TelaTransferirPixTED;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -178,17 +179,17 @@ public class HomeActivity extends AppCompatActivity {
 
         //botões transferir
         binding.ivTransferirHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
         binding.tvTransferirHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
         binding.constraintTransferir.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
