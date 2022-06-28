@@ -8,13 +8,19 @@ import android.os.Handler;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
+import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.usuario.LoginActivity;
 import com.example.futurebankgrupo1.usuario.Security;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.concurrent.Executor;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -29,8 +35,40 @@ public class SplashActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             new Handler().postDelayed(() -> {
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                finish();
+
+                Executor executor = ContextCompat.getMainExecutor(this);
+
+                BiometricPrompt biometricPrompt = new BiometricPrompt(SplashActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+                    @Override
+                    public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                        super.onAuthenticationError(errorCode, errString);
+                        Toast.makeText(SplashActivity.this, "Tente entrar utilizando seu login e senha.", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), SubSplashActivity2.class));
+                    }
+
+                    @Override
+                    public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                        super.onAuthenticationSucceeded(result);
+                        Toast.makeText(getApplicationContext(), "Autenticação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    }
+
+                    @Override
+                    public void onAuthenticationFailed() {
+                        super.onAuthenticationFailed();
+                        Toast.makeText(SplashActivity.this, "Tente entrar utilizando seu login e senha.", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), SubSplashActivity2.class));
+                    }
+                });
+
+                BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                        .setTitle("Login")
+                        .setDescription("Use sua digital para autenticar o login no App.")
+                        .setNegativeButtonText("Cancelar")
+                        .build();
+
+
+                biometricPrompt.authenticate(promptInfo);
             }, 2000);
         } else {
             new Handler().postDelayed(() -> {
@@ -39,6 +77,8 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }, 2000);
         }
+
+
 
 //        new Handler().postDelayed(() -> {
 //
