@@ -20,6 +20,7 @@
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_aplicar_comprovante.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_aplicar_cp.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_area_pix.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cadastrar_chaves_pix.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cadastro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cartao_comum.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_cartao_premium.xml" value="0.25416666666666665" />
@@ -49,7 +50,7 @@
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_resgatar_comprovante.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_seguro_cartao.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_seguro_vida.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_sub_splash2.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_sub_splash2.xml" value="0.25" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_configuracoes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_confirmar_dados_cobrar_pix.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_confirmar_dados_copia_cola.xml" value="0.25416666666666665" />
@@ -60,7 +61,7 @@
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_pix_copia_cola.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tela_transferir_conta.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/activity_tipos_contas.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/adapter_lista_chave_pix.xml" value="0.190625" />
+        <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/adapter_lista_chave_pix.xml" value="0.264" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/adapter_lista_compra.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/adapter_lista_corrente.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/dsilveira/AndroidStudioProjects/futurebank-gupo-1/app/src/main/res/layout/adapter_lista_poupanca.xml" value="0.25416666666666665" />

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityCadastrarChavesPixBinding;
@@ -33,7 +34,6 @@ public class CadastrarChavePixActivity extends AppCompatActivity {
             binding.cbCpf.setChecked(true);
             binding.cbCelular.setChecked(true);
             binding.cbEmail.setChecked(true);
-            binding.cbChaveAleatoria.setChecked(true);
         });
 
         binding.btnCadastrarChavePix.setOnClickListener(v -> {
@@ -42,14 +42,32 @@ public class CadastrarChavePixActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = preferences.edit();
 
             if(binding.cbCpf.isChecked()) {
+                String cpf = binding.edtGetCpf.getText().toString().trim();
+                if(cpf.isEmpty()){
+                    binding.edtGetCpf.setError("Insira o cpf!");
+                    binding.edtGetCpf.requestFocus();
+                    return;
+                }
                 editor.putBoolean("chaveCbCpf", true);
                 editor.putString("chaveCpf", binding.edtGetCpf.getText().toString());
             }
             if(binding.cbCelular.isChecked()) {
+                String celular = binding.edtGetCelular.getText().toString().trim();
+                if (celular.isEmpty()){
+                    binding.edtGetCelular.setError("Insira o telefone!");
+                    binding.edtGetCelular.requestFocus();
+                    return;
+                }
                 editor.putBoolean("chaveCbCelular", true);
                 editor.putString("chaveCelular", binding.edtGetCelular.getText().toString());
             }
             if(binding.cbEmail.isChecked()) {
+                String email = binding.edtGetEmail.getText().toString().trim();
+                if (email.length() < 20 ){
+                    binding.edtGetEmail.setError("Insira o email!");
+                    binding.edtGetEmail.requestFocus();
+                    return;
+                }
                 editor.putBoolean("chaveCbEmail", true);
                 editor.putString("chaveEmail", binding.edtGetEmail.getText().toString());
             }
