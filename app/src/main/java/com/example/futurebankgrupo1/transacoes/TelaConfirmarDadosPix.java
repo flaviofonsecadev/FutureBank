@@ -38,7 +38,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         setContentView(view);
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
             startActivity(intent);
         });
 

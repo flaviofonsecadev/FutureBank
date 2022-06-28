@@ -71,7 +71,6 @@ public class TelaTransferirConta extends AppCompatActivity {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
                     //binding.tvSaldoDisponivelPix.setText(String.valueOf(saldo));
