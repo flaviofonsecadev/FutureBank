@@ -156,7 +156,7 @@
         app:layout_constraintTop_toTopOf="@+id/cb_celular"
         app:layout_constraintBottom_toBottomOf="@+id/cb_celular"/>
 
-    <com.santalu.maskara.widget.MaskEditText
+     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/edt_get_celular"
         style="@style/Edit_Text_Cadastro"
         android:layout_height="50dp"

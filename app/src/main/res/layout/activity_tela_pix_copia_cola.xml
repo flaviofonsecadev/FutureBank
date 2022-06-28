@@ -78,6 +78,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insira" />
 
+    <EditText
+        android:id="@+id/edt_valor_pix"
+        style="@style/Edit_Text_Login"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:drawableStart="@drawable/cifrao"
+        android:gravity="end"
+        android:fontFamily="@font/robotolight"
+        android:hint="0,00"
+        android:inputType="numberDecimal"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="@+id/edt_cole_codigo"
+        app:layout_constraintStart_toStartOf="@+id/edt_cole_codigo"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cole_codigo" />
+
     <ImageButton
         android:id="@+id/btn_prosseguir"
         android:layout_width="55dp"

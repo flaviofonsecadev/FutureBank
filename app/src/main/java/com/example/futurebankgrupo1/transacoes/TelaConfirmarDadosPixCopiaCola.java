@@ -41,6 +41,12 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //recebe valor pix copia e cola
+        String valorPix;
+        SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        valorPix = preferences1.getString("chaveValorPix", "");
+        binding.tvValor.setText("R$" + valorPix);
+
         /*binding.tvReagendar.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosBinding.class);
             startActivity(intent);
@@ -122,6 +128,4 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             editor.commit();
         });
     }
-
-
 }
