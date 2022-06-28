@@ -2,6 +2,7 @@ package com.example.futurebankgrupo1.usuario;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
@@ -13,6 +14,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivityLoginBinding;
+import com.example.futurebankgrupo1.splash.SplashActivity;
+import com.example.futurebankgrupo1.splash.SubSplashActivity2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,7 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         //
 
         //esconder ícone da biometria
-        //binding.ivBiometria.setVisibility(view.GONE);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            binding.ivBiometria.setVisibility(view.VISIBLE);
+        } else {
+            binding.ivBiometria.setVisibility(view.GONE);
+        }
 
         //Biometria
 
