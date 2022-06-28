@@ -103,7 +103,7 @@
         android:fontFamily="@font/robotolight"
         android:gravity="end"
         android:hint="0,00"
-        android:inputType="numberDecimal"
+        android:inputType="text"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
