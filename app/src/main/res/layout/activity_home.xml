@@ -26,7 +26,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
-        android:src="@drawable/icon_eye_disabled"
+        android:src="@drawable/icon_eye_enabled"
         app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="@id/header"
         app:layout_constraintTop_toTopOf="@id/header" />
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/robotomedium"
-        android:text="****"
+        android:text=""
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
@@ -93,8 +93,8 @@
 
     <ImageView
         android:id="@+id/iv_arrow_forward1"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
+        android:layout_width="15dp"
+        android:layout_height="13dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic__arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/tv_saldo_disponivel"
@@ -399,7 +399,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="****"
+        android:text=""
         android:fontFamily="@font/robotomedium"
         android:textSize="16sp"
         android:textStyle="bold"

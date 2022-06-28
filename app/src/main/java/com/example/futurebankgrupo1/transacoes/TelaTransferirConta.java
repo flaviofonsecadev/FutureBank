@@ -36,7 +36,7 @@ public class TelaTransferirConta extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    Locale localeBR = new Locale( "pt", "BR" );
+    Locale localeBR = new Locale("pt", "BR");
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
@@ -70,13 +70,14 @@ public class TelaTransferirConta extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
-                if (userProfile != null){
+                if (userProfile != null) {
                     float saldo = userProfile.getSaldo();
 
                     //binding.tvSaldoDisponivelPix.setText(String.valueOf(saldo));
                     binding.tvGetSaldoConta.setText(dinheiroBR.format(saldo));
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
@@ -88,7 +89,7 @@ public class TelaTransferirConta extends AppCompatActivity {
             String textoNovo = textoMask.replace(",", ".");
             float valor = Float.parseFloat(textoNovo);
 
-            if (viewModel.exibirSaldoContaCorrente() >=valor){
+            if (viewModel.exibirSaldoContaCorrente() >= valor) {
                 viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valor);
 
                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
@@ -97,13 +98,13 @@ public class TelaTransferirConta extends AppCompatActivity {
                 editor.putString("chaveBanco", binding.edtInstFinanceira.getText().toString());
                 editor.putString("chaveTipoConta", binding.edtTipoConta.getSelectedItem().toString());
                 editor.putString("chaveAgencia", binding.edtAgencia.getText().toString());
-                editor.putString("chaveNumeroConta", binding.edtConta.getText().toString()  );
+                editor.putString("chaveNumeroConta", binding.edtConta.getText().toString());
                 editor.putString("chaveCpfRecebedor", binding.edtCpfRecebedor.getText().toString());
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosTransferirConta.class);
                 startActivity(intent);
 
-            }else {
+            } else {
                 Toast.makeText(this, "Tente novamente.", Toast.LENGTH_SHORT).show();
             }
         });
