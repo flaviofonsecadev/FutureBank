@@ -53,7 +53,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
     private String userID;
 
     //pdf
-    private TextView myEditText;
+    //private TextView myEditText;
 
 
     @Override
@@ -64,7 +64,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         setContentView(view);
 
         //PDF
-        iniciarAplicativo();
+        //iniciarAplicativo();
 
 
         binding.icClear.setOnClickListener(v -> {
@@ -125,7 +125,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         });
     }
 
-    //----------------------------------------------------- PDF----------------------------------------------------------------------------------
+    /*//----------------------------------------------------- PDF----------------------------------------------------------------------------------
     private void iniciarAplicativo() {
         btnGerarPDF = findViewById(R.id.btn_gerar_pdf);
         txtTitulo = findViewById(R.id.tv_recarga_realizada);
@@ -158,5 +158,5 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             Toast.makeText(this, "falha ao gerar o PDF: " + e, Toast.LENGTH_LONG).show();
         }
     }
-    //----------------------------------------------------- PDF----------------------------------------------------------------------------------
+    //----------------------------------------------------- PDF----------------------------------------------------------------------------------*/
 }
