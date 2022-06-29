@@ -410,7 +410,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_num_ag_pagador" />
 
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_comprovante_pix"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -422,6 +422,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_pgto" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_pgto" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
