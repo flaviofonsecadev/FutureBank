@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -20,23 +21,33 @@ import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
 import com.example.futurebankgrupo1.usuario.LoginActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
 
-    //datepicker
-
+    //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
     DatePickerDialog.OnDateSetListener onDateSetListener;
 
     private ActivityTelaConfirmarDadosPixBinding binding;
 
+    final java.util.Calendar calendar = java.util.Calendar.getInstance();
+    int year = calendar.get(java.util.Calendar.YEAR);
+    int month = calendar.get(java.util.Calendar.MONTH);
+    int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
+
+    //---------------------------------------------------------- BINDING ----------------------------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityTelaConfirmarDadosPixBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
 
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
@@ -47,7 +58,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosActivity.class);
             startActivity(intent);
         });
-
 
         String valorPix;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
@@ -62,35 +72,36 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SenhaConfirmacaoPix.class);
             startActivity(intent);
         });*/
+        //---------------------------------------------------------- BINDING ----------------------------------------------------------------------------------
 
-        //data calendar
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
 
         binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
-            @Override
+           @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
+              DatePickerDialog datePickerDialog = new DatePickerDialog(
                         TelaConfirmarDadosPix.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        onDateSetListener,year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
+                      onDateSetListener,year, month, day);
+               datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+               datePickerDialog.show();
             }
         });
+
         onDateSetListener =  new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+          @Override
+           public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month+1;
                 String date = day+"/"+month+"/"+year;
-                binding.tvAgora.setText(date);
-            }
+              binding.tvAgora.setText(date);
+           }
         };
 
+        //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
 
-        //Biometria
+
+
+        //----------------------------------------------------- BIOMETRIA----------------------------------------------------------------------------------
 
         Executor executor = ContextCompat.getMainExecutor(this);
 
@@ -129,9 +140,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             editor.commit();
         });
 
-        //Biometria
+        //----------------------------------------------------- BIOMETRIA ----------------------------------------------------------------------------------
 
     }
-
-
 }
