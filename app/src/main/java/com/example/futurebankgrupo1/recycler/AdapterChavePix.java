@@ -26,7 +26,7 @@ public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyView
 
         View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista_chave_pix, parent, false);
 
-        return new MyViewHolder(itemLista);
+        return new MyViewHolder(itemLista).linkAdapter(this);
     }
 
     @Override
@@ -47,12 +47,23 @@ public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyView
 
         TextView tipoChave;
         TextView chavePix;
+        private AdapterChavePix adapterChavePix;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tipoChave = itemView.findViewById(R.id.tv_tipo_de_chave_pix);
             chavePix = itemView.findViewById(R.id.tv_chave_pix);
+
+            itemView.findViewById(R.id.iv_delete).setOnClickListener(v -> {
+                adapterChavePix.listaChavePix.remove(getAdapterPosition());
+                adapterChavePix.notifyItemRemoved(getAdapterPosition());
+            });
+        }
+
+        public MyViewHolder linkAdapter(AdapterChavePix adapterChavePix){
+            this.adapterChavePix = adapterChavePix;
+            return this;
         }
     }
 }
