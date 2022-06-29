@@ -32,7 +32,6 @@ import java.util.concurrent.Executor;
 
 public class AplicarCP extends AppCompatActivity {
     ActivityAplicarCpBinding binding;
-    MyViewModel viewModel;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -48,8 +47,9 @@ public class AplicarCP extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         Executor executor = ContextCompat.getMainExecutor(this);
 
@@ -67,26 +67,38 @@ public class AplicarCP extends AppCompatActivity {
 
                 String textoMask = binding.edtValorAplicar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
-                //Toast.makeText(this.getApplicationContext(), "oi" + textoNovo, Toast.LENGTH_LONG).show();
                 float valor = Float.parseFloat(textoNovo);
-                //System.out.println(valor);
-                float saldoCc = viewModel.exibirSaldoContaCorrente();
-                float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
+                reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
-                if (saldoCc >=valor){
-                    viewModel.setarSaldo(saldoCc - valor);
-                    viewModel.setarSaldoPoupanca(saldoCp + valor);
+                        if (userProfile != null){
+                            float saldo = userProfile.getSaldo();
+                            float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("chaveValorAplicar", binding.edtValorAplicar.getText().toString());
-                    editor.commit();
-                    Toast.makeText(getApplicationContext(), "Aplicação realizada com sucesso!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(AplicarCP.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
-                }
+                            if (saldo >=valor){
+                                reference.child(userID).child("saldo").setValue(saldo - valor);
+                                reference.child(userID).child("saldoPoupança").setValue(saldoPoupanca + valor);
+
+                                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("chaveValorAplicar", binding.edtValorAplicar.getText().toString());
+                                editor.commit();
+                                Toast.makeText(getApplicationContext(), "Aplicação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
+                                startActivity(intent);
+                            }
+
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(AplicarCP.this, "Error Firebase", Toast.LENGTH_SHORT).show();
+                    }
+                });
+//
             }
 
             @Override
@@ -106,9 +118,6 @@ public class AplicarCP extends AppCompatActivity {
             biometricPrompt.authenticate(promptInfo);
         });
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -125,7 +134,7 @@ public class AplicarCP extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AplicarCP.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AplicarCP.this, "Error Firebase", Toast.LENGTH_SHORT).show();
             }
         });
     }
