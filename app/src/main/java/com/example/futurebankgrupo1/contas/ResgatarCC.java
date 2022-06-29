@@ -32,7 +32,6 @@ import java.util.concurrent.Executor;
 
 public class ResgatarCC extends AppCompatActivity {
     ActivityResgatarCcBinding binding;
-    MyViewModel viewModel;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -48,8 +47,9 @@ public class ResgatarCC extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
 
         //Biometria
         Executor executor = ContextCompat.getMainExecutor(this);
@@ -69,27 +69,36 @@ public class ResgatarCC extends AppCompatActivity {
                 String textoMask = binding.edtValorResgatar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
                 float valor = Float.parseFloat(textoNovo);
-                //float valor = Float.parseFloat(binding.edtValorResgatar.getText().toString());
-                float saldoCc = viewModel.exibirSaldoContaCorrente();
-                float saldoCp = viewModel.exibibirSaldoPoupancaFirebase();
+                reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
-                if (saldoCp >=valor){
-                    viewModel.setarSaldo(saldoCc + valor);
-                    viewModel.setarSaldoPoupanca(saldoCp - valor);
+                        if (userProfile != null){
+                            float saldo = userProfile.getSaldo();
+                            float saldoPoupanca = userProfile.getSaldoPoupanca();
+
+                            if (saldo >=valor){
+                                reference.child(userID).child("saldo").setValue(saldo + valor);
+                                reference.child(userID).child("saldoPoupança").setValue(saldoPoupanca - valor);
+
+                                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("chaveValorResgatar", binding.edtValorResgatar.getText().toString());
+                                editor.commit();
+                                Toast.makeText(getApplicationContext(), "Resgate realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), ResgatarComprovante.class);
+                                startActivity(intent);
+                            }
 
 
-                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("chaveValorResgatar", binding.edtValorResgatar.getText().toString());
-                    //editor.putInt("chaveValorResgatar", Integer.parseInt(String.valueOf(binding.edtValorResgatar)));
-                    editor.commit();
-                    Toast.makeText(getApplicationContext(), "Resgate realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), ResgatarComprovante.class);
-                    startActivity(intent);
-
-                }else {
-                    Toast.makeText(ResgatarCC.this, "Tente novamente.", Toast.LENGTH_SHORT).show();
-                }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ResgatarCC.this, "Error Firebase", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             @Override
@@ -111,10 +120,6 @@ public class ResgatarCC extends AppCompatActivity {
         });
 
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -124,9 +129,7 @@ public class ResgatarCC extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvSaldoDisponivelCcResgatar.setText(String.valueOf("R$" + saldo));
                     binding.tvSaldoDisponivelCcResgatar.setText(dinheiroBR.format(saldo));
-                    //binding.tvSaldoDisponivelResgatar.setText(String.valueOf("R$" + saldoPoupanca));
                     binding.tvSaldoDisponivelResgatar.setText(dinheiroBR.format(saldoPoupanca));
 
                 }
