@@ -277,4 +277,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_conta_corrente" />
 
+    <Button
+        android:id="@+id/btn_gerar_pdf"
+        android:layout_width="143dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="84dp"
+        android:onClick="gerar"
+        android:text="criar PDF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_conta_corrente"
+        tools:ignore="OnClick" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
