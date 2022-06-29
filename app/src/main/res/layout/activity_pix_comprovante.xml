@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".transacoes.PixComprovanteActivity">
 
+    <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Data"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_transferencia_pix"
+        app:layout_constraintTop_toBottomOf="@+id/tv_transferencia_pix" />
+
     <ImageView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -38,8 +49,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
@@ -47,14 +57,12 @@
         android:id="@+id/tv_data_hora"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="08dp"
         android:fontFamily="@font/robotolight"
         android:text="03/06/2022 às 09:00"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="180dp"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_data"
         app:layout_constraintTop_toBottomOf="@+id/tv_transferencia_pix" />
 
     <View
@@ -176,7 +184,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="***.456.789-**"
+        android:text="***.654.321-**"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_recebedor"
@@ -224,7 +232,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="CPF"
+        android:text="Email"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_num_cc_recebedor"
