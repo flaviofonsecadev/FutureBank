@@ -51,6 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                         super.onAuthenticationSucceeded(result);
                         Toast.makeText(getApplicationContext(), "Autenticação realizada com sucesso!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        finish();
                     }
 
                     @Override
