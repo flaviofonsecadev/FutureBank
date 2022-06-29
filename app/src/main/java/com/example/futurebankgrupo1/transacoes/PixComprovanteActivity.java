@@ -60,22 +60,24 @@ public class PixComprovanteActivity extends AppCompatActivity {
             }
         });
 
+//        String date;
+//        SharedPreferences preferences3 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+//        date = preferences3.getString("chaveDate", "");
+//        binding.tvDataHora.setText(date);
+
         String valorPix;
-        int dayPix;
-        int monthPix;
-        int yearPix;
+        String nomeRecebedor;
+        String mensagemPix;
+        String date;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
-        dayPix = preferences.getInt("chaveDayPix",0);
-        monthPix = preferences.getInt("chaveMonthPix",0);
-        yearPix= preferences.getInt("chaveYearPix", 0);
-        binding.tvDataHora.setText(dayPix + "/" +monthPix+"/"+yearPix);
-
-        binding.tvGetValorTransferido.setText("R$" + valorPix);
-
-        String mensagemPix;
+        nomeRecebedor = preferences.getString("chaveNomeRecebedor", "");
         mensagemPix = preferences.getString("chaveMensagemPix", "");
+        date = preferences.getString("chaveDate", "");
+        binding.tvGetValorTransferido.setText("R$" + valorPix);
+        binding.tvRecebedor.setText(nomeRecebedor);
         binding.tvTipoPgto.setText(mensagemPix);
+        binding.tvDataHora.setText(date);
 
     }
 }
