@@ -43,16 +43,29 @@
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="07dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Data"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_transferencia_pix"
+        app:layout_constraintTop_toBottomOf="@id/tv_transferencia_pix" />
+
+
+    <TextView
         android:id="@+id/tv_data_hora"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/robotolight"
         android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_transferencia_pix"
+        app:layout_constraintStart_toEndOf="@+id/tv_data"
         app:layout_constraintTop_toBottomOf="@+id/tv_transferencia_pix" />
 
     <View
@@ -122,7 +135,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="Conta Corrente"
+        android:text="Conta"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/tv_ag_recebedor"

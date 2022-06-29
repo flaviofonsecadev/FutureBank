@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,30 +41,22 @@ public class PixComprovanteActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
                 if (userProfile != null){
                     String nome = userProfile.getNome();
                     String cpf = userProfile.getCpf();
-
                     binding.tvPagador.setText(nome);
                     binding.tvNumCpfPagador.setText(cpf);
                     }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-               // Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PixComprovanteActivity.this, "Error Firebasse", Toast.LENGTH_SHORT).show();
             }
         });
-
-//        String date;
-//        SharedPreferences preferences3 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-//        date = preferences3.getString("chaveDate", "");
-//        binding.tvDataHora.setText(date);
 
         String valorPix;
         String nomeRecebedor;
@@ -78,6 +71,5 @@ public class PixComprovanteActivity extends AppCompatActivity {
         binding.tvRecebedor.setText(nomeRecebedor);
         binding.tvTipoPgto.setText(mensagemPix);
         binding.tvDataHora.setText(date);
-
     }
 }
