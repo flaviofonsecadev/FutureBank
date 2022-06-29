@@ -94,74 +94,76 @@ public class PixTransferirActivity extends AppCompatActivity {
         });
 
         binding.button.setOnClickListener(v -> {
+
             String textoMask = binding.edtValorPix.getText().toString();
             String textoNovo = textoMask.replace(",", ".");
             float valor = Float.parseFloat(textoNovo);
             String chavePix = binding.edtChavePix.getText().toString().trim();
-
-            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-                    if (userProfile != null){
-                        float saldo = userProfile.getSaldo();
-                        if (saldo >= valor){
-                            reference.child(userID).child("saldo").setValue(saldo - valor);
-                            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
-                            editor.commit();
-                            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
-                            startActivity(intent);
+            if (chavePix.isEmpty()){
+                Toast.makeText(this, "Informe a chave Pix", Toast.LENGTH_SHORT).show();
+            } else {
+                reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
+                        if (userProfile != null){
+                            float saldo = userProfile.getSaldo();
+                            if (saldo >= valor){
+                                reference.child(userID).child("saldo").setValue(saldo - valor);
+                                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
+                                editor.commit();
+                                Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
+                                startActivity(intent);
+                            }
                         }
                     }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(PixTransferirActivity.this, "Erro. Tente novamente!", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(PixTransferirActivity.this, "Erro. Tente novamente!", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            if (chavePix.equals(flaviodev)){
-                transferirPix(flavioDevId, valor);
-                String nomeRecebedor = "Flavio Fonseca";
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveNomeRecebedor", nomeRecebedor);
-                editor.commit();
-            } else if (chavePix.equals(daiane)){
-                transferirPix(daianeId, valor);
-                String nomeRecebedor = "Daiane Silveira";
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveNomeRecebedor", nomeRecebedor);
-                editor.commit();
-            } else if (chavePix.equals(rafael)){
-                transferirPix(rafaelId, valor);
-                String nomeRecebedor = "Rafael Luiz Silverio";
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveNomeRecebedor", nomeRecebedor);
-                editor.commit();
-            } else if (chavePix.equals(kaua)){
-                transferirPix(kauaId, valor);
-                String nomeRecebedor = "kauã alcaya";
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveNomeRecebedor", nomeRecebedor);
-                editor.commit();
-            } else if (chavePix.equals(flavio)){
-                transferirPix(flavioId, valor);
-                String nomeRecebedor = "Flávio J. Fonsêca Filho";
-                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("chaveNomeRecebedor", nomeRecebedor);
-                editor.commit();
-            } else if (chavePix.isEmpty()){
-                Toast.makeText(this, "Informe a chave Pix", Toast.LENGTH_SHORT).show();
+                if (chavePix.equals(flaviodev)){
+                    transferirPix(flavioDevId, valor);
+                    String nomeRecebedor = "Flavio Fonseca";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                } else if (chavePix.equals(daiane)){
+                    transferirPix(daianeId, valor);
+                    String nomeRecebedor = "Daiane Silveira";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                } else if (chavePix.equals(rafael)){
+                    transferirPix(rafaelId, valor);
+                    String nomeRecebedor = "Rafael Luiz Silverio";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                } else if (chavePix.equals(kaua)){
+                    transferirPix(kauaId, valor);
+                    String nomeRecebedor = "kauã alcaya";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                } else if (chavePix.equals(flavio)){
+                    transferirPix(flavioId, valor);
+                    String nomeRecebedor = "Flávio J. Fonsêca Filho";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                }
             }
-        });
 
+        });
     }
 
     public void transferirPix(String id, float valor) {
