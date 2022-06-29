@@ -15,10 +15,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
-import com.example.futurebankgrupo1.usuario.LoginActivity;
 
 import java.util.Calendar;
 import java.util.concurrent.Executor;
@@ -53,14 +51,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         valorPix = preferences.getString("chaveValorPix", "");
         binding.tvValor.setText("R$" + valorPix);
 
-        /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences1.edit();
-            editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
-            editor.commit();
-            Intent intent = new Intent(getApplicationContext(), SenhaConfirmacaoPix.class);
-            startActivity(intent);
-        });*/
 
         //data calendar
         final Calendar calendar = Calendar.getInstance();
@@ -88,9 +78,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             }
         };
 
-
         //Biometria
-
         Executor executor = ContextCompat.getMainExecutor(this);
 
         BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPix.this, executor, new BiometricPrompt.AuthenticationCallback() {
@@ -127,10 +115,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
             editor.commit();
         });
-
         //Biometria
 
     }
-
-
 }

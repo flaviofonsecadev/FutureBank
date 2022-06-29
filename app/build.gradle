@@ -64,4 +64,7 @@ dependencies {
 
     //mascara valor decimal EditText - https://github.com/BlacKCaT27/CurrencyEditText
     implementation 'com.github.BlacKCaT27:CurrencyEditText:2.0.2'
+
+    //Atualizar tela
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 }
