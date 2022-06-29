@@ -16,10 +16,8 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
-import com.example.futurebankgrupo1.usuario.LoginActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,7 +28,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
 
     //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
     DatePickerDialog.OnDateSetListener onDateSetListener;
-
     private ActivityTelaConfirmarDadosPixBinding binding;
 
     final java.util.Calendar calendar = java.util.Calendar.getInstance();
@@ -50,7 +47,7 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
 
 
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
             startActivity(intent);
         });
 
@@ -60,22 +57,19 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         });
 
         String valorPix;
+        String nomeRecebedor;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
         binding.tvValor.setText("R$" + valorPix);
-
-        /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences1.edit();
-            editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
-            editor.commit();
-            Intent intent = new Intent(getApplicationContext(), SenhaConfirmacaoPix.class);
-            startActivity(intent);
-        });*/
-        //---------------------------------------------------------- BINDING ----------------------------------------------------------------------------------
+        nomeRecebedor = preferences.getString("chaveNomeRecebedor", "");
+        binding.tvNomeRecebedor.setText(nomeRecebedor);
 
 
-        //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
+        //data calendar
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -93,18 +87,16 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month+1;
                 String date = day+"/"+month+"/"+year;
-              binding.tvAgora.setText(date);
-           }
+                binding.tvAgora.setText(date);
+                SharedPreferences preferences3 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences3.edit();
+                editor.putString("chaveDate", date);
+                editor.commit();
+            }
         };
 
-        //----------------------------------------------------- DATA CALENDARIO ----------------------------------------------------------------------------------
-
-
-
-        //----------------------------------------------------- BIOMETRIA----------------------------------------------------------------------------------
-
+        //Biometria
         Executor executor = ContextCompat.getMainExecutor(this);
-
         BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPix.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
@@ -133,9 +125,12 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
                 .build();
 
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
+            //int month2 = month+1;
+            //String date = day+"/"+ (month + 1) +"/"+year;
             biometricPrompt.authenticate(promptInfo);
             SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences1.edit();
+            //editor.putString("chaveDate", date);
             editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
             editor.commit();
         });

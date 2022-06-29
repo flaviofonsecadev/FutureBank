@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".transacoes.PixComprovanteActivity">
 
-    <TextView
-        android:id="@+id/tv_data"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:fontFamily="@font/robotolight"
-        android:text="Data"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@id/tv_transferencia_pix"
-        app:layout_constraintTop_toBottomOf="@+id/tv_transferencia_pix" />
-
     <ImageView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -43,23 +32,37 @@
         android:id="@+id/tv_transferencia_pix"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
         android:drawableStart="@drawable/group_52"
         android:fontFamily="@font/robotomedium"
-        android:text="@string/txt_transferencia_pix"
+        android:text=" Transferência Via TED"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="07dp"
+        android:fontFamily="@font/robotolight"
+        android:text="Data"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_transferencia_pix"
+        app:layout_constraintTop_toBottomOf="@id/tv_transferencia_pix" />
+
 
     <TextView
         android:id="@+id/tv_data_hora"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="08dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="03/06/2022 às 09:00"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/tv_data"
@@ -132,7 +135,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="Conta Corrente"
+        android:text="Conta"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/tv_ag_recebedor"
@@ -144,7 +147,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
-        android:text="Tipo de chave Pix"
+        android:text="Tipo de Conta"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/tv_cc_recebedor"
@@ -184,7 +187,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="***.654.321-**"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_recebedor"
@@ -196,7 +199,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="FutureBank"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_num_cpf_recebedor"
@@ -208,7 +211,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="0001"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_nome_instituicao_recebedor"
@@ -220,19 +223,19 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="1234567-8"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_num_ag_recebedor"
         app:layout_constraintTop_toBottomOf="@+id/tv_num_ag_recebedor" />
 
     <TextView
-        android:id="@+id/tv_chave_pix_recebedor"
+        android:id="@+id/tv_tipo_conta_recebedor"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/robotoregular"
-        android:text="Email"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_num_cc_recebedor"
@@ -323,31 +326,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_ag_pagador"
         app:layout_constraintTop_toBottomOf="@+id/tv_ag_pagador" />
 
-    <TextView
-        android:id="@+id/tv_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/robotolight"
-        android:text="Mensagem"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_cc_pagador"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cc_pagador" />
-
     <!-- Text Views lado direito pagador -->
-
-    <TextView
-        android:id="@+id/tv_tipo_pgto"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/robotoregular"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_msg"
-        app:layout_constraintTop_toBottomOf="@+id/tv_msg" />
 
     <TextView
         android:id="@+id/tv_pagador"
@@ -411,18 +390,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_num_ag_pagador" />
 
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_comprovante_pix"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:background="@drawable/custom_buttom"-->
-<!--        android:text="Compartilhar comprovante"-->
-<!--        android:textAllCaps="false"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_pgto" />-->
+        <!--<Button
+            android:id="@+id/btn_comprovante_pix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/custom_buttom"
+            android:text="Compartilhar comprovante"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

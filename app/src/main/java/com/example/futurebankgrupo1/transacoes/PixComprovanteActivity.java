@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,42 +41,35 @@ public class PixComprovanteActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
                 if (userProfile != null){
                     String nome = userProfile.getNome();
                     String cpf = userProfile.getCpf();
-
                     binding.tvPagador.setText(nome);
                     binding.tvNumCpfPagador.setText(cpf);
                     }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-               // Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PixComprovanteActivity.this, "Error Firebasse", Toast.LENGTH_SHORT).show();
             }
         });
 
         String valorPix;
-        int dayPix;
-        int monthPix;
-        int yearPix;
+        String nomeRecebedor;
+        String mensagemPix;
+        String date;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
-        dayPix = preferences.getInt("chaveDayPix",0);
-        monthPix = preferences.getInt("chaveMonthPix",0);
-        yearPix= preferences.getInt("chaveYearPix", 0);
-        binding.tvDataHora.setText(dayPix + "/" +monthPix+"/"+yearPix);
-
-        binding.tvGetValorTransferido.setText("R$" + valorPix);
-
-        String mensagemPix;
+        nomeRecebedor = preferences.getString("chaveNomeRecebedor", "");
         mensagemPix = preferences.getString("chaveMensagemPix", "");
+        date = preferences.getString("chaveDate", "");
+        binding.tvGetValorTransferido.setText("R$" + valorPix);
+        binding.tvRecebedor.setText(nomeRecebedor);
         binding.tvTipoPgto.setText(mensagemPix);
-
+        binding.tvDataHora.setText(date);
     }
 }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".usuario.AlterarDadosUsuario">
@@ -53,167 +58,129 @@
 
 
     <TextView
-        android:id="@+id/tv_alterar_dados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/robotomedium"
-        android:text="Alterar Dados"
-        android:textAllCaps="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
-
-    <TextView
         android:id="@+id/tv_nome_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/robotolight"
         android:text="Nome"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_alterar_dados" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
         android:id="@+id/tv_cpf_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="CPF"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nome_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_nome_usuario" />
 
     <TextView
         android:id="@+id/tv_data_nascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Nascimento"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cpf_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_cpf" />
 
     <TextView
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="E-mail"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_data_nascimento" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_data_nascimento" />
 
     <TextView
         android:id="@+id/tv_telefone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Telefone"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_email" />
 
     <EditText
         android:id="@+id/edt_set_nome_usuario"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/robotoregular"
-        android:hint="Adalberto Ferreira"
-        android:textSize="16sp"
-        android:gravity="start"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_nome_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_nome_usuario" />
+        android:drawableStart="@drawable/ic_edit_lapis"
+        android:fontFamily="@font/robotoregular"
+        android:gravity="start"
+        android:hint=""
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome_usuario" />
 
     <EditText
         android:id="@+id/edt_set_cpf"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/robotoregular"
-        android:hint="987.654.321-00"
-        android:gravity="start"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
+        android:fontFamily="@font/robotoregular"
+        android:gravity="start"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cpf_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_cpf_usuario" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cpf_usuario" />
 
     <EditText
         android:id="@+id/edt_set_data_nascimento"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="27/06/1981"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_data_nascimento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_data_nascimento" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_data_nascimento" />
 
 
     <EditText
         android:id="@+id/edt_set_email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="adalbertoferreira@gmail.com"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_email" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
     <EditText
         android:id="@+id/edt_set_telefone"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="(75)94949494949"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_telefone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_telefone" />
-
-    <TextView
-        android:id="@+id/tv_endereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/robotomedium"
-        android:text="Endereço"
-        android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_telefone" />
 
@@ -222,240 +189,218 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/robotolight"
         android:text="Logradouro"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_endereco" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_telefone" />
 
     <TextView
         android:id="@+id/tv_numero_casa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Número"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_logradouro" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_logradouro" />
 
     <TextView
         android:id="@+id/tv_complemento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Complemento"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_numero_casa" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_numero_casa" />
 
     <TextView
         android:id="@+id/tv_bairro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Bairro"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_complemento" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_complemento" />
 
     <TextView
         android:id="@+id/tv_cidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Cidade"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bairro" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_bairro" />
 
     <EditText
         android:id="@+id/edt_set_logradouro"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="Rua Fernão de Magalhães"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_logradouro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_logradouro" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_logradouro" />
 
     <EditText
         android:id="@+id/edt_set_numero_casa"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="249"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_numero_casa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_numero_casa" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_numero_casa" />
 
     <EditText
         android:id="@+id/edt_set_complemento"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
         android:hint=""
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_complemento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_complemento" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_complemento" />
 
     <EditText
         android:id="@+id/edt_set_bairro"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="Futurama"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_bairro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_bairro" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bairro" />
 
     <EditText
         android:id="@+id/edt_set_cidade"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="Bom Jesus"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bairro" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cidade" />
 
     <TextView
         android:id="@+id/tv_estado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Estado"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cidade" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_cidade" />
 
     <EditText
         android:id="@+id/edt_set_estado"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="Rio Grande do Norte"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_estado"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cidade" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_estado" />
 
     <TextView
         android:id="@+id/tv_pais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="País"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_estado" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_estado" />
 
     <EditText
         android:id="@+id/edt_set_pais"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="Brasil"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_pais"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_pais" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pais" />
 
     <TextView
         android:id="@+id/tv_cep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="CEP"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pais" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_pais" />
 
     <EditText
         android:id="@+id/edt_set_cep"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/white"
-        android:drawableEnd="@drawable/ic_edit_lapis"
+        android:drawableStart="@drawable/ic_edit_lapis"
         android:fontFamily="@font/robotoregular"
         android:gravity="start"
-        android:hint="59270-000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_cep" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cep" />
 
 
     <Button
         android:id="@+id/btn_salvar_alteracoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="140dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custom_buttom"
         android:text="Salvar Alterações"
-        android:textSize="18sp"
         android:textAllCaps="false"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_set_cep" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

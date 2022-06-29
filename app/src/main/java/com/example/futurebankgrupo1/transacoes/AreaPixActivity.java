@@ -81,10 +81,19 @@ public class AreaPixActivity extends AppCompatActivity {
         });
 
         //gerenciar chaves pix
-        binding.ivArrow4.setOnClickListener(v -> {
+        binding.tvChavePix.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), GerenciarChavesPixActivity.class);
             startActivity(intent);
         });
 
+        binding.tvGerenciarChavePix.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), GerenciarChavesPixActivity.class);
+            startActivity(intent);
+        });
+
+        binding.ivArrow4.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), GerenciarChavesPixActivity.class);
+            startActivity(intent);
+        });
     }
 }

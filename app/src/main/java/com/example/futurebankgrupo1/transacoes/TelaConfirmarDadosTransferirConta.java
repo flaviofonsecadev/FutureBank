@@ -15,34 +15,56 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixCopiaColaBinding;
-import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFaturaConfirmarValor;
+import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
+import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosTransferirContaBinding;
+import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 
 import java.util.Calendar;
 import java.util.concurrent.Executor;
 
-public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
+public class TelaConfirmarDadosTransferirConta extends AppCompatActivity {
 
+    //datepicker
     DatePickerDialog.OnDateSetListener onDateSetListener;
-    private ActivityTelaConfirmarDadosPixCopiaColaBinding binding;
+
+    private ActivityTelaConfirmarDadosTransferirContaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTelaConfirmarDadosPixCopiaColaBinding.inflate(getLayoutInflater());
+        binding = ActivityTelaConfirmarDadosTransferirContaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
+
         binding.icBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), TelaPixCopiaCola.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirConta.class);
             startActivity(intent);
         });
 
-        //recebe valor pix copia e cola
-        String valorPix;
-        SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        valorPix = preferences1.getString("chaveValorPix", "");
-        binding.tvValor.setText("R$" + valorPix);
+
+        String valorTed;
+        String banco;
+        String tipoConta;
+        String agencia;
+        String numeroConta;
+        String cpfRecebedor;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        valorTed = preferences.getString("chaveValorTED", "");
+        binding.tvValor.setText("R$" + valorTed);
+        banco = preferences.getString("chaveBanco", "");
+        binding.tvGetInstituicao.setText(banco);
+        tipoConta = preferences.getString("chaveTipoConta", "");
+        binding.tvGetTipoConta.setText(tipoConta);
+        agencia = preferences.getString("chaveAgencia", "");
+        binding.tvGetAgencia.setText(agencia);
+        numeroConta = preferences.getString("chaveNumeroConta","");
+        binding.tvGetConta.setText(numeroConta);
+        cpfRecebedor = preferences.getString("chaveCpfRecebedor", "");
+        binding.tvGetCpf.setText(cpfRecebedor);
+
+
 
         //data calendar
         final Calendar calendar = Calendar.getInstance();
@@ -50,11 +72,12 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+
         binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        TelaConfirmarDadosPixCopiaCola.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        TelaConfirmarDadosTransferirConta.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         onDateSetListener,year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
@@ -73,28 +96,28 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             }
         };
 
-        //Biometria
 
+        //Biometria
         Executor executor = ContextCompat.getMainExecutor(this);
 
-        BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPixCopiaCola.this, executor, new BiometricPrompt.AuthenticationCallback() {
+        BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosTransferirConta.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(TelaConfirmarDadosPixCopiaCola.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TelaConfirmarDadosTransferirConta.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), "Transação realizada com sucesso!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), PixComprovanteCopiaCola.class));
+                startActivity(new Intent(getApplicationContext(), TelaTransferirContaComprovante.class));
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(TelaConfirmarDadosPixCopiaCola.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TelaConfirmarDadosTransferirConta.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -106,10 +129,9 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
 
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
             biometricPrompt.authenticate(promptInfo);
-            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("chaveMensagemPixCopiaCola", binding.edtMensagem.getText().toString());
-            editor.commit();
         });
+        //Biometria
+
+
     }
 }

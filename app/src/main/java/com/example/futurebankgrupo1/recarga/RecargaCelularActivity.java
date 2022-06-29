@@ -71,7 +71,7 @@ public class RecargaCelularActivity extends AppCompatActivity {
                         @Override
                         public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                             super.onAuthenticationSucceeded(result);
-                            Toast.makeText(getApplicationContext(), "Transação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Recarga realizada com sucesso!", Toast.LENGTH_SHORT).show();
 
                             //spinner
                             float valorSelect = Float.parseFloat(binding.spValor.getSelectedItem().toString());

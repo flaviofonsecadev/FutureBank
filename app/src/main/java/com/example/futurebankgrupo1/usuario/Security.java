@@ -28,8 +28,8 @@ public class Security extends AppCompatActivity {
 
         switchCompat = findViewById(R.id.switch_biometria);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
-        switchCompat.setChecked(sharedPreferences.getBoolean("value", false));
+        /*SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+        switchCompat.setChecked(sharedPreferences.getBoolean("value", false));*/
 
 
         /*switchCompat.setOnClickListener(v -> {

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.savedstate.SavedStateRegistry;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.futurebankgrupo1.api.Bill;
 import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;
@@ -25,6 +26,7 @@ import com.example.futurebankgrupo1.contas.TiposContasActivity;
 import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
 import com.example.futurebankgrupo1.seguros.SeguroCartaoActivity;
 import com.example.futurebankgrupo1.seguros.SeguroVida;
+import com.example.futurebankgrupo1.transacoes.TelaTransferirPixTED;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,6 +70,10 @@ public class HomeActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
 
+        //Ocultadores de valores invisíveis por padrão
+        binding.ivPontosHorizontais.setVisibility(view.GONE);
+        binding.ivPontosHorizontais2.setVisibility(view.GONE);
+        binding.ivPontosHorizontais3.setVisibility(view.GONE);
 
         //
 
@@ -78,39 +84,25 @@ public class HomeActivity extends AppCompatActivity {
 
                 if (userProfile != null){
                     String nome = userProfile.getNome();
-                    /*float saldo = userProfile.getSaldo();
+                    float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
-                    float limiteCartao = userProfile.getLimiteCartao();*/
+                    float limiteCartao = userProfile.getLimiteCartao();
 
 
                     binding.tvOlaCliente.setText("Olá, " + nome);
-                    //binding.tvSaldoDisponivel.setText(String.valueOf("R$" + saldo));
-                    //binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                    binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                    binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
+                    binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
+
+
                 }
 
                 //botão ocultar valores
-
                 binding.iconEyeHome.setOnClickListener(v -> {
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
                     float limiteCartao = userProfile.getLimiteCartao();
                     if (cont == 1) {
-                        //Imagem olho
-                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
-
-                        //Pontos para ocultar
-                        binding.ivPontosHorizontais.setVisibility(view.GONE);
-                        binding.ivPontosHorizontais2.setVisibility(view.GONE);
-                        binding.ivPontosHorizontais3.setVisibility(view.GONE);
-
-                        //Valores
-                        binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
-                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
-                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
-
-                        //Contador
-                        cont = 0;
-                    } else {
                         //Imagem olho
                         binding.iconEyeHome.setImageResource(R.drawable.icon_eye_disabled);
 
@@ -123,6 +115,22 @@ public class HomeActivity extends AppCompatActivity {
                         binding.tvSaldoDisponivel.setText("");
                         binding.tvGetValorFaturaAtual.setText("");
                         binding.tvGetValorLimiteDisponivel.setText("");
+
+                        //Contador
+                        cont = 0;
+                    } else {
+                        //Imagem olho
+                        binding.iconEyeHome.setImageResource(R.drawable.icon_eye_enabled);
+
+                        //Pontos para ocultar
+                        binding.ivPontosHorizontais.setVisibility(view.GONE);
+                        binding.ivPontosHorizontais2.setVisibility(view.GONE);
+                        binding.ivPontosHorizontais3.setVisibility(view.GONE);
+
+                        //Valores
+                        binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                        binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
+                        binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
 
                         //Contador
                         cont = 1;
@@ -178,17 +186,17 @@ public class HomeActivity extends AppCompatActivity {
 
         //botões transferir
         binding.ivTransferirHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
         binding.tvTransferirHome.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
         binding.constraintTransferir.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PixTransferirActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TelaTransferirPixTED.class);
             startActivity(intent);
         });
 
