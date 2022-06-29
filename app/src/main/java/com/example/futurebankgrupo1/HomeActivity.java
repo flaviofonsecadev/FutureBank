@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.savedstate.SavedStateRegistry;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.futurebankgrupo1.api.Bill;
 import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;
@@ -88,13 +89,15 @@ public class HomeActivity extends AppCompatActivity {
                     float limiteCartao = userProfile.getLimiteCartao();
 
 
-                    binding.tvOlaCliente.setText("Olá, " + nome);binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
+                    binding.tvOlaCliente.setText("Olá, " + nome);
+                    binding.tvSaldoDisponivel.setText(dinheiroBR.format(saldo));
                     binding.tvGetValorFaturaAtual.setText(dinheiroBR.format(valorFatura));
                     binding.tvGetValorLimiteDisponivel.setText(dinheiroBR.format(limiteCartao));
+
+
                 }
 
                 //botão ocultar valores
-
                 binding.iconEyeHome.setOnClickListener(v -> {
                     float saldo = userProfile.getSaldo();
                     float valorFatura = userProfile.getValorFatura();
