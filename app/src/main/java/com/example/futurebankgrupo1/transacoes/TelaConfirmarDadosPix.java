@@ -24,9 +24,7 @@ import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
 
-    //datepicker
     DatePickerDialog.OnDateSetListener onDateSetListener;
-
     private ActivityTelaConfirmarDadosPixBinding binding;
 
     @Override
@@ -70,7 +68,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-
         binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,11 +91,8 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             }
         };
 
-
         //Biometria
-
         Executor executor = ContextCompat.getMainExecutor(this);
-
         BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosPix.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
@@ -136,8 +130,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             editor.putString("chaveMensagemPix", binding.edtMensagem.getText().toString());
             editor.commit();
         });
-
-        //Biometria
 
     }
 

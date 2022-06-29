@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
@@ -24,9 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 public class PixComprovanteCopiaCola extends AppCompatActivity {
 
     private ActivityPixComprovanteCopiaColaBinding binding;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +37,9 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -58,27 +55,19 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PixComprovanteCopiaCola.this, "Error Firebase", Toast.LENGTH_SHORT).show();
             }
         });
 
         String valorPix;
-        int dayPix;
-        int monthPix;
-        int yearPix;
+        String date;
+        String mensagemPixCopiaCola;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         valorPix = preferences.getString("chaveValorPix", "");
-        dayPix = preferences.getInt("chaveDayPix",0);
-        monthPix = preferences.getInt("chaveMonthPix",0);
-        yearPix= preferences.getInt("chaveYearPix", 0);
-        binding.tvDataHora.setText(dayPix + "/" +monthPix+"/"+yearPix);
-
+        date = preferences.getString("chaveDate", "");
+        mensagemPixCopiaCola = preferences.getString("chaveMensagemPixCopiaCola", "");
         binding.tvGetValorTransferido.setText("R$" + valorPix);
-
-        String mensagemPixCopiaCola;
-        SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        mensagemPixCopiaCola = preferences1.getString("chaveMensagemPixCopiaCola", "");
+        binding.tvDataHora.setText(date);
         binding.tvTipoPgto.setText(mensagemPixCopiaCola);
-
     }
 }

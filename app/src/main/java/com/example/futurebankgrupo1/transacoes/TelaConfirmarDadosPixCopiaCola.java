@@ -23,10 +23,7 @@ import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
 
-    //datepicker
-
     DatePickerDialog.OnDateSetListener onDateSetListener;
-
     private ActivityTelaConfirmarDadosPixCopiaColaBinding binding;
 
     @Override
@@ -47,28 +44,11 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
         valorPix = preferences1.getString("chaveValorPix", "");
         binding.tvValor.setText("R$" + valorPix);
 
-        /*binding.tvReagendar.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosBinding.class);
-            startActivity(intent);
-        });*/
-
-
-        /*binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("chaveMensagemPixCopiaCola", binding.edtMensagem.getText().toString());
-            editor.commit();
-            Intent intent = new Intent(getApplicationContext(), PixComprovanteCopiaCola.class);
-            startActivity(intent);
-        });*/
-
-
         //data calendar
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-
 
         binding.tvReagendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +66,10 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
                 month = month+1;
                 String date = day+"/"+month+"/"+year;
                 binding.tvAgora.setText(date);
+                SharedPreferences preferences3 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences3.edit();
+                editor.putString("chaveDate", date);
+                editor.commit();
             }
         };
 

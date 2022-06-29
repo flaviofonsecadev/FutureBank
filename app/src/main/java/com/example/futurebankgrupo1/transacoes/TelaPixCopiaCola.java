@@ -33,7 +33,7 @@ public class TelaPixCopiaCola extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    Locale localeBR = new Locale( "pt", "BR" );
+    Locale localeBR = new Locale("pt", "BR");
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
@@ -48,46 +48,39 @@ public class TelaPixCopiaCola extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
-
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
-                if (userProfile != null){
-                    String nome = userProfile.getNome();
-                    float saldo = userProfile.getSaldo();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(TelaPixCopiaCola.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         binding.btnProsseguir.setOnClickListener(v -> {
             String textoMask = binding.edtValorPix.getText().toString();
             String textoNovo = textoMask.replace(",", ".");
             float valor = Float.parseFloat(textoNovo);
 
-            if (viewModel.exibirSaldoContaCorrente() >=valor){
-                viewModel.setarSaldo(viewModel.exibirSaldoContaCorrente() - valor);
+            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
+                    if (userProfile != null) {
+                        float saldo = userProfile.getSaldo();
+                        if (saldo >= valor) {
+                            reference.child(userID).child("saldo").setValue(saldo - valor);
 
-                SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences1.edit();
-                editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
-                editor.commit();
-                Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPixCopiaCola.class);
-                startActivity(intent);
-            }else {
-                Toast.makeText(this, "Tente novamente.", Toast.LENGTH_SHORT).show();
-            }
+                            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences1.edit();
+                            editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
+                            editor.commit();
+                            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPixCopiaCola.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(TelaPixCopiaCola.this, "Erro. Tente novamente!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
     }
 }

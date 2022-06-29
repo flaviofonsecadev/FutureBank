@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
@@ -24,9 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 public class TelaTransferirContaComprovante extends AppCompatActivity {
 
     private ActivityTelaTransferirContaComprovanteBinding binding;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,38 +38,29 @@ public class TelaTransferirContaComprovante extends AppCompatActivity {
             startActivity(intent);
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
                 if (userProfile != null){
                     String nome = userProfile.getNome();
                     String cpf = userProfile.getCpf();
-
                     binding.tvPagador.setText(nome);
                     binding.tvNumCpfPagador.setText(cpf);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Toast.makeText(HomeActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TelaTransferirContaComprovante.this, "Error Firebase", Toast.LENGTH_SHORT).show();
             }
         });
-
-        String valorPix;
-        int dayPix;
-        int monthPix;
-        int yearPix;
+        String date;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        dayPix = preferences.getInt("chaveDayPix",0);
-        monthPix = preferences.getInt("chaveMonthPix",0);
-        yearPix= preferences.getInt("chaveYearPix", 0);
-        binding.tvDataHora.setText(dayPix + "/" +monthPix+"/"+yearPix);
+        date = preferences.getString("chaveDate", "");
+        binding.tvDataHora.setText(date);
 
         String valorTed;
         String banco;

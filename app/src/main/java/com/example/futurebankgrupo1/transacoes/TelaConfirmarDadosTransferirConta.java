@@ -89,6 +89,10 @@ public class TelaConfirmarDadosTransferirConta extends AppCompatActivity {
                 month = month+1;
                 String date = day+"/"+month+"/"+year;
                 binding.tvAgora.setText(date);
+                SharedPreferences preferences3 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences3.edit();
+                editor.putString("chaveDate", date);
+                editor.commit();
             }
         };
 

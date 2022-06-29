@@ -118,6 +118,7 @@ public class PixTransferirActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(PixTransferirActivity.this, "Erro. Tente novamente!", Toast.LENGTH_SHORT).show();
                 }
             });
 
