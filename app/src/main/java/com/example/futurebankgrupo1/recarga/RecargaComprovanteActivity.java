@@ -42,9 +42,8 @@ import java.io.IOException;
 public class RecargaComprovanteActivity extends AppCompatActivity {
 
     //PDF
-    //Button btnGerarPDF;
-   // TextView txtTitulo;
-
+    Button btnGerarPDF;
+    TextView txtTitulo;
 
 
     private ActivityRecargaComprovanteBinding binding;
@@ -57,7 +56,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
     private TextView myEditText;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +64,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         setContentView(view);
 
         //PDF
-       // iniciarAplicativo();
+        iniciarAplicativo();
 
 
         binding.icClear.setOnClickListener(v -> {
@@ -97,11 +95,11 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
 
 //        //puxa dados tela p/ comprovante
-//        binding.tvGetTelRecebedor.getText().toString();
-//        binding.tvGetOperRecebedora.getText().toString();
-//        binding.tvGetValorRecarga.getText().toString();
-//        binding.tvGetConta1.getText().toString(); //tipo de pagamento
-//        binding.tvGetPagador.getText().toString();
+        binding.tvGetTelRecebedor.getText().toString();
+        binding.tvGetOperRecebedora.getText().toString();
+        binding.tvGetValorRecarga.getText().toString();
+        binding.tvGetConta1.getText().toString(); //tipo de pagamento
+        binding.tvGetPagador.getText().toString();
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -113,51 +111,52 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
-                if (userProfile != null){
+                if (userProfile != null) {
                     String nome = userProfile.getNome();
 
                     binding.tvGetPagador.setText(nome);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(RecargaComprovanteActivity.this, "Ocorreu algum erro com o nome do pagador!", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     //----------------------------------------------------- PDF----------------------------------------------------------------------------------
-   // private void iniciarAplicativo() {
-   // btnGerarPDF = findViewById(R.id.btn_gerar_pdf);
-   // txtTitulo = findViewById(R.id.tv_recarga_realizada);
+    private void iniciarAplicativo() {
+        btnGerarPDF = findViewById(R.id.btn_gerar_pdf);
+        txtTitulo = findViewById(R.id.tv_recarga_realizada);
     }
 
 
+    public void gerarPDF(View view) {
+        PdfDocument documentoPDF = new PdfDocument();
 
-    //public void gerarPDF(View view){
-      //PdfDocument documentoPDF = new PdfDocument();
+        PdfDocument.PageInfo detalhesDaPagina = new PdfDocument.PageInfo.Builder(500, 600, 1).create();
 
-     // PdfDocument.PageInfo detalhesDaPagina = new PdfDocument.PageInfo.Builder(500,600,1).create();
+        PdfDocument.Page novaPagina = documentoPDF.startPage(detalhesDaPagina);
 
-      //PdfDocument.Page novaPagina = novaPagina = documentoPDF.startPage(detalhesDaPagina);
+        Canvas canvas = novaPagina.getCanvas();
 
-        //Canvas canvas = novaPagina.getCanvas();
+        Paint corDoTexto = new Paint();
+        corDoTexto.setColor(Color.BLACK);
+        canvas.drawText(txtTitulo.getText().toString(), 105, 100, corDoTexto);
+        corDoTexto.setColor(Color.BLACK);
+        documentoPDF.finishPage(novaPagina);
 
-       // Paint corDoTexto = new Paint();
-       // corDoTexto.setColor(Color.BLACK);
-       // canvas.drawText(txtTitulo.getText().toString(), 105, 100, corDoTexto);
-       // corDoTexto.setColor(Color.BLACK);
-       // documentoPDF.finishPage(novaPagina);
+        String targetPdf = "/sdcard/pdf/pdfModeloNovo.pdf";
+        File filePath = new File(targetPdf);
 
-       // String targetPdf = "/sdcard/pdf/pdfModeloNovo.pdf";
-        //File filePath = new File(targetPdf);
-
-        //try{
-         //   documentoPDF.writeTo(new FileOutputStream(filePath));
-         //   Toast.makeText(this, "PDF gerado com sucesso. . .", Toast.LENGTH_LONG).show();
-       // } catch (IOException e) {
-         //   e.printStackTrace();
-          //  Toast.makeText(this, "falha ao gerar o PDF: " + e.toString(), Toast.LENGTH_LONG).show();
-        //}
-   // }
+        try {
+            documentoPDF.writeTo(new FileOutputStream(filePath));
+            Toast.makeText(this, "PDF gerado com sucesso. . .", Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "falha ao gerar o PDF: " + e, Toast.LENGTH_LONG).show();
+        }
+    }
     //----------------------------------------------------- PDF----------------------------------------------------------------------------------
 }

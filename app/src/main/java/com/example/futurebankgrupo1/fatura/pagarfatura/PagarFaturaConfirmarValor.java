@@ -67,7 +67,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
 
 
 
-        //data calendar
+        /*//data calendar
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -91,7 +91,7 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
             String date = day+"/"+month+"/"+year;
             binding.textData.setText(date);
             }
-        };
+        };*/
 
 
 //        //calendario do dia atual
