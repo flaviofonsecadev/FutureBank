@@ -48,7 +48,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/robotolight"
-        android:text="31/05/2022 às 15:25"
+        android:text="Data 31/05/2022"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

@@ -69,14 +69,14 @@ public class ComprovanteFatura extends AppCompatActivity {
             }
         });
 
-        int day;
+        /*int day;
         int month;
         int year;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
         day = preferences.getInt("chaveDay",0);
         month = preferences.getInt("chaveMonth",0);
         year= preferences.getInt("chaveYear", 0);
-        binding.tvGetDataHora.setText(day + "/" +month+"/"+year);
+        binding.tvGetDataHora.setText(day + "/" +month+"/"+year);*/
 
 
         Intent intentReceberDados = getIntent();
