@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.savedstate.SavedStateRegistry;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.futurebankgrupo1.api.Bill;
 import com.example.futurebankgrupo1.cartoes.MeusCartoesActivity;

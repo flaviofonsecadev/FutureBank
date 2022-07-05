@@ -35,14 +35,14 @@ public class PixTransferirActivity extends AppCompatActivity {
     private String userID;
     private final String flaviodev = "flaviofonsecadev@gmail.com";
     private final String daiane = "daiane.silveira@foursys.com.br";
-    private final String rafael = "rafael_silverios@hotmail.com";
+    private final String rafael = "rafael.silverio@foursys.com.br";
     private final String kaua = "kaua.alcaya@foursys.com.br";
     private final String flavio = "flavio.fonseca@foursys.com.br";
-    private final String flavioDevId = "GHvjKgsV3tWWp5OuOPlCqb7OgUv2";
-    private final String daianeId = "bp3o9N07TFcrMkf1gVZlEoZrbv83";
-    private final String rafaelId = "PkKRJhXkV8UZgKaachkTj8O1lva2";
-    private final String kauaId = "N6QWD2QX6SdSamXpjIx97jflR7s2";
-    private final String flavioId = "kj8RzdIIxWVqCUDMRvSsMOjEsQ53";
+    private final String flavioDevId = "v6PqMgULNofhHMwIopEh8tSCKdn1";
+    private final String daianeId = "BToaOYweJRYyAZi3Okv2upoHfyd2";
+    private final String rafaelId = "rcc2qZeAzqbAnsNf5TvzvK0W2qF2";
+    private final String kauaId = "sFvyg4LiTzb2BI9e4P1X7Myowrf2";
+    private final String flavioId = "EP0rIiIDS5Tma0cAZRK74OwE6HJ3";
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -81,7 +81,7 @@ public class PixTransferirActivity extends AppCompatActivity {
                 UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
 
                 if (userProfile != null){
-                    String nome = userProfile.getNome();
+                    //String nome = userProfile.getNome();
                     float saldo = userProfile.getSaldo();
 
                     binding.tvSaldoDisponivelPix.setText(dinheiroBR.format(saldo));
