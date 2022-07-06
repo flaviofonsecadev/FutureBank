@@ -171,11 +171,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
         String getIdNome = binding.tvGetId.getText().toString();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd_MM_yyyy");
-        Date data = new Date();
-        String dateFormat = formatDate.format(data);
-
-
         PdfDocument documentoPDF = new PdfDocument();
 
         PdfDocument.PageInfo detalhesDaPagina = new PdfDocument.PageInfo.Builder(350, 600, 1).create();
@@ -232,7 +227,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
         documentoPDF.finishPage(novaPagina);
 
-        String targetPdf = "/storage/emulated/0/Download/recarga_" + dateFormat + "_" + getIdNome +  ".pdf";
+        String targetPdf = "/storage/emulated/0/Download/recarga_" + getIdNome +  ".pdf";
         File filePath = new File(targetPdf);
 
         try {
@@ -249,16 +244,20 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         String letrasID = "";
         String numerosID = "";
 
+        SimpleDateFormat formatDate = new SimpleDateFormat("ddMMyyyy-hhmmss");
+        Date data = new Date();
+        String dateFormat = formatDate.format(data);
+
         for (int i = 0; i < 3; i++) {
             char randomizedCharacter = (char) (rand.nextInt(26) + 'A');
             letrasID += randomizedCharacter;
         }
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) {
             int value = rand.nextInt(9);
             numerosID += value;
         }
-        binding.tvGetId.setText(letrasID + "-" + numerosID);
+        binding.tvGetId.setText(letrasID + "-" + numerosID + "-" + dateFormat);
         return letrasID + "_" + numerosID;
     }
 
