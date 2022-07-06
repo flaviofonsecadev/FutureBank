@@ -129,7 +129,7 @@ public class RecargaCelularActivity extends AppCompatActivity {
                     });
 
                     BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                            .setTitle("Confirmar Transação")
+                            .setTitle("Confirmar Compra de Crédito")
                             .setDescription("Use sua digital para confirmar esta transação.")
                             .setNegativeButtonText("Cancelar")
                             .build();

@@ -17,6 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_future"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobolditalic"
+        android:gravity="center"
+        android:text="FutureBANK"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:layout_constraintVertical_bias="0.488" />
+
     <ImageView
         android:id="@+id/ic_clear"
         android:layout_width="35dp"
@@ -37,7 +52,7 @@
         android:fontFamily="@font/robotoregular"
         android:text="Recarga Realizada"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
@@ -48,7 +63,7 @@
         android:layout_marginStart="20sp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/robotolight"
-        android:text="Data 29/06/2022"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +207,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/robotolight"
         android:text="Instituição"
         android:textColor="@color/black"
@@ -224,6 +240,19 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_agencia" />
+
+    <TextView
+        android:id="@+id/tv_id_transacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotolight"
+        android:text="ID da Transação"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_conta_corrente" />
 
     <TextView
         android:id="@+id/tv_get_pagador"
@@ -277,17 +306,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_conta_corrente" />
 
-    <!--<Button
+    <TextView
+        android:id="@+id/tv_get_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/robotoregular"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id_transacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_id_transacao" />
+
+    <Button
         android:id="@+id/btn_gerar_pdf"
-        android:layout_width="143dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="84dp"
-        android:onClick="gerar"
-        android:text="criar PDF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/custom_buttom"
+        android:text="Salvar como PDF"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_conta_corrente"
+        tools:ignore="OnClick" />
+
+    <!--<Button
+        android:id="@+id/btn_gerar_print"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/custom_buttom1"
+        android:text="Salvar como Imagem"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="OnClick" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
