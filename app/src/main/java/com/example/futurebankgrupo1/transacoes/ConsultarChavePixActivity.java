@@ -42,8 +42,11 @@ public class ConsultarChavePixActivity extends AppCompatActivity {
 
         this.criarListaChavePix();
 
+
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+
         //configuração adapter
-        AdapterChavePix AdapterChavePix = new AdapterChavePix(listaChavePix);
+        AdapterChavePix AdapterChavePix = new AdapterChavePix(listaChavePix, preferences);
 
         //configuração recycler
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -55,6 +58,7 @@ public class ConsultarChavePixActivity extends AppCompatActivity {
     public void criarListaChavePix() {
 
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+
         boolean cbCpf = preferences.getBoolean("chaveCbCpf", false);
         boolean cbCelular = preferences.getBoolean("chaveCbCelular", false);
         boolean cbEmail = preferences.getBoolean("chaveCbEmail", false);
@@ -69,6 +73,7 @@ public class ConsultarChavePixActivity extends AppCompatActivity {
             RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: CPF", "Chave: " + chaveCpf);
             listaChavePix.add(recyclerChavePix);
         }
+
         if(cbCelular){
             RecyclerChavePix recyclerChavePix = new RecyclerChavePix("Tipo de chave: Celular", "Chave: " + chaveCelular);
             listaChavePix.add(recyclerChavePix);
