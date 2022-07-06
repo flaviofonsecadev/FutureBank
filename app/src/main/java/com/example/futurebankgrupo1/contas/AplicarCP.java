@@ -79,7 +79,7 @@ public class AplicarCP extends AppCompatActivity {
 
                             if (saldo >=valor){
                                 reference.child(userID).child("saldo").setValue(saldo - valor);
-                                reference.child(userID).child("saldoPoupança").setValue(saldoPoupanca + valor);
+                                reference.child(userID).child("saldoPoupanca").setValue(saldoPoupanca + valor);
 
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();

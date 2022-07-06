@@ -40,6 +40,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class RecargaComprovanteActivity extends AppCompatActivity {
 
@@ -101,7 +102,11 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         binding.tvGetConta1.getText().toString(); //tipo de pagamento
         binding.tvGetPagador.getText().toString();
 
+        //Data e hora do pagamento
         binding.tvGetDataHora.setText("Data " + dataFormatada);
+
+        //Gerar ID da transação
+        gerarIdTransacao();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -164,6 +169,8 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
     private void gerarPDF() {
 
+        String getIdNome = binding.tvGetId.getText().toString();
+
         SimpleDateFormat formatDate = new SimpleDateFormat("dd_MM_yyyy");
         Date data = new Date();
         String dateFormat = formatDate.format(data);
@@ -217,11 +224,15 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         canvas.drawText(binding.tvGetAgencia.getText().toString(), 160, 310, corDoTexto);
         canvas.drawText(binding.tvGetConta.getText().toString(), 160, 326, corDoTexto);
 
+        //Bottom
+        canvas.drawText(binding.tvIdTransacao.getText().toString(), 20, 550, corCinzaTexto);
+        canvas.drawText(binding.tvGetId.getText().toString(), 160, 550, corDoTexto);
+
 
 
         documentoPDF.finishPage(novaPagina);
 
-        String targetPdf = "/storage/emulated/0/Download/FutureBANK_recarga_" + dateFormat + "_" + codComprovante + ".pdf";
+        String targetPdf = "/storage/emulated/0/Download/recarga_" + dateFormat + "_" + getIdNome +  ".pdf";
         File filePath = new File(targetPdf);
 
         try {
@@ -231,6 +242,24 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Erro ao gerar PDF" + e, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public String gerarIdTransacao() {
+        Random rand = new Random();
+        String letrasID = "";
+        String numerosID = "";
+
+        for (int i = 0; i < 3; i++) {
+            char randomizedCharacter = (char) (rand.nextInt(26) + 'A');
+            letrasID += randomizedCharacter;
+        }
+
+        for (int i = 0; i < 6; i++) {
+            int value = rand.nextInt(9);
+            numerosID += value;
+        }
+        binding.tvGetId.setText(letrasID + "-" + numerosID);
+        return letrasID + "_" + numerosID;
     }
 
     //----------------------------------------------------- PDF ----------------------------------------------------------------------------------

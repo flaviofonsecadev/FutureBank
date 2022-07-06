@@ -242,6 +242,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_agencia" />
 
     <TextView
+        android:id="@+id/tv_id_transacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotolight"
+        android:text="ID da Transação"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_conta_corrente" />
+
+    <TextView
         android:id="@+id/tv_get_pagador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -292,6 +305,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_conta_corrente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_conta_corrente" />
+
+    <TextView
+        android:id="@+id/tv_get_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/robotoregular"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id_transacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_id_transacao" />
 
     <Button
         android:id="@+id/btn_gerar_pdf"
