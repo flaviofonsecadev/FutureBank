@@ -28,6 +28,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_future"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobolditalic"
+        android:gravity="center"
+        android:text="FutureBANK"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="@+id/header"
+        app:layout_constraintVertical_bias="0.488" />
+
     <ImageView
         android:id="@+id/ic_clear"
         android:layout_width="35dp"
@@ -59,7 +74,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="08dp"
         android:fontFamily="@font/robotolight"
-        android:text="03/06/2022 às 09:00"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/tv_data"
@@ -324,6 +339,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_ag_pagador" />
 
     <TextView
+        android:id="@+id/tv_id_transacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotolight"
+        android:text="ID Transação"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_cc_pagador"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cc_pagador" />
+
+    <TextView
         android:id="@+id/tv_msg"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -333,7 +360,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_cc_pagador"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cc_pagador" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_id_transacao" />
 
     <!-- Text Views lado direito pagador -->
 
@@ -410,6 +437,18 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_num_ag_pagador"
         app:layout_constraintTop_toBottomOf="@+id/tv_num_ag_pagador" />
 
+    <TextView
+        android:id="@+id/tv_get_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotoregular"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_id_transacao"
+        app:layout_constraintEnd_toEndOf="@+id/tv_num_cc_pagador"
+        app:layout_constraintTop_toTopOf="@+id/tv_id_transacao" />
+
 
     <Button
         android:id="@+id/btn_comprovante_pix"
@@ -417,12 +456,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/custom_buttom"
         android:text="Salvar Comprovante em PDF"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tipo_pgto" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
