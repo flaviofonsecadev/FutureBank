@@ -14,10 +14,13 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityAplicarCpBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,12 +29,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class AplicarCP extends AppCompatActivity {
     ActivityAplicarCpBinding binding;
+    private FirebaseAuth mAuth;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -47,9 +54,6 @@ public class AplicarCP extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
 
         Executor executor = ContextCompat.getMainExecutor(this);
 
@@ -68,6 +72,32 @@ public class AplicarCP extends AppCompatActivity {
                 String textoMask = binding.edtValorAplicar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
                 float valor = Float.parseFloat(textoNovo);
+
+                mAuth = FirebaseAuth.getInstance();
+                String onlineUserId = mAuth.getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("expenses").child(onlineUserId);
+                String id = ref.push().getKey();
+                //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                DateFormat dateFormat = DateFormat.getDateInstance();
+                Calendar cal = Calendar.getInstance();
+                String data = dateFormat.format(cal.getTime());
+
+                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", textoMask, data);
+                assert id != null;
+                ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                        }else {
+                            Toast.makeText(AplicarCP.this, "erro adicionar recycler", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                String userID = user.getUid();
+
                 reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,11 +109,13 @@ public class AplicarCP extends AppCompatActivity {
 
                             if (saldo >=valor){
                                 reference.child(userID).child("saldo").setValue(saldo - valor);
-                                reference.child(userID).child("saldoPoupança").setValue(saldoPoupanca + valor);
+                                reference.child(userID).child("saldoPoupanca").setValue(saldoPoupanca + valor);
 
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString("chaveValorAplicar", binding.edtValorAplicar.getText().toString());
+//                                editor.putString("chaveTransacao", "Aplicação na poupança");
+//                                editor.putString("chaveData", "06/07/2022");
                                 editor.commit();
                                 Toast.makeText(getApplicationContext(), "Aplicação realizada com sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
@@ -119,6 +151,9 @@ public class AplicarCP extends AppCompatActivity {
         });
 
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -138,4 +173,6 @@ public class AplicarCP extends AppCompatActivity {
             }
         });
     }
+
+
 }

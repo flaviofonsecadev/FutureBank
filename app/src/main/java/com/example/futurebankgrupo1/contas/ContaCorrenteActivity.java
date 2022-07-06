@@ -23,10 +23,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -40,6 +43,7 @@ public class ContaCorrenteActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<RecyclerCorrente> listaCorrente = new ArrayList<>();
+    private AdapterCorrente adapterCorrente;
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -78,21 +82,32 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             }
         });
 
+        /*String valorAplicar;
+        String transacao;
+        String data;
+        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+        valorAplicar = preferences.getString("chaveValorAplicar", "");
+        transacao = preferences.getString("chaveTransacao", "");
+        data = preferences.getString("chaveData", "");
+
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente(transacao, valorAplicar, data);
+        listaCorrente.add(recyclerCorrente);*/
+
         //conversão recycler
         recyclerView = findViewById(R.id.recyclerView);
-
-        this.criarListaCorrente();
-
+        //this.criarListaCorrente();
 
         //configuração adapter
-        AdapterCorrente AdapterCorrente = new AdapterCorrente(listaCorrente);
-
+        adapterCorrente = new AdapterCorrente(ContaCorrenteActivity.this, listaCorrente);
 
         //configuração recycler
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(AdapterCorrente);
+        recyclerView.setAdapter(adapterCorrente);
+
+        readItemsAplicar();
+        readItemsResgatar();
 
 
 
@@ -149,47 +164,72 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
         } );
 
+    }
 
+    private void readItemsAplicar(){
 
+        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
 
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("expenses").child(userID);
+        Query query = reference.orderByChild("data").equalTo(data);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //listaCorrente.clear();
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    RecyclerCorrente recyclerCorrente = dataSnapshot.getValue(RecyclerCorrente.class);
+                    listaCorrente.add(recyclerCorrente);
+                }
 
-//        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+                adapterCorrente.notifyDataSetChanged();
+
+                //int totalAmount = 0;
+//                for (DataSnapshot ds : snapshot.getChildren()){
+//                    Map< String, Object> map = (Map<String, Object>) ds.getValue();
+//                    Object total = map.get("amount");
+//                    int pTotal = Integer.parseInt(String.valueOf(total));
+//                    totalAmount+=pTotal;
 //
-//        binding.tvSaldoDisponivelCc.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
-//        binding.tvGetValorGuardadoCorrente.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
+//                    amountTxtview.setText("Total Day's Spending: $"+totalAmount);
+//
+//                }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
-    public void criarListaCorrente() {
+   private void readItemsResgatar(){
 
-        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Transferência enviada", "R$50,00","03/06/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
 
-        recyclerCorrente = new RecyclerCorrente("Transferência recebida", "R$200,00","01/06/2022", R.drawable.ic_money_verde);
-        listaCorrente.add(recyclerCorrente);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("resgatar").child(userID);
+        Query query = reference.orderByChild("data").equalTo(data);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //listaCorrente.clear();
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    RecyclerCorrente recyclerCorrente = dataSnapshot.getValue(RecyclerCorrente.class);
+                    listaCorrente.add(recyclerCorrente);
+                }
+                adapterCorrente.notifyDataSetChanged();
+            }
 
-        recyclerCorrente = new RecyclerCorrente("Transferência recebida", "R$1000,00","29/05/2022", R.drawable.ic_money_verde);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Compra em Carrefour", "R$54,79","25/05/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Transferência enviada", "R$70,00","22/05/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Transferência enviada", "R$120,00","20/05/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Transferência recebida", "R$2000,00","15/05/2022", R.drawable.ic_money_verde);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Boleto de água", "R$100,00","10/05/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Boleto de Luz", "R$190,00","10/05/2022", R.drawable.ic__money_vermelho);
-        listaCorrente.add(recyclerCorrente);
-
-        recyclerCorrente = new RecyclerCorrente("Transferência recebida", "R$3000,00","05/05/2022", R.drawable.ic_money_verde);
-        listaCorrente.add(recyclerCorrente);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.futurebankgrupo1.recycler;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,12 @@ import java.util.List;
 
 public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyViewHolder> {
 
+    //adicionei o context
+    private Context mContext;
     private List<RecyclerCorrente> listaCorrente;
 
-    public AdapterCorrente(List<RecyclerCorrente> lista) {
+    public AdapterCorrente(Context mContext, List<RecyclerCorrente> lista) {
+        this.mContext = mContext;
         this.listaCorrente = lista;
     }
 
@@ -25,20 +29,34 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista_corrente, parent, false);
-
-        return new MyViewHolder(itemLista);
+        View itemLista = LayoutInflater.from(mContext).inflate(R.layout.adapter_lista_corrente, parent, false);
+        MyViewHolder myViewHolder = new MyViewHolder(itemLista);
+        return myViewHolder;
+        //return new MyViewHolder(itemLista);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        RecyclerCorrente recyclerCorrente = listaCorrente.get(position);
+        final RecyclerCorrente recyclerCorrente = listaCorrente.get(position);
+
 
         holder.creditoDebito.setText(recyclerCorrente.getTransacaoCreditoDebito());
         holder.valor.setText(recyclerCorrente.getValor());
         holder.data.setText(recyclerCorrente.getData());
-        holder.imagem.setImageResource(recyclerCorrente.getImagem());
+        //holder.imagem.setImageResource(recyclerCorrente.getImagem());
+
+        //adicionei o switch para setar a imagem  e comentei o holder da imagem acima
+        switch (recyclerCorrente.getTransacaoCreditoDebito()){
+            case "Transferência recebida":
+            case "Resgate da poupança":
+                holder.imagem.setImageResource(R.drawable.ic_money_verde);
+                break;
+            case "Transferência enviada":
+            default:
+                holder.imagem.setImageResource(R.drawable.ic__money_vermelho);
+
+        }
 
     }
 
