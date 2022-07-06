@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -165,12 +166,9 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
         canvas.drawText(binding.tvIdTransacao.getText().toString(), 20, 550, corCinzaTexto);
         canvas.drawText(binding.tvGetId.getText().toString(), 160, 550, corDoTexto);
 
-
-
-
         documentoPDF.finishPage(novaPagina);
 
-        String targetPdf = "/storage/emulated/0/Download/FuturaBANK_CopiaCola_" + getIdNome +  ".pdf";
+        String targetPdf = "/storage/emulated/0/Download/FuturaBANK_CopiaCola_" + getIdNome + ".pdf";
         File filePath = new File(targetPdf);
 
         try {
@@ -180,6 +178,18 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Erro ao gerar PDF" + e, Toast.LENGTH_LONG).show();
         }
+
+        final Uri arquivo = Uri.parse(targetPdf);
+        final Intent _intent = new Intent();
+        _intent.setAction(Intent.ACTION_SEND);
+        _intent.putExtra(Intent.EXTRA_STREAM, arquivo);
+        _intent.putExtra(Intent.EXTRA_TEXT, "");
+        _intent.putExtra(Intent.EXTRA_TITLE, "Compartilhar comprovate.");
+
+        _intent.setType("application/pdf");
+
+        startActivity(Intent.createChooser(_intent, "Compartilhar"));
+
     }
 
     public String gerarIdTransacao() {

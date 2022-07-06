@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -237,6 +238,19 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Erro ao gerar PDF" + e, Toast.LENGTH_LONG).show();
         }
+
+        final Uri arquivo = Uri.fromFile(filePath);
+        final Intent _intent = new Intent();
+        _intent.setAction(Intent.ACTION_SEND);
+        _intent.putExtra(Intent.EXTRA_STREAM, arquivo);
+        _intent.putExtra(Intent.EXTRA_TEXT, "");
+        _intent.putExtra(Intent.EXTRA_TITLE, "Compartilhar comprovate.");
+
+        _intent.setType("application/pdf");
+
+        startActivity(Intent.createChooser(_intent, "Compartilhar"));
+
+
     }
 
     public String gerarIdTransacao() {
