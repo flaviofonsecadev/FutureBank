@@ -5,13 +5,15 @@ public class RecyclerCorrente {
     private String transacaoCreditoDebito;
     private String valor;
     private String data;
-    private int imagem;
+    //private int imagem;
 
-    public RecyclerCorrente(String transacaoCreditoDebito, String valor, String data, int imagem) {
+    public RecyclerCorrente(String transacaoCreditoDebito, String valor, String data) {
         this.transacaoCreditoDebito = transacaoCreditoDebito;
         this.valor = valor;
         this.data = data;
-        this.imagem = imagem;
+    }
+
+    public RecyclerCorrente() {
     }
 
     public String getTransacaoCreditoDebito() {
@@ -38,11 +40,5 @@ public class RecyclerCorrente {
         this.data = data;
     }
 
-    public int getImagem() {
-        return imagem;
-    }
 
-    public void setImagem(int imagem) {
-        this.imagem = imagem;
-    }
 }
