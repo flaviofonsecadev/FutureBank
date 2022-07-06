@@ -55,7 +55,6 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
             case "Transferência enviada":
             default:
                 holder.imagem.setImageResource(R.drawable.ic__money_vermelho);
-
         }
 
     }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityContaPoupancaBinding;
 import com.example.futurebankgrupo1.recycler.AdapterPoupanca;
@@ -22,23 +23,28 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
 public class    ContaPoupanca extends AppCompatActivity {
 
     private ActivityContaPoupancaBinding binding;
-    //private MyViewModel viewModel;
+    private FirebaseUser user;
+    private String userID;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     private RecyclerView recyclerView;
     private List<RecyclerPoupanca> listaRecyclerPoupancas = new ArrayList<>();
+    AdapterPoupanca adapterPoupanca;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +53,9 @@ public class    ContaPoupanca extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
+        userID = user.getUid();
 
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -60,11 +66,8 @@ public class    ContaPoupanca extends AppCompatActivity {
                     float saldo = userProfile.getSaldo();
                     float saldoPoupanca = userProfile.getSaldoPoupanca();
 
-                    //binding.tvGetValorContaCorrente.setText(String.valueOf("R$" + saldo));
                     binding.tvGetValorContaCorrente.setText(dinheiroBR.format(saldo));
-                    //binding.tvValorGuardado.setText(String.valueOf("R$" + saldoPoupanca));
                     binding.tvValorGuardado.setText(dinheiroBR.format(saldoPoupanca));
-
                 }
             }
             @Override
@@ -73,21 +76,20 @@ public class    ContaPoupanca extends AppCompatActivity {
             }
         });
 
-
         //conversão variavel recycler view
         recyclerView = findViewById(R.id.recyclerView);
 
-        this.criarListaPoupanca();
-
         //configuração adapter
-        AdapterPoupanca AdapterPoupanca = new AdapterPoupanca(listaRecyclerPoupancas);
-
+        adapterPoupanca = new AdapterPoupanca(ContaPoupanca.this, listaRecyclerPoupancas);
 
         //configuração recyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(AdapterPoupanca);
+        recyclerView.setAdapter(adapterPoupanca);
+
+        readItemsAplicar();
+        readItemsResgatar();
 
         binding.icClearCp.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -142,47 +144,52 @@ public class    ContaPoupanca extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), ResgatarCC.class));
         } );
 
-
-
-
-        //viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
-        //binding.tvValorGuardado.setText(String.valueOf(viewModel.exibirSaldoContaPoupanca()));
-        //binding.tvGetValorContaCorrente.setText(String.valueOf(viewModel.exibirSaldoContaCorrente()));
-
     }
 
-    public void criarListaPoupanca() {
+    private void readItemsAplicar(){
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
 
-        RecyclerPoupanca recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/06/2022", "R$100,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("expenses").child(userID);
+        Query query = reference.orderByChild("data").equalTo(data);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    RecyclerPoupanca recyclerPoupanca = dataSnapshot.getValue(RecyclerPoupanca.class);
+                    listaRecyclerPoupancas.add(recyclerPoupanca);
+                }
+                adapterPoupanca.notifyDataSetChanged();
+            }
 
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "29/05/2022", "R$50,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro retirado", "25/05/2022", "R$200,00", R.drawable.ic__money_vermelho);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
+            }
+        });
+    }
 
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/05/2022", "R$550,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
+    private void readItemsResgatar(){
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
 
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/05/2022", "R$70,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("resgatar").child(userID);
+        Query query = reference.orderByChild("data").equalTo(data);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    RecyclerPoupanca recyclerPoupanca = dataSnapshot.getValue(RecyclerPoupanca.class);
+                    listaRecyclerPoupancas.add(recyclerPoupanca);
+                }
+                adapterPoupanca.notifyDataSetChanged();
+            }
 
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro retirado", "15/05/2022", "R$120,00", R.drawable.ic__money_vermelho);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
-
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/05/2022", "R$1000,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
-
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/05/2022", "R$150,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
-
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro guardado", "03/05/2022", "R$1000,00", R.drawable.ic_money_verde);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
-
-        recyclerPoupanca = new RecyclerPoupanca("Dinheiro retirado", "01/05/2022", "R$100,00", R.drawable.ic__money_vermelho);
-        listaRecyclerPoupancas.add(recyclerPoupanca);
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

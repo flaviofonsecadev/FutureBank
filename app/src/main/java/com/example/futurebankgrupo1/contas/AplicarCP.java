@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
+import com.example.futurebankgrupo1.recycler.RecyclerPoupanca;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -82,6 +83,7 @@ public class AplicarCP extends AppCompatActivity {
                 Calendar cal = Calendar.getInstance();
                 String data = dateFormat.format(cal.getTime());
 
+                RecyclerPoupanca recyclerPoupanca = new RecyclerPoupanca("Aplicação na poupança", textoMask, data);
                 RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", textoMask, data);
                 assert id != null;
                 ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
