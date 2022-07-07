@@ -1,7 +1,7 @@
 package com.example.futurebankgrupo1.usuario;
 
 public class UserFirebase {
-    private String nome, idade, email, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
+    private String nome, idade, email, senha, cpf, telefone, cep, numero, logradouro, bairro, cidade, estado, pais;
     private float saldo = 100.0f;
     private float limiteCartao = 900.0f;
     private float saldoPoupanca = 200.0f;
@@ -13,11 +13,12 @@ public class UserFirebase {
 
     }
 
-    public UserFirebase(String nome, String idade, String email, String cpf, String telefone, String cep,
+    public UserFirebase(String nome, String idade, String email, String senha, String cpf, String telefone, String cep,
                 String numero, String logradouro, String bairro, String cidade, String estado, String pais) {
         this.nome = nome;
         this.idade = idade;
         this.email = email;
+        this.senha = senha;
         this.cpf = cpf;
         this.telefone = telefone;
         this.cep = cep;
@@ -155,5 +156,13 @@ public class UserFirebase {
 
     public void setValorFatura(float valorFatura) {
         this.valorFatura = valorFatura;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
