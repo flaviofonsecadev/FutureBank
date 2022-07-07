@@ -197,11 +197,11 @@ public class PixComprovanteActivity extends AppCompatActivity {
         _intent.setAction(Intent.ACTION_SEND);
         _intent.putExtra(Intent.EXTRA_STREAM, arquivo);
         _intent.putExtra(Intent.EXTRA_TEXT, "");
-        _intent.putExtra(Intent.EXTRA_TITLE, "Compartilhar comprovate.");
+        _intent.putExtra(Intent.EXTRA_TITLE, "Compartilhar Comprovate.");
 
         _intent.setType("application/pdf");
 
-        startActivity(Intent.createChooser(_intent, "Compartilhar"));
+        startActivity(Intent.createChooser(_intent, "Compartilhar Comprovante"));
 
 
     }

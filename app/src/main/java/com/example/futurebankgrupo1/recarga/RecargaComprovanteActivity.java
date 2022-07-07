@@ -50,7 +50,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
-    private int codComprovante = 1;
 
     SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
     Date data = new Date();
@@ -91,11 +90,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         binding.tvGetConta1.setText(tipoPagamento);
 
 
-        //Salvar contador para o código do comprovante
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("chaveCodComprovante", String.valueOf(codComprovante));
-
-
 //        //puxa dados tela p/ comprovante
         binding.tvGetTelRecebedor.getText().toString();
         binding.tvGetOperRecebedora.getText().toString();
@@ -133,9 +127,9 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
         //----------------------------------------------------- PrintScreen ----------------------------------------------------------------------------------
 
-        /*verifyStoragePermission(this);
+        //verifyStoragePermission(this);
 
-        binding.btnGerarPrint.setOnClickListener(v -> {
+        /*binding.btnGerarPrint.setOnClickListener(v -> {
             binding.btnGerarPdf.setVisibility(View.GONE);
             binding.btnGerarPrint.setVisibility(View.GONE);
             binding.icClear.setVisibility(View.GONE);
@@ -160,7 +154,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
 
         binding.btnGerarPdf.setOnClickListener(v -> {
             gerarPDF();
-            codComprovante++;
         });
 
 
@@ -239,7 +232,7 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             Toast.makeText(this, "Erro ao gerar PDF" + e, Toast.LENGTH_LONG).show();
         }
 
-        final Uri arquivo = Uri.fromFile(filePath);
+        final Uri arquivo = Uri.parse(targetPdf);
         final Intent _intent = new Intent();
         _intent.setAction(Intent.ACTION_SEND);
         _intent.putExtra(Intent.EXTRA_STREAM, arquivo);
