@@ -96,6 +96,10 @@
     <string name="bank">BANK</string>
     <string name="todo">TODO</string>
     <string name="informe_o_valor_que_deseja_guardar_na_poupan_a">Informe o valor que deseja guardar na poupança</string>
+    <string name="confirmar_recarga">Confirmar Recarga</string>
+    <string name="digite_sua_senha_para_confirmar_a_transa_o">Digite sua senha para confirmar a transação</string>
+    <string name="confirmar_transa_o">Confirmar Transação</string>
+    <string name="ou_utilize_o_leitor_de_biometria_do_seu_celular">Ou utilize o leitor de biometria do seu celular</string>
 
     //spinner recarga
 

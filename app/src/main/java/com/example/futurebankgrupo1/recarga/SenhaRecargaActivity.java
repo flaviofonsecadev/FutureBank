@@ -1,4 +1,4 @@
-package com.example.futurebankgrupo1;
+package com.example.futurebankgrupo1.recarga;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +8,10 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivitySenhaRecargaBinding;
-import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
-import com.example.futurebankgrupo1.recarga.RecargaComprovanteActivity;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -111,11 +107,10 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                     });
 
                     BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                            .setTitle("Confirmar Compra de Crédito")
+                            .setTitle("Confirmar Recarga")
                             .setDescription("Use sua digital para confirmar esta transação.")
-                            .setNegativeButtonText("Cancelar")
+                            .setNegativeButtonText("Digite a Senha")
                             .build();
-
 
                     binding.ivBiometria.setOnClickListener(view1 -> {
                         //Prompt biometria

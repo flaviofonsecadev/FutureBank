@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,10 @@
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
         <activity
-            android:name=".SenhaRecargaActivity"
+            android:name=".transacoes.SenhaPixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recarga.SenhaRecargaActivity"
             android:exported="false" />
         <activity
             android:name=".transacoes.TelaTransferirPixTED"
