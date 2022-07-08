@@ -67,4 +67,8 @@ dependencies {
 
     //Atualizar tela
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+
+    //leitor QRcode
+    implementation "com.journeyapps:zxing-android-embedded:4.3.0"
+    implementation "com.karumi:dexter:6.2.2"
 }
