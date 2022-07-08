@@ -76,14 +76,13 @@ public class AplicarCP extends AppCompatActivity {
 
                 mAuth = FirebaseAuth.getInstance();
                 String onlineUserId = mAuth.getCurrentUser().getUid();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("expenses").child(onlineUserId);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
                 String id = ref.push().getKey();
                 //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 DateFormat dateFormat = DateFormat.getDateInstance();
                 Calendar cal = Calendar.getInstance();
                 String data = dateFormat.format(cal.getTime());
 
-                RecyclerPoupanca recyclerPoupanca = new RecyclerPoupanca("Aplicação na poupança", textoMask, data);
                 RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", textoMask, data);
                 assert id != null;
                 ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -91,7 +90,7 @@ public class AplicarCP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                         }else {
-                            Toast.makeText(AplicarCP.this, "erro adicionar recycler", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AplicarCP.this, "erro adicionar item ao recycler", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

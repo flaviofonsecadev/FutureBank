@@ -30,6 +30,7 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -82,17 +83,6 @@ public class ContaCorrenteActivity extends AppCompatActivity {
             }
         });
 
-        /*String valorAplicar;
-        String transacao;
-        String data;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        valorAplicar = preferences.getString("chaveValorAplicar", "");
-        transacao = preferences.getString("chaveTransacao", "");
-        data = preferences.getString("chaveData", "");
-
-        RecyclerCorrente recyclerCorrente = new RecyclerCorrente(transacao, valorAplicar, data);
-        listaCorrente.add(recyclerCorrente);*/
-
         //conversão recycler
         recyclerView = findViewById(R.id.recyclerView);
         //this.criarListaCorrente();
@@ -106,10 +96,7 @@ public class ContaCorrenteActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterCorrente);
 
-        readItemsAplicar();
-        readItemsResgatar();
-
-
+        readItems();
 
         binding.ivArrowForward1.setOnClickListener(v -> {
             Intent intent  = new Intent(getApplicationContext(), ContaPoupanca.class);
@@ -166,36 +153,21 @@ public class ContaCorrenteActivity extends AppCompatActivity {
 
     }
 
-    private void readItemsAplicar(){
+    private void readItems(){
 
-        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        Calendar cal = Calendar.getInstance();
-        String data = dateFormat.format(cal.getTime());
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("expenses").child(userID);
-        Query query = reference.orderByChild("data").equalTo(data);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("extratos").child(userID);
+        Query query = reference.orderByPriority();
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //listaCorrente.clear();
+                listaCorrente.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     RecyclerCorrente recyclerCorrente = dataSnapshot.getValue(RecyclerCorrente.class);
                     listaCorrente.add(recyclerCorrente);
                 }
 
+                Collections.reverse(listaCorrente);
                 adapterCorrente.notifyDataSetChanged();
-
-                //int totalAmount = 0;
-//                for (DataSnapshot ds : snapshot.getChildren()){
-//                    Map< String, Object> map = (Map<String, Object>) ds.getValue();
-//                    Object total = map.get("amount");
-//                    int pTotal = Integer.parseInt(String.valueOf(total));
-//                    totalAmount+=pTotal;
-//
-//                    amountTxtview.setText("Total Day's Spending: $"+totalAmount);
-//
-//                }
 
             }
 
@@ -206,30 +178,7 @@ public class ContaCorrenteActivity extends AppCompatActivity {
         });
     }
 
-   private void readItemsResgatar(){
 
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        Calendar cal = Calendar.getInstance();
-        String data = dateFormat.format(cal.getTime());
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("resgatar").child(userID);
-        Query query = reference.orderByChild("data").equalTo(data);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //listaCorrente.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    RecyclerCorrente recyclerCorrente = dataSnapshot.getValue(RecyclerCorrente.class);
-                    listaCorrente.add(recyclerCorrente);
-                }
-                adapterCorrente.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
 
 
 }

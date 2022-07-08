@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.recycler.AdapterCorrente;
 import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityContaPoupancaBinding;
@@ -30,6 +31,7 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,8 +45,9 @@ public class    ContaPoupanca extends AppCompatActivity {
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     private RecyclerView recyclerView;
-    private List<RecyclerPoupanca> listaRecyclerPoupancas = new ArrayList<>();
-    AdapterPoupanca adapterPoupanca;
+    private List<RecyclerCorrente> listaCorrente = new ArrayList<>();
+    private AdapterCorrente adapterCorrente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,16 +83,15 @@ public class    ContaPoupanca extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         //configuração adapter
-        adapterPoupanca = new AdapterPoupanca(ContaPoupanca.this, listaRecyclerPoupancas);
+        adapterCorrente = new AdapterCorrente(ContaPoupanca.this, listaCorrente);
 
         //configuração recyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterPoupanca);
+        recyclerView.setAdapter(adapterCorrente);
 
-        readItemsAplicar();
-        readItemsResgatar();
+        readItems();
 
         binding.icClearCp.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -146,21 +148,19 @@ public class    ContaPoupanca extends AppCompatActivity {
 
     }
 
-    private void readItemsAplicar(){
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        Calendar cal = Calendar.getInstance();
-        String data = dateFormat.format(cal.getTime());
+    private void readItems(){
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("expenses").child(userID);
-        Query query = reference.orderByChild("data").equalTo(data);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("extratos").child(userID);
+        Query query = reference.orderByPriority();
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    RecyclerPoupanca recyclerPoupanca = dataSnapshot.getValue(RecyclerPoupanca.class);
-                    listaRecyclerPoupancas.add(recyclerPoupanca);
+                    RecyclerCorrente recyclerCorrente = dataSnapshot.getValue(RecyclerCorrente.class);
+                    listaCorrente.add(recyclerCorrente);
                 }
-                adapterPoupanca.notifyDataSetChanged();
+                Collections.reverse(listaCorrente);
+                adapterCorrente.notifyDataSetChanged();
             }
 
             @Override
@@ -170,26 +170,4 @@ public class    ContaPoupanca extends AppCompatActivity {
         });
     }
 
-    private void readItemsResgatar(){
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        Calendar cal = Calendar.getInstance();
-        String data = dateFormat.format(cal.getTime());
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("resgatar").child(userID);
-        Query query = reference.orderByChild("data").equalTo(data);
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    RecyclerPoupanca recyclerPoupanca = dataSnapshot.getValue(RecyclerPoupanca.class);
-                    listaRecyclerPoupancas.add(recyclerPoupanca);
-                }
-                adapterPoupanca.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
 }
