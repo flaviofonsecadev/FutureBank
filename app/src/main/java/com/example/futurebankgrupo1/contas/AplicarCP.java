@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
+import com.example.futurebankgrupo1.recycler.RecyclerPoupanca;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -75,7 +76,7 @@ public class AplicarCP extends AppCompatActivity {
 
                 mAuth = FirebaseAuth.getInstance();
                 String onlineUserId = mAuth.getCurrentUser().getUid();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("expenses").child(onlineUserId);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
                 String id = ref.push().getKey();
                 //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 DateFormat dateFormat = DateFormat.getDateInstance();
@@ -89,7 +90,7 @@ public class AplicarCP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                         }else {
-                            Toast.makeText(AplicarCP.this, "erro adicionar recycler", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AplicarCP.this, "erro adicionar item ao recycler", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

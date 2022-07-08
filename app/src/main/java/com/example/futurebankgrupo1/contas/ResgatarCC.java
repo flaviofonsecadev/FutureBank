@@ -75,7 +75,7 @@ public class ResgatarCC extends AppCompatActivity {
 
                 mAuth = FirebaseAuth.getInstance();
                 String onlineUserId = mAuth.getCurrentUser().getUid();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("resgatar").child(onlineUserId);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
                 String id = ref.push().getKey();
                 DateFormat dateFormat = DateFormat.getDateInstance();
                 Calendar cal = Calendar.getInstance();
