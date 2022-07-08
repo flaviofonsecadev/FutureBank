@@ -18,11 +18,11 @@
 
 
         <TextView
-            android:id="@+id/tv_confirmar_recarga"
+            android:id="@+id/tv_confirmar_transferencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/robotoregular"
-            android:text="@string/confirmar_recarga"
+            android:text="Confirmar Transferência"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_confirmar_recarga" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_confirmar_transferencia" />
 
         <EditText
             android:id="@+id/edt_senha_confirmacao"
