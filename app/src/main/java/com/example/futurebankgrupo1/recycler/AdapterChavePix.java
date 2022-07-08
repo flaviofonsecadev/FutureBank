@@ -1,8 +1,10 @@
 package com.example.futurebankgrupo1.recycler;
 
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,12 @@ import java.util.List;
 
 public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyViewHolder> {
 
-    private List<RecyclerChavePix> listaChavePix;
+    private final List<RecyclerChavePix> listaChavePix;
+    private final SharedPreferences sharedPreferences;
 
-    public AdapterChavePix(List<RecyclerChavePix> lista) {
+    public AdapterChavePix(List<RecyclerChavePix> lista, SharedPreferences preferences) {
         this.listaChavePix = lista;
+        this.sharedPreferences = preferences;
     }
 
     @NonNull
@@ -26,7 +30,7 @@ public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyView
 
         View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista_chave_pix, parent, false);
 
-        return new MyViewHolder(itemLista).linkAdapter(this);
+        return new MyViewHolder(itemLista);
     }
 
     @Override
@@ -36,6 +40,27 @@ public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyView
 
         holder.tipoChave.setText(recyclerChavePix.getTipoChave());
         holder.chavePix.setText(recyclerChavePix.getChavePix());
+
+        holder.ivDelete.setOnClickListener(v -> {
+            switch (recyclerChavePix.getTipoChave()) {
+                case "Tipo de chave: CPF" : removerDoShared("chaveCpf", "chaveCbCpf", holder);
+                    break;
+                case "Tipo de chave: Celular" :  removerDoShared("chaveCelular", "chaveCbCelular", holder);
+                    break;
+                case "Tipo de chave: Email" : removerDoShared("chaveEmail", "chaveCbEmail", holder);
+                    break;
+                case "Tipo de chave: Chave Aleatória" : removerDoShared("", "chaveCbChaveAleatoria", holder);
+                    break;
+                default:
+            }
+        });
+    }
+
+    private void removerDoShared(String tipoDeChave, String chaveCheckBox, MyViewHolder holder) {
+        sharedPreferences.edit().remove(tipoDeChave).apply();
+        sharedPreferences.edit().remove(chaveCheckBox).apply();
+        listaChavePix.remove(holder.getAdapterPosition());
+        notifyItemRemoved(holder.getAdapterPosition());
     }
 
     @Override
@@ -43,27 +68,18 @@ public class AdapterChavePix extends RecyclerView.Adapter<AdapterChavePix.MyView
         return listaChavePix.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tipoChave;
         TextView chavePix;
-        private AdapterChavePix adapterChavePix;
+        ImageView ivDelete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tipoChave = itemView.findViewById(R.id.tv_tipo_de_chave_pix);
             chavePix = itemView.findViewById(R.id.tv_chave_pix);
-
-            itemView.findViewById(R.id.iv_delete).setOnClickListener(v -> {
-                adapterChavePix.listaChavePix.remove(getAdapterPosition());
-                adapterChavePix.notifyItemRemoved(getAdapterPosition());
-            });
-        }
-
-        public MyViewHolder linkAdapter(AdapterChavePix adapterChavePix){
-            this.adapterChavePix = adapterChavePix;
-            return this;
+            ivDelete = itemView.findViewById(R.id.iv_delete);
         }
     }
 }

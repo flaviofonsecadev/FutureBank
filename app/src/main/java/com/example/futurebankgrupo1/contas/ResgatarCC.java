@@ -14,10 +14,13 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityResgatarCcBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,12 +29,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class ResgatarCC extends AppCompatActivity {
     ActivityResgatarCcBinding binding;
+    private FirebaseAuth mAuth;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -47,9 +53,6 @@ public class ResgatarCC extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         });
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
 
         //Biometria
         Executor executor = ContextCompat.getMainExecutor(this);
@@ -69,6 +72,30 @@ public class ResgatarCC extends AppCompatActivity {
                 String textoMask = binding.edtValorResgatar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
                 float valor = Float.parseFloat(textoNovo);
+
+                mAuth = FirebaseAuth.getInstance();
+                String onlineUserId = mAuth.getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("resgatar").child(onlineUserId);
+                String id = ref.push().getKey();
+                DateFormat dateFormat = DateFormat.getDateInstance();
+                Calendar cal = Calendar.getInstance();
+                String data = dateFormat.format(cal.getTime());
+
+                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Resgate da poupança", textoMask, data);
+                assert id != null;
+                ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                        }else {
+                            Toast.makeText(ResgatarCC.this, "erro adicionar recycler", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+                String userID = user.getUid();
                 reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -80,7 +107,7 @@ public class ResgatarCC extends AppCompatActivity {
 
                             if (saldo >=valor){
                                 reference.child(userID).child("saldo").setValue(saldo + valor);
-                                reference.child(userID).child("saldoPoupança").setValue(saldoPoupanca - valor);
+                                reference.child(userID).child("saldoPoupanca").setValue(saldoPoupanca - valor);
 
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
@@ -120,6 +147,9 @@ public class ResgatarCC extends AppCompatActivity {
         });
 
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = user.getUid();
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
