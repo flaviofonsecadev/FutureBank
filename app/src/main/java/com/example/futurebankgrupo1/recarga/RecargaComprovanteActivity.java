@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.databinding.ActivityRecargaComprovanteBinding;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,14 +40,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class RecargaComprovanteActivity extends AppCompatActivity {
 
     private ActivityRecargaComprovanteBinding binding;
-    private MyViewModel viewModel;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -68,7 +72,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
         String telefone;
         String operadora;
@@ -84,10 +87,42 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         binding.tvGetOperRecebedora.setText(operadora);
 
         valorRecarga = preferences.getString("chaveValorRecarga", "");
-        binding.tvGetValorRecarga.setText("R$" + valorRecarga);
+        String valor = valorRecarga.replace(".", ",");
+        binding.tvGetValorRecarga.setText("R$" + valor);
 
         tipoPagamento = preferences.getString("chaveTipoPagamento", "");
         binding.tvGetConta1.setText(tipoPagamento);
+
+        if (tipoPagamento.equals("Débito")){
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            String onlineUserId = mAuth.getCurrentUser().getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
+            String id = ref.push().getKey();
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            Calendar cal = Calendar.getInstance();
+            String date = dateFormat.format(cal.getTime());
+
+            RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Recarga de celular", ("R$ " + valor), date);
+            assert id != null;
+            ref.child(id).setValue(recyclerCorrente);
+
+        } else if (tipoPagamento.equals("Crédito")){
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            String onlineUserId = mAuth.getCurrentUser().getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("fatura").child(onlineUserId);
+            String id = ref.push().getKey();
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            Calendar cal = Calendar.getInstance();
+            String date = dateFormat.format(cal.getTime());
+
+
+            RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Recarga de celular", ("R$ " + valor), date);
+            assert id != null;
+            ref.child(id).setValue(recyclerCorrente);
+        }
+
+
+
 
 
 //        //puxa dados tela p/ comprovante
@@ -106,7 +141,6 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

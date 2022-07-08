@@ -78,28 +78,17 @@ public class AplicarCP extends AppCompatActivity {
                 String onlineUserId = mAuth.getCurrentUser().getUid();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
                 String id = ref.push().getKey();
-                //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 DateFormat dateFormat = DateFormat.getDateInstance();
                 Calendar cal = Calendar.getInstance();
                 String data = dateFormat.format(cal.getTime());
 
                 RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", textoMask, data);
                 assert id != null;
-                ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                        }else {
-                            Toast.makeText(AplicarCP.this, "erro adicionar item ao recycler", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                ref.child(id).setValue(recyclerCorrente);
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                String userID = user.getUid();
-
-                reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                reference.child(onlineUserId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
@@ -107,16 +96,16 @@ public class AplicarCP extends AppCompatActivity {
                         if (userProfile != null){
                             float saldo = userProfile.getSaldo();
                             float saldoPoupanca = userProfile.getSaldoPoupanca();
+                            binding.tvSaldoDisponivelCcAplicar.setText(dinheiroBR.format(saldo));
+                            binding.tvSaldoDisponivelAplicar.setText(dinheiroBR.format(saldoPoupanca));
 
                             if (saldo >=valor){
-                                reference.child(userID).child("saldo").setValue(saldo - valor);
-                                reference.child(userID).child("saldoPoupanca").setValue(saldoPoupanca + valor);
+                                reference.child(onlineUserId).child("saldo").setValue(saldo - valor);
+                                reference.child(onlineUserId).child("saldoPoupanca").setValue(saldoPoupanca + valor);
 
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString("chaveValorAplicar", binding.edtValorAplicar.getText().toString());
-//                                editor.putString("chaveTransacao", "Aplicação na poupança");
-//                                editor.putString("chaveData", "06/07/2022");
                                 editor.commit();
                                 Toast.makeText(getApplicationContext(), "Aplicação realizada com sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), AplicarComprovante.class);
@@ -151,29 +140,6 @@ public class AplicarCP extends AppCompatActivity {
             biometricPrompt.authenticate(promptInfo);
         });
 
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
-                if (userProfile != null){
-                    float saldo = userProfile.getSaldo();
-                    float saldoPoupanca = userProfile.getSaldoPoupanca();
-
-                    binding.tvSaldoDisponivelCcAplicar.setText(dinheiroBR.format(saldo));
-                    binding.tvSaldoDisponivelAplicar.setText(dinheiroBR.format(saldoPoupanca));
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AplicarCP.this, "Error Firebase", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
-
 
 }

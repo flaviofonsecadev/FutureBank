@@ -83,20 +83,10 @@ public class ResgatarCC extends AppCompatActivity {
 
                 RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Resgate da poupança", textoMask, data);
                 assert id != null;
-                ref.child(id).setValue(recyclerCorrente).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                        }else {
-                            Toast.makeText(ResgatarCC.this, "erro adicionar recycler", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                ref.child(id).setValue(recyclerCorrente);
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                String userID = user.getUid();
-                reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                reference.child(onlineUserId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
@@ -104,10 +94,12 @@ public class ResgatarCC extends AppCompatActivity {
                         if (userProfile != null){
                             float saldo = userProfile.getSaldo();
                             float saldoPoupanca = userProfile.getSaldoPoupanca();
+                            binding.tvSaldoDisponivelCcResgatar.setText(dinheiroBR.format(saldo));
+                            binding.tvSaldoDisponivelResgatar.setText(dinheiroBR.format(saldoPoupanca));
 
                             if (saldo >=valor){
-                                reference.child(userID).child("saldo").setValue(saldo + valor);
-                                reference.child(userID).child("saldoPoupanca").setValue(saldoPoupanca - valor);
+                                reference.child(onlineUserId).child("saldo").setValue(saldo + valor);
+                                reference.child(onlineUserId).child("saldoPoupanca").setValue(saldoPoupanca - valor);
 
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
@@ -145,31 +137,6 @@ public class ResgatarCC extends AppCompatActivity {
         binding.buttonResgatar.setOnClickListener(v -> {
             biometricPrompt.authenticate(promptInfo);
         });
-
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-
-                if (userProfile != null){
-                    float saldo = userProfile.getSaldo();
-                    float saldoPoupanca = userProfile.getSaldoPoupanca();
-
-                    binding.tvSaldoDisponivelCcResgatar.setText(dinheiroBR.format(saldo));
-                    binding.tvSaldoDisponivelResgatar.setText(dinheiroBR.format(saldoPoupanca));
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ResgatarCC.this, "Ocorreu algum erro ao exibir saldo!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
     }
 }
