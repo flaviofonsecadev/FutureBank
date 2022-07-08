@@ -38,11 +38,7 @@ public class PixTransferirActivity extends AppCompatActivity {
     private final String rafael = "rafael.silverio@foursys.com.br";
     private final String kaua = "kaua.alcaya@foursys.com.br";
     private final String flavio = "flavio.fonseca@foursys.com.br";
-    private final String flavioDevId = "v6PqMgULNofhHMwIopEh8tSCKdn1";
-    private final String daianeId = "BToaOYweJRYyAZi3Okv2upoHfyd2";
-    private final String rafaelId = "rcc2qZeAzqbAnsNf5TvzvK0W2qF2";
-    private final String kauaId = "sFvyg4LiTzb2BI9e4P1X7Myowrf2";
-    private final String flavioId = "EP0rIiIDS5Tma0cAZRK74OwE6HJ3";
+    private final String rafaelOutlook = "rafael.silverio.s@outlook.com";
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -95,6 +91,12 @@ public class PixTransferirActivity extends AppCompatActivity {
 
         binding.button.setOnClickListener(v -> {
 
+            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = preferences1.edit();
+            editor1.putString("chaveValorPix", binding.edtValorPix.getText().toString());
+            editor1.putString("chaveChavePix", binding.edtChavePix.getText().toString().trim());
+            editor1.commit();
+
             String textoMask = binding.edtValorPix.getText().toString();
             String textoNovo = textoMask.replace(",", ".");
             float valor = Float.parseFloat(textoNovo);
@@ -109,13 +111,9 @@ public class PixTransferirActivity extends AppCompatActivity {
                         if (userProfile != null){
                             float saldo = userProfile.getSaldo();
                             if (saldo >= valor){
-                                reference.child(userID).child("saldo").setValue(saldo - valor);
-                                SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
-                                editor.commit();
-                                Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPix.class);
-                                startActivity(intent);
+                                startActivity(new Intent(getApplicationContext(), TelaConfirmarDadosPix.class));
+                            }else {
+                                Toast.makeText(PixTransferirActivity.this, "Saldo insuficiente", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -126,36 +124,37 @@ public class PixTransferirActivity extends AppCompatActivity {
                 });
 
                 if (chavePix.equals(flaviodev)){
-                    transferirPix(flavioDevId, valor);
                     String nomeRecebedor = "Flavio Fonseca";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 } else if (chavePix.equals(daiane)){
-                    transferirPix(daianeId, valor);
                     String nomeRecebedor = "Daiane Silveira";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 } else if (chavePix.equals(rafael)){
-                    transferirPix(rafaelId, valor);
-                    String nomeRecebedor = "Rafael Luiz Silverio";
+                    String nomeRecebedor = "Rafael Luiz Silverio dos Santos";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 } else if (chavePix.equals(kaua)){
-                    transferirPix(kauaId, valor);
                     String nomeRecebedor = "kauã alcaya";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 } else if (chavePix.equals(flavio)){
-                    transferirPix(flavioId, valor);
                     String nomeRecebedor = "Flávio J. Fonsêca Filho";
+                    SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("chaveNomeRecebedor", nomeRecebedor);
+                    editor.commit();
+                }else if (chavePix.equals(rafaelOutlook)) {
+                    String nomeRecebedor = "Rafael Luiz Silverio";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);

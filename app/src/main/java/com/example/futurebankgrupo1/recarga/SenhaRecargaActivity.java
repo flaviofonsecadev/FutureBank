@@ -1,4 +1,4 @@
-package com.example.futurebankgrupo1;
+package com.example.futurebankgrupo1.recarga;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,15 +8,10 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivitySenhaRecargaBinding;
-import com.example.futurebankgrupo1.recarga.RecargaCelularActivity;
-import com.example.futurebankgrupo1.recarga.RecargaComprovanteActivity;
-import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,10 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class SenhaRecargaActivity extends AppCompatActivity {
@@ -39,9 +30,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
-
-    Locale localeBR = new Locale( "pt", "BR" );
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +75,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
 
                             if ((pagamentoSelect.equals("Débito")) && saldo >= valorSelect) {
                                 reference.child(userID).child("saldo").setValue(saldo - valorSelect);
-
                                 Toast.makeText(getApplicationContext(), "Recarga realizada com Sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
                                 startActivity(intent);
@@ -100,7 +87,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                             else if ((pagamentoSelect.equals("Crédito")) && limite >= valorSelect) {
                                 reference.child(userID).child("valorFatura").setValue(valorFatura + valorSelect);
                                 reference.child(userID).child("limiteCartao").setValue(limite - valorSelect);
-
                                 Toast.makeText(getApplicationContext(), "Recarga realizada com Sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
                                 startActivity(intent);
@@ -109,7 +95,7 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(), RecargaCelularActivity.class));
                             }
 
-                            //Toast.makeText(getApplicationContext(), "Recarga realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Recarga realizada com sucesso!", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -121,11 +107,10 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                     });
 
                     BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                            .setTitle("Confirmar Compra de Crédito")
+                            .setTitle("Confirmar Recarga")
                             .setDescription("Use sua digital para confirmar esta transação.")
-                            .setNegativeButtonText("Cancelar")
+                            .setNegativeButtonText("Digite a Senha")
                             .build();
-
 
                     binding.ivBiometria.setOnClickListener(view1 -> {
                         //Prompt biometria
@@ -147,7 +132,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
 
                             if ((pagamentoSelect.equals("Débito")) && saldo >= valorSelect) {
                                 reference.child(userID).child("saldo").setValue(saldo - valorSelect);
-
                                 Toast.makeText(getApplicationContext(), "Recarga realizada com Sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
                                 startActivity(intent);
@@ -160,7 +144,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                             else if ((pagamentoSelect.equals("Crédito")) && limite >= valorSelect) {
                                 reference.child(userID).child("valorFatura").setValue(valorFatura + valorSelect);
                                 reference.child(userID).child("limiteCartao").setValue(limite - valorSelect);
-
                                 Toast.makeText(getApplicationContext(), "Recarga realizada com Sucesso!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), RecargaComprovanteActivity.class);
                                 startActivity(intent);

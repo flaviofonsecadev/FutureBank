@@ -117,7 +117,7 @@
         android:layout_marginEnd="20dp"
         android:hint="Informe a chave Pix"
         android:textColorHint="@color/rosa"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/edt_valor_pix"
         app:layout_constraintStart_toStartOf="@+id/edt_valor_pix"
         app:layout_constraintTop_toBottomOf="@+id/edt_valor_pix" />
