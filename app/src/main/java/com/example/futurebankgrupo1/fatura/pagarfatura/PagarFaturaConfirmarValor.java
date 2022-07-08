@@ -24,7 +24,6 @@ import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPagarFaturaConfirmarValorBinding;
-import com.example.futurebankgrupo1.databinding.ActivityReagendarPagamentosBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

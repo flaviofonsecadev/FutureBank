@@ -12,16 +12,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPix extends AppCompatActivity {
@@ -51,10 +47,6 @@ public class TelaConfirmarDadosPix extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.tvReagendar.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ReagendarPagamentosActivity.class);
-            startActivity(intent);
-        });
 
         String valorPix;
         String nomeRecebedor;

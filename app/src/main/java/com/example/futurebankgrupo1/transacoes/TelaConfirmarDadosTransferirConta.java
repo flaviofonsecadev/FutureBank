@@ -15,10 +15,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.futurebankgrupo1.R;
-import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixBinding;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosTransferirContaBinding;
-import com.example.futurebankgrupo1.fatura.ReagendarPagamentosActivity;
 
 import java.util.Calendar;
 import java.util.concurrent.Executor;
