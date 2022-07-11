@@ -1,4 +1,4 @@
-package com.example.futurebankgrupo1;
+package com.example.futurebankgrupo1.transacoes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +12,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivitySenhaPixCopiaColaBinding;
-import com.example.futurebankgrupo1.transacoes.PixComprovanteActivity;
-import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
-import com.example.futurebankgrupo1.transacoes.SenhaPixActivity;
-import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
-import com.example.futurebankgrupo1.transacoes.TelaPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,8 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class SenhaPixCopiaColaActivity extends AppCompatActivity {

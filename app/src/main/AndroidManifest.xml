@@ -33,7 +33,7 @@
             android:theme="@style/zxing_CaptureTheme"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SenhaPixCopiaColaActivity"
+            android:name=".transacoes.SenhaPixCopiaColaActivity"
             android:exported="false" />
         <activity
             android:name=".transacoes.SenhaPixActivity"
