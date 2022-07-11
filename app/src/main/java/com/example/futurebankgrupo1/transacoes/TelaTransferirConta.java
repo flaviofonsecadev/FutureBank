@@ -73,7 +73,6 @@ public class TelaTransferirConta extends AppCompatActivity {
                         float valor = Float.parseFloat(textoNovo);
 
                         if (saldo >= valor) {
-                            reference.child(userID).child("saldo").setValue(saldo - valor);
 
                             SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
@@ -87,6 +86,8 @@ public class TelaTransferirConta extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosTransferirConta.class);
                             startActivity(intent);
 
+                        }else {
+                            Toast.makeText(TelaTransferirConta.this, "Saldo insuficiente!", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

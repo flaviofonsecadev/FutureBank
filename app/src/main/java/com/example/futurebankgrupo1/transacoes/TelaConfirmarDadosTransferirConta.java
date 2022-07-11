@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.futurebankgrupo1.SenhaTransferircontaActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosTransferirContaBinding;
 
 import java.util.Calendar;
@@ -94,40 +95,9 @@ public class TelaConfirmarDadosTransferirConta extends AppCompatActivity {
         };
 
 
-        //Biometria
-        Executor executor = ContextCompat.getMainExecutor(this);
-
-        BiometricPrompt biometricPrompt = new BiometricPrompt(TelaConfirmarDadosTransferirConta.this, executor, new BiometricPrompt.AuthenticationCallback() {
-            @Override
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
-                super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(TelaConfirmarDadosTransferirConta.this, "Digital com erro ou não cadastrada em seu dispositivo! Tente outra digital.", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
-                super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(), "Transação realizada com sucesso!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), TelaTransferirContaComprovante.class));
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-                Toast.makeText(TelaConfirmarDadosTransferirConta.this, "Este dispositivo não suporta autenticação por biometria.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Confirmar Transação")
-                .setDescription("Use sua digital para confirmar esta transação.")
-                .setNegativeButtonText("Cancelar")
-                .build();
-
         binding.btnConfirmarTransferencia.setOnClickListener(v -> {
-            biometricPrompt.authenticate(promptInfo);
+            startActivity(new Intent(getApplicationContext(), SenhaTransferircontaActivity.class));
         });
-        //Biometria
 
 
     }
