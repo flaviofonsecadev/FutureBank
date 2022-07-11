@@ -1,9 +1,6 @@
 package com.example.futurebankgrupo1.transacoes;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -13,14 +10,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
-import com.example.futurebankgrupo1.SenhaPixCopiaColaActivity;
 import com.example.futurebankgrupo1.databinding.ActivityTelaConfirmarDadosPixCopiaColaBinding;
-import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFaturaConfirmarValor;
 
 import java.util.Calendar;
-import java.util.concurrent.Executor;
 
 public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
 
