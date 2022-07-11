@@ -33,9 +33,6 @@ public class TelaPixCopiaCola extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    Locale localeBR = new Locale("pt", "BR");
-    NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,38 +45,16 @@ public class TelaPixCopiaCola extends AppCompatActivity {
             startActivity(intent);
         });
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
         binding.btnProsseguir.setOnClickListener(v -> {
-            String textoMask = binding.edtValorPix.getText().toString();
-            String textoNovo = textoMask.replace(",", ".");
-            float valor = Float.parseFloat(textoNovo);
 
-            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-                    if (userProfile != null) {
-                        float saldo = userProfile.getSaldo();
-                        if (saldo >= valor) {
-                            reference.child(userID).child("saldo").setValue(saldo - valor);
+            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences1.edit();
+            editor.putString("chaveValorPixCopiaCola", binding.edtValorPix.getText().toString());
+            editor.commit();
+            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPixCopiaCola.class);
+            startActivity(intent);
 
-                            SharedPreferences preferences1 = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences1.edit();
-                            editor.putString("chaveValorPix", binding.edtValorPix.getText().toString());
-                            editor.commit();
-                            Intent intent = new Intent(getApplicationContext(), TelaConfirmarDadosPixCopiaCola.class);
-                            startActivity(intent);
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(TelaPixCopiaCola.this, "Erro. Tente novamente!", Toast.LENGTH_SHORT).show();
-                }
-            });
+
 
         });
     }

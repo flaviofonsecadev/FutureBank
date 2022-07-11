@@ -113,7 +113,6 @@ public class SenhaPixActivity extends AppCompatActivity {
                                 transferirPix(rafaelOutlookId, valor);
                             }
 
-
                         }
 
                         @Override
@@ -187,7 +186,7 @@ public class SenhaPixActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString("chaveNomeRecebedor", nomeRecebedor);
                                 editor.commit();
-                            }else if (chavePix.equals(rafaelOutlook)) {
+                            } else if (chavePix.equals(rafaelOutlook)) {
                                 transferirPix(rafaelOutlookId, valor);
                                 String nomeRecebedor = "Rafael Luiz Silverio";
                                 SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
