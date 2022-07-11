@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPixTransferirBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class PixTransferirActivity extends AppCompatActivity {
@@ -124,7 +127,7 @@ public class PixTransferirActivity extends AppCompatActivity {
                 });
 
                 if (chavePix.equals(flaviodev)){
-                    String nomeRecebedor = "Flavio Fonseca";
+                    String nomeRecebedor = "Flavio Fonseca Dev";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
@@ -148,13 +151,13 @@ public class PixTransferirActivity extends AppCompatActivity {
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 } else if (chavePix.equals(flavio)){
-                    String nomeRecebedor = "Flávio J. Fonsêca Filho";
+                    String nomeRecebedor = "Flávio Fonsêca";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
                     editor.commit();
                 }else if (chavePix.equals(rafaelOutlook)) {
-                    String nomeRecebedor = "Rafael Luiz Silverio";
+                    String nomeRecebedor = "Rafael Silverio";
                     SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("chaveNomeRecebedor", nomeRecebedor);
@@ -165,20 +168,6 @@ public class PixTransferirActivity extends AppCompatActivity {
         });
     }
 
-    public void transferirPix(String id, float valor) {
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserFirebase userProfile = snapshot.getValue(UserFirebase.class);
-                assert userProfile != null;
-                float saldo = userProfile.getSaldo();
-                reference.child(id).child("saldo").setValue(saldo + valor);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(PixTransferirActivity.this, "Ocorreu algum erro!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    };
+
+
 }

@@ -49,6 +49,12 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
         //adicionei o switch para setar a imagem  e comentei o holder da imagem acima
         switch (recyclerCorrente.getTransacaoCreditoDebito()){
             case "Transferência recebida":
+            case "Pix recebido de Flávio Fonseca":
+            case "Pix recebido de Daiane Silveira":
+            case "Pix recebido de Rafael Silverio":
+            case "Pix recebido de Rafael Luiz Silverio":
+            case "Pix recebido de Kauã alcaya":
+            case "Pix recebido de Flavio Fonseca dev":
                 holder.imagem.setImageResource(R.drawable.ic_money_verde);
                 break;
             case "Resgate da poupança":
@@ -64,6 +70,7 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
                 holder.imagem.setImageResource(R.drawable.icon_config_card);
                 break;
             case "Transferência enviada":
+            case "Transferência TED - Enviada":
             default:
                 holder.imagem.setImageResource(R.drawable.ic__money_vermelho);
         }
