@@ -1,5 +1,6 @@
 package com.example.futurebankgrupo1.recycler;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import java.util.List;
 
 public class AdapterCompra extends RecyclerView.Adapter<AdapterCompra.MyViewHolder> {
 
+    private Context mContext;
     private List<Compra> listaCompras;
 
-    public AdapterCompra(List<Compra> lista){
+    public AdapterCompra(Context mContext, List<Compra> lista){
+        this.mContext = mContext;
         this.listaCompras = lista;
     }
 
@@ -25,19 +28,29 @@ public class AdapterCompra extends RecyclerView.Adapter<AdapterCompra.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_lista_compra, parent, false);
-
-        return new MyViewHolder(itemLista);
+        View itemLista = LayoutInflater.from(mContext).inflate(R.layout.adapter_lista_compra, parent, false);
+        MyViewHolder myViewHolder = new MyViewHolder(itemLista);
+        return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holderFatura, int position) {
 
-        Compra compra = listaCompras.get(position);
-        holder.compra.setText(compra.getTituloFilme());
-        holder.data.setText(compra.getGenero());
-        holder.valor.setText(compra.getAno());
-        holder.foto.setImageResource(compra.getFoto());
+        final Compra compra = listaCompras.get(position);
+        holderFatura.creditoDebito.setText(compra.getTransacaoCreditoDebito());
+        holderFatura.valor.setText(compra.getValor());
+        holderFatura.data.setText(compra.getData());
+
+        switch (compra.getTransacaoCreditoDebito()){
+            case "Recarga de celular":
+                holderFatura.imagem.setImageResource(R.drawable.ic_smartphone);
+                break;
+            case "Pagamento fatura do cartão":
+                holderFatura.imagem.setImageResource(R.drawable.icon_config_card);
+                break;
+            default:
+                holderFatura.imagem.setImageResource(R.drawable.ic__money_vermelho);
+        }
 
     }
 
@@ -48,18 +61,18 @@ public class AdapterCompra extends RecyclerView.Adapter<AdapterCompra.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView compra;
+        TextView creditoDebito;
         TextView valor;
         TextView data;
-        ImageView foto;
+        ImageView imagem;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            compra = itemView.findViewById(R.id.tv_compra);
+            creditoDebito = itemView.findViewById(R.id.tv_compra);
             valor = itemView.findViewById(R.id.tv_valor);
             data = itemView.findViewById(R.id.tv_data);
-            foto = itemView.findViewById(R.id.iv_imagem);
+            imagem = itemView.findViewById(R.id.iv_imagem);
 
         }
     }

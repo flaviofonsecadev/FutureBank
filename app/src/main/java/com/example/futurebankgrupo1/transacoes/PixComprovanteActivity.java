@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.futurebankgrupo1.HomeActivity;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityPixComprovanteBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +30,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -90,6 +93,10 @@ public class PixComprovanteActivity extends AppCompatActivity {
         binding.tvRecebedor.setText(nomeRecebedor);
         binding.tvTipoPgto.setText(mensagemPix);
         binding.tvDataHora.setText(date);
+
+        addToExtrato(nomeRecebedor, valorPix);
+
+
 
         //Gerar ID transação
         gerarIdTransacao();
@@ -227,6 +234,21 @@ public class PixComprovanteActivity extends AppCompatActivity {
         binding.tvGetId.setText(letrasID + "-" + numerosID + "-" + dateFormat);
         return letrasID + "_" + numerosID;
     }
+
+    private void addToExtrato(String nomeRecebedor, String valor) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String onlineUserId = mAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
+        String id = ref.push().getKey();
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
+
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Pix para " + nomeRecebedor , "R$ " + valor, data);
+        assert id != null;
+        ref.child(id).setValue(recyclerCorrente);
+    }
+
 }
 
 

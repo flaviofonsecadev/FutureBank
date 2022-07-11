@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
+import com.example.futurebankgrupo1.recycler.Compra;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.databinding.ActivityComprovanteFaturaBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,8 +30,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
@@ -58,14 +62,9 @@ public class ComprovanteFatura extends AppCompatActivity {
             startActivity(intent);
         });
 
-//        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-//
-//        binding.tvGetValorPago.setText(String.valueOf(viewModel.exibirValorFatura()));
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         String userID = user.getUid();
-
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -84,15 +83,6 @@ public class ComprovanteFatura extends AppCompatActivity {
             }
         });
 
-        /*int day;
-        int month;
-        int year;
-        SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        day = preferences.getInt("chaveDay",0);
-        month = preferences.getInt("chaveMonth",0);
-        year= preferences.getInt("chaveYear", 0);
-        binding.tvGetDataHora.setText(day + "/" +month+"/"+year);*/
-
 
         Intent intentReceberDados = getIntent();
         Bundle receberDados = intentReceberDados.getExtras();
@@ -100,6 +90,18 @@ public class ComprovanteFatura extends AppCompatActivity {
         if (receberDados != null) {
             Float valorFatura = receberDados.getFloat("valorFatura");
             binding.tvGetValorPago.setText(dinheiroBR.format(valorFatura));
+
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("fatura").child(userID);
+            String idFatura = ref.push().getKey();
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            Calendar cal = Calendar.getInstance();
+            String date = dateFormat.format(cal.getTime());
+            String valorRecycler = dinheiroBR.format(valorFatura);
+
+            Compra compra = new Compra("Pagamento fatura do cartão", valorRecycler, date);
+            assert idFatura != null;
+            ref.child(idFatura).setValue(compra);
+
         }
 
         //Data e hora do pagamento

@@ -95,8 +95,6 @@ public class SenhaRecargaActivity extends AppCompatActivity {
                                 startActivity(new Intent(getApplicationContext(), RecargaCelularActivity.class));
                             }
 
-                            Toast.makeText(getApplicationContext(), "Recarga realizada com sucesso!", Toast.LENGTH_SHORT).show();
-
                         }
 
                         @Override

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.R;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPixCopiaCola;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -243,6 +245,18 @@ public class PagarFaturaConfirmarValor extends AppCompatActivity {
                                 reference.child(userID).child("valorFatura").setValue(0);
                                 reference.child(userID).child("limiteCartao").setValue(valorFatura + limite);
                                 reference.child(userID).child("saldo").setValue(saldo - valorFatura);
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(userID);
+                                String idFatura = ref.push().getKey();
+                                DateFormat dateFormat = DateFormat.getDateInstance();
+                                Calendar cal = Calendar.getInstance();
+                                String date = dateFormat.format(cal.getTime());
+                                //String valorRecycler = String.valueOf(valorFatura).replace(".", ",");
+                                String valorRecycler = dinheiroBR.format(valorFatura);
+
+                                RecyclerCorrente recyclerFatura = new RecyclerCorrente("Pagamento fatura do cartão", valorRecycler, date);
+                                assert idFatura != null;
+                                ref.child(idFatura).setValue(recyclerFatura);
+
                                 Intent intent = new Intent(getApplicationContext(), ComprovanteFatura.class);
                                 intent.putExtras(enviarDados);
                                 startActivity(intent);

@@ -72,6 +72,8 @@ public class ResgatarCC extends AppCompatActivity {
                 String textoMask = binding.edtValorResgatar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
                 float valor = Float.parseFloat(textoNovo);
+                String valorRecycler = "R$ " + textoMask;
+
 
                 mAuth = FirebaseAuth.getInstance();
                 String onlineUserId = mAuth.getCurrentUser().getUid();
@@ -81,7 +83,7 @@ public class ResgatarCC extends AppCompatActivity {
                 Calendar cal = Calendar.getInstance();
                 String data = dateFormat.format(cal.getTime());
 
-                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Resgate da poupança", textoMask, data);
+                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Resgate da poupança", valorRecycler, data);
                 assert id != null;
                 ref.child(id).setValue(recyclerCorrente);
 
