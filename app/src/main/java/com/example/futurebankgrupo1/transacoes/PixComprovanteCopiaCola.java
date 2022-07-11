@@ -75,7 +75,7 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
         String date;
         String mensagemPixCopiaCola;
         SharedPreferences preferences = getSharedPreferences("chaveGeral", MODE_PRIVATE);
-        valorPix = preferences.getString("chaveValorPix", "");
+        valorPix = preferences.getString("chaveValorPixCopiaCola", "");
         date = preferences.getString("chaveDate", "");
         mensagemPixCopiaCola = preferences.getString("chaveMensagemPixCopiaCola", "");
         binding.tvGetValorTransferido.setText("R$" + valorPix);
