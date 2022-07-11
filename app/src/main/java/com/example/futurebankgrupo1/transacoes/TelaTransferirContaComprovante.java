@@ -18,6 +18,7 @@ import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.databinding.ActivityTelaTransferirContaBinding;
 import com.example.futurebankgrupo1.databinding.ActivityTelaTransferirContaComprovanteBinding;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +31,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -92,6 +95,8 @@ public class TelaTransferirContaComprovante extends AppCompatActivity {
         binding.tvNumCcRecebedor.setText(numeroConta);
         cpfRecebedor = preferences.getString("chaveCpfRecebedor", "");
         binding.tvNumCpfRecebedor.setText(cpfRecebedor);
+
+        addToExtrato(valorTed);
 
         //Gerar ID transação
         gerarIdTransacao();
@@ -225,5 +230,19 @@ public class TelaTransferirContaComprovante extends AppCompatActivity {
         }
         binding.tvGetId.setText(letrasID + "-" + numerosID + "-" + dateFormat);
         return letrasID + "_" + numerosID;
+    }
+
+    private void addToExtrato(String valor) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String onlineUserId = mAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
+        String id = ref.push().getKey();
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
+
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Transferência TED - Enviada", "R$ " + valor, data);
+        assert id != null;
+        ref.child(id).setValue(recyclerCorrente);
     }
 }
