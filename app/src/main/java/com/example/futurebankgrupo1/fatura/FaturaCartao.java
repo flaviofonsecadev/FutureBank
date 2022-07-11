@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.futurebankgrupo1.recycler.AdapterCorrente;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.example.futurebankgrupo1.recycler.Compra;
 import com.example.futurebankgrupo1.HomeActivity;
@@ -25,10 +27,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,8 +40,12 @@ public class FaturaCartao extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Compra> listaCompras = new ArrayList<>();
+    private AdapterCompra adapterCompra;
+
+    String userID;
+
+
     private ActivityFaturaCartaoBinding binding;
-    private MyViewModel viewModel;
 
     Locale localeBR = new Locale( "pt", "BR" );
     NumberFormat dinheiroBR = NumberFormat.getCurrencyInstance(localeBR);
@@ -53,19 +61,19 @@ public class FaturaCartao extends AppCompatActivity {
         //conversão variável recyclerView
         recyclerView = findViewById(R.id.recyclerView);
 
-        this.criarCompra();
+
 
         //configuração do adapter
-        AdapterCompra AdapterCompra = new AdapterCompra(listaCompras);
-
-
+        adapterCompra = new AdapterCompra(FaturaCartao.this, listaCompras);
 
         //configuração recyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(AdapterCompra);
+        recyclerView.setAdapter(adapterCompra);
 
+        readItems();
+        //this.criarCompra();
 
         binding.icClear.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -77,15 +85,9 @@ public class FaturaCartao extends AppCompatActivity {
             startActivity(intent);
         });
 
-        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
-       // binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-        //binding.tvGetLimite.setText(String.valueOf(viewModel.exibirLimite()));
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        String userID = user.getUid();
-
+        userID = user.getUid();
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -106,25 +108,33 @@ public class FaturaCartao extends AppCompatActivity {
         });
 
 
-
-        /*binding.btnEye.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                binding.tvValorAtual.setText(String.valueOf(viewModel.exibirValorFatura()));
-
-                //viewModel.exibirValorFatura();
-            }
-        });*/
-
-        /*binding.button.setOnClickListener(v -> {
-            new String(String.valueOf(viewModel.comprarCartaoCredito()));
-        });
-
-        */
-
     }
 
-    public void criarCompra(){
+    private void readItems(){
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String onlineUserId = mAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("fatura").child(onlineUserId);
+        Query query = ref.orderByPriority();
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Compra compra = dataSnapshot.getValue(Compra.class);
+                    listaCompras.add(compra);
+                }
+                Collections.reverse(listaCompras);
+                adapterCompra.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    /*public void criarCompra(){
 
         Compra compra = new Compra("Compra em Petz", "03/06/2022", "R$199,90", R.drawable.ic_pet2);
         this.listaCompras.add(compra);
@@ -156,10 +166,6 @@ public class FaturaCartao extends AppCompatActivity {
         compra = new Compra("Compra em Farmácia Nissei", "03/05/2022", "R$39,90", R.drawable.ic_farmacia);
         this.listaCompras.add(compra);
 
-
-
-
-
-    }
+    }*/
 
 }

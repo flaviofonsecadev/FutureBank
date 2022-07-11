@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.databinding.ActivityRecargaComprovanteBinding;
+import com.example.futurebankgrupo1.recycler.Compra;
 import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
@@ -116,9 +117,9 @@ public class RecargaComprovanteActivity extends AppCompatActivity {
             String date = dateFormat.format(cal.getTime());
 
 
-            RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Recarga de celular", ("R$ " + valor), date);
+            Compra compra = new Compra("Recarga de celular", ("R$ " + valor), date);
             assert id != null;
-            ref.child(id).setValue(recyclerCorrente);
+            ref.child(id).setValue(compra);
         }
 
 

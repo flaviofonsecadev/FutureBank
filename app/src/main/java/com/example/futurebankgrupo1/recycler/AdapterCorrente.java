@@ -57,6 +57,12 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
             case "Aplicação na poupança":
                 holder.imagem.setImageResource(R.drawable.ic_aplicar);
                 break;
+            case "Recarga de celular":
+                holder.imagem.setImageResource(R.drawable.ic_smartphone);
+                break;
+            case "Pagamento fatura do cartão":
+                holder.imagem.setImageResource(R.drawable.icon_config_card);
+                break;
             case "Transferência enviada":
             default:
                 holder.imagem.setImageResource(R.drawable.ic__money_vermelho);

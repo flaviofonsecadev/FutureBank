@@ -73,6 +73,7 @@ public class AplicarCP extends AppCompatActivity {
                 String textoMask = binding.edtValorAplicar.getText().toString();
                 String textoNovo = textoMask.replace(",", ".");
                 float valor = Float.parseFloat(textoNovo);
+                String valorRecycler = "R$ " + textoMask;
 
                 mAuth = FirebaseAuth.getInstance();
                 String onlineUserId = mAuth.getCurrentUser().getUid();
@@ -82,7 +83,7 @@ public class AplicarCP extends AppCompatActivity {
                 Calendar cal = Calendar.getInstance();
                 String data = dateFormat.format(cal.getTime());
 
-                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", textoMask, data);
+                RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Aplicação na poupança", valorRecycler, data);
                 assert id != null;
                 ref.child(id).setValue(recyclerCorrente);
 

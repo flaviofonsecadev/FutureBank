@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.databinding.ActivitySeguroCartaoBinding;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.transacoes.PixComprovanteActivity;
 import com.example.futurebankgrupo1.transacoes.TelaConfirmarDadosPix;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.concurrent.Executor;
 
 public class SeguroCartaoActivity extends AppCompatActivity {
@@ -89,6 +92,9 @@ public class SeguroCartaoActivity extends AppCompatActivity {
                             if (binding.cbStandard.isChecked()){
                                 if (saldo >= 2.90){
                                     reference.child(userID).child("saldo").setValue(saldo - 2.90);
+                                    String transacao = "Seguro do Cartão - Standard";
+                                    String valor = "2,90";
+                                    addToExtrato(transacao, valor);
                                     Toast.makeText(SeguroCartaoActivity.this, "Plano Standart contratado!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
@@ -100,6 +106,9 @@ public class SeguroCartaoActivity extends AppCompatActivity {
                             else if (binding.cbPlus.isChecked()){
                                 if (saldo >= 4.90){
                                     reference.child(userID).child("saldo").setValue(saldo - 4.90);
+                                    String transacao = "Seguro do Cartão - Plus";
+                                    String valor = "4,90";
+                                    addToExtrato(transacao, valor);
                                     Toast.makeText(SeguroCartaoActivity.this, "Plano Plus contratado!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
@@ -111,6 +120,9 @@ public class SeguroCartaoActivity extends AppCompatActivity {
                             else if (binding.cbPremium.isChecked()){
                                 if (saldo >= 7.30){
                                     reference.child(userID).child("saldo").setValue(saldo - 7.30);
+                                    String transacao = "Seguro do Cartão - Premium";
+                                    String valor = "7,30";
+                                    addToExtrato(transacao, valor);
                                     Toast.makeText(SeguroCartaoActivity.this, "Plano Premium contratado!", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(intent);
@@ -148,4 +160,19 @@ public class SeguroCartaoActivity extends AppCompatActivity {
             biometricPrompt.authenticate(promptInfo);
         });
     }
+
+    private void addToExtrato(String transacao, String valor) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String onlineUserId = mAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
+        String id = ref.push().getKey();
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
+
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente(transacao, "R$ " + valor, data);
+        assert id != null;
+        ref.child(id).setValue(recyclerCorrente);
+    }
+
 }

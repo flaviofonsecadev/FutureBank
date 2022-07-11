@@ -5,7 +5,6 @@ public class RecyclerCorrente {
     private String transacaoCreditoDebito;
     private String valor;
     private String data;
-    //private int imagem;
 
     public RecyclerCorrente(String transacaoCreditoDebito, String valor, String data) {
         this.transacaoCreditoDebito = transacaoCreditoDebito;

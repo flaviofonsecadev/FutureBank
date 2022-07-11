@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.MyViewModel;
 import com.example.futurebankgrupo1.databinding.ActivityPixComprovanteCopiaColaBinding;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +31,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -81,6 +84,8 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
         binding.tvGetValorTransferido.setText("R$" + valorPix);
         binding.tvDataHora.setText(date);
         binding.tvTipoPgto.setText(mensagemPixCopiaCola);
+
+        addToExtrato(valorPix);
 
 
         //Gerar ID transação
@@ -212,5 +217,19 @@ public class PixComprovanteCopiaCola extends AppCompatActivity {
         }
         binding.tvGetId.setText(letrasID + "-" + numerosID + "-" + dateFormat);
         return letrasID + "_" + numerosID;
+    }
+
+    private void addToExtrato(String valor) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String onlineUserId = mAuth.getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("extratos").child(onlineUserId);
+        String id = ref.push().getKey();
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        Calendar cal = Calendar.getInstance();
+        String data = dateFormat.format(cal.getTime());
+
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Pix para João da Silva", "R$ " + valor, data);
+        assert id != null;
+        ref.child(id).setValue(recyclerCorrente);
     }
 }

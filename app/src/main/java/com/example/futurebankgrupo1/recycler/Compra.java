@@ -1,48 +1,40 @@
 package com.example.futurebankgrupo1.recycler;
 
 public class Compra {
+    private String transacaoCreditoDebito;
+    private String valor;
+    private String data;
 
-    private String tituloFilme;
-    private String genero;
-    private String ano;
-    private int foto;
-
-    public Compra(String tituloFilme, String genero, String ano, int foto) {
-        this.tituloFilme = tituloFilme;
-        this.genero = genero;
-        this.ano = ano;
-        this.foto = foto;
+    public Compra(String transacaoCreditoDebito, String valor, String data) {
+        this.transacaoCreditoDebito = transacaoCreditoDebito;
+        this.valor = valor;
+        this.data = data;
     }
 
-    public String getTituloFilme() {
-        return tituloFilme;
+    public Compra() {
     }
 
-    public void setTituloFilme(String tituloFilme) {
-        this.tituloFilme = tituloFilme;
+    public String getTransacaoCreditoDebito() {
+        return transacaoCreditoDebito;
     }
 
-    public String getGenero() {
-        return genero;
+    public void setTransacaoCreditoDebito(String transacaoCreditoDebito) {
+        this.transacaoCreditoDebito = transacaoCreditoDebito;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public String getValor() {
+        return valor;
     }
 
-    public String getAno() {
-        return ano;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
-    public void setAno(String ano) {
-        this.ano = ano;
+    public String getData() {
+        return data;
     }
 
-    public int getFoto() {
-        return foto;
-    }
-
-    public void setFoto(int foto) {
-        this.foto = foto;
+    public void setData(String data) {
+        this.data = data;
     }
 }
