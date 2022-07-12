@@ -147,4 +147,49 @@
         android:background="@color/gray"
         app:layout_constraintTop_toBottomOf="@+id/tv_gerar_boleto"/>
 
+    <ImageView
+        android:id="@+id/iv_copy"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_copy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_1" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_forward2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic__arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_pagar_fatura_cartao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_pagar_fatura_cartao" />
+
+    <TextView
+        android:id="@+id/tv_pagar_fatura_cartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Pix Copia e Cola"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_copy"
+        app:layout_constraintStart_toEndOf="@+id/iv_copy"
+        app:layout_constraintTop_toTopOf="@+id/iv_copy" />
+
+    <TextView
+        android:id="@+id/tv_gerar_boleto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Inserir o código copiado"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_copy"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pagar_fatura_cartao" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

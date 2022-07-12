@@ -151,12 +151,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_gerar_boleto"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_pagar_boleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="36dp"
-        android:text="Pagar com QRcode"
+        android:text="Pagar Boleto"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/line_2"
@@ -168,10 +168,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="2dp"
-        android:text="Pagar fatura lendo um codigo QR"
+        android:text="Pagar boleto com código de barras"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/line_2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@id/tv_pagar_boleto" />
 
     <View
 
@@ -184,13 +184,13 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
-        android:id="@+id/tv_seta_qr"
+        android:id="@+id/tv_seta_pagar_boleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@id/tv_pagar_boleto"
         app:layout_constraintVertical_bias="0.464"
         app:srcCompat="@drawable/ic__arrow_forward"
         tools:ignore="MissingConstraints" />
@@ -202,9 +202,9 @@
         android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/tv_pagar_boleto"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/qr_code_preto"
+        app:srcCompat="@drawable/barcode_scan"
         tools:ignore="MissingConstraints" />
 
 
