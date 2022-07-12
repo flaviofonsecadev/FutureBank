@@ -1,4 +1,4 @@
-package com.example.futurebankgrupo1;
+package com.example.futurebankgrupo1.transacoes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +12,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.futurebankgrupo1.databinding.ActivitySenhaTransferircontaBinding;
-import com.example.futurebankgrupo1.transacoes.PixComprovanteCopiaCola;
-import com.example.futurebankgrupo1.transacoes.SenhaPixCopiaColaActivity;
-import com.example.futurebankgrupo1.transacoes.TelaTransferirContaComprovante;
 import com.example.futurebankgrupo1.usuario.UserFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
