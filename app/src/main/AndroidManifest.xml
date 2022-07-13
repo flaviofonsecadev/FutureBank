@@ -25,8 +25,13 @@
         android:theme="@style/Theme.FutureBankGrupo1"
         tools:targetApi="31">
         <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+        <activity
             android:name=".transacoes.SenhaTransferircontaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".transacoes.CaptureQr"
             android:screenOrientation="portrait"
@@ -34,13 +39,16 @@
             android:theme="@style/zxing_CaptureTheme" />
         <activity
             android:name=".transacoes.SenhaPixCopiaColaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".transacoes.SenhaPixActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".recarga.SenhaRecargaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".transacoes.TelaTransferirPixTED"
             android:exported="false"

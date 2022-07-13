@@ -147,4 +147,49 @@
         android:background="@color/gray"
         app:layout_constraintTop_toBottomOf="@+id/tv_gerar_boleto"/>
 
+    <ImageView
+        android:id="@+id/iv_qrcode_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/qr_code_preto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_2" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_forward_qrcode"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic__arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_pagar_qrcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_pagar_qrcode" />
+
+    <TextView
+        android:id="@+id/tv_pagar_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Pagar com QR Code"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_qrcode_icon"
+        app:layout_constraintStart_toEndOf="@+id/iv_qrcode_icon"
+        app:layout_constraintTop_toTopOf="@+id/iv_qrcode_icon" />
+
+    <TextView
+        android:id="@+id/tv_ler_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/robotoregular"
+        android:text="Ler QR Code para pagar"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_qrcode_icon"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pagar_qrcode" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
