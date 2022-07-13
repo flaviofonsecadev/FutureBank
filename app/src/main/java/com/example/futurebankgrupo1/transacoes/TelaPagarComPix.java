@@ -72,9 +72,10 @@ public class TelaPagarComPix extends AppCompatActivity {
                     }
                 } else {
                     String valor = result.getContents();
-                    float valorf = Float.parseFloat(valor);
-                    pagarPixQrcode(valorf);
                     addToExtrato(valor);
+                    String valorFormat = valor.replace(",", ".");
+                    float valorf = Float.parseFloat(valorFormat);
+                    pagarPixQrcode(valorf);
                     Toast.makeText(TelaPagarComPix.this, "Pagamento Realizado", Toast.LENGTH_LONG).show();
                 }
             });
@@ -120,9 +121,9 @@ public class TelaPagarComPix extends AppCompatActivity {
         DateFormat dateFormat = DateFormat.getDateInstance();
         Calendar cal = Calendar.getInstance();
         String data = dateFormat.format(cal.getTime());
-        String valorFormat = valor.replace(".", ",");
+        //String valorFormat = valor.replace(".", ",");
 
-        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Pagamento por pix - QR Code ", "R$ " + valorFormat, data);
+        RecyclerCorrente recyclerCorrente = new RecyclerCorrente("Pagamento por pix - QR Code ", "R$ " + valor, data);
         assert id != null;
         ref.child(id).setValue(recyclerCorrente);
     }

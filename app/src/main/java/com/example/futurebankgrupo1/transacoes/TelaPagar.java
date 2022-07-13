@@ -18,6 +18,7 @@ import com.example.futurebankgrupo1.HomeActivity;
 import com.example.futurebankgrupo1.R;
 import com.example.futurebankgrupo1.databinding.ActivityTelaPagarBinding;
 import com.example.futurebankgrupo1.fatura.pagarfatura.PagarFatura;
+import com.example.futurebankgrupo1.recycler.RecyclerCorrente;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.qrcode.encoder.QRCode;
