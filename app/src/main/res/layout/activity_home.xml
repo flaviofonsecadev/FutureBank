@@ -331,7 +331,7 @@
         android:background="#DFD8D8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraint_cartoes"/>
+        app:layout_constraintTop_toBottomOf="@id/constraint_cartoes"        />
 
     <TextView
         android:id="@+id/tv_cartao_credito"
