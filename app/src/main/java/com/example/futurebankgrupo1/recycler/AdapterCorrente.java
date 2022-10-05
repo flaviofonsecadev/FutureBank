@@ -74,7 +74,6 @@ public class AdapterCorrente extends RecyclerView.Adapter<AdapterCorrente.MyView
             default:
                 holder.imagem.setImageResource(R.drawable.ic__money_vermelho);
         }
-
     }
 
     @Override
