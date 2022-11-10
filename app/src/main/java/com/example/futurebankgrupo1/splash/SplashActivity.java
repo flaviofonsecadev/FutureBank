@@ -25,7 +25,7 @@ import java.util.concurrent.Executor;
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
-//    public boolean habilitar;
+    boolean biometria = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,16 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            new Handler().postDelayed(() -> {
+        try {
+            SharedPreferences preferences = getSharedPreferences("save", MODE_PRIVATE);
+            biometria = preferences.getBoolean("value", false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+
+        if (user != null && biometria) {
+            new Handler().postDelayed(() -> {
                 Executor executor = ContextCompat.getMainExecutor(this);
 
                 BiometricPrompt biometricPrompt = new BiometricPrompt(SplashActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
@@ -73,7 +80,6 @@ public class SplashActivity extends AppCompatActivity {
             }, 2000);
         } else {
             new Handler().postDelayed(() -> {
-
                 startActivity(new Intent(SplashActivity.this, SubSplashActivity2.class));
                 finish();
             }, 2000);
