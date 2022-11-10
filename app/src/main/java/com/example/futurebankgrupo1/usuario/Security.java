@@ -28,27 +28,28 @@ public class Security extends AppCompatActivity {
 
         switchCompat = findViewById(R.id.switch_biometria);
 
-        /*SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
-        switchCompat.setChecked(sharedPreferences.getBoolean("value", false));*/
+        try {
+            SharedPreferences sharedPreferences = getSharedPreferences("save", MODE_PRIVATE);
+            switchCompat.setChecked(sharedPreferences.getBoolean("value", false));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-        /*switchCompat.setOnClickListener(v -> {
+        switchCompat.setOnClickListener(v -> {
             if (switchCompat.isChecked()) {
                 SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
                 editor.putBoolean("value", true);
                 editor.apply();
                 switchCompat.setChecked(true);
-                habilitarBiometria(true);
-                Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Autenticação com biometria ativada!", Toast.LENGTH_SHORT).show();
             }else {
                 SharedPreferences.Editor editor = getSharedPreferences("save", MODE_PRIVATE).edit();
                 editor.putBoolean("value", false);
                 editor.apply();
                 switchCompat.setChecked(false);
-                habilitarBiometria(false);
-                Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Autenticação com biometria desativada!", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
         binding.icBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), TelaConfiguracoesActivity.class);
