@@ -59,14 +59,5 @@ public class Security extends AppCompatActivity {
         binding.ivArrowForward.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), ResetarSenha.class));
         });
-
     }
-
-    /*public boolean habilitarBiometria(boolean b) {
-        return b;
-    }
-
-    public boolean desabilitarBiometria(boolean b) {
-        return b;
-    }*/
 }
