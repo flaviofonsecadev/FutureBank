@@ -48,8 +48,12 @@ public class TelaConfirmarDadosPixCopiaCola extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        TelaConfirmarDadosPixCopiaCola.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        onDateSetListener,year, month, day);
+                        TelaConfirmarDadosPixCopiaCola.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener,
+                        year,
+                        month,
+                        day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
